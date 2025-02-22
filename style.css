@@ -1,0 +1,102 @@
+body {
+    background: url(media/lapse-background-2.png) center/cover no-repeat fixed;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+img {
+    position: absolute;
+    height: 200px;
+    top: 10%;
+    border-radius: 30%;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.788);
+
+}
+
+.login-container {
+    background: linear-gradient(to top, rgb(83, 83, 83), rgb(29, 29, 29));
+    padding: 0px 20px 20px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.733);
+    border: 2px solid black;
+}
+
+h1 {
+    padding-top: 0px;
+    color: white;
+    text-shadow: 1px 1px 1px white;
+}
+
+input[type="password"], input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+input[type="password"], input[type="text"]:active {
+    border: none;
+}
+
+button {
+    width: 90%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    border: 2px solid black;
+    background-color: rgba(0, 0, 0, 0.521);
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+}
+
+.show-password {
+    color: white;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 17px;
+    height: 17px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+input[type="checkbox"]:checked {
+    background: black;
+    border-color: black;
+    position: relative;
+    border: 2px solid #ccc;
+}
+
+.show-password input {
+    margin-right: 10px;
+}

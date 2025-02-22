@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fichas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <img src="media/lapse.png" alt="imagem-rpg">
+    <div class="login-container">
+        <h1>Acesse sua Ficha</h1>
+        <form id="loginForm" onsubmit="validarSenha(event)">
+            <input type="password" id="senha" placeholder="Digite sua palavra" required>
+            
+            <div class="show-password">
+                <input type="checkbox" id="showPassword"> 
+                <label for="showPassword">Mostrar palavra</label>
+            </div>
+            
+            <button type="submit">Acessar</button>
+            <p class="error-message" id="errorMessage" style="display:none;">Palavra incorreta!</p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('showPassword').addEventListener('change', function() {
+            const senhaInput = document.getElementById('senha');
+            if (this.checked) {
+                senhaInput.type = 'text';
+            } else {
+                senhaInput.type = 'password';
+            }
+        });
+
+    function removerAcentos(str) {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function validarSenha(event) {
+        event.preventDefault();
+
+        const senhas = {
+            "shiva": "characters/shiva.html",
+            "yang": "characters/yang.html",
+            "indra": "characters/indra.html",
+            "obsessao": "characters/obsessao.html", //saori
+            "shin": "characters/shin.html"
+        };
+
+        const senhaInserida = removerAcentos(document.getElementById('senha').value.toLowerCase());
+
+        const urlRedirecionamento = senhas[senhaInserida];
+
+        if (urlRedirecionamento) {
+            window.location.href = urlRedirecionamento;
+        } else {
+            document.getElementById('errorMessage').style.display = "block";
+        }
+    }
+    </script>
+</body>
+</html>
