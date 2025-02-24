@@ -150,14 +150,14 @@ main {
 }
 
 .container {
-    width: 800px;
+    width: 1000px;
     border-radius: 30px;
     padding: 20px;
     margin: 10px auto;
     background-color: var(--cor-2);
     border: 2px solid black;
-    width: 80%;
-    max-width: 900px;
+    width: 100%;
+    max-width: 1000px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.301);
 }
 
@@ -184,7 +184,7 @@ main h1 {
 .dado-info-container {
     background-color: var(--cor-3);
     text-align: center;
-    border: 2px solid var(--cor-1);
+    border: 2px solid white;
     display: inline-block;
     padding: 10px;
     margin-right: 20px;
@@ -214,7 +214,7 @@ main h1 {
     width: 150px;
     padding: 20px;
     display: inline-block;
-    border: 2px solid var(--cor-1);
+    border: 2px solid white;
     border-radius: 20px;
     background-color: var(--cor-3);
 }
@@ -254,7 +254,7 @@ main h1 {
 }
 
 .vida-atual, .sanidade-atual {
-    border: 1.5px solid var(--cor-1);
+    border: 1.5px solid white;
     padding: 0px 10px;
     border-radius: 10px;
 }
@@ -303,7 +303,7 @@ main h1 {
     border: 2px solid white;
     border-radius: 5px;
     padding: 2px;
-    margin: 1px 0px;
+    margin: 1px;
     background-color: rgba(255, 255, 255, 0.322);
 }
 
@@ -346,7 +346,8 @@ main h1 {
     background-color: var(--cor-3);
     display: inline-block;
     margin-bottom: 10px;
-    padding: 3px 15px 7px 5px;
+    margin-right: 200px;
+    padding: 7px 15px 7px 5px;
     font-size: 20px;
     border-radius: 10px;
     border: 2px solid white;
@@ -355,7 +356,7 @@ main h1 {
 
 #ataque-container p:hover {
     cursor: cell;
-    transform: scale(1.02);
+    transform: scale(1.01);
 }
 
 
@@ -372,4 +373,15 @@ main h1 {
     border-right: 2px solid white;
 }
 
+#ataque-container {
+    position: relative;
+}
 
+#ataque-container img {
+    position: absolute;
+    width: 200px;
+    top: 50%;
+    transform: translate(0%, -50%);
+    right: 20px;
+    border-radius: 20px;
+}
