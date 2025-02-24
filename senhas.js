@@ -9,9 +9,9 @@ document.getElementById('showPassword').addEventListener('change', function() {
 
 const senhas = {
     "75ab4003f1edfdf6fd43b0eaa5801fab1dab2ebb4572098e8dc89b7758c3c0a4": "c-pages/saori/saori.html",
-    "5152cc21067154b896fa141c722693c01a0a71e777b36b563413a48cedac7183": "c-pages/shin/shin.html",
+    "": "c-pages/shin/shin.html",
     "575bb429408c1233da72a28e95e92ec5083cbd2cd985e2c6da1b892737437b29": "c-pages/yang/yang.html",
-    "e14df2f7940ee091b49f6e383c161c774acf131ce8ae48cb6dde5deb3701ee84": "c-pages/shiva/shiva.html",
+    "": "c-pages/shiva/shiva.html",
     "780a23528c754a504894e9747d7df4fde20e937d3e9e63a86c001eecb0908b46": "c-pages/indra/indra.html"
 };
 
