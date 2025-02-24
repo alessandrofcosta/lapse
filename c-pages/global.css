@@ -12,6 +12,28 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+html {
+    background-color: var(--cor-1);
+}
+
+#main-historia {
+    margin: auto;
+    background-color: var(--cor-2);
+    max-width: 800px;
+    min-width: 300px;
+    padding: 40px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.26);
+}
+
+#main-historia p {
+    text-align: justify;
+}
+
+#main-historia img {
+    border-radius: 30px;
+    box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.521);
+}
+
 h1, h2 {
     font-family: "Passion One", Arial, Helvetica, sans-serif;
     font-weight: 700;
@@ -53,11 +75,19 @@ header {
     color: var(--cor-1);
 }
 
-header h1 {
+header h1{
     font-size: clamp(24px, 4vw, 48px);
     position: relative;
     text-align: center;
     top: 10px;
+    font-weight: 700;
+}
+
+#nivel {
+    margin-top: 10px;
+    font-family: "Passion One", Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: clamp(20px, 3vw, 35px);
 }
 
 header a {
@@ -105,3 +135,241 @@ header a {
     justify-content: center;
     margin-bottom: 30px;
 }
+
+main {
+    position: relative;
+    max-width: 1000px;
+    min-width: 300px;
+    background-color: var(--cor-3);
+    margin: auto;
+    padding: 30px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.301);
+    border-right: 3px solid black;
+    border-left: 3px solid black;
+    border-bottom: 3px solid black;
+}
+
+.container {
+    width: 800px;
+    border-radius: 30px;
+    padding: 20px;
+    margin: 10px auto;
+    background-color: var(--cor-2);
+    border: 2px solid black;
+    width: 80%;
+    max-width: 900px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.301);
+}
+
+.container h1 {
+    margin-bottom: 20px;
+}
+
+#info-container {
+    position: relative; 
+}
+
+main h1 {
+    text-align: center;
+    font-weight: 700;
+}
+
+.info {
+    margin-top: -5px;
+    font-family: "Passion One";
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.dado-info-container {
+    background-color: var(--cor-3);
+    text-align: center;
+    border: 2px solid var(--cor-1);
+    display: inline-block;
+    padding: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.dado-info-container:hover {
+    cursor: cell;
+    transform: scale(1.1);
+}
+
+
+#icontainers {
+    text-align: center;
+}
+
+.atributos {
+    font-family: "Passion One";
+    font-size: 30px;
+    font-weight: 100;
+}
+
+.pv-container, .ps-container {
+    margin: auto;
+    width: 150px;
+    padding: 20px;
+    display: inline-block;
+    border: 2px solid var(--cor-1);
+    border-radius: 20px;
+    background-color: var(--cor-3);
+}
+
+.status-container {
+    text-align: center;
+    display: flex;
+}
+
+#pv, #ps {
+    font-family: "Passion One";
+    font-size: 40px;
+}
+
+#pv-info, #ps-info {
+    margin-top: 10px;
+    font-size: 25px;
+}
+
+.atributo-dado-container {
+    border: 2px solid white;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: var(--cor-3);
+    display: flex;
+    margin-top: 20px;
+
+}
+
+.atributo-dado-container p {
+    margin: 13px 0px 0px 0px;
+}
+
+.atributo-dado-1, .atributo-dado-2 {
+    margin: auto;
+    display: inline-block;
+}
+
+.vida-atual, .sanidade-atual {
+    border: 1.5px solid var(--cor-1);
+    padding: 0px 10px;
+    border-radius: 10px;
+}
+
+.vida-atual {
+    background-color: rgba(0, 128, 0, 0.596);
+}
+
+.sanidade-atual {
+    background-color: rgba(0, 0, 255, 0.397);
+}
+
+.dado-pericia-container {
+    display: flex;
+    gap: 20px;
+}
+
+.pericia {
+    padding: 8px;
+    display: inline-block;
+    margin: 0px auto;
+    background-color: var(--cor-3);
+    border-radius: 20px;
+    border: 2px solid white;
+    transition: transform 0.2s ease-in-out;
+}
+
+.pericia:hover {
+    cursor: cell;
+    transform: scale(1.03);
+}
+
+.titulo-pericia {
+    font-family: "Passion One", Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.pericia-info {
+    font-family: "Passion One", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+.pericia-info-number {
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 2px;
+    margin: 1px 0px;
+    background-color: rgba(255, 255, 255, 0.322);
+}
+
+.pericia p {
+    margin: 10px 0px;
+}
+
+.habilidade {
+    position: relative;
+    margin: auto;
+    border: 2px solid white;
+    margin: 20px 0px;
+    padding: 10px;
+    text-align: justify;
+    background-color: var(--cor-3);
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.habilidade:hover {
+    cursor: cell;
+    transform: scale(1.01);
+}
+
+.habilidade h2 {
+    font-size: 23px;
+}
+
+.grimorio {
+    font-size: 15px;
+}
+
+.nivel-habilidade {
+    position: absolute;
+    right: 10px;
+}
+
+#ataque-container p {
+    font-family: "Passion One", Arial, Helvetica, sans-serif;
+    background-color: var(--cor-3);
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 3px 15px 7px 5px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 2px solid white;
+    transition: transform 0.2s ease-in-out;
+}
+
+#ataque-container p:hover {
+    cursor: cell;
+    transform: scale(1.02);
+}
+
+
+.ataque-efeito {
+    background-color: rgba(255, 255, 255, 0.322);
+    padding: 2px;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.nome-habilidade {
+    padding-right: 10px;
+    border-right: 2px solid white;
+}
+
+
