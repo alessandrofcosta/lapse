@@ -1,11 +1,26 @@
 @charset "UTF-8";
 
 :root {
-    --cor-1: #FBF8F3;
-    --cor-2: #CFB58A;
-    --cor-3: #A58552;
-    --cor-4: #7A5B28;
-    --cor-5: #50360D;
+    --cor-1: #433643;
+    --cor-2: #6C466E;
+    --cor-3: #954898;
+    --cor-4: #BE3CC3;
+    --cor-5: #000000;
 }
 
 
+header {
+    color: white;
+}
+
+header a {
+    color: white;
+}
+
+.img-his {
+    box-shadow: 5px 5px 5px black;
+}
+
+#ataque-container p {
+    margin-right: 400px;
+}

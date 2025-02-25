@@ -8,6 +8,10 @@
     --cor-5: #656565;
 }
 
+#main-historia img {
+    box-shadow: 5px 5px 5px black;
+}
+
 .lot-habilidade {
     display: block;
     background-color: rgba(255, 255, 255, 0.418);
@@ -38,4 +42,8 @@
 .images-container img {
     max-width: 200px;
     min-width: 100px;
+}
+
+#ataque-container p {
+    margin-right: 500px;
 }
