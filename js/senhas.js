@@ -8,11 +8,11 @@ document.getElementById('showPassword').addEventListener('change', function() {
 });
 
 const senhas = {
-    "2dac65ec22d72135d3e64811942fad988d221b0f36030e932476d3f2aa380855": "c-pages/saori/saori.html",
-    "5152cc21067154b896fa141c722693c01a0a71e777b36b563413a48cedac7183": "c-pages/shin/shin.html",
-    "575bb429408c1233da72a28e95e92ec5083cbd2cd985e2c6da1b892737437b29": "c-pages/yang/yang.html",
-    "e14df2f7940ee091b49f6e383c161c774acf131ce8ae48cb6dde5deb3701ee84": "c-pages/shiva/shiva.html",
-    "780a23528c754a504894e9747d7df4fde20e937d3e9e63a86c001eecb0908b46": "c-pages/indra/indra.html"
+    "2dac65ec22d72135d3e64811942fad988d221b0f36030e932476d3f2aa380855": "pages/characters/saori/saori.html",
+    "5152cc21067154b896fa141c722693c01a0a71e777b36b563413a48cedac7183": "pages/characters/shin/shin.html",
+    "575bb429408c1233da72a28e95e92ec5083cbd2cd985e2c6da1b892737437b29": "pages/characters/yang/yang.html",
+    "e14df2f7940ee091b49f6e383c161c774acf131ce8ae48cb6dde5deb3701ee84": "pages/characters/shiva/shiva.html",
+    "780a23528c754a504894e9747d7df4fde20e937d3e9e63a86c001eecb0908b46": "pages/characters/indra/indra.html"
 };
 
 function removerAcentos(str) {

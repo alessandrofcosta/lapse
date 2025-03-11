@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
     const senhasValidas = [
-        "780a23528c754a504894e9747d7df4fde20e937d3e9e63a86c001eecb0908b46"
+        "e14df2f7940ee091b49f6e383c161c774acf131ce8ae48cb6dde5deb3701ee84"
     ];
 
     const acesso = localStorage.getItem("acesso");
 
     if (!senhasValidas.includes(acesso)) {
-        window.location.replace("../../espertinho.html");
+        window.location.replace("../../../pages/espertinho.html");
 
     } else {
         document.body.style.display = "block";

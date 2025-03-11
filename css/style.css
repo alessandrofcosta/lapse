@@ -1,5 +1,10 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
 body {
-    background: url(media/background/lapse-background-2.png) center/cover no-repeat fixed;
+    background: url(../media/background/lapse-background-2.png) center/cover no-repeat fixed;
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -23,7 +28,7 @@ img {
     padding: 0px 20px 20px 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 350px;
     text-align: center;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.733);
     border: 2px solid black;
@@ -59,12 +64,12 @@ button {
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 button:hover {
-    border: 2px solid black;
-    background-color: rgba(0, 0, 0, 0.521);
+    transform: scale(1.02);
+    background-color: rgba(0, 0, 0, 0.767);
 }
 
 .error-message {
@@ -87,13 +92,12 @@ input[type="checkbox"] {
     border-radius: 4px;
     background: white;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 input[type="checkbox"]:checked {
     background: black;
     border-color: black;
-    position: relative;
     border: 2px solid #ccc;
 }
 

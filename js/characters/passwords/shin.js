@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const acesso = localStorage.getItem("acesso");
 
     if (!senhasValidas.includes(acesso)) {
-        window.location.replace("../../espertinho.html");
+        window.location.replace("../../../pages/espertinho.html");
 
     } else {
         document.body.style.display = "block";
