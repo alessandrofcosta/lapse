@@ -36,7 +36,8 @@ html {
 h1, h2 {
     font-family: "Passion One", Arial, Helvetica, sans-serif;
     font-weight: 700;
-    font-size: clamp(20px, 3.5vw, 35px);
+    font-size: clamp(25px, 3.5vw, 40px);
+    margin-bottom: 10px;
 }
 
 .container-back {
@@ -101,7 +102,8 @@ header a {
     right: 10px;
     border-radius: 40%;
     position: absolute;
-    width: 100px;
+    width: 15%;
+    max-width: 150px;
 }
 
 .hlinks-container {
@@ -125,7 +127,7 @@ header a {
 
 .images-container img {
     max-width: 300px;
-    min-width: 200px;
+    min-width: 120px;
 }
 
 .images-container {
@@ -204,14 +206,15 @@ main h1 {
 
 .atributos {
     font-family: "Passion One";
-    font-size: 30px;
     font-weight: 100;
 }
 
 .pv-container, .ps-container {
     margin: auto;
     width: 150px;
-    padding: 20px;
+    max-width: 200px;
+    min-width: 50px;
+    padding: 10px;
     display: inline-block;
     border: 2px solid white;
     border-radius: 20px;
@@ -221,16 +224,17 @@ main h1 {
 .status-container {
     text-align: center;
     display: flex;
+    gap: 20px;
 }
 
 #pv, #ps {
     font-family: "Passion One";
-    font-size: 40px;
+    font-size: clamp(20px, 3.5vw, 40px);
 }
 
 #pv-info, #ps-info {
     margin-top: 10px;
-    font-size: 25px;
+    font-size: clamp(10px, 3.5vw, 25px);
 }
 
 .atributo-dado-container {
@@ -238,18 +242,28 @@ main h1 {
     padding: 20px;
     border-radius: 20px;
     background-color: var(--cor-3);
-    display: flex;
     margin-top: 20px;
-
+    display: flex;
 }
 
 .atributo-dado-container p {
     margin: 13px 0px 0px 0px;
+    font-size: clamp(5px, 3.5vw, 28px);
+}
+
+@media screen and (max-width:500px) {
+
+    .atributo-dado-container {
+        flex-direction: column;
+    } 
+
+    .atributo-dado-1, .atributo-dado-2 {
+        margin: 0px 0px !important;
+    }
 }
 
 .atributo-dado-1, .atributo-dado-2 {
     margin: auto;
-    display: inline-block;
 }
 
 .vida-atual, .sanidade-atual {
@@ -267,11 +281,12 @@ main h1 {
 }
 
 .dado-pericia-container {
-    display: flex;
-    gap: 20px;
+    text-align: center;
 }
 
 .pericia {
+    display: inline-block;
+    vertical-align: middle;
     padding: 8px;
     display: inline-block;
     margin: 0px auto;
@@ -279,6 +294,8 @@ main h1 {
     border-radius: 20px;
     border: 2px solid white;
     transition: transform 0.2s ease-in-out;
+    margin: 20px;
+    height: 130px;
 }
 
 .pericia:hover {
@@ -289,13 +306,13 @@ main h1 {
 .titulo-pericia {
     font-family: "Passion One", Arial, Helvetica, sans-serif;
     text-align: center;
-    font-size: 28px;
+    font-size: clamp(10px, 3.5vw, 25px);
     margin-bottom: 10px;
 }
 
 .pericia-info {
     font-family: "Passion One", Arial, Helvetica, sans-serif;
-    font-size: 20px;
+    font-size: clamp(10px, 3.5vw, 20px);
 }
 
 .pericia-info-number {
@@ -304,6 +321,16 @@ main h1 {
     padding: 2px;
     margin: 1px;
     background-color: rgba(255, 255, 255, 0.322);
+    font-size: clamp(7px, 3.5vw, 15px);
+}
+
+.atributo-info-number {
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 2px;
+    margin: 1px;
+    background-color: rgba(255, 255, 255, 0.322);
+    font-size: clamp(10px, 3.5vw, 25px);
 }
 
 .pericia p {
@@ -320,6 +347,7 @@ main h1 {
     background-color: var(--cor-3);
     border-radius: 10px;
     transition: transform 0.2s ease-in-out;
+    font-size: clamp(10px, 3.5vw, 16px);
 }
 
 .habilidade:hover {
@@ -328,7 +356,7 @@ main h1 {
 }
 
 .habilidade h2 {
-    font-size: 23px;
+    font-size: clamp(12px, 3.5vw, 23px);
 }
 
 .grimorio {
@@ -338,19 +366,21 @@ main h1 {
 .nivel-habilidade {
     position: absolute;
     right: 10px;
+    font-size: clamp(10px, 3.5vw, 20px);
 }
 
 #ataque-container p {
+    display: block;
+    width: 100%;
     font-family: "Passion One", Arial, Helvetica, sans-serif;
     background-color: var(--cor-3);
-    display: inline-block;
     margin-bottom: 10px;
-    margin-right: 200px;
     padding: 7px 15px 7px 5px;
-    font-size: 20px;
+    font-size: clamp(10px, 3.5vw, 20px);
     border-radius: 10px;
     border: 2px solid white;
     transition: transform 0.2s ease-in-out;
+    flex-grow: 1;
 }
 
 #ataque-container p:hover {
@@ -365,6 +395,7 @@ main h1 {
     border: 2px solid white;
     border-radius: 5px;
     margin-left: 10px;
+    font-size: clamp(10px, 3.5vw, 20px);
 }
 
 .nome-habilidade {
