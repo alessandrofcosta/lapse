@@ -9,20 +9,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
-    <img src="media/lapse.png" alt="imagem-rpg">
-    <div class="login-container">
-        <h1>Acesse sua Ficha</h1>
-        <form id="loginForm" onsubmit="validarSenha(event)">
-            <input type="password" id="senha" placeholder="Digite sua palavra" required>
-            
-            <div class="show-password">
-                <input type="checkbox" id="showPassword"> 
-                <label for="showPassword">Mostrar palavra</label>
-            </div>
-            
-            <button type="submit">Acessar</button>
-            <p class="error-message" id="errorMessage" style="display:none;">Palavra incorreta!</p>
-        </form>
+    <div class="login-container-ajust">
+        <img src="media/lapse.png" alt="imagem-rpg">
+        <div class="login-container">
+            <h1>Acesse sua Ficha</h1>
+            <form id="loginForm" onsubmit="validarSenha(event)">
+                <input type="password" id="senha" placeholder="Digite sua palavra" required>
+        
+                <div class="show-password">
+                    <input type="checkbox" id="showPassword">
+                    <label for="showPassword">Mostrar palavra</label>
+                </div>
+        
+                <button type="submit">Acessar</button>
+                <p class="error-message" id="errorMessage" style="display:none;">Palavra incorreta!</p>
+            </form>
+        </div>
     </div>
 
     <script src="js/senhas.js"></script>

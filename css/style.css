@@ -16,11 +16,13 @@ body {
 
 img {
     position: absolute;
-    height: 200px;
+    width: 40vw;
+    max-width: 200px;
     top: 10%;
+    left: 50%;
+    transform: translate(-50%);
     border-radius: 30%;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.788);
-
 }
 
 .login-container {
