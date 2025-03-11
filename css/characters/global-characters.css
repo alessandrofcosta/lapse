@@ -295,7 +295,7 @@ main h1 {
     border: 2px solid white;
     transition: transform 0.2s ease-in-out;
     margin: 20px;
-    height: 130px;
+
 }
 
 .pericia:hover {
@@ -409,9 +409,35 @@ main h1 {
 
 #ataque-container img {
     position: absolute;
-    width: 200px;
+    width: 15vw;
     top: 50%;
-    transform: translate(0%, -50%);
-    right: 20px;
+    right: 30px;
     border-radius: 20px;
+}
+
+.lot-habilidade {
+    display: block;
+    background-color: rgba(255, 255, 255, 0.418);
+    padding: 5px;
+    margin: -10px 5px 5px 0px;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.subhabilidade {
+    font-size: clamp(8px, 3.5vw, 16px);
+}
+
+.subataque-efeito {
+    font-size: clamp(8px, 3.5vw, 16px);
+    background-color: rgba(255, 255, 255, 0.322);
+    padding: 1px;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.divide-subhabilidade {
+    display: block;
+    margin: 10px 0px;
 }
