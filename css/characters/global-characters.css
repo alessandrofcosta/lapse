@@ -295,7 +295,11 @@ main h1 {
     border: 2px solid white;
     transition: transform 0.2s ease-in-out;
     margin: 10px;
+    height: 200px;
+}
 
+.pericia p {
+    text-align: left;
 }
 
 .pericia:hover {
