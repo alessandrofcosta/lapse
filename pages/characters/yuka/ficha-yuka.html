@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha Yuka</title>
+    <link rel="stylesheet" href="../../../css/characters/global-characters.css">
+    <link rel="stylesheet" href="../../../css/characters/colors/yuka.css">
+    <link rel="shortcut icon" href="../../../media/favicon.ico" type="image/x-icon">
+    <script src="../../../js/characters/passwords/yuka.js"></script>
+    <style>
+        body {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container-back">
+            <a href="../../../index.html" class="backa">
+                <img src="../../../media/back.png" alt="" class="back">
+            </a>
+        </div>
+        <h1>Yuka Akiami</h1>
+        <p id="nivel">Nivel 6</p>
+        <div class="hlinks-container">
+            <a href="yuka.html" class="hlinks">
+                <p>História</p>
+            </a>
+            <a href="ficha-yuka.html" class="hlinks">
+                <p>Ficha</p>
+            </a>
+        </div>
+
+        <img src="../../../media/lapse.png" alt="" id="lapse">
+    </header>
+    <main>
+        <div id="info-container" class="container">
+            <h1>Informações</h1>
+
+            <div id="icontainers">
+                <div id="idade-container" class="dado-info-container">
+                    <p id="idade" class="info">Idade</p> <p id="idade-info" class="dado-info">18</p>
+                </div>
+                <div id="altura-container" class="dado-info-container">
+                    <p id="altura" class="info">Altura</p> <p id="altura-info" class="dado-info">2,01</p>
+                </div>
+                <div id="peso-container" class="dado-info-container">
+                    <p id="peso" class="info">Peso</p> <p id="peso-info" class="dado-info">100 Kg</p>
+                </div>
+                
+                <div id="classe-container" class="dado-info-container">
+                    <p id="classe" class="info">Classe social</p><p id="classe-info" class="dado-info">Plebeu</p>
+                </div>
+                
+                <div id="arquetipo-container" class="dado-info-container">
+                    <p id="arquetipo" class="info">Arquétipo</p><p id="arquetipo-info" class="dado-info">Caçador</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="atributo-container" class="container">
+            <h1>Atributos</h1>
+            <div class="status-container">
+                <div class="pv-container">
+                    <p id="pv">PV</p> <p id="pv-info"><span contenteditable="true" data-max="44" data-min="0" class="vida-atual">44</span> / 44</p>
+                </div>
+                <div class="ps-container">
+                    <p id="ps">PS</p> <p id="ps-info"><span contenteditable="true" data-max="8" data-min="0" class="sanidade-atual">8</span> / 8</p>
+                </div>
+            </div><br>
+            <div class="atributo-dado-container">
+                <div class="atributo-dado-1">
+                    <p id="for" class="atributos">[FOR] Força: <span class="atributo-info-number">03</span> <span class="atributo-info-number">+2</span></p>
+                    <p id="vig"  class="atributos">[VIG] Vigor: <span class="atributo-info-number">04</span></p>
+                    <p id="agl" class="atributos">[AGL] Agilidade: <span class="atributo-info-number">02</span> <span class="atributo-info-number">+2</span></p>
+                </div>
+                <div class="atributo-dado-2">
+                    <p id="int" class="atributos">[INT] Intelecto: <span class="atributo-info-number">02</span></p>
+                    <p id="esp" class="atributos">[ESP] Espírito: <span class="atributo-info-number">01</span></p>
+                    <p id="mag" class="atributos">[MAG] Magia: <span class="atributo-info-number">04</span> <span class="atributo-info-number">+2</span></p>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="pericia-container" class="container">
+            <h1>Perícias</h1>
+            <div class="dado-pericia-container">
+                <div id="mag-pericia" class="pericia">
+                    <p class="titulo-pericia">MAG</p>
+                    <p><span class="pericia-info">Mana</span> <span class="pericia-info-number">3/15</span> <span class="pericia-info-number">+2</span></p>
+                    <p><span class="pericia-info">Grimório</span> <span class="pericia-info-number">2/15</span> <span class="pericia-info-number">+2</span></p>
+                    <p><span class="pericia-info">Controle</span> <span class="pericia-info-number">1/15</span>
+                </div>
+                <div id="int-pericia" class="pericia">
+                    <p class="titulo-pericia">FOR</p>
+                    <p><span class="pericia-info">Luta</span> <span class="pericia-info-number">2/15</span></p>
+                </div>
+                <div id="agl-pericia" class="pericia">
+                    <p class="titulo-pericia">AGL</p>
+                    <p><span class="pericia-info">Esgrima</span> <span class="pericia-info-number">2/15</span> <span class="pericia-info-number">+2</span></p>
+                </div>
+                <div id="diversos-pericia" class="pericia">
+                    <p class="titulo-pericia">VIG</p>
+                    <p><span class="pericia-info">Resistência</span> <span class="pericia-info-number">1/15</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="habilidade-container" class="container">
+            <h1>Habilidades</h1>
+            <div class="habilidade">
+                <h2>Percepção aumentada <span class="grimorio">Sem Grimório</span> <span class="nivel-habilidade">Nível 2</span></h2>
+                <p>Seu tempo de reação é drasticamente aumentado por causa da sua visão e percepção no ambiente. Agora ele enxerga melhor a mana no campo de batalha.</p>
+            </div>
+
+            <div class="habilidade">
+                <h2>Mundo transparente <span class="grimorio">Grimório</span> <span class="nivel-habilidade">Nível 2</span></h2>
+                <p>Se o inimigo usar o mesmo ataque uma segunda vez Yuka é capaz de desviar ou bloquear.</p>
+            </div>
+
+            <div class="habilidade">
+                <h2>Além da capa <span class="grimorio">Sem Grimório</span> <span class="nivel-habilidade">Nível 1</span></h2>
+                <p>Ele consegue ver o fluxo de mana do mago e com isso ele pode antecipar o movimento dele ou danificar o fluxo de mana dele. Deixa o magia do inimigo desativada/ineficiente por um tempo.</p>
+            </div>
+        </div>
+
+        <div id="ataque-container" class="container">
+            <h1>Ataques</h1>
+            <div class="ataques">
+                <p><span class="nome-habilidade">Percepção Aumentada</span><span class="ataque-efeito">[BUFF]</span></p>
+                <p><span class="nome-habilidade">Mundo transparente</span><span class="ataque-efeito">[BUFF]</span></p>
+                <p><span class="nome-habilidade">Além da capa</span><span class="ataque-efeito">1dMag + Luta/Esgrima</span></p>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../../js/characters/pv-ps.js"></script>
+    <script src="../../../js/characters/roll-webhook.js"></script>
+</body>
+</html>
