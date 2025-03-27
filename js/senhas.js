@@ -9,7 +9,7 @@ document.getElementById('showPassword').addEventListener('change', function() {
 
 const senhas = {
     "2dac65ec22d72135d3e64811942fad988d221b0f36030e932476d3f2aa380855": "pages/characters/saori/saori.html",
-    "3d639e7b36de4a605c2d4ee668a0e8930639719d4e867b03c1bd5483a9a0e3a9": "pages/characters/yuka/yuka.html",
+    "b686c9f1dc998f8088d655974c79c2d9d1974a18e646f32a409aaee88801b0e7": "pages/characters/yuka/yuka.html",
     "575bb429408c1233da72a28e95e92ec5083cbd2cd985e2c6da1b892737437b29": "pages/characters/yang/yang.html",
     "e14df2f7940ee091b49f6e383c161c774acf131ce8ae48cb6dde5deb3701ee84": "pages/characters/shiva/shiva.html",
     "780a23528c754a504894e9747d7df4fde20e937d3e9e63a86c001eecb0908b46": "pages/characters/indra/indra.html"
