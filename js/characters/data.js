@@ -165,14 +165,14 @@ saori: {
         {sigla: "AGL", nome: "Agilidade", valor: 2},
         {sigla: "INT", nome: "Inteligência", valor: 2, bonus: 2},
         {sigla: "ESP", nome: "Espírito", valor: 1},
-        {sigla: "MAG", nome: "Magia", valor: 6, bonus: 5},
+        {sigla: "MAG", nome: "Magia", valor: 10, bonus: 5},
     ],
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
-            {nome: "Mana", valor: 1, bonus: 2},
+            {nome: "Mana", valor: 2, bonus: 2},
             {nome: "Visão", valor: 1},
-            {nome: "Grimório", valor: 4, bonus: 2},
+            {nome: "Grimório", valor: 1, bonus: 2},
             {nome: "Controle", valor: 1},
         ]},
         {atributo: "AGL", pericia_valor: [
