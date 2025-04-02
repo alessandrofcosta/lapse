@@ -90,12 +90,12 @@ shiva: {
     
     atributos: [
         {pv: 42, ps: 8},
-        {sigla: "FOR", nome: "Força", valor: 7, bonus: 3},
+        {sigla: "FOR", nome: "Força", valor: 8, bonus: 3},
         {sigla: "VIG", nome: "Vigor", valor: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 0, bonus: 2},
         {sigla: "INT", nome: "Inteligência", valor: 1},
         {sigla: "ESP", nome: "Espírito", valor: 0},
-        {sigla: "MAG", nome: "Magia", valor: 5},
+        {sigla: "MAG", nome: "Magia", valor: 8},
     ],
 
     pericias: [
