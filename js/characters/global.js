@@ -13,7 +13,7 @@ function renderHead() {
 
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = `../../../css/characters/colors/${nomeAcesso}.css`;
+    link.href = `../../css/characters/colors/${nomeAcesso}.css`;
     head.appendChild(link);
 
 }
@@ -23,8 +23,8 @@ function renderHeader() {
     document.querySelector('.js-header').innerHTML = 
     `
     <div class="container-back">
-        <a href="../../../index.html" class="backa">
-            <img src="../../../media/back.png" alt="" class="back">
+        <a href="../../index.html" class="backa">
+            <img src="../../media/back.png" alt="" class="back">
         </a>
     </div>
     <h1>${data[nomeAcesso].info.nome}</h1>
@@ -38,7 +38,7 @@ function renderHeader() {
         </a>
     </div>
 
-    <img src="../../../media/lapse.png" alt="" id="lapse">
+    <img src="../../media/lapse.png" alt="" id="lapse">
     `;
 }
 
