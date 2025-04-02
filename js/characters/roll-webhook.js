@@ -1,5 +1,6 @@
+/*
 document.addEventListener("DOMContentLoaded", () => {
-    const webhookURL = "https://discord.com/api/webhooks/1343770651525120051/C_pG97T2EEifIN7Ov4dRvzG3phpnj0iGHX202EvfHmpbrvD4ZV7EPrxMaKVg8YAlJ71q";
+    const webhookURL = "";
 
     document.querySelectorAll(".rolar-pericia").forEach(img => {
         img.addEventListener("click", (event) => {
@@ -21,3 +22,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+*/
