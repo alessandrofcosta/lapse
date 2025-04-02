@@ -218,6 +218,14 @@ saori: {
             dano: ' 1dMag + Grimório',
             efeitos: ['[AREA]']
         },
+        {
+            nome: 'Colapso Estelar (星墜 – Hōchitsu)',
+            grimorio: 'Grimório',
+            nivel: 2,
+            descricao: 'Concentra uma grande massa gravitacional em um único ponto no ar, criando uma esfera compacta que atrai tudo ao seu redor. Após um tempo, a esfera implode, liberando uma explosão que distorce o espaço ao redor. ',
+            dano: ' 2dMag + Grimório',
+            efeitos: ['[AREA]']
+        },
         
 
     ],
