@@ -318,13 +318,13 @@ yang: {
         {sigla: "AGL", nome: "Agilidade", valor: 2},
         {sigla: "INT", nome: "Inteligência", valor: 1, bonus: 2},
         {sigla: "ESP", nome: "Espírito", valor: 0},
-        {sigla: "MAG", nome: "Magia", valor: 3, bonus: 5},
+        {sigla: "MAG", nome: "Magia", valor: 8, bonus: 5},
     ],
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
-            {nome: "Mana", valor: 2, bonus: 2},
-            {nome: "Grimório", valor: 5, bonus: 2},
+            {nome: "Mana", valor: 6, bonus: 2},
+            {nome: "Grimório", valor: 6, bonus: 2},
             {nome: "Visão", valor: 1},
         ]},
         {atributo: "INT", pericia_valor: [
