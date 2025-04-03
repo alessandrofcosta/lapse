@@ -57,7 +57,7 @@ indra: {
             grimorio: 'Grimório',
             nivel: 2,
             descricao: 'Após derrotar um mago, Indra pode se comunicar com o resto de mana em seu corpo e caso o derrotado seja convencido, pode trazê-lo de volta a vida como seu servo leal. Todas as habilidades estarão disponíveis para o uso do monarca. Todo servo tem a capacidade diminuída pela metade. Servos não tem a capacidade de se comunicar, eles apenas obedecem ao monarca.',
-            efeitos: ['[DEBUFF]']
+            efeitos: ['[ESPECIAL]']
         },
         {
             nome: 'Correntes Espirituais Demoníacas ',
@@ -71,7 +71,7 @@ indra: {
             grimorio: 'Grimório',
             nivel: 1,
             descricao: 'Qualquer feitiço lançado contra ele é anulado e relançado com metade de sua força.',
-            efeitos: ['[ESPECIAL]']
+            efeitos: ['[MIRROR]']
         },
     ],
 }, 
