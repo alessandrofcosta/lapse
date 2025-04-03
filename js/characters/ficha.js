@@ -53,14 +53,14 @@ function renderAtributo() {
     for (let i = 1; i <= 3; i++) { 
         atributoElement1HTML += 
         `
-        <p class="atributos"><button class="roll-button-atributo  js-roll-button" data-atributo-nome="${data[nomeAcesso].atributos[i].nome}" data-atributo="${data[nomeAcesso].atributos[i].valor}" data-atributo-bonus="${data[nomeAcesso].atributos[i].bonus || 0}"><img src="../../media/dado-d20.png"></img></button> [${data[nomeAcesso].atributos[i].sigla}] ${data[nomeAcesso].atributos[i].nome}: <span class="atributo-info-number">0${data[nomeAcesso].atributos[i].valor}</span> <span>${formatBonus(data[nomeAcesso].atributos[i].bonus) || ''}</span></p>
+        <p class="atributos"><button class="roll-button-atributo  js-roll-button" data-atributo-nome="${data[nomeAcesso].atributos[i].nome}" data-atributo="${data[nomeAcesso].atributos[i].valor}" data-atributo-bonus="${data[nomeAcesso].atributos[i].bonus || 0}"><img src="../../media/dado-d20.png"></img></button> [${data[nomeAcesso].atributos[i].sigla}] ${data[nomeAcesso].atributos[i].nome}: <span class="atributo-info-number">0${data[nomeAcesso].atributos[i].valor}</span> <span>${formatBonus(data[nomeAcesso].atributos[i].bonus) || ''}</span></p>
         `
     }
     
     for (let i = 4; i <= 6; i++) { 
         atributoElement2HTML += 
         `
-        <p class="atributos"><button class="roll-button-atributo js-roll-button" data-atributo-nome="${data[nomeAcesso].atributos[i].nome}" data-atributo="${data[nomeAcesso].atributos[i].valor}" data-atributo-bonus="${data[nomeAcesso].atributos[i].bonus || 0}"><img src="../../media/dado-d20.png"></img></button> [${data[nomeAcesso].atributos[i].sigla}] ${data[nomeAcesso].atributos[i].nome}: <span class="atributo-info-number">0${data[nomeAcesso].atributos[i].valor}</span> <span>${formatBonus(data[nomeAcesso].atributos[i].bonus) || ''}</span></p>
+        <p class="atributos"><button class="roll-button-atributo js-roll-button" data-atributo-nome="${data[nomeAcesso].atributos[i].nome}" data-atributo="${data[nomeAcesso].atributos[i].valor}" data-atributo-bonus="${data[nomeAcesso].atributos[i].bonus || 0}"><img src="../../media/dado-d20.png"></img></button> [${data[nomeAcesso].atributos[i].sigla}] ${data[nomeAcesso].atributos[i].nome}: <span class="atributo-info-number">0${data[nomeAcesso].atributos[i].valor}</span> <span>${formatBonus(data[nomeAcesso].atributos[i].bonus) || ''}</span></p>
         `
     }
     
@@ -84,7 +84,7 @@ function renderPericia() {
         valor.pericia_valor.forEach((pericia) => {
             innerPericiaHTML += 
             `
-                <p class="pericias"><button class="roll-button-pericia js-roll-button" data-atributo-sigla="${valor.atributo}" data-pericia-nome="${pericia.nome}" data-pericia-valor="${pericia.valor}" data-pericia-bonus="${pericia.bonus || 0}"><img src="../../media/dado-d20.png"></img></button> <span class="pericia-info">${pericia.nome}</span><span class="pericia-info-number">${pericia.valor}/15</span> <strong>${formatBonus(pericia.bonus) || ''}</strong></p>
+                <p class="pericias"><button class="roll-button-pericia js-roll-button" data-atributo-sigla="${valor.atributo}" data-pericia-nome="${pericia.nome}" data-pericia-valor="${pericia.valor}" data-pericia-bonus="${pericia.bonus || 0}"><img src="../../media/dado-d20.png"></img></button> <span class="pericia-info">${pericia.nome}</span><span class="pericia-info-number">${pericia.valor}/15</span> <strong>${formatBonus(pericia.bonus) || ''}</strong></p>
             `;
         })
     
