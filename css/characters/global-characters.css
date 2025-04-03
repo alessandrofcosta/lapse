@@ -205,6 +205,8 @@ main h1 {
 }
 
 .atributos {
+    display: flex;
+    align-items: center;
     font-family: "Passion One";
     font-weight: 100;
 }
@@ -317,6 +319,10 @@ main h1 {
 .pericia-info {
     font-family: "Passion One", Arial, Helvetica, sans-serif;
     font-size: clamp(10px, 3.5vw, 20px);
+}
+
+.pericia-info::after {
+    content: ' ';
 }
 
 .pericia-info-number {
@@ -444,4 +450,43 @@ main h1 {
 .divide-subhabilidade {
     display: block;
     margin: 10px 0px;
+}
+
+.roll-button-atributo img {
+    display: flex;
+    width: 30px;
+    margin-left: 20px;
+}
+
+.roll-button-atributo {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.roll-button-atributo:hover {
+    transform:  scale(1.1);
+}
+
+.roll-button-pericia img {
+    display: flex;
+    width: 20px;
+    margin-left: 10px;
+}
+
+.roll-button-pericia {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+
+.roll-button-pericia:hover {
+    transform:  scale(1.1);
+}
+
+.pericias {
+    display: flex;
+    align-items: center;
 }
