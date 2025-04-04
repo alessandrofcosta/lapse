@@ -10,6 +10,7 @@ indra: {
         peso: 65,
         classe: 'Nobreza',
         arquetipo: 'Caçador',
+        discord_id: '1317246514535465010'
     },
     
     atributos: [
@@ -86,6 +87,7 @@ shiva: {
         peso: 47,
         classe: 'Plebeu',
         arquetipo: 'Lutador',
+        discord_id: '1213237748505251861'
     },
     
     atributos: [
@@ -156,6 +158,7 @@ saori: {
         peso: 45,
         classe: 'Realeza',
         arquetipo: 'Feiticeiro',
+        discord_id: '522775874999943171'
     },
     
     atributos: [
@@ -243,6 +246,7 @@ yuka: {
         peso: 100,
         classe: 'Plebeu',
         arquetipo: 'Caçador',
+        discord_id: '848993151128436796'
     },
     
     atributos: [
@@ -309,6 +313,7 @@ yang: {
         peso: 61,
         classe: 'Realeza',
         arquetipo: 'Feiticeiro',
+        discord_id: '423067939495739392'
     },
     
     atributos: [
