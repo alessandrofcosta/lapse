@@ -96,6 +96,25 @@ function renderPericia() {
     elements.pericia.innerHTML = periciaHTML;
 }
 
+function renderSomaPontos() {
+    dataNome = data[nomeAcesso]
+    totalPontos = 0
+    dataNome.atributos.forEach((atributo) => {
+        totalPontos += atributo.valor || 0
+    })
+
+    dataNome.pericias.forEach((pericia) => {
+        pericia.pericia_valor.forEach((value) => {
+            totalPontos += value.valor
+        })
+    })
+
+    console.log(totalPontos)
+
+    document.querySelector('.js-soma-pericia')
+        .innerHTML = totalPontos
+}
+
 function renderHabilidade() {
     let habilidadesHTML = '<h1>Habilidades</h1>';
     let subhabilidadesHTML = ''
@@ -176,6 +195,7 @@ renderInfo();
 renderStatus();
 renderAtributo();
 renderPericia();
+renderSomaPontos();
 renderHabilidade();
 renderAtaques();
 
