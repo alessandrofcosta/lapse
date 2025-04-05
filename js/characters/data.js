@@ -145,6 +145,14 @@ shiva: {
             dano: ' 1dFor + Grimório',
             efeitos: []
         },
+        {
+            nome: 'Dança das Lâminas',
+            grimorio: 'Grimório',
+            nivel: 2,
+            descricao: 'O usuário controla o ar dentro do pulmão do adversário e cria várias lâminas minúsculas, cortando e ferindo o interior dos pulmões dele. O usuário pode utilizar essa habilidade uma vez por batalha, ao utilizar essa habilidade o usuário entra em exaustão e não conseguirá agir no seu próximo turno, além de ficar vulnerável a ataques.',
+            dano: ' 2dMag + Grimório',
+            efeitos: ['[OUTRACING]']
+        },
     ],
 }, 
 
