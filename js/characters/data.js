@@ -342,7 +342,6 @@ yang: {
         ]},
         {atributo: "INT", pericia_valor: [
             {nome: "Percepção", valor: 1},
-            {nome: "Percepção", valor: 0, bonus: -2},
         ]},
         {atributo: "ESP", pericia_valor: [
             {nome: "Persuasão", valor: 0, bonus: -2}
