@@ -117,78 +117,69 @@ function renderSomaPontos() {
 
 function renderHabilidade() {
     let habilidadesHTML = '<h1>Habilidades</h1>';
-    let subhabilidadesHTML = ''
+
     data[nomeAcesso].habilidades.forEach((valor) => {
+        habilidadesHTML += `<div class="habilidade">`;
+
+        habilidadesHTML += `
+            <h2>${valor.nome} <span class="grimorio">${valor.grimorio}</span> <span class="nivel-habilidade">Nível ${valor.nivel}</span></h2>
+            <p class="descricao-habilidade">${valor.descricao}</p>
+        `;
+
         if (valor.subataques) {
-            habilidadesHTML += 
-            `<div class="habilidade">
-                <h2>${valor.nome} <span class="grimorio">${valor.grimorio}</span> <span class="nivel-habilidade">Nível ${valor.nivel}</span></h2>
-                <p>${valor.descricao}</p> <br>
-            `
-
-            
-            
             valor.subataques.forEach((sub) => {
-                subhabilidadesHTML += 
-                `
-                <span class="lot-habilidade">${sub.nome} | ${sub.descricao}</span> <br>
-                `
+                habilidadesHTML += `
+                    <span class="lot-habilidade">${sub.nome} | ${sub.descricao}</span> <br>
+                `;
+            });
+        }
 
-                habilidadesHTML += subhabilidadesHTML;
-                subhabilidadesHTML = ''
-            })
-        } else {
-            habilidadesHTML += 
-            `<div class="habilidade">
-                <h2>${valor.nome} <span class="grimorio">${valor.grimorio}</span> <span class="nivel-habilidade">Nível ${valor.nivel}</span></h2>
-                <p>${valor.descricao}</p>
-            </div>
-            `
-        }  
-    })
-    
+        habilidadesHTML += `</div>`;
+    });
+
     elements.habilidade.innerHTML = habilidadesHTML;
-    
 }
 
 function renderAtaques() {
     let ataquesHTML = '';
-    let efeitosHTML = '';
-    let subhabilidadeHTML = '';
     let totalHTML = '<h1>Ataques</h1>';
-    
+
     data[nomeAcesso].habilidades.forEach((valor) => {
         if (valor.subataques) {
-            subhabilidadeHTML += `<p>${valor.nome} <br>`
+            let subhabilidadeHTML = `<p>${valor.nome} <br>`;
             valor.subataques.forEach((sub) => {
-                
-                subhabilidadeHTML += 
-                `
-                <span class="divide-subhabilidade"><span class="subhabilidade">${sub.nome}</span> <span class="subataque-efeito">${sub.dano || sub.efeito}</span><br></span>
-                `
-            })
-        } else {
-            ataquesHTML += 
-            `
-            <p><span class="nome-habilidade">${valor.nome}</span>${valor.dano || ''}
-            `
-            valor.efeitos.forEach((valor) => {
-            efeitosHTML += 
-            `
-            <span class="ataque-efeito">${valor || ''}</span>
-            `;
-    
+                subhabilidadeHTML += `<span class="divide-subhabilidade"><span class="subhabilidade">${sub.nome}</span>`;
+
+                if (sub.dano) {
+                    subhabilidadeHTML += `<span class="subataque-efeito">${sub.dano}</span>`;
+                }
+
+                if (sub.efeito) {
+                    subhabilidadeHTML += `<span class="subataque-efeito">${sub.efeito}</span>`;
+                }
+
+                subhabilidadeHTML += `<br></span>`;
             });
+            subhabilidadeHTML += '</p>';
+            totalHTML += subhabilidadeHTML;
+        } else {
+            let efeitosHTML = '';
+            ataquesHTML = `<p><span class="nome-habilidade">${valor.nome}</span>`;
+
+            if (valor.efeitos && valor.efeitos.length > 0) {
+                valor.efeitos.forEach((efeito) => {
+                    if (efeito) {
+                        efeitosHTML += `<span class="ataque-efeito">${efeito}</span>`;
+                    }
+                });
+            }
+
+            ataquesHTML += efeitosHTML + '</p>';
+            totalHTML += ataquesHTML;
         }
-
-        totalHTML += ataquesHTML + efeitosHTML + subhabilidadeHTML + '</p>';
-        ataquesHTML = '';
-        efeitosHTML = '';
-
-        
     });
-    
-    elements.ataque.innerHTML = totalHTML
+
+    elements.ataque.innerHTML = totalHTML;
 }
 
 renderInfo();

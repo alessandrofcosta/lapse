@@ -362,19 +362,27 @@ yang: {
             efeitos: ['[BUFF]']
         },
         {
-            nome: 'Inrelicário Vazio',
-            grimorio: 'Grimório',
-            nivel: 1,
-            descricao: 'O usuário invoca relíquias de armas convertidas no vazio por portais específicos. Apenas um inrelicário pode ser invocado por vez.',
-            subdescricao: ['Adagas | Cortam o oponente e causam dano físico a matéria.', 'Correntes | Prendem o oponente, restringindo movimentos físicos.', 'Vinhas | Se prendem no alvo, dificultando a liberação e controle de mana dele, dando desvantagem em testes mágicos. O alvo deve usar o turno caso queira desfazer as vinhas de si.'],
-            efeitos: ['[BUFF]'],
+            nome: 'Olhos do Interlúnio',
+            grimorio: 'Sem Grimório',
+            nivel: 2,
+            descricao: 'O olho que contempla o intervalo entre existência e inexistência — o interlúnio, o não-dito, o instante que se perdeu entre o antes e o depois. Os olhos ameaçam a visão real do usuário, e são ativados e desativados manualmente.',
             subataques: [
-                {nome: 'Adagas', descricao: 'Cortam o oponente e causam dano físico a matéria.', dano: '1dMag + Grimorio'}, 
-                {nome: 'Correntes', descricao: 'Prendem o oponente, restringindo movimentos físicos.',efeito: '[IMMOBILIZED]'}, 
-                {nome: 'Vinhas', descricao: 'e prendem no alvo, dificultando a liberação e controle de mana dele, dando desvantagem em testes mágicos. O alvo deve usar o turno caso queira desfazer as vinhas de si.',efeito: '[DEBUFF]'}
+                {nome: 'Fenda de Maigetsu', descricao: 'O usuário projeta um vácuo no espaço que se expande e abre um portal para um outro ponto pré-estabelecido e conhecido por ele. O portal é indiferente a magia transporta objetos, pessoas e mana que com ele interagirem. O portal é desfeito e refeito sob a vontade do usuário. O portal pode ser feito a partir de locais vistos em até uma semana pelo usuário, sobre uma grande quantidade de mana o portal sobrecarrega e implode.', dano: '[ESPECIAL]'}, 
             ]
         },
-
+        {
+            nome: 'Inrelicário Vazio',
+            grimorio: 'Grimório',
+            nivel: 2,
+            descricao: 'O usuário invoca relíquias de armas convertidas no vazio por portais específicos. Apenas um inrelicário pode ser invocado por vez.',
+            efeitos: ['[BUFF]'],
+            subataques: [
+                {nome: 'Adagas (Pugiones Liminales)', descricao: 'Adagas que causam dano físico e desintegram a matéria e armaduras mágicas.', dano: '1dMag + Grimorio', efeito: '[ESPECIAL]'}, 
+                {nome: 'Correntes (Fasciae Vacuae)', descricao: 'Correntes que impedem movimento físico. Se prendem em múltiplos alvos se canalizadas.',efeito: '[IMMOBILIZED]'}, 
+                {nome: 'Vinhas (Lora Inania)', descricao: 'Vinhas que absorvem mana passivamente do alvo, e dificultam a liberação dela em testes mágicos.',efeito: '[DEBUFF]'},
+                {nome: 'Cruz (Negacrux Finalis)', descricao: 'Uma cruz que se posiciona como uma barreira unidirecional, tornando como "não reconhecível" qualquer ataque mágico que tente intervir nela.',efeito: '[BARRIER]'}
+            ]
+        },
     ],
 }, 
 

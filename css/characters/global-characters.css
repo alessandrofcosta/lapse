@@ -502,3 +502,7 @@ main h1 {
     font-weight: bold;
     font-size: 17px;
 }
+
+.descricao-habilidade {
+    margin-bottom: 20px;
+}
