@@ -19,7 +19,7 @@ function sendMessage(message) {
     .catch(error => console.error("Erro:", error));
 }
 
-rollButtonElement = document.querySelectorAll('.js-roll-button')
+const rollButtonElement = document.querySelectorAll('.js-roll-button')
 
 rollButtonElement.forEach(button => {
     button.addEventListener('click', () => {
@@ -64,3 +64,9 @@ function rollDice() {
 
     sendMessage(`-# <@${capitalize(data[nomeAcesso].info.discord_id)}> ${dataDice.periciaNome || dataDice.atributoNome}\n!rolar ${messageToSend}`)
 }
+
+const d20Button = document.querySelector('.js-d20-button');
+
+d20Button.addEventListener('click', () => {
+    sendMessage(`-# <@${capitalize(data[nomeAcesso].info.discord_id)}>\n!rolar 1d20`)
+})
