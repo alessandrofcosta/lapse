@@ -102,7 +102,7 @@ shiva: {
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
-            {nome: "Mana", valor: 2, bonus: 2},
+            {nome: "Mana", valor: 3, bonus: 2},
             {nome: "Visão", valor: 0, bonus: -2},
             {nome: "Grimório", valor: 1, bonus: 2},
             {nome: "Controle", valor: 1},
