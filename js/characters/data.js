@@ -287,25 +287,28 @@ yuka: {
     
     habilidades: [
         {
-            nome: 'Percepção aumentada',
-            grimorio: 'Sem Grimório',
-            nivel: 2,
-            descricao: 'Tempo de reação drasticamente aumentado por causa da sua visão e percepção no ambiente. Agora ele enxerga a mana no campo de batalha.',
-            efeitos: ['[BUFF]']
-        },
-        {
-            nome: 'Além da capa',
+            nome: 'Temperatus Imperium',
             grimorio: 'Sem Grimório',
             nivel: 1,
-            descricao: 'Ele consegue ver o fluxo de mana do mago e com isso ele pode antecipar o movimento dele ou danificar o fluxo de mana dele. Deixa o magia do inimigo desativada/ineficiente por um tempo.',
-            efeitos: ['[BUFF]']
+            descricao: 'o usuário consegue alternar entre ondas de frio e calor imbuindo isso em sua lança ou em sua aura. Se ele usar com a sua aura o elemento escolhido vai se agravar no ambiente tendo o excesso de calor ou a extrema ausência dele.',
+            efeitos: ['[DEBUFF]', '[BURNING]'],
+            
         },
         {
-            nome: 'Mundo transparente',
+            nome: 'Raijin no Kaminari',
             grimorio: 'Grimório',
             nivel: 2,
-            descricao: 'Se o inimigo usar o mesmo ataque uma segunda vez Yuka é capaz de desviar ou bloquear.',
-            efeitos: ['[BUFF]']
+            descricao: 'Imbui a sua lança com a força de uma grande tempestade. Ao fazer uma estocada ou balançar a sua lança Yuka consegue desferir ataques elétricos de longo/médio alcance.',
+            dano: '2dMag + Controle',
+            efeitos: ['[SPEEDBLITZ]']
+        },
+        {
+            nome: 'Gekishin',
+            grimorio: 'Sem Grimório',
+            nivel: 2,
+            descricao: 'O usuário consegue fazer o próprio ar tremer frente o poder, ele consegue causar terremotos ou fazer o espaço em volta dele tremer. Se ele imbuir em sua lança esse feitiço ele conseguirá usar de forma mais controlada, se alguem for atingido pela lança com o poder do tremor a vítima ficará atordoada.',
+            dano: ['1dMag + Controle | 1dMag + Mana'], 
+            efeitos: ['[STUN]']
         },      
 
     ],

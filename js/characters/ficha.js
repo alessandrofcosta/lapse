@@ -166,6 +166,12 @@ function renderAtaques() {
             let efeitosHTML = '';
             ataquesHTML = `<p><span class="nome-habilidade">${valor.nome}</span>`;
 
+            if (valor.dano && valor.dano.length > 0) {
+                if (valor.dano) {
+                    efeitosHTML += `<span class="ataque-efeito">${valor.dano}</span>`;
+                }
+            }
+
             if (valor.efeitos && valor.efeitos.length > 0) {
                 valor.efeitos.forEach((efeito) => {
                     if (efeito) {
