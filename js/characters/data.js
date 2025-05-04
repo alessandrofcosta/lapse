@@ -210,9 +210,8 @@ saori: {
             nome: 'Manto Gravitacional (重装の衣 – Jūsō no Koromo)',
             grimorio: 'Sem Grimório',
             nivel: 1,
-            descricao: 'Acumula gravidade em um único ponto, formando uma singularidade. Essa singularidade absorve tudo ao ser redor e pode ser lançada aos inimigos causando dano em área.',
-            dano: ' 1dMag + Mana',
-            efeitos: ['[AREA]']
+            descricao: 'Envolve seu corpo com uma aura gravitacional que reduz a força dos ataques inimigos e repele golpes físicos de forma automática.',
+            efeitos: ['[BARRIER]']
         },
         {
             nome: 'Impacto Celestial (天衝 – Tenshō)',
