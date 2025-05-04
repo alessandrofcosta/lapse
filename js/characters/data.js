@@ -211,7 +211,8 @@ saori: {
             grimorio: 'Sem Grimório',
             nivel: 1,
             descricao: 'Acumula gravidade em um único ponto, formando uma singularidade. Essa singularidade absorve tudo ao ser redor e pode ser lançada aos inimigos causando dano em área.',
-            efeitos: ['[BARRIER]']
+            dano: ' 1dMag + Mana',
+            efeitos: ['[AREA]']
         },
         {
             nome: 'Impacto Celestial (天衝 – Tenshō)',
