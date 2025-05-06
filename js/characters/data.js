@@ -277,7 +277,7 @@ yuka: {
             {nome: "Resistência", valor: 1},
         ]},
         {atributo: "FOR", pericia_valor: [
-            {nome: "Esgrima", valor: 2},
+            {nome: "Esgrima", valor: 2, bonus: 2},
             {nome: "Luta", valor: 2}
         ]},
         {atributo: "AGL", pericia_valor: [
