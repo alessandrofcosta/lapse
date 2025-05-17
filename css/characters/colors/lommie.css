@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+:root {
+    --cor-1: #593e8f;
+    --cor-2: #8A8594;
+    --cor-3: #9181af;
+    --cor-4: #574D69;
+    --cor-5: #0C0814;
+}
+
+header {
+    color: white;
+}
+
+header a {
+    color: white;
+}
+
+.images-container img {
+    max-width: 200px;
+    min-width: 100px;
+}
+
+#main-historia img {
+    box-shadow: 5px 5px 5px black;
+}
+
+
+

@@ -5,6 +5,7 @@ const senhas = {
     "575bb429408c1233da72a28e95e92ec5083cbd2cd985e2c6da1b892737437b29": "yang",
     "e14df2f7940ee091b49f6e383c161c774acf131ce8ae48cb6dde5deb3701ee84": "shiva",
     "780a23528c754a504894e9747d7df4fde20e937d3e9e63a86c001eecb0908b46": "indra",
+    "eea679d534adb97c1fa089e77f5450bd7d176987b6788853f8277d1c76f8b15e": "lommie",
 };
 
 const nomeAcesso = senhas[acesso];
