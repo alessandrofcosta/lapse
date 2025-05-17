@@ -58,7 +58,10 @@ indra: {
             grimorio: 'Grimório',
             nivel: 2,
             descricao: 'Após derrotar um mago, Indra pode se comunicar com o resto de mana em seu corpo e caso o derrotado seja convencido, pode trazê-lo de volta a vida como seu servo leal. Todas as habilidades estarão disponíveis para o uso do monarca. Todo servo tem a capacidade diminuída pela metade. Servos não tem a capacidade de se comunicar, eles apenas obedecem ao monarca.',
-            efeitos: ['[ESPECIAL]']
+            efeitos: ['[ESPECIAL]'],
+            subataques: [
+                {nome: 'Lommie', descricao: 'Uma pessoa do reino de Aelthoria', dano: `Em atualização`}, 
+            ]
         },
         {
             nome: 'Correntes Espirituais Demoníacas ',
@@ -310,9 +313,10 @@ yuka: {
             dano: ['1dMag + Controle | 1dMag + Mana'], 
             efeitos: ['[STUN]']
         },      
-
     ],
-}, 
+},
+
+
 
 yang: {
     info: { 
@@ -384,6 +388,65 @@ yang: {
                 {nome: 'Vinhas (Lora Inania)', descricao: 'Vinhas que absorvem mana passivamente do alvo, e dificultam a liberação dela em testes mágicos.',efeito: '[DEBUFF]'},
                 {nome: 'Cruz (Negacrux Finalis)', descricao: 'Uma cruz que se posiciona como uma barreira unidirecional, tornando como "não reconhecível" qualquer ataque mágico que tente intervir nela.',efeito: '[BARRIER]'}
             ]
+        },
+    ],
+},
+
+lommie: {
+    info: { 
+        nome_data: 'lommie',
+        nome: 'Lommie Yuta',
+        nivel: 6,
+        idade: 19,
+        altura: 176,
+        peso: 61,
+        classe: '-',
+        arquetipo: 'Lutador',
+        discord_id: '1317246514535465010'
+    },
+    
+    atributos: [
+        {pv: 45, ps: 9},
+        {sigla: "FOR", nome: "Força", valor: 4, bonus: 4},
+        {sigla: "VIG", nome: "Vigor", valor: 0, bonus: 2},
+        {sigla: "AGL", nome: "Agilidade", valor: 2},
+        {sigla: "INT", nome: "Inteligência", valor: 1},
+        {sigla: "ESP", nome: "Espírito", valor: 0},
+        {sigla: "MAG", nome: "Magia", valor: 5},
+    ],
+
+    pericias: [
+        {atributo: "MAG", pericia_valor: [
+            {nome: "Mana", valor: 4}
+        ]},
+        {atributo: "INT", pericia_valor: [
+            {nome: "Percepção", valor: 1},
+        ]},
+        {atributo: "FOR", pericia_valor: [
+            {nome: "Luta", valor: 3},
+            {nome: "Atletismo", valor: 3},
+        ]},
+        {atributo: "VIG", pericia_valor: [
+            {nome: "Resistência", valor: 1},
+            {nome: "Intimidação", valor: 3},
+        ]},
+    ],
+    
+    habilidades: [
+        {
+            nome: 'Soco retardado',
+            grimorio: 'Sem Grimório',
+            nivel: 2,
+            descricao: 'Os golpes não causam dano imediatamente. Em vez disso, o impacto é "acumulado" e liberado depois — tudo de uma vez.',
+            efeitos: ['[BLOCK-BREAK]'],
+            dano: '2dFor + Luta'
+        },
+        {
+            nome: 'Acelerador',
+            grimorio: 'Sem Grimório',
+            nivel: 2,
+            descricao: 'Acelera tudo dentro de si, fazendo seus sentidos e habilidades fisicas ficarem mais precisas e rápidas, enquanto estiver nesse modo, ganha um buff de +2 em todos os dados.',
+            efeitos: ['[BUFF]']
         },
     ],
 }, 
