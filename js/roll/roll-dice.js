@@ -4,7 +4,7 @@ function capitalize(str) {
   }
 
 function sendMessage(message) {
-    webhookURL = 'https://discord.com/api/webhooks/1343770651525120051/C_pG97T2EEifIN7Ov4dRvzG3phpnj0iGHX202EvfHmpbrvD4ZV7EPrxMaKVg8YAlJ71q';
+    webhookURL = 'https://discord.com/api/webhooks/1373715908299718787/WtnyLk11LVlSfBysRCPRCDc0I9uGYUAUSNo2MeECvtbA8kHT9GPt_FbBe1ROPpcOq37o';
 
     const mensagem = {
         content: message
