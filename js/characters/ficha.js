@@ -48,19 +48,48 @@ function renderStatus() {
 }
 
 function renderAtributo() {
+
+    function renderStars(prestigio) {
+    let starsHTML = ''
+    for (let i = 0; i < prestigio - 1; i++) {
+        starsHTML += `★`
+    }
+    return starsHTML
+    
+}
+
     let atributoElement1HTML = ''
     let atributoElement2HTML = ''
     for (let i = 1; i <= 3; i++) { 
         atributoElement1HTML += 
         `
-        <p class="atributos"><button class="roll-button-atributo  js-roll-button" data-atributo-nome="${data[nomeAcesso].atributos[i].nome}" data-atributo="${data[nomeAcesso].atributos[i].valor}" data-atributo-bonus="${data[nomeAcesso].atributos[i].bonus || 0}"><img src="../../media/dado-d20.png"></img></button> [${data[nomeAcesso].atributos[i].sigla}] ${data[nomeAcesso].atributos[i].nome}: <span class="atributo-info-number">0${data[nomeAcesso].atributos[i].valor}</span> <span>${formatBonus(data[nomeAcesso].atributos[i].bonus) || ''}</span></p>
+        <p class="atributos">
+        <button class="roll-button-atributo  js-roll-button" data-atributo-nome="${data[nomeAcesso].atributos[i].nome}" 
+        data-atributo="${data[nomeAcesso].atributos[i].valor}" 
+        data-atributo-bonus="${data[nomeAcesso].atributos[i].bonus || 0}" data-prestigio="${data[nomeAcesso].atributos[i].prestigio || 1}">
+        <img src="../../media/dado-d20.png"></img>
+        </button> [${data[nomeAcesso].atributos[i].sigla}] 
+        ${data[nomeAcesso].atributos[i].nome}: <span class="atributo-info-number">0${data[nomeAcesso].atributos[i].valor}</span> 
+        <span>${formatBonus(data[nomeAcesso].atributos[i].bonus) || ''}</span>
+        <span class="prestigio">${renderStars(data[nomeAcesso].atributos[i].prestigio || 1)}</span>
+        </p>
         `
     }
     
     for (let i = 4; i <= 6; i++) { 
         atributoElement2HTML += 
         `
-        <p class="atributos"><button class="roll-button-atributo js-roll-button" data-atributo-nome="${data[nomeAcesso].atributos[i].nome}" data-atributo="${data[nomeAcesso].atributos[i].valor}" data-atributo-bonus="${data[nomeAcesso].atributos[i].bonus || 0}"><img src="../../media/dado-d20.png"></img></button> [${data[nomeAcesso].atributos[i].sigla}] ${data[nomeAcesso].atributos[i].nome}: <span class="atributo-info-number">0${data[nomeAcesso].atributos[i].valor}</span> <span>${formatBonus(data[nomeAcesso].atributos[i].bonus) || ''}</span></p>
+        <p class="atributos">
+        <button class="roll-button-atributo js-roll-button" 
+        data-atributo-nome="${data[nomeAcesso].atributos[i].nome}" 
+        data-atributo="${data[nomeAcesso].atributos[i].valor}" 
+        data-atributo-bonus="${data[nomeAcesso].atributos[i].bonus || 0}" data-prestigio="${data[nomeAcesso].atributos[i].prestigio || 1}">
+        <img src="../../media/dado-d20.png"></img>
+        </button> [${data[nomeAcesso].atributos[i].sigla}] 
+        ${data[nomeAcesso].atributos[i].nome}${renderStars(data[nomeAcesso].atributos[i].prestigio || 1)}: 
+        <span class="atributo-info-number">0${data[nomeAcesso].atributos[i].valor}</span> 
+        <span>${formatBonus(data[nomeAcesso].atributos[i].bonus) || ''}</span>
+        </p>
         `
     }
     
@@ -109,8 +138,10 @@ function renderSomaPontos() {
         })
     })
 
-    console.log(totalPontos)
-
+    dataNome.atributos.forEach((atributo) => {
+        totalPontos += atributo.prestigio * 10 - 10|| 0
+    })
+    
     document.querySelector('.js-soma-pericia')
         .innerHTML = totalPontos
 }

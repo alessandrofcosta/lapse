@@ -4,7 +4,7 @@ indra: {
     info: { 
         nome_data: 'indra',
         nome: 'Indra Ashura',
-        nivel: 6,
+        nivel: 7,
         idade: 15,
         altura: 171,
         peso: 65,
@@ -14,7 +14,7 @@ indra: {
     },
     
     atributos: [
-        {pv: 40, ps: 6},
+        {pv: 45, ps: 6},
         {sigla: "FOR", nome: "Força", valor: 6},
         {sigla: "VIG", nome: "Vigor", valor: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 4, bonus: 2},
@@ -84,7 +84,7 @@ shiva: {
     info: { 
         nome_data: 'shiva',
         nome: 'Shiva Wyndell',
-        nivel: 6,
+        nivel: 7,
         idade: 14,
         altura: 163,
         peso: 47,
@@ -94,7 +94,7 @@ shiva: {
     },
     
     atributos: [
-        {pv: 42, ps: 8},
+        {pv: 47, ps: 8},
         {sigla: "FOR", nome: "Força", valor: 8, bonus: 3},
         {sigla: "VIG", nome: "Vigor", valor: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 0, bonus: 2},
@@ -163,7 +163,7 @@ saori: {
     info: { 
         nome_data: 'saori',
         nome: 'Saori Silva',
-        nivel: 6,
+        nivel: 7,
         idade: 15,
         altura: 151,
         peso: 45,
@@ -173,20 +173,20 @@ saori: {
     },
     
     atributos: [
-        {pv: 39, ps: 6},
+        {pv: 45, ps: 6},
         {sigla: "FOR", nome: "Força", valor: 1},
-        {sigla: "VIG", nome: "Vigor", valor: 1},
+        {sigla: "VIG", nome: "Vigor", valor: 2},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
         {sigla: "INT", nome: "Inteligência", valor: 1, bonus: 2},
         {sigla: "ESP", nome: "Espírito", valor: 1},
-        {sigla: "MAG", nome: "Magia", valor: 10, bonus: 5},
+        {sigla: "MAG", nome: "Magia", valor: 2, bonus: 5, prestigio: 2},
     ],
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
             {nome: "Mana", valor: 2, bonus: 2},
             {nome: "Visão", valor: 1},
-            {nome: "Grimório", valor: 5, bonus: 2},
+            {nome: "Grimório", valor: 8, bonus: 2},
             {nome: "Controle", valor: 1},
         ]},
         {atributo: "AGL", pericia_valor: [
@@ -251,7 +251,7 @@ yuka: {
     info: { 
         nome_data: 'yuka',
         nome: 'Yuka Kisha',
-        nivel: 6,
+        nivel: 7,
         idade: 18,
         altura: 201,
         peso: 100,
@@ -261,20 +261,20 @@ yuka: {
     },
     
     atributos: [
-        {pv: 45, ps: 8},
+        {pv: 50, ps: 8},
         {sigla: "FOR", nome: "Força", valor: 3, bonus: 2},
         {sigla: "VIG", nome: "Vigor", valor: 4},
         {sigla: "AGL", nome: "Agilidade", valor: 2, bonus: 2},
         {sigla: "INT", nome: "Inteligência", valor: 2},
         {sigla: "ESP", nome: "Espírito", valor: 1},
-        {sigla: "MAG", nome: "Magia", valor: 4, bonus: 2},
+        {sigla: "MAG", nome: "Magia", valor: 5, bonus: 2},
     ],
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
-            {nome: "Mana", valor: 3, bonus: 2},
+            {nome: "Mana", valor: 5, bonus: 2},
             {nome: "Grimório", valor: 2, bonus: 2},
-            {nome: "Controle", valor: 1},
+            {nome: "Controle", valor: 4},
         ]},
         {atributo: "VIG", pericia_valor: [
             {nome: "Resistência", valor: 1},
@@ -322,7 +322,7 @@ yang: {
     info: { 
         nome_data: 'yang',
         nome: 'Yang Kami Lapse',
-        nivel: 6,
+        nivel: 7,
         idade: 15,
         altura: 173,
         peso: 61,
@@ -332,20 +332,20 @@ yang: {
     },
     
     atributos: [
-        {pv: 38, ps: 7},
+        {pv: 43, ps: 7},
         {sigla: "FOR", nome: "Força", valor: 0, bonus: -2},
         {sigla: "VIG", nome: "Vigor", valor: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
-        {sigla: "INT", nome: "Inteligência", valor: 1, bonus: 2},
+        {sigla: "INT", nome: "Inteligência", valor: 2, bonus: 2},
         {sigla: "ESP", nome: "Espírito", valor: 0},
-        {sigla: "MAG", nome: "Magia", valor: 8, bonus: 5},
+        {sigla: "MAG", nome: "Magia", valor: 10, bonus: 5},
     ],
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
-            {nome: "Mana", valor: 6, bonus: 2},
-            {nome: "Grimório", valor: 6, bonus: 2},
-            {nome: "Visão", valor: 1},
+            {nome: "Mana", valor: 7, bonus: 2},
+            {nome: "Grimório", valor: 7, bonus: 2},
+            {nome: "Visão", valor: 2},
         ]},
         {atributo: "INT", pericia_valor: [
             {nome: "Percepção", valor: 1},
