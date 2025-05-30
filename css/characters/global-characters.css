@@ -527,6 +527,51 @@ main h1 {
     transform:  scale(1.1);
 }
 
-.prestigio {
 
+.xp-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
 }
+
+.xp-label {
+  font-weight: bold;
+  color: white;
+  min-width: 30px;
+  text-align: right;
+}
+
+.xp-bar-outer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+
+.xp-text {
+  color: white;
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+
+.xp-bar-container {
+  position: relative;
+  width: 100%;
+  background-color: #222;
+  border: 1px solid #555;
+  border-radius: 5px;
+  height: 10px;
+  overflow: hidden;
+  margin-top: px;
+}
+
+.xp-bar {
+  height: 100%;
+  background-color: #16be1b;
+  transition: width 0.3s ease;
+}
+
+
+

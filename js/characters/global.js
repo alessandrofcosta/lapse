@@ -31,6 +31,17 @@ function renderHeader() {
     </div>
     <h1>${data[nomeAcesso].info.nome}</h1>
     <p id="nivel">Nivel ${data[nomeAcesso].info.nivel}</p>
+
+    <div class="xp-wrapper">
+    <div class="xp-bar-outer">
+        <div class="xp-text">${data[nomeAcesso].info.xp} | 100</div>
+        <div class="xp-bar-container">
+        <div class="xp-bar" style="width: ${data[nomeAcesso].info.xp}%;"></div>
+        </div>
+    </div>
+    </div>
+
+
     <div class="hlinks-container">
         <a href="${nomeAcesso}.html" class="hlinks">
             <p>História</p>
