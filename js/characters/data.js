@@ -319,6 +319,13 @@ yuka: {
             dano: ['1dMag + Controle | 1dMag + Mana'], 
             efeitos: ['[STUN]']
         },      
+        {
+            nome: 'Caminho do Vento',
+            grimorio: 'Sem Grimório',
+            nivel: 1,
+            descricao: 'Após ver Shiva usar a sua magia de vento Yuka aprendeu a fazer algo parecido, ele consegue aprimorar a velocidade do seu corpo com o Vento. Mas essa habilidade não é só um simples vento é algo mais agressivo que isso só que Yuka ainda não consegue tirar o máximo potencial dessa parte de sua Magia. Enquanto essa habilidade estiver ativa o jogador poderá girar com um dado de vantagem em qualquer teste que envolva movimentação. Em caso de combate será girado 1d3 para determinar quantos turnos a habilidade ficará ativa. Após usá-la em combate, ela ficará em exaustão por outros 2 turnos.',
+            efeitos: ['[BUFF]']
+        },   
     ],
 },
 
