@@ -328,8 +328,8 @@ yang: {
     info: { 
         nome_data: 'yang',
         nome: 'Yang Kami Lapse',
-        nivel: 7,
-        xp: 80,
+        nivel: 8,
+        xp: 0,
         idade: 15,
         altura: 173,
         peso: 61,
