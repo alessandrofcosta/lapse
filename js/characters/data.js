@@ -410,8 +410,8 @@ lommie: {
     info: { 
         nome_data: 'lommie',
         nome: 'Lommie Yuta',
-        nivel: 6,
-        xp: 70,
+        nivel: 7,
+        xp: 0,
         idade: 19,
         altura: 176,
         peso: 61,
@@ -422,8 +422,8 @@ lommie: {
     
     atributos: [
         {pv: 45, ps: 9},
-        {sigla: "FOR", nome: "Força", valor: 4, bonus: 4},
-        {sigla: "VIG", nome: "Vigor", valor: 0, bonus: 2},
+        {sigla: "FOR", nome: "Força", valor: 6, bonus: 4},
+        {sigla: "VIG", nome: "Vigor", valor: 1, bonus: 2},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
         {sigla: "INT", nome: "Inteligência", valor: 1},
         {sigla: "ESP", nome: "Espírito", valor: 0},
@@ -432,13 +432,13 @@ lommie: {
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
-            {nome: "Mana", valor: 4}
+            {nome: "Mana", valor: 5}
         ]},
         {atributo: "INT", pericia_valor: [
             {nome: "Percepção", valor: 1},
         ]},
         {atributo: "FOR", pericia_valor: [
-            {nome: "Luta", valor: 3},
+            {nome: "Luta", valor: 5},
             {nome: "Atletismo", valor: 3},
         ]},
         {atributo: "VIG", pericia_valor: [
