@@ -4,8 +4,8 @@ indra: {
     info: { 
         nome_data: 'indra',
         nome: 'Indra Ashura',
-        nivel: 7,
-        xp: 80,
+        nivel: 8,
+        xp: 0,
         idade: 15,
         altura: 171,
         peso: 65,
@@ -165,8 +165,8 @@ saori: {
     info: { 
         nome_data: 'saori',
         nome: 'Saori Silva',
-        nivel: 7,
-        xp: 90,
+        nivel: 8,
+        xp: 0,
         idade: 15,
         altura: 151,
         peso: 45,
@@ -254,8 +254,8 @@ yuka: {
     info: { 
         nome_data: 'yuka',
         nome: 'Yuka Kisha',
-        nivel: 7,
-        xp: 80,
+        nivel: 8,
+        xp: 0,
         idade: 18,
         altura: 201,
         peso: 100,
@@ -271,7 +271,7 @@ yuka: {
         {sigla: "AGL", nome: "Agilidade", valor: 2, bonus: 2},
         {sigla: "INT", nome: "Inteligência", valor: 2},
         {sigla: "ESP", nome: "Espírito", valor: 1},
-        {sigla: "MAG", nome: "Magia", valor: 5, bonus: 2},
+        {sigla: "MAG", nome: "Magia", valor: 0, bonus: 2, prestigio: 2},
     ],
 
     pericias: [
@@ -296,10 +296,12 @@ yuka: {
         {
             nome: 'Temperatus Imperium',
             grimorio: 'Sem Grimório',
-            nivel: 1,
-            descricao: 'o usuário consegue alternar entre ondas de frio e calor imbuindo isso em sua lança ou em sua aura. Se ele usar com a sua aura o elemento escolhido vai se agravar no ambiente tendo o excesso de calor ou a extrema ausência dele.',
-            efeitos: ['[DEBUFF]', '[BURNING]'],
-            
+            nivel: 2,
+            descricao: 'Ao Yuka falar o nome da habilidade "Temperatus Imperium" ele quebra a sua lança principal ao meio e divide ela em dois, após isso a parte esquerda começa a queimar em chamas laranjas e vermelhas subindo um pouco em seu braço,  e o lado direito começa a congelar e esse efeito pega um pouco em seu braço também. Agora Yuka tem duas lanças com seus respectivos Desastres (Climas absurdamente quentes e gelados).',
+            subataques: [
+                {nome: 'Gefroren - Gelo', descricao: 'Essa parte é o lado defensivo de sua habilidade, com ela Yuka pode estancar sangramentos internos e até mesmo criar um escudo/barreira com esse poder. Mas mesmo sendo uma defesa ele ainda pode atacar com ela tendo o benefício de poder congelar um pouco o seu oponente.', efeito: '[DEBUFF] [BUFF]', dano: '1dMag + Controle'},
+                {nome: 'Flammen - Fogo', descricao: 'É o lado ofensivo de sua habilidade, conseguindo executar estocadas rápidas e que queimam só de chegar perto no  oponente. Com a sua lança de fogo ele pode fazer uma estocada/golpe estendido de até 3 metros a partir da sua lança, ganhando  uma área de ataque bem maior do que antes.', efeito: '[BURNING]', dano: '1dMag + Controle'}
+            ]
         },
         {
             nome: 'Raijin no Kaminari',
@@ -342,13 +344,13 @@ yang: {
         {sigla: "VIG", nome: "Vigor", valor: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
         {sigla: "INT", nome: "Inteligência", valor: 2, bonus: 2},
-        {sigla: "ESP", nome: "Espírito", valor: 0},
+        {sigla: "ESP", nome: "Espírito", valor: 1},
         {sigla: "MAG", nome: "Magia", valor: 10, bonus: 5},
     ],
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
-            {nome: "Mana", valor: 7, bonus: 2},
+            {nome: "Mana", valor: 10, bonus: 2},
             {nome: "Grimório", valor: 7, bonus: 2},
             {nome: "Visão", valor: 2},
         ]},
@@ -356,7 +358,7 @@ yang: {
             {nome: "Percepção", valor: 1},
         ]},
         {atributo: "ESP", pericia_valor: [
-            {nome: "Persuasão", valor: 0, bonus: -2}
+            {nome: "Persuasão", valor: 2, bonus: -2}
         ]},
         {atributo: "AGL", pericia_valor: [
             {nome: "Furtividade", valor: 1},
