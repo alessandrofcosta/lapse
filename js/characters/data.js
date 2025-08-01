@@ -79,6 +79,13 @@ indra: {
             descricao: 'Qualquer feitiço lançado contra ele é anulado e relançado com metade de sua força.',
             efeitos: ['[MIRROR]']
         },
+        {
+            nome: 'Cicatriz Arcana',
+            grimorio: 'Grimório',
+            nivel: 1,
+            descricao: 'Após acertar três ataques no mesmo alvo, Indra marca a alma do inimigo com a Cicatriz de Arcana — uma ruptura espiritual que compromete o fluxo natural de energia mágica. Se o inimigo for mais fraco ou até do mesmo nível que Indra, ao tentar usar magia, o alvo sente dor espiritual intensa. Feitiços custam mais energia e têm chance de falhar.',
+            efeitos: ['[DEBUFF]', '[PASSIVE]']
+        },
     ],
 }, 
 
