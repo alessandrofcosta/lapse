@@ -262,8 +262,6 @@ saori: {
     ],
 }, 
 
-
-
 yuka: {
     info: { 
         nome_data: 'yuka',
