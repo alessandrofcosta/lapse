@@ -250,7 +250,14 @@ saori: {
             dano: ' 2dMag + Grimório',
             efeitos: ['[AREA]']
         },
-        
+        {
+            nome: 'Lança de Densidade Gravitacional (重槍 – Jūsō)',
+            grimorio: 'Sem Grimório',
+            nivel: 2,
+            descricao: 'Saori concentra a gravidade em um único ponto e molda essa força invisível em forma de uma lança negra translúcida, feita inteiramente de energia gravitacional condensada. Ao ser lançada, a lança atravessa o ar distorcendo o espaço ao redor, criando um som abafado e arrastado, como se a própria realidade estivesse sendo perfurada.',
+            dano: ' 2dMag + Mana',
+            efeitos: ['[SPEEDBLITZ]']
+        },
 
     ],
 }, 
