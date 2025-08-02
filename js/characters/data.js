@@ -15,7 +15,7 @@ indra: {
     },
     
     atributos: [
-        {pv: 48, ps: 6},
+        {pv: 53, ps: 6},
         {sigla: "FOR", nome: "Força", valor: 6},
         {sigla: "VIG", nome: "Vigor", valor: 3},
         {sigla: "AGL", nome: "Agilidade", valor: 4, bonus: 2},
@@ -183,7 +183,7 @@ saori: {
     },
     
     atributos: [
-        {pv: 45, ps: 6},
+        {pv: 42, ps: 6},
         {sigla: "FOR", nome: "Força", valor: 1},
         {sigla: "VIG", nome: "Vigor", valor: 2},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
@@ -272,7 +272,7 @@ yuka: {
     },
     
     atributos: [
-        {pv: 50, ps: 8},
+        {pv: 54, ps: 8},
         {sigla: "FOR", nome: "Força", valor: 3, bonus: 2},
         {sigla: "VIG", nome: "Vigor", valor: 4},
         {sigla: "AGL", nome: "Agilidade", valor: 2, bonus: 2},
@@ -353,7 +353,7 @@ yang: {
     },
     
     atributos: [
-        {pv: 43, ps: 7},
+        {pv: 40, ps: 7},
         {sigla: "FOR", nome: "Força", valor: 0, bonus: -2},
         {sigla: "VIG", nome: "Vigor", valor: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
@@ -428,7 +428,7 @@ lommie: {
     },
     
     atributos: [
-        {pv: 51, ps: 9},
+        {pv: 50, ps: 9},
         {sigla: "FOR", nome: "Força", valor: 6, bonus: 4},
         {sigla: "VIG", nome: "Vigor", valor: 1, bonus: 2},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
