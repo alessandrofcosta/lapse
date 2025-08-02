@@ -15,12 +15,12 @@ indra: {
     },
     
     atributos: [
-        {pv: 45, ps: 6},
+        {pv: 48, ps: 6},
         {sigla: "FOR", nome: "Força", valor: 6},
-        {sigla: "VIG", nome: "Vigor", valor: 0},
+        {sigla: "VIG", nome: "Vigor", valor: 3},
         {sigla: "AGL", nome: "Agilidade", valor: 4, bonus: 2},
         {sigla: "INT", nome: "Inteligência", valor: 1},
-        {sigla: "ESP", nome: "Espírito", valor: 1},
+        {sigla: "ESP", nome: "Espírito", valor: 3},
         {sigla: "MAG", nome: "Magia", valor: 1, bonus: 4, prestigio: 2},
     ],
 
@@ -28,7 +28,7 @@ indra: {
         {atributo: "MAG", pericia_valor: [
             {nome: "Mana", valor: 1, bonus: 2},
             {nome: "Visão", valor: 2},
-            {nome: "Grimório", valor: 3, bonus: 2},
+            {nome: "Grimório", valor: 4, bonus: 2},
             {nome: "Controle", valor: 1},
         ]},
         {atributo: "AGL", pericia_valor: [
@@ -75,8 +75,8 @@ indra: {
         {
             nome: 'Absorção Total',
             grimorio: 'Grimório',
-            nivel: 1,
-            descricao: 'Qualquer feitiço lançado contra ele é anulado e relançado com metade de sua força.',
+            nivel: 2,
+            descricao: 'Qualquer feitiço lançado contra ele é anulado e lançado com força total.',
             efeitos: ['[MIRROR]']
         },
         {
@@ -428,7 +428,7 @@ lommie: {
     },
     
     atributos: [
-        {pv: 45, ps: 9},
+        {pv: 51, ps: 9},
         {sigla: "FOR", nome: "Força", valor: 6, bonus: 4},
         {sigla: "VIG", nome: "Vigor", valor: 1, bonus: 2},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
