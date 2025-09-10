@@ -139,7 +139,7 @@ function renderSomaPontos() {
     })
 
     dataNome.atributos.forEach((atributo) => {
-        totalPontos += atributo.prestigio * 10 - 10|| 0
+        totalPontos += atributo.prestigio * 11 - 11|| 0
     })
     
     document.querySelector('.js-soma-pericia')
