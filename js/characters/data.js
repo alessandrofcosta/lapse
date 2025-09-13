@@ -496,7 +496,7 @@ alice: {
         {pv: 53, ps: 7},
         {sigla: "FOR", nome: "Força", valor: 0, bonus: 4, prestigio: 2},
         {sigla: "VIG", nome: "Vigor", valor: 5, bonus: 0},
-        {sigla: "AGL", nome: "Agilidade", valor: 6, bonus: 4},
+        {sigla: "AGL", nome: "Agilidade", valor: 6, bonus: 2},
         {sigla: "INT", nome: "Inteligência", valor: 0},
         {sigla: "ESP", nome: "Espírito", valor: 2},
         {sigla: "MAG", nome: "Magia", valor: 3},
@@ -514,7 +514,11 @@ alice: {
             {nome: "Resistência", valor: 3},
         ]},
             {atributo: "AGL", pericia_valor: [
-            {nome: "Reflexos", valor: 2},
+            {nome: "Reflexos", valor: 2, bonus: 2},
+            {nome: "Atletismo", valor: 0, bonus: 2},
+        ]},
+            {atributo: "INT", pericia_valor: [
+            {nome: "Intuição", valor: 0, bonus: -2},
         ]},
     ],
     
