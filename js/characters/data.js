@@ -478,5 +478,57 @@ lommie: {
     ],
 }, 
 
+alice: {
+    info: { 
+        nome_data: 'alice',
+        nome: 'Alice Salvatore',
+        nivel: 8,
+        xp: 0,
+        idade: 14,
+        altura: 167,
+        peso: 55,
+        classe: '-',
+        arquetipo: 'Lutador',
+        discord_id: '1213237748505251861'
+    },
+    
+    atributos: [
+        {pv: 53, ps: 7},
+        {sigla: "FOR", nome: "Força", valor: 0, bonus: 4, prestigio: 2},
+        {sigla: "VIG", nome: "Vigor", valor: 5, bonus: 0},
+        {sigla: "AGL", nome: "Agilidade", valor: 6, bonus: 4},
+        {sigla: "INT", nome: "Inteligência", valor: 0},
+        {sigla: "ESP", nome: "Espírito", valor: 2},
+        {sigla: "MAG", nome: "Magia", valor: 3},
+    ],
+
+    pericias: [
+        {atributo: "MAG", pericia_valor: [
+            {nome: "Mana", valor: 3},
+            {nome: "Grimório", valor: 1}
+        ]},
+        {atributo: "FOR", pericia_valor: [
+            {nome: "Luta", valor: 5},
+        ]},
+        {atributo: "VIG", pericia_valor: [
+            {nome: "Resistência", valor: 3},
+        ]},
+            {atributo: "AGL", pericia_valor: [
+            {nome: "Reflexos", valor: 2},
+        ]},
+    ],
+    
+    habilidades: [
+        {
+            nome: '',
+            grimorio: '',
+            nivel: 0,
+            descricao: '',
+            efeitos: [''],
+            dano: ''
+        },
+    ],
+}, 
+
 
 }
