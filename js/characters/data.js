@@ -573,11 +573,19 @@ saint: {
     
     habilidades: [
         {
-            nome: '',
-            grimorio: '',
-            nivel: 0,
-            descricao: '',
-            efeitos: [''],
+            nome: 'Ataque Múltiplo Ilusionista',
+            grimorio: 'Sem Grimório',
+            nivel: 2,
+            descricao: 'Ao atacar um inimigo cria ilusões de vários de si mesmo, para ludibriar o inimigo.',
+            efeitos: ['DEBUFF', 'SPEEDBLITZ'],
+            dano: ''
+        },
+        {
+            nome: 'Passo fantasma',
+            grimorio: 'Sem Grimório',
+            nivel: 2,
+            descricao: 'Cria ilusões de si mesmo em diversos locais para enganar os inimigos quando for atacado.',
+            efeitos: ['DEBUFF', 'BUFF'],
             dano: ''
         },
     ],
