@@ -534,5 +534,54 @@ alice: {
     ],
 }, 
 
+saint: {
+    info: { 
+        nome_data: 'saint',
+        nome: 'Saint Valac',
+        nivel: 8,
+        xp: 0,
+        idade: 16,
+        altura: 180,
+        peso:70,
+        classe: '-',
+        arquetipo: 'Caçador',
+        discord_id: '1317263900512751746'
+    },
+    
+    atributos: [
+        {pv: 56, ps: 5},
+        {sigla: "FOR", nome: "Força", valor: 7, bonus: 2},
+        {sigla: "VIG", nome: "Vigor", valor: 6, bonus: 0},
+        {sigla: "AGL", nome: "Agilidade", valor: 5, bonus: 2, prestigio: 2},
+        {sigla: "INT", nome: "Inteligência", valor: 1},
+        {sigla: "ESP", nome: "Espírito", valor: 2, bonus: -2},
+        {sigla: "MAG", nome: "Magia", valor: 4, bonus: 2},
+    ],
+
+    pericias: [
+        {atributo: "MAG", pericia_valor: [
+            {nome: "Controle", valor: 1},
+            {nome: "Grimório", valor: 1}
+        ]},
+            {atributo: "AGL", pericia_valor: [
+            {nome: "Reflexos", valor: 0, bonus: 2},
+            {nome: "Atletismo", valor: 0, bonus: 2},
+            {nome: "Furtividade", valor: 0, bonus: -2},
+            {nome: "Esgrima", valor: 5, bonus: 0},
+        ]},
+    ],
+    
+    habilidades: [
+        {
+            nome: '',
+            grimorio: '',
+            nivel: 0,
+            descricao: '',
+            efeitos: [''],
+            dano: ''
+        },
+    ],
+}, 
+
 
 }
