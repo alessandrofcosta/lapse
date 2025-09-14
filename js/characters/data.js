@@ -524,12 +524,36 @@ alice: {
     
     habilidades: [
         {
-            nome: '',
-            grimorio: '',
-            nivel: 0,
-            descricao: '',
-            efeitos: [''],
-            dano: ''
+            nome: 'Alento',
+            grimorio: 'Grimório',
+            nivel: 2,
+            descricao: 'Um sopro sobre a ferida do aliado; o vento pressurizado fecha cortes superficiais e reorganiza músculos e pele o suficiente para estancar o sangramento e acelerar a dor. É mais primeiro-socorro do que milagre.',
+            efeitos: ['HEAL'],
+            dano: '2'
+        },
+        {
+            nome: 'Impacto',
+            grimorio: 'Grimório',
+            nivel: 2,
+            descricao: 'Reúne todo o “elemento” presente ao redor de seu punho ou perna e desfere um golpe único capaz de destruir defesas, romper mana ou causar dano.',
+            efeitos: ['BLOCKBREAK'],
+            dano: '2dMag + Luta'
+        },
+        {
+            nome: 'Murmúrio Cortante',
+            grimorio: 'Sem Grimório',
+            nivel: 1,
+            descricao: 'Um movimento rápido com o leque que lança uma lâmina de vento quase invisível. Parece apenas um sopro, mas corta como aço.',
+            efeitos: ['BLEEDING'],
+            dano: '1dFor + Esgrima'
+        },
+        {
+            nome: 'Dança dos Mil Ventos',
+            grimorio: 'Sem Grimório',
+            nivel: 1,
+            descricao: 'Uma rajada em espiral que avança como um furacão em miniatura, cortando e desequilibrando quem for atingido.',
+            efeitos: ['BLEEDING'],
+            dano: '1dFor + Mana'
         },
     ],
 }, 
