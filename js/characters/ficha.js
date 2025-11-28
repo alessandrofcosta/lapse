@@ -31,6 +31,10 @@ function renderInfo() {
         <div class="dado-info-container">
             <p class="info">Arquétipo</p><p>${data[nomeAcesso].info.arquetipo}</p>
         </div>
+
+        <div class="dado-info-container">
+            <p class="info">Inspiração</p><p>${data[nomeAcesso].info.inspiracao}</p>
+        </div>
     </div>
     `
 }
