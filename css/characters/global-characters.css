@@ -409,21 +409,8 @@ main h1 {
     font-size: clamp(10px, 3.5vw, 20px);
 }
 
-.nome-habilidade {
-    padding-right: 10px;
-    border-right: 2px solid white;
-}
-
 #ataque-container {
     position: relative;
-}
-
-#ataque-container img {
-    position: absolute;
-    width: 15vw;
-    top: 50%;
-    right: 30px;
-    border-radius: 20px;
 }
 
 .lot-habilidade {
@@ -450,7 +437,7 @@ main h1 {
 
 .divide-subhabilidade {
     display: block;
-    margin: 10px 0px;
+    margin-top: 5px;
 }
 
 .roll-button-atributo img {
@@ -572,6 +559,29 @@ main h1 {
   background-color: #16be1b;
   transition: width 0.3s ease;
 }
+
+.roll-button-ataque img {
+    display: block;
+    width: 20px;
+    margin: 0px auto -3px;
+}
+
+.roll-button-ataque {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+
+.roll-button-ataque:hover {
+    transform:  scale(1.1);
+}
+
+.divide-subhabilidade img{
+    width: 15px;
+}
+
+
 
 
 

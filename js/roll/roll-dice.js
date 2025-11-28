@@ -29,7 +29,6 @@ rollButtonElement.forEach(button => {
     })
 });
 
-
 function rollDice() {
     const selected = document.querySelector('.selected');
     dataDice = {
@@ -72,3 +71,31 @@ const d20Button = document.querySelector('.js-d20-button');
 d20Button.addEventListener('click', () => {
     sendMessage(`-# <@${capitalize(data[nomeAcesso].info.discord_id)}>\n!rolar 1d20`)
 })
+
+const rollAttackButtonElement = document.querySelectorAll('.js-roll-button-attack')
+
+rollAttackButtonElement.forEach(button => {
+    button.addEventListener('click', () => {
+        button.classList.add('selected');
+        rollAttackDice();
+        button.classList.remove('selected');
+    })
+});
+
+function rollAttackDice() {
+    const selected = document.querySelector('.selected');
+    const dano = selected.getAttribute('data-dano');
+    const nome = selected.getAttribute('data-nome');
+    const efeito = selected.getAttribute('data-efeito');
+
+    if (dano === "undefined") {
+        sendMessage(`-# <@${capitalize(data[nomeAcesso].info.discord_id)}> ${nome}\n\`${efeito}\`
+        \nHabilidade sem dano.`)
+    } else {
+        sendMessage(`-# <@${capitalize(data[nomeAcesso].info.discord_id)}> ${nome}\n\`${efeito}\`
+        \n!rolar ${dano}`)
+    }
+
+
+
+}

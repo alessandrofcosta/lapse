@@ -52,7 +52,13 @@ indra: {
             grimorio: 'Sem grimório',
             nivel: 2,
             descricao: 'Reveste seus punhos com energia sombria do abismo, os socos ignoram barreiras mágicas e armaduras, acertando diretamente o corpo do alvo, cada golpe bem-sucedido rouba uma pequena quantidade de mana do adversário, fortalecendo. Se um golpe conectar, ele pode roubar um pouco da mana do inimigo, recuperando sua própria mana.',
-            dano: ' 2dMag + Mana',
+            dano: ' 1dMag + Mana',
+            get danoJS() {
+                const nivel = data.indra.habilidades[0].nivel
+                const mag = data.indra.atributos[6].valor + data.indra.atributos[6].bonus || 0;
+                const mana = data.indra.pericias[0].pericia_valor[0].valor + data.indra.pericias[0].pericia_valor[0].bonus || 0;
+                return `1d${mag}+${mana}`;
+            },
             efeitos: ['[BLOCK-BREAK]']
         },
         {
@@ -61,16 +67,13 @@ indra: {
             nivel: 2,
             descricao: 'Após derrotar um mago, Indra pode se comunicar com o resto de mana em seu corpo e caso o derrotado seja convencido, pode trazê-lo de volta a vida como seu servo leal. Todas as habilidades estarão disponíveis para o uso do monarca. Todo servo tem a capacidade diminuída pela metade. Servos não tem a capacidade de se comunicar, eles apenas obedecem ao monarca.',
             efeitos: ['[ESPECIAL]'],
-            subataques: [
-                {nome: 'Lommie', descricao: 'Uma pessoa do reino de Aelthoria', dano: `Em atualização`}, 
-            ]
         },
         {
             nome: 'Correntes Espirituais Demoníacas ',
             grimorio: 'Grimório',
             nivel: 1,
             descricao: 'Invoca correntes espectrais que se conectam ao alvo e drenam sua mana lentamente, tornando-o mais fraco a cada segundo.',
-            efeitos: ['DEBUFF'] 
+            efeitos: ['[DEBUFF]'] 
         },
         {
             nome: 'Absorção Total',
@@ -84,7 +87,7 @@ indra: {
             grimorio: 'Grimório',
             nivel: 1,
             descricao: 'Após acertar três ataques no mesmo alvo, Indra marca a alma do inimigo com a Cicatriz de Arcana — uma ruptura espiritual que compromete o fluxo natural de energia mágica. Se o inimigo for mais fraco ou até do mesmo nível que Indra, ao tentar usar magia, o alvo sente dor espiritual intensa. Feitiços custam mais energia e têm chance de falhar.',
-            efeitos: ['[DEBUFF]', '[PASSIVE]']
+            efeitos: ['[DEBUFF] [PASSIVE]']
         },
     ],
 }, 
@@ -231,15 +234,27 @@ saori: {
             grimorio: 'Grimório',
             nivel: 1,
             descricao: 'Saori aponta para um alvo e aumenta abruptamente a gravidade em um ponto específico, fazendo com que o oponente seja esmagado contra o chão com uma força avassaladora. Quanto maior a diferença de poder, mais devastador o impacto.',
-            dano: ' 1dMag + Grimório',
+            dano: '1dMag + Grimório',
+            get danoJS() {
+                const nivel = data.saori.habilidades[0].nivel
+                const hab1 = data.saori.atributos[6].valor + data.saori.atributos[6].bonus || 0;
+                const hab2 = data.saori.pericias[0].pericia_valor[2].valor + data.saori.pericias[0].pericia_valor[2].bonus || 0;
+                return `${nivel}d${hab1}+${hab2}`;
+            },
             efeitos: []
         },
         {
             nome: 'Estrela da Devastação (荒廃の星 - Kōhai no hoshi)',
-            grimorio: 'Grimório',
+            grimorio: 'Grimório ',
             nivel: 1,
             descricao: 'Acumula gravidade em um único ponto, formando uma singularidade. Essa singularidade absorve tudo ao ser redor e pode ser lançada aos inimigos causando dano em área.',
-            dano: ' 1dMag + Grimório',
+            dano: ' 1dMag',
+            get danoJS() {
+                const nivel = data.saori.habilidades[0].nivel
+                const hab1 = data.saori.atributos[6].valor + data.saori.atributos[6].bonus || 0;
+                const hab2 = data.saori.pericias[0].pericia_valor[2].valor + data.saori.pericias[0].pericia_valor[2].bonus || 0;
+                return `${nivel}d${hab1}`;
+            },
             efeitos: ['[AREA]']
         },
         {
@@ -247,7 +262,13 @@ saori: {
             grimorio: 'Grimório',
             nivel: 2,
             descricao: 'Concentra uma grande massa gravitacional em um único ponto no ar, criando uma esfera compacta que atrai tudo ao seu redor. Após um tempo, a esfera implode, liberando uma explosão que distorce o espaço ao redor. ',
-            dano: ' 2dMag + Grimório',
+            dano: ' 1dMag + Grimório',
+            get danoJS() {
+                const nivel = data.saori.habilidades[0].nivel
+                const hab1 = data.saori.atributos[6].valor + data.saori.atributos[6].bonus || 0;
+                const hab2 = data.saori.pericias[0].pericia_valor[2].valor + data.saori.pericias[0].pericia_valor[2].bonus || 0;
+                return `1d${hab1}+${hab2}`;
+            },
             efeitos: ['[AREA]']
         },
         {
@@ -255,7 +276,13 @@ saori: {
             grimorio: 'Grimório',
             nivel: 2,
             descricao: 'Saori concentra a gravidade em um único ponto e molda essa força invisível em forma de uma lança negra translúcida, feita inteiramente de energia gravitacional condensada. Ao ser lançada, a lança atravessa o ar distorcendo o espaço ao redor, criando um som abafado e arrastado, como se a própria realidade estivesse sendo perfurada.',
-            dano: ' 2dMag + Grimório',
+            dano: ' 1dMag + Grimório',
+            get danoJS() {
+                const nivel = data.saori.habilidades[0].nivel
+                const hab1 = data.saori.atributos[6].valor + data.saori.atributos[6].bonus || 0;
+                const hab2 = data.saori.pericias[0].pericia_valor[2].valor + data.saori.pericias[0].pericia_valor[2].bonus || 0;
+                return `1d${hab1}+${hab2}`;
+            },
             efeitos: ['[SPEEDBLITZ]']
         },
 
@@ -311,8 +338,40 @@ yuka: {
             nivel: 2,
             descricao: 'Ao Yuka falar o nome da habilidade "Temperatus Imperium" ele quebra a sua lança principal ao meio e divide ela em dois, após isso a parte esquerda começa a queimar em chamas laranjas e vermelhas subindo um pouco em seu braço,  e o lado direito começa a congelar e esse efeito pega um pouco em seu braço também. Agora Yuka tem duas lanças com seus respectivos Desastres (Climas absurdamente quentes e gelados).',
             subataques: [
-                {nome: 'Gefroren - Gelo', descricao: 'Essa parte é o lado defensivo de sua habilidade, com ela Yuka pode estancar sangramentos internos e até mesmo criar um escudo/barreira com esse poder. Mas mesmo sendo uma defesa ele ainda pode atacar com ela tendo o benefício de poder congelar um pouco o seu oponente.', efeito: '[DEBUFF] [BUFF]', dano: '1dMag + Controle'},
-                {nome: 'Flammen - Fogo', descricao: 'É o lado ofensivo de sua habilidade, conseguindo executar estocadas rápidas e que queimam só de chegar perto no  oponente. Com a sua lança de fogo ele pode fazer uma estocada/golpe estendido de até 3 metros a partir da sua lança, ganhando  uma área de ataque bem maior do que antes.', efeito: '[BURNING]', dano: '1dMag + Controle'}
+                {
+                    nome: 'Gefroren - Gelo', 
+                    descricao: 'Essa parte é o lado defensivo de sua habilidade, com ela Yuka pode estancar sangramentos internos e até mesmo criar um escudo/barreira com esse poder. Mas mesmo sendo uma defesa ele ainda pode atacar com ela tendo o benefício de poder congelar um pouco o seu oponente.',
+                    efeitos: '[DEBUFF] [BUFF]',
+                    dano: '1dMag',
+                    get danoJS() {
+                        const nivel = data.yuka.habilidades[0].nivel;
+                        const atributo = data.yuka.atributos[6].valor || 0;
+                        const atributoBonus = data.yuka.atributos[6].bonus || 0;
+                        const pericia = data.yuka.pericias[0].pericia_valor[2].valor || 0;
+                        const periciaBonus = data.yuka.pericias[0].pericia_valor[2].bonus || 0;
+                        
+                        const hab1 = atributo + atributoBonus;
+                        const hab2 = pericia + periciaBonus;
+                        return `1d${hab1}`;
+                    },
+                },
+                {
+                    nome: 'Flammen - Fogo', 
+                    descricao: 'É o lado ofensivo de sua habilidade, conseguindo executar estocadas rápidas e que queimam só de chegar perto no  oponente. Com a sua lança de fogo ele pode fazer uma estocada/golpe estendido de até 3 metros a partir da sua lança, ganhando  uma área de ataque bem maior do que antes.',
+                    efeitos: '[BURNING]',
+                    dano: '1dMag',
+                    get danoJS() {
+                        const nivel = data.yuka.habilidades[0].nivel;
+                        const atributo = data.yuka.atributos[6].valor || 0;
+                        const atributoBonus = data.yuka.atributos[6].bonus || 0;
+                        const pericia = data.yuka.pericias[0].pericia_valor[2].valor || 0;
+                        const periciaBonus = data.yuka.pericias[0].pericia_valor[2].bonus || 0;
+                        
+                        const hab1 = atributo + atributoBonus;
+                        const hab2 = pericia + periciaBonus;
+                        return `1d${hab1}`;
+                    },
+                }
             ]
         },
         {
@@ -320,7 +379,18 @@ yuka: {
             grimorio: 'Grimório',
             nivel: 2,
             descricao: 'Imbui a sua lança com a força de uma grande tempestade. Ao fazer uma estocada ou balançar a sua lança Yuka consegue desferir ataques elétricos de longo/médio alcance.',
-            dano: '2dMag + Controle',
+            dano: '1dMag + Controle',
+            get danoJS() {
+                const nivel = data.yuka.habilidades[0].nivel;
+                const atributo = data.yuka.atributos[6].valor || 0;
+                const atributoBonus = data.yuka.atributos[6].bonus || 0;
+                const pericia = data.yuka.pericias[0].pericia_valor[2].valor || 0;
+                const periciaBonus = data.yuka.pericias[0].pericia_valor[2].bonus || 0;
+                
+                const hab1 = atributo + atributoBonus;
+                const hab2 = pericia + periciaBonus;
+                return `1d${hab1}+${hab2}`;
+            },
             efeitos: ['[SPEEDBLITZ]']
         },
         {
@@ -328,7 +398,18 @@ yuka: {
             grimorio: 'Sem Grimório',
             nivel: 2,
             descricao: 'O usuário consegue fazer o próprio ar tremer frente o poder, ele consegue causar terremotos ou fazer o espaço em volta dele tremer. Se ele imbuir em sua lança esse feitiço ele conseguirá usar de forma mais controlada, se alguem for atingido pela lança com o poder do tremor a vítima ficará atordoada.',
-            dano: ['1dMag + Controle | 1dMag + Mana'], 
+            dano: ['1dMag + Mana'], 
+            get danoJS() {
+                const nivel = data.yuka.habilidades[0].nivel;
+                const atributo = data.yuka.atributos[6].valor || 0;
+                const atributoBonus = data.yuka.atributos[6].bonus || 0;
+                const pericia = data.yuka.pericias[0].pericia_valor[0].valor || 0;
+                const periciaBonus = data.yuka.pericias[0].pericia_valor[0].bonus || 0;
+                
+                const hab1 = atributo + atributoBonus;
+                const hab2 = pericia + periciaBonus;
+                return `${nivel}d${hab1}+${hab2}`;
+            },
             efeitos: ['[STUN]']
         },      
         {
@@ -340,8 +421,6 @@ yuka: {
         },   
     ],
 },
-
-
 
 yang: {
     info: { 
@@ -409,10 +488,27 @@ yang: {
             descricao: 'O usuário invoca relíquias de armas convertidas no vazio por portais específicos. Apenas um inrelicário pode ser invocado por vez.',
             efeitos: ['[BUFF]'],
             subataques: [
-                {nome: 'Adagas (Pugiones Liminales)', descricao: 'Adagas que causam dano físico e desintegram a matéria e armaduras mágicas.', dano: '1dMag + Grimorio', efeito: '[ESPECIAL]'}, 
-                {nome: 'Correntes (Fasciae Vacuae)', descricao: 'Correntes que impedem movimento físico. Se prendem em múltiplos alvos se canalizadas.',efeito: '[IMMOBILIZED]'}, 
-                {nome: 'Vinhas (Lora Inania)', descricao: 'Vinhas que absorvem mana passivamente do alvo, e dificultam a liberação dela em testes mágicos.',efeito: '[DEBUFF]'},
-                {nome: 'Cruz (Negacrux Finalis)', descricao: 'Uma cruz que se posiciona como uma barreira unidirecional, tornando como "não reconhecível" qualquer ataque mágico que tente intervir nela.',efeito: '[BARRIER]'}
+                {
+                    nome: 'Adagas (Pugiones Liminales)',
+                    descricao: 'Adagas que causam dano físico e desintegram a matéria e armaduras mágicas.',
+                    dano: '1dMag',
+                    get danoJS() 
+                    {
+                        const nivel = data.yang.habilidades[0].nivel;
+                        const atributo = data.yang.atributos[6].valor || 0;
+                        const atributoBonus = data.yang.atributos[6].bonus || 0;
+                        const pericia = data.yang.pericias[0].pericia_valor[2].valor || 0;
+                        const periciaBonus = data.yang.pericias[0].pericia_valor[2].bonus || 0;
+                        
+                        const hab1 = atributo + atributoBonus;
+                        const hab2 = pericia + periciaBonus;
+                        return `1d${hab1}`;
+                    },
+                    efeitos: '[ESPECIAL]'
+                }, 
+                {nome: 'Correntes (Fasciae Vacuae)', descricao: 'Correntes que impedem movimento físico. Se prendem em múltiplos alvos se canalizadas.',efeitos: '[IMMOBILIZED]'}, 
+                {nome: 'Vinhas (Lora Inania)', descricao: 'Vinhas que absorvem mana passivamente do alvo, e dificultam a liberação dela em testes mágicos.',efeitos: '[DEBUFF]'},
+                {nome: 'Cruz (Negacrux Finalis)', descricao: 'Uma cruz que se posiciona como uma barreira unidirecional, tornando como "não reconhecível" qualquer ataque mágico que tente intervir nela.',efeitos: '[BARRIER]'}
             ]
         },
     ],
@@ -466,7 +562,18 @@ lommie: {
             nivel: 2,
             descricao: 'Os golpes não causam dano imediatamente. Em vez disso, o impacto é "acumulado" e liberado depois — tudo de uma vez.',
             efeitos: ['[BLOCK-BREAK]'],
-            dano: '2dFor + Luta'
+            dano: '1dFor + Luta',
+            get danoJS() {
+                const nivel = data.lommie.habilidades[0].nivel;
+                const atributo = data.lommie.atributos[1].valor || 0;
+                const atributoBonus = data.lommie.atributos[1].bonus || 0;
+                const pericia = data.lommie.pericias[2].pericia_valor[0].valor || 0;
+                const periciaBonus = data.lommie.pericias[2].pericia_valor[0].bonus || 0;
+                
+                const hab1 = atributo + atributoBonus;
+                const hab2 = pericia + periciaBonus;
+                return `1d${hab1}+${hab2}`;
+            }
         },
         {
             nome: 'Acelerador',
@@ -481,7 +588,7 @@ lommie: {
 alice: {
     info: { 
         nome_data: 'alice',
-        nome: 'Alice Salvatore',
+        nome: 'Shiva Wyndell',
         nivel: 8,
         xp: 50,
         idade: 14,
@@ -529,7 +636,13 @@ alice: {
             nivel: 2,
             descricao: 'Um sopro sobre a ferida do aliado; o vento pressurizado fecha cortes superficiais e reorganiza músculos e pele o suficiente para estancar o sangramento e acelerar a dor. É mais primeiro-socorro do que milagre.',
             efeitos: ['HEAL'],
-            dano: '2'
+            dano: '1dMag + Mana',
+            get danoJS() {
+                const nivel = data.alice.habilidades[1].nivel
+                const hab1 = (data.alice.atributos[6].valor || 0) + (data.alice.atributos[6].bonus || 0);
+                const hab2 = (data.alice.pericias[0].pericia_valor[0].valor) || 0 + (data.alice.pericias[0].pericia_valor[0].bonus || 0);
+                return `1d${hab1}+${hab2}`;
+            }
         },
         {
             nome: 'Impacto',
@@ -537,7 +650,13 @@ alice: {
             nivel: 2,
             descricao: 'Reúne todo o “elemento” presente ao redor de seu punho ou perna e desfere um golpe único capaz de destruir defesas, romper mana ou causar dano.',
             efeitos: ['BLOCKBREAK'],
-            dano: '2dMag + Luta'
+            dano: '1dMag + Luta',
+            get danoJS() {
+                const nivel = data.alice.habilidades[1].nivel
+                const hab1 = (data.alice.atributos[6].valor || 0) + (data.alice.atributos[6].bonus || 0);
+                const hab2 = (data.alice.pericias[1].pericia_valor[0].valor) || 0 + (data.alice.pericias[1].pericia_valor[0].bonus || 0);
+                return `1d${hab1}+${hab2}`;
+            }
         },
         {
             nome: 'Murmúrio Cortante',
@@ -545,15 +664,27 @@ alice: {
             nivel: 1,
             descricao: 'Um movimento rápido com o leque que lança uma lâmina de vento quase invisível. Parece apenas um sopro, mas corta como aço.',
             efeitos: ['BLEEDING'],
-            dano: '1dFor + Esgrima'
+            dano: '1dAgl',
+            get danoJS() {
+                const nivel = data.alice.habilidades[1].nivel
+                const hab1 = (data.alice.atributos[3].valor || 0) + (data.alice.atributos[3].bonus || 0);
+                const hab2 = (data.alice.pericias[1].pericia_valor[0].valor || 0) + (data.alice.pericias[1].pericia_valor[0].bonus || 0);
+                return `1d${hab1}`;
+            }
         },
         {
             nome: 'Dança dos Mil Ventos',
             grimorio: 'Sem Grimório',
             nivel: 1,
             descricao: 'Uma rajada em espiral que avança como um furacão em miniatura, cortando e desequilibrando quem for atingido.',
-            efeitos: ['BLEEDING'],
-            dano: '1dFor + Mana'
+            dano: '1dFor + Mana',
+            efeitos: '',
+            get danoJS() {
+                const nivel = data.alice.habilidades[1].nivel
+                const hab1 = (data.alice.atributos[1].valor || 0) + (data.alice.atributos[1].bonus || 0);
+                const hab2 = (data.alice.pericias[0].pericia_valor[0].valor || 0) + (data.alice.pericias[0].pericia_valor[0].bonus || 0);
+                return `1d${hab1}+${hab2}`;
+            }
         },
     ],
 }, 
@@ -614,6 +745,4 @@ saint: {
         },
     ],
 }, 
-
-
 }

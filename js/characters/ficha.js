@@ -180,23 +180,38 @@ function renderAtaques() {
         if (valor.subataques) {
             let subhabilidadeHTML = `<p>${valor.nome} <br>`;
             valor.subataques.forEach((sub) => {
-                subhabilidadeHTML += `<span class="divide-subhabilidade"><span class="subhabilidade">${sub.nome}</span>`;
+                subhabilidadeHTML += `
+                <span class="divide-subhabilidade">
+                <button class="roll-button-ataque js-roll-button-attack"
+                data-dano="${sub.danoJS}"
+                data-nome="${sub.nome}"
+                data-efeito="${sub.efeitos}">
+                <img src="../../media/dado-d20.png">
+                </button>
+                <span class="subhabilidade">${sub.nome}</span>`;
 
                 if (sub.dano) {
                     subhabilidadeHTML += `<span class="subataque-efeito">${sub.dano}</span>`;
                 }
 
-                if (sub.efeito) {
-                    subhabilidadeHTML += `<span class="subataque-efeito">${sub.efeito}</span>`;
+                if (sub.efeitos) {
+                    subhabilidadeHTML += `<span class="subataque-efeito">${sub.efeitos}</span>`;
                 }
 
-                subhabilidadeHTML += `<br></span>`;
+                subhabilidadeHTML += `</span>`;
             });
             subhabilidadeHTML += '</p>';
             totalHTML += subhabilidadeHTML;
         } else {
             let efeitosHTML = '';
-            ataquesHTML = `<p><span class="nome-habilidade">${valor.nome}</span>`;
+            ataquesHTML = `<p>
+            <button class="roll-button-ataque js-roll-button-attack"
+            data-dano="${valor.danoJS}"
+            data-nome="${valor.nome}"
+            data-efeito="${valor.efeitos}">
+            <img src="../../media/dado-d20.png">
+            </button>
+            <span class="nome-habilidade">${valor.nome}</span>`;
 
             if (valor.dano && valor.dano.length > 0) {
                 if (valor.dano) {
