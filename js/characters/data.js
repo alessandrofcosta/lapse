@@ -5,8 +5,8 @@ indra: {
         nome_data: 'indra',
         nome: 'Indra Ashura',
         inspiracao: 1,
-        nivel: 8,
-        xp: 75,
+        nivel: 9,
+        xp: 25,
         idade: 15,
         altura: 171,
         peso: 65,
@@ -22,14 +22,14 @@ indra: {
         {sigla: "AGL", nome: "Agilidade", valor: 4, bonus: 2},
         {sigla: "INT", nome: "Inteligência", valor: 1},
         {sigla: "ESP", nome: "Espírito", valor: 3},
-        {sigla: "MAG", nome: "Magia", valor: 1, bonus: 4, prestigio: 2},
+        {sigla: "MAG", nome: "Magia", valor: 4, bonus: 4, prestigio: 2},
     ],
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
             {nome: "Mana", valor: 1, bonus: 2},
             {nome: "Visão", valor: 2},
-            {nome: "Grimório", valor: 4, bonus: 2},
+            {nome: "Grimório", valor: 7, bonus: 2},
             {nome: "Controle", valor: 1},
         ]},
         {atributo: "AGL", pericia_valor: [
@@ -176,9 +176,9 @@ saori: {
     info: { 
         nome_data: 'saori',
         nome: 'Saori Silva',
-        nivel: 8,
+        nivel: 9,
         inspiracao: 1,
-        xp: 75,
+        xp: 25,
         idade: 15,
         altura: 151,
         peso: 45,
@@ -193,15 +193,15 @@ saori: {
         {sigla: "VIG", nome: "Vigor", valor: 2},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
         {sigla: "INT", nome: "Inteligência", valor: 1, bonus: 2},
-        {sigla: "ESP", nome: "Espírito", valor: 1},
-        {sigla: "MAG", nome: "Magia", valor: 9, bonus: 5},
+        {sigla: "ESP", nome: "Espírito", valor: 3},
+        {sigla: "MAG", nome: "Magia", valor: 1, bonus: 5, prestigio: 2},
     ],
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
             {nome: "Mana", valor: 2, bonus: 2},
             {nome: "Visão", valor: 1},
-            {nome: "Grimório", valor: 11, bonus: 2},
+            {nome: "Grimório", valor: 13, bonus: 2},
             {nome: "Controle", valor: 1},
         ]},
         {atributo: "AGL", pericia_valor: [
@@ -295,9 +295,9 @@ yuka: {
     info: { 
         nome_data: 'yuka',
         nome: 'Yuka Kisha',
-        nivel: 8,
+        nivel: 9,
         inspiracao: 1,
-        xp: 85,
+        xp: 35,
         idade: 18,
         altura: 201,
         peso: 100,
@@ -429,9 +429,9 @@ yang: {
     info: { 
         nome_data: 'yang',
         nome: 'Yang Kami Lapse',
-        nivel: 8,
+        nivel: 9,
         inspiracao: 1,
-        xp: 85,
+        xp: 35,
         idade: 15,
         altura: 173,
         peso: 61,
@@ -452,8 +452,8 @@ yang: {
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
-            {nome: "Mana", valor: 10, bonus: 2},
-            {nome: "Grimório", valor: 7, bonus: 2},
+            {nome: "Mana", valor: 15, bonus: 2},
+            {nome: "Grimório", valor: 8, bonus: 2},
             {nome: "Visão", valor: 2},
         ]},
         {atributo: "INT", pericia_valor: [
@@ -593,9 +593,9 @@ alice: {
     info: { 
         nome_data: 'alice',
         nome: 'Shiva Wyndell',
-        nivel: 8,
+        nivel: 9,
         inspiracao: 1,
-        xp: 75,
+        xp: 25,
         idade: 14,
         altura: 167,
         peso: 55,
