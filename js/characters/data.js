@@ -16,7 +16,7 @@ indra: {
     },
     
     atributos: [
-        {pv: 53, ps: 6},
+        {pv: 58, ps: 6},
         {sigla: "FOR", nome: "Força", valor: 6},
         {sigla: "VIG", nome: "Vigor", valor: 3},
         {sigla: "AGL", nome: "Agilidade", valor: 4, bonus: 2},
@@ -188,7 +188,7 @@ saori: {
     },
     
     atributos: [
-        {pv: 42, ps: 6},
+        {pv: 46, ps: 6},
         {sigla: "FOR", nome: "Força", valor: 1},
         {sigla: "VIG", nome: "Vigor", valor: 2},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
@@ -307,7 +307,7 @@ yuka: {
     },
     
     atributos: [
-        {pv: 54, ps: 8},
+        {pv: 59, ps: 8},
         {sigla: "FOR", nome: "Força", valor: 3, bonus: 2},
         {sigla: "VIG", nome: "Vigor", valor: 4},
         {sigla: "AGL", nome: "Agilidade", valor: 2, bonus: 2},
@@ -441,7 +441,7 @@ yang: {
     },
     
     atributos: [
-        {pv: 40, ps: 7},
+        {pv: 44, ps: 7},
         {sigla: "FOR", nome: "Força", valor: 0, bonus: -2},
         {sigla: "VIG", nome: "Vigor", valor: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
@@ -605,7 +605,7 @@ alice: {
     },
     
     atributos: [
-        {pv: 53, ps: 7},
+        {pv: 58, ps: 7},
         {sigla: "FOR", nome: "Força", valor: 0, bonus: 4, prestigio: 2},
         {sigla: "VIG", nome: "Vigor", valor: 5, bonus: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 6, bonus: 2},
@@ -710,7 +710,7 @@ saint: {
     },
     
     atributos: [
-        {pv: 56, ps: 5},
+        {pv: 61, ps: 5},
         {sigla: "FOR", nome: "Força", valor: 7, bonus: 2},
         {sigla: "VIG", nome: "Vigor", valor: 6, bonus: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 5, bonus: 2, prestigio: 2},
