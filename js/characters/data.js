@@ -313,7 +313,7 @@ yuka: {
         {sigla: "AGL", nome: "Agilidade", valor: 2, bonus: 2},
         {sigla: "INT", nome: "Inteligência", valor: 2},
         {sigla: "ESP", nome: "Espírito", valor: 1},
-        {sigla: "MAG", nome: "Magia", valor: 0, bonus: 2, prestigio: 2},
+        {sigla: "MAG", nome: "Magia", valor: 6, bonus: 2, prestigio: 2},
     ],
 
     pericias: [
