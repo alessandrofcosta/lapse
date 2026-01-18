@@ -4,7 +4,7 @@ indra: {
     info: { 
         nome_data: 'indra',
         nome: 'Indra Ashura',
-        inspiracao: 1,
+        inspiracao: 0,
         nivel: 9,
         xp: 25,
         idade: 15,
