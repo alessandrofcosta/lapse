@@ -296,7 +296,7 @@ yuka: {
         nome_data: 'yuka',
         nome: 'Yuka Kisha',
         nivel: 9,
-        inspiracao: 1,
+        inspiracao: 0,
         xp: 35,
         idade: 18,
         altura: 201,
