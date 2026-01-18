@@ -595,7 +595,7 @@ alice: {
         nome: 'Shiva Wyndell',
         nivel: 9,
         inspiracao: 1,
-        xp: 0,
+        xp: 25,
         idade: 14,
         altura: 167,
         peso: 55,
