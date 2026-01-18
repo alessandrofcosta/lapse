@@ -698,9 +698,9 @@ saint: {
     info: { 
         nome_data: 'saint',
         nome: 'Saint Valac',
-        nivel: 8,
+        nivel: 9,
         inspiracao: 1,
-        xp: 75,
+        xp: 0,
         idade: 16,
         altura: 180,
         peso:70,
