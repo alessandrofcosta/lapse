@@ -345,7 +345,7 @@ yuka: {
                     nome: 'Gefroren - Gelo', 
                     descricao: 'Essa parte é o lado defensivo de sua habilidade, com ela Yuka pode estancar sangramentos internos e até mesmo criar um escudo/barreira com esse poder. Mas mesmo sendo uma defesa ele ainda pode atacar com ela tendo o benefício de poder congelar um pouco o seu oponente.',
                     efeitos: '[DEBUFF] [BUFF]',
-                    dano: '1dMag',
+                    dano: '2dMag',
                     get danoJS() {
                         const nivel = data.yuka.habilidades[0].nivel;
                         const atributo = data.yuka.atributos[6].valor || 0;
@@ -355,7 +355,7 @@ yuka: {
                         
                         const hab1 = atributo + atributoBonus;
                         const hab2 = pericia + periciaBonus;
-                        return `1d${hab1}`;
+                        return `2d${hab1}`;
                     },
                 },
                 {
@@ -372,7 +372,7 @@ yuka: {
                         
                         const hab1 = atributo + atributoBonus;
                         const hab2 = pericia + periciaBonus;
-                        return `1d${hab1}`;
+                        return `2d${hab1}`;
                     },
                 }
             ]
@@ -569,6 +569,17 @@ lommie: {
             descricao: 'Os golpes não causam dano imediatamente. Em vez disso, o impacto é "acumulado" e liberado depois — tudo de uma vez.',
             efeitos: ['[BLOCK-BREAK]'],
             dano: '1dFor + Luta',
+            get danoJS() {
+                        const nivel = data.yuka.habilidades[0].nivel;
+                        const atributo = data.yuka.atributos[6].valor || 0;
+                        const atributoBonus = data.yuka.atributos[6].bonus || 0;
+                        const pericia = data.yuka.pericias[0].pericia_valor[2].valor || 0;
+                        const periciaBonus = data.yuka.pericias[0].pericia_valor[2].bonus || 0;
+                        
+                        const hab1 = atributo + atributoBonus;
+                        const hab2 = pericia + periciaBonus;
+                        return `1d${hab1}`;
+                    },
         },
         {
             nome: 'Acelerador',
