@@ -16,7 +16,7 @@ indra: {
     },
     
     atributos: [
-        {pv: 58, ps: 6},
+        {pv: 63, ps: 6},
         {sigla: "FOR", nome: "Força", valor: 6},
         {sigla: "VIG", nome: "Vigor", valor: 3},
         {sigla: "AGL", nome: "Agilidade", valor: 4, bonus: 2},
@@ -188,7 +188,7 @@ saori: {
     },
     
     atributos: [
-        {pv: 46, ps: 6},
+        {pv: 52, ps: 6},
         {sigla: "FOR", nome: "Força", valor: 1},
         {sigla: "VIG", nome: "Vigor", valor: 4},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
@@ -295,7 +295,7 @@ yuka: {
     info: { 
         nome_data: 'yuka',
         nome: 'Yuka Kisha',
-        nivel: 9,
+        nivel: 10,
         inspiracao: 1,
         xp: 35,
         idade: 18,
@@ -307,7 +307,7 @@ yuka: {
     },
     
     atributos: [
-        {pv: 59, ps: 8},
+        {pv: 64, ps: 8},
         {sigla: "FOR", nome: "Força", valor: 3, bonus: 2},
         {sigla: "VIG", nome: "Vigor", valor: 4},
         {sigla: "AGL", nome: "Agilidade", valor: 2, bonus: 2},
@@ -318,9 +318,9 @@ yuka: {
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
-            {nome: "Mana", valor: 5, bonus: 2},
+            {nome: "Mana", valor: 8, bonus: 2},
             {nome: "Grimório", valor: 2, bonus: 2},
-            {nome: "Controle", valor: 4},
+            {nome: "Controle", valor: 7},
         ]},
         {atributo: "VIG", pericia_valor: [
             {nome: "Resistência", valor: 1},
@@ -441,7 +441,7 @@ yang: {
     },
     
     atributos: [
-        {pv: 44, ps: 7},
+        {pv: 48, ps: 7},
         {sigla: "FOR", nome: "Força", valor: 0, bonus: -2},
         {sigla: "VIG", nome: "Vigor", valor: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
@@ -535,7 +535,7 @@ lommie: {
     },
     
     atributos: [
-        {pv: 50, ps: 9},
+        {pv: 55, ps: 9},
         {sigla: "FOR", nome: "Força", valor: 10, bonus: 4},
         {sigla: "VIG", nome: "Vigor", valor: 1, bonus: 2},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
