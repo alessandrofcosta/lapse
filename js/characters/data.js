@@ -22,14 +22,14 @@ indra: {
         {sigla: "AGL", nome: "Agilidade", valor: 4, bonus: 2},
         {sigla: "INT", nome: "Inteligência", valor: 1},
         {sigla: "ESP", nome: "Espírito", valor: 3},
-        {sigla: "MAG", nome: "Magia", valor: 4, bonus: 4, prestigio: 2},
+        {sigla: "MAG", nome: "Magia", valor: 6, bonus: 4, prestigio: 2},
     ],
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
-            {nome: "Mana", valor: 1, bonus: 2},
+            {nome: "Mana", valor: 2, bonus: 2},
             {nome: "Visão", valor: 2},
-            {nome: "Grimório", valor: 7, bonus: 2},
+            {nome: "Grimório", valor: 10, bonus: 2},
             {nome: "Controle", valor: 1},
         ]},
         {atributo: "AGL", pericia_valor: [
@@ -176,7 +176,7 @@ saori: {
     info: { 
         nome_data: 'saori',
         nome: 'Saori Silva',
-        nivel: 9,
+        nivel: 10,
         inspiracao: 1,
         xp: 25,
         idade: 15,
@@ -190,18 +190,18 @@ saori: {
     atributos: [
         {pv: 46, ps: 6},
         {sigla: "FOR", nome: "Força", valor: 1},
-        {sigla: "VIG", nome: "Vigor", valor: 2},
+        {sigla: "VIG", nome: "Vigor", valor: 4},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
         {sigla: "INT", nome: "Inteligência", valor: 1, bonus: 2},
         {sigla: "ESP", nome: "Espírito", valor: 3},
-        {sigla: "MAG", nome: "Magia", valor: 1, bonus: 5, prestigio: 2},
+        {sigla: "MAG", nome: "Magia", valor: 3, bonus: 5, prestigio: 2},
     ],
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
             {nome: "Mana", valor: 2, bonus: 2},
             {nome: "Visão", valor: 1},
-            {nome: "Grimório", valor: 13, bonus: 2},
+            {nome: "Grimório", valor: 15, bonus: 2},
             {nome: "Controle", valor: 1},
         ]},
         {atributo: "AGL", pericia_valor: [
@@ -429,7 +429,7 @@ yang: {
     info: { 
         nome_data: 'yang',
         nome: 'Yang Kami Lapse',
-        nivel: 9,
+        nivel: 10,
         inspiracao: 1,
         xp: 35,
         idade: 15,
@@ -447,7 +447,7 @@ yang: {
         {sigla: "AGL", nome: "Agilidade", valor: 2},
         {sigla: "INT", nome: "Inteligência", valor: 2, bonus: 2},
         {sigla: "ESP", nome: "Espírito", valor: 1},
-        {sigla: "MAG", nome: "Magia", valor: 10, bonus: 5},
+        {sigla: "MAG", nome: "Magia", valor: 4, bonus: 5, prestigio: 2},
     ],
 
     pericias: [
@@ -455,9 +455,11 @@ yang: {
             {nome: "Mana", valor: 15, bonus: 2},
             {nome: "Grimório", valor: 8, bonus: 2},
             {nome: "Visão", valor: 2},
+            {nome: "Resistência", valor: 1},
         ]},
         {atributo: "INT", pericia_valor: [
             {nome: "Percepção", valor: 1},
+            {nome: "Persuasão", valor: 2, bonus: -2}
         ]},
         {atributo: "ESP", pericia_valor: [
             {nome: "Persuasão", valor: 2, bonus: -2}
@@ -522,8 +524,8 @@ lommie: {
     info: { 
         nome_data: 'lommie',
         nome: 'Lommie Yuta',
-        nivel: 7,
-        xp: 0,
+        nivel: 8,
+        xp: 50,
         idade: 19,
         altura: 176,
         peso: 61,
@@ -534,7 +536,7 @@ lommie: {
     
     atributos: [
         {pv: 50, ps: 9},
-        {sigla: "FOR", nome: "Força", valor: 6, bonus: 4},
+        {sigla: "FOR", nome: "Força", valor: 10, bonus: 4},
         {sigla: "VIG", nome: "Vigor", valor: 1, bonus: 2},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
         {sigla: "INT", nome: "Inteligência", valor: 1},
@@ -550,7 +552,7 @@ lommie: {
             {nome: "Percepção", valor: 1},
         ]},
         {atributo: "FOR", pericia_valor: [
-            {nome: "Luta", valor: 5},
+            {nome: "Luta", valor: 7},
             {nome: "Atletismo", valor: 3},
         ]},
         {atributo: "VIG", pericia_valor: [
@@ -567,17 +569,6 @@ lommie: {
             descricao: 'Os golpes não causam dano imediatamente. Em vez disso, o impacto é "acumulado" e liberado depois — tudo de uma vez.',
             efeitos: ['[BLOCK-BREAK]'],
             dano: '1dFor + Luta',
-            get danoJS() {
-                const nivel = data.lommie.habilidades[0].nivel;
-                const atributo = data.lommie.atributos[1].valor || 0;
-                const atributoBonus = data.lommie.atributos[1].bonus || 0;
-                const pericia = data.lommie.pericias[2].pericia_valor[0].valor || 0;
-                const periciaBonus = data.lommie.pericias[2].pericia_valor[0].bonus || 0;
-                
-                const hab1 = atributo + atributoBonus;
-                const hab2 = pericia + periciaBonus;
-                return `1d${hab1}+${hab2}`;
-            }
         },
         {
             nome: 'Acelerador',
