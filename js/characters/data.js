@@ -338,7 +338,7 @@ yuka: {
         {
             nome: 'Temperatus Imperium',
             grimorio: 'Sem Grimório',
-            nivel: 2,
+            nivel: 3,
             descricao: 'Ao Yuka falar o nome da habilidade "Temperatus Imperium" ele quebra a sua lança principal ao meio e divide ela em dois, após isso a parte esquerda começa a queimar em chamas laranjas e vermelhas subindo um pouco em seu braço,  e o lado direito começa a congelar e esse efeito pega um pouco em seu braço também. Agora Yuka tem duas lanças com seus respectivos Desastres (Climas absurdamente quentes e gelados).',
             subataques: [
                 {
