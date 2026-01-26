@@ -362,7 +362,7 @@ yuka: {
                     nome: 'Flammen - Fogo', 
                     descricao: 'É o lado ofensivo de sua habilidade, conseguindo executar estocadas rápidas e que queimam só de chegar perto no  oponente. Com a sua lança de fogo ele pode fazer uma estocada/golpe estendido de até 3 metros a partir da sua lança, ganhando  uma área de ataque bem maior do que antes.',
                     efeitos: '[BURNING]',
-                    dano: '1dMag',
+                    dano: '2dMag',
                     get danoJS() {
                         const nivel = data.yuka.habilidades[0].nivel;
                         const atributo = data.yuka.atributos[6].valor || 0;
