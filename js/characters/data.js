@@ -241,7 +241,7 @@ saori: {
                 const nivel = data.saori.habilidades[0].nivel
                 const hab1 = data.saori.atributos[6].valor + data.saori.atributos[6].bonus || 0;
                 const hab2 = data.saori.pericias[0].pericia_valor[2].valor + data.saori.pericias[0].pericia_valor[2].bonus || 0;
-                return `${nivel}d${hab1}+${hab2}`;
+                return `1d${hab1}+${hab2}`;
             },
             efeitos: []
         },
@@ -296,7 +296,7 @@ yuka: {
         nome_data: 'yuka',
         nome: 'Yuka Kisha',
         nivel: 10,
-        inspiracao: 1,
+        inspiracao: 2,
         xp: 35,
         idade: 18,
         altura: 201,
@@ -345,7 +345,7 @@ yuka: {
                     nome: 'Gefroren - Gelo', 
                     descricao: 'Essa parte é o lado defensivo de sua habilidade, com ela Yuka pode estancar sangramentos internos e até mesmo criar um escudo/barreira com esse poder. Mas mesmo sendo uma defesa ele ainda pode atacar com ela tendo o benefício de poder congelar um pouco o seu oponente.',
                     efeitos: '[DEBUFF] [BUFF]',
-                    dano: '2dMag',
+                    dano: '3dMag',
                     get danoJS() {
                         const nivel = data.yuka.habilidades[0].nivel;
                         const atributo = data.yuka.atributos[6].valor || 0;
@@ -355,14 +355,14 @@ yuka: {
                         
                         const hab1 = atributo + atributoBonus;
                         const hab2 = pericia + periciaBonus;
-                        return `2d${hab1}`;
+                        return `3d${hab1}`;
                     },
                 },
                 {
                     nome: 'Flammen - Fogo', 
                     descricao: 'É o lado ofensivo de sua habilidade, conseguindo executar estocadas rápidas e que queimam só de chegar perto no  oponente. Com a sua lança de fogo ele pode fazer uma estocada/golpe estendido de até 3 metros a partir da sua lança, ganhando  uma área de ataque bem maior do que antes.',
                     efeitos: '[BURNING]',
-                    dano: '2dMag',
+                    dano: '3dMag',
                     get danoJS() {
                         const nivel = data.yuka.habilidades[0].nivel;
                         const atributo = data.yuka.atributos[6].valor || 0;
@@ -372,7 +372,7 @@ yuka: {
                         
                         const hab1 = atributo + atributoBonus;
                         const hab2 = pericia + periciaBonus;
-                        return `2d${hab1}`;
+                        return `3d${hab1}`;
                     },
                 }
             ]
@@ -411,7 +411,7 @@ yuka: {
                 
                 const hab1 = atributo + atributoBonus;
                 const hab2 = pericia + periciaBonus;
-                return `${nivel}d${hab1}+${hab2}`;
+                return `1d${hab1}+${hab2}`;
             },
             efeitos: ['[STUN]']
         },      
@@ -484,7 +484,9 @@ yang: {
             nivel: 2,
             descricao: 'O olho que contempla o intervalo entre existência e inexistência — o interlúnio, o não-dito, o instante que se perdeu entre o antes e o depois. Os olhos ameaçam a visão real do usuário, e são ativados e desativados manualmente.',
             subataques: [
-                {nome: 'Fenda de Maigetsu', descricao: 'O usuário projeta um vácuo no espaço que se expande e abre um portal para um outro ponto pré-estabelecido e conhecido por ele. O portal é indiferente a magia transporta objetos, pessoas e mana que com ele interagirem. O portal é desfeito e refeito sob a vontade do usuário. O portal pode ser feito a partir de locais vistos em até uma semana pelo usuário, sobre uma grande quantidade de mana o portal sobrecarrega e implode.', dano: '[ESPECIAL]'}, 
+                {nome: 'Fenda de Maigetsu', 
+                 descricao: 'O usuário projeta um vácuo no espaço que se expande e abre um portal para um outro ponto pré-estabelecido e conhecido por ele. O portal é indiferente a magia transporta objetos, pessoas e mana que com ele interagirem. O portal é desfeito e refeito sob a vontade do usuário. O portal pode ser feito a partir de locais vistos em até uma semana pelo usuário, sobre uma grande quantidade de mana o portal sobrecarrega e implode.', 
+                 efeitos: '[ESPECIAL]'}, 
             ]
         },
         {
@@ -570,15 +572,15 @@ lommie: {
             efeitos: ['[BLOCK-BREAK]'],
             dano: '1dFor + Luta',
             get danoJS() {
-                        const nivel = data.yuka.habilidades[0].nivel;
-                        const atributo = data.yuka.atributos[6].valor || 0;
-                        const atributoBonus = data.yuka.atributos[6].bonus || 0;
-                        const pericia = data.yuka.pericias[0].pericia_valor[2].valor || 0;
-                        const periciaBonus = data.yuka.pericias[0].pericia_valor[2].bonus || 0;
+                        const nivel = data.lommie.habilidades[0].nivel;
+                        const atributo = data.lommie.atributos[1].valor || 0;
+                        const atributoBonus = data.lommie.atributos[1].bonus || 0;
+                        const pericia = data.lommie.pericias[2].pericia_valor[0].valor || 0;
+                        const periciaBonus = data.lommie.pericias[2].pericia_valor[0].bonus || 0;
                         
                         const hab1 = atributo + atributoBonus;
                         const hab2 = pericia + periciaBonus;
-                        return `1d${hab1}`;
+                        return `1d${hab1} + ${hab2}`;
                     },
         },
         {
@@ -595,8 +597,8 @@ alice: {
     info: { 
         nome_data: 'alice',
         nome: 'Shiva Wyndell',
-        nivel: 9,
-        inspiracao: 2,
+        nivel: 10,
+        inspiracao: 1,
         xp: 25,
         idade: 14,
         altura: 167,
@@ -700,8 +702,8 @@ saint: {
     info: { 
         nome_data: 'saint',
         nome: 'Saint Valac',
-        nivel: 9,
-        inspiracao: 2,
+        nivel: 10,
+        inspiracao: 1,
         xp: 0,
         idade: 16,
         altura: 180,
