@@ -687,7 +687,7 @@ alice: {
             nivel: 1,
             descricao: 'Uma rajada em espiral que avança como um furacão em miniatura, cortando e desequilibrando quem for atingido.',
             dano: '1dFor + Mana',
-            efeitos: '',
+            efeitos: ['STUN'],
             get danoJS() {
                 const nivel = data.alice.habilidades[1].nivel
                 const hab1 = (data.alice.atributos[1].valor || 0) + (data.alice.atributos[1].bonus || 0);
