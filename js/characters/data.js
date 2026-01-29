@@ -595,8 +595,8 @@ alice: {
     info: { 
         nome_data: 'alice',
         nome: 'Shiva Wyndell',
-        nivel: 9,
-        inspiracao: 2,
+        nivel: 10,
+        inspiracao: 1,
         xp: 25,
         idade: 14,
         altura: 167,
@@ -613,16 +613,16 @@ alice: {
         {sigla: "AGL", nome: "Agilidade", valor: 6, bonus: 2},
         {sigla: "INT", nome: "Inteligência", valor: 0},
         {sigla: "ESP", nome: "Espírito", valor: 2},
-        {sigla: "MAG", nome: "Magia", valor: 3},
+        {sigla: "MAG", nome: "Magia", valor: 8},
     ],
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
-            {nome: "Mana", valor: 3},
+            {nome: "Mana", valor: 6},
             {nome: "Grimório", valor: 1}
         ]},
         {atributo: "FOR", pericia_valor: [
-            {nome: "Luta", valor: 5},
+            {nome: "Luta", valor: 9},
         ]},
         {atributo: "VIG", pericia_valor: [
             {nome: "Resistência", valor: 3},
