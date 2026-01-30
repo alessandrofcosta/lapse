@@ -58,8 +58,8 @@ indra: {
                 const atributoSigla = "MAG";
                 const periciaSigla = "Mana";
             
-                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
-                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const atributo = data.indra.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.indra.pericias.find(per => per.atributo === atributoSigla);
                 const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
             
                 const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
@@ -73,7 +73,7 @@ indra: {
                 }
             
                 return dano;
-            }
+            },
             efeitos: ['[BLOCK-BREAK]']
         },
         {
@@ -255,8 +255,8 @@ saori: {
                 const atributoSigla = "MAG";
                 const periciaSigla = "Grimório";
             
-                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
-                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const atributo = data.saori.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.saori.pericias.find(per => per.atributo === atributoSigla);
                 const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
             
                 const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
@@ -270,7 +270,7 @@ saori: {
                 }
             
                 return dano;
-            }
+            },
             efeitos: []
         },
         {
@@ -283,8 +283,8 @@ saori: {
                 const atributoSigla = "MAG";
                 const periciaSigla = "Esgrima";
             
-                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
-                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const atributo = data.saori.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.saori.pericias.find(per => per.atributo === atributoSigla);
                 const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
             
                 const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
@@ -298,7 +298,7 @@ saori: {
                 }
             
                 return dano;
-            }
+            },
             efeitos: ['[AREA]']
         },
         {
@@ -311,8 +311,8 @@ saori: {
                 const atributoSigla = "MAG";
                 const periciaSigla = "Grimório";
             
-                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
-                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const atributo = data.saori.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.saori.pericias.find(per => per.atributo === atributoSigla);
                 const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
             
                 const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
@@ -326,7 +326,7 @@ saori: {
                 }
             
                 return dano;
-            }
+            },
             efeitos: ['[AREA]']
         },
         {
@@ -339,8 +339,8 @@ saori: {
                 const atributoSigla = "MAG";
                 const periciaSigla = "Grimório";
             
-                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
-                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const atributo = data.saori.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.saori.pericias.find(per => per.atributo === atributoSigla);
                 const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
             
                 const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
@@ -354,7 +354,7 @@ saori: {
                 }
             
                 return dano;
-            }
+            },
             efeitos: ['[SPEEDBLITZ]']
         },
 
@@ -420,8 +420,8 @@ yuka: {
                         const atributoSigla = "MAG";
                         const periciaSigla = "Controle";
                     
-                        const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
-                        const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                        const atributo = data.yuka.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.yuka.pericias.find(per => per.atributo === atributoSigla);
                         const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
                     
                         const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
@@ -446,8 +446,8 @@ yuka: {
                         const atributoSigla = "MAG";
                         const periciaSigla = "Esgrima";
                     
-                        const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
-                        const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                        const atributo = data.yuka.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.yuka.pericias.find(per => per.atributo === atributoSigla);
                         const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
                     
                         const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
@@ -475,8 +475,8 @@ yuka: {
                 const atributoSigla = "MAG";
                 const periciaSigla = "Controle";
             
-                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
-                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const atributo = data.yuka.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.yuka.pericias.find(per => per.atributo === atributoSigla);
                 const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
             
                 const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
@@ -490,7 +490,7 @@ yuka: {
                 }
             
                 return dano;
-            }
+            },
             efeitos: ['[SPEEDBLITZ]']
         },
         {
@@ -503,8 +503,8 @@ yuka: {
                 const atributoSigla = "MAG";
                 const periciaSigla = "Mana";
             
-                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
-                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const atributo = data.yuka.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.yuka.pericias.find(per => per.atributo === atributoSigla);
                 const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
             
                 const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
@@ -518,7 +518,7 @@ yuka: {
                 }
             
                 return dano;
-            }
+            },
             efeitos: ['[STUN]']
         },      
         {
@@ -610,8 +610,8 @@ yang: {
                         const atributoSigla = "MAG";
                         const periciaSigla = "Grimório";
                     
-                        const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
-                        const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                        const atributo = data.yang.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.yang.pericias.find(per => per.atributo === atributoSigla);
                         const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
                     
                         const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
@@ -625,7 +625,7 @@ yang: {
                         }
                     
                         return dano;
-                    }
+                    },
                     efeitos: '[ESPECIAL]'
                 }, 
                 {nome: 'Correntes (Fasciae Vacuae)', descricao: 'Correntes que impedem movimento físico. Se prendem em múltiplos alvos se canalizadas.',efeitos: '[IMMOBILIZED]'}, 
@@ -689,8 +689,8 @@ lommie: {
                 const atributoSigla = "FOR";
                 const periciaSigla = "Luta";
             
-                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
-                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const atributo = data.lommie.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.lommie.pericias.find(per => per.atributo === atributoSigla);
                 const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
             
                 const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
@@ -704,7 +704,7 @@ lommie: {
                 }
             
                 return dano;
-            }
+            },
         },
         {
             nome: 'Acelerador',
@@ -773,8 +773,8 @@ alice: {
                 const atributoSigla = "MAG";
                 const periciaSigla = "Mana";
             
-                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
-                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const atributo = data.alice.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.alice.pericias.find(per => per.atributo === atributoSigla);
                 const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
             
                 const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
@@ -788,7 +788,7 @@ alice: {
                 }
             
                 return dano;
-            }
+            },
         },
         {
             nome: 'Impacto',
@@ -801,8 +801,8 @@ alice: {
                 const atributoSigla = "MAG";
                 const periciaSigla = "Luta";
             
-                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
-                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const atributo = data.alice.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.alice.pericias.find(per => per.atributo === atributoSigla);
                 const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
             
                 const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
@@ -816,7 +816,7 @@ alice: {
                 }
             
                 return dano;
-            }
+            },
         },
         {
             nome: 'Murmúrio Cortante',
@@ -829,8 +829,8 @@ alice: {
                 const atributoSigla = "FOR";
                 const periciaSigla = "Mana";
             
-                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
-                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const atributo = data.alice.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.alice.pericias.find(per => per.atributo === atributoSigla);
                 const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
             
                 const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
@@ -844,7 +844,7 @@ alice: {
                 }
             
                 return dano;
-            }
+            },
         },
         {
             nome: 'Dança dos Mil Ventos',
@@ -857,8 +857,8 @@ alice: {
                 const atributoSigla = "FOR";
                 const periciaSigla = "Mana";
             
-                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
-                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const atributo = data.alice.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.alice.pericias.find(per => per.atributo === atributoSigla);
                 const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
             
                 const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
@@ -872,7 +872,7 @@ alice: {
                 }
             
                 return dano;
-            }
+            },
         },
     ],
 }, 
@@ -940,9 +940,6 @@ saint: {
                     const dadosExtras = atributo.prestigio;
                     dano += `+${dadosExtras}d7`;
                 }
-            
-                return dano;
-            }
             
                 return dano;
             }
