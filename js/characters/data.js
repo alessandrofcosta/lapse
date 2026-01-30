@@ -745,14 +745,23 @@ saint: {
             efeitos: ['[DEBUFF]'],
             dano: '1dAgl + Esgrima',
             get danoJS() {
-                const forca = data.saint.atributos.find(attr => attr.sigla === "AGL");
-                const lutaPericiaBlock = data.saint.pericias.find(per => per.atributo === "AGL");
-                const luta = lutaPericiaBlock.pericia_valor.find(val => val.nome === "Esgrima");
-
-                const hab1 = (forca.valor || 0) + (forca.bonus || 0);
-                const hab2 = (luta.valor || 0) + (luta.bonus || 0);
-
-                return `1d${hab1}+${hab2}`;
+                const atributoSigla = "AGL";
+            
+                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === "Esgrima");
+            
+                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+            
+                let dano = `1d${atributoValor}+${periciaValor}`;
+            
+                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                    const dadosExtras = atributo.prestigio;
+                    dano += `+${dadosExtras}d7`;
+                }
+            
+                return dano;
             }
         },
         {
