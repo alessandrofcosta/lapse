@@ -673,7 +673,7 @@ alice: {
             nivel: 1,
             descricao: 'Um movimento rápido com o leque que lança uma lâmina de vento quase invisível. Parece apenas um sopro, mas corta como aço.',
             efeitos: ['BLEEDING'],
-            dano: '1dFor',
+            dano: '1dFor + Mana',
             get danoJS() {
                 const nivel = data.alice.habilidades[1].nivel
                 const hab1 = (data.alice.atributos[1].valor || 0) + (data.alice.atributos[1].bonus || 0);
