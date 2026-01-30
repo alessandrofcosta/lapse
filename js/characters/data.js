@@ -673,10 +673,10 @@ alice: {
             nivel: 1,
             descricao: 'Um movimento rápido com o leque que lança uma lâmina de vento quase invisível. Parece apenas um sopro, mas corta como aço.',
             efeitos: ['BLEEDING'],
-            dano: '1dAgl',
+            dano: '1dFor',
             get danoJS() {
                 const nivel = data.alice.habilidades[1].nivel
-                const hab1 = (data.alice.atributos[3].valor || 0) + (data.alice.atributos[3].bonus || 0);
+                const hab1 = (data.alice.atributos[1].valor || 0) + (data.alice.atributos[1].bonus || 0);
                 const hab2 = (data.alice.pericias[1].pericia_valor[0].valor || 0) + (data.alice.pericias[1].pericia_valor[0].bonus || 0);
                 return `1d${hab1}`;
             }
@@ -684,7 +684,7 @@ alice: {
         {
             nome: 'Dança dos Mil Ventos',
             grimorio: 'Sem Grimório',
-            nivel: 1,
+            nivel: 2,
             descricao: 'Uma rajada em espiral que avança como um furacão em miniatura, cortando e desequilibrando quem for atingido.',
             dano: '1dFor + Mana',
             efeitos: ['STUN'],
