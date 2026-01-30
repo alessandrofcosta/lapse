@@ -55,11 +55,25 @@ indra: {
             descricao: 'Reveste seus punhos com energia sombria do abismo, os socos ignoram barreiras mágicas e armaduras, acertando diretamente o corpo do alvo, cada golpe bem-sucedido rouba uma pequena quantidade de mana do adversário, fortalecendo. Se um golpe conectar, ele pode roubar um pouco da mana do inimigo, recuperando sua própria mana.',
             dano: ' 1dMag + Mana',
             get danoJS() {
-                const nivel = data.indra.habilidades[0].nivel
-                const mag = data.indra.atributos[6].valor + data.indra.atributos[6].bonus || 0;
-                const mana = data.indra.pericias[0].pericia_valor[0].valor + data.indra.pericias[0].pericia_valor[0].bonus || 0;
-                return `1d${mag}+${mana}`;
-            },
+                const atributoSigla = "MAG";
+                const periciaSigla = "Mana";
+            
+                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+            
+                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+            
+                let dano = `1d${atributoValor}+${periciaValor}`;
+            
+                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                    const dadosExtras = atributo.prestigio;
+                    dano += `+${dadosExtras}d7`;
+                }
+            
+                return dano;
+            }
             efeitos: ['[BLOCK-BREAK]']
         },
         {
@@ -238,11 +252,25 @@ saori: {
             descricao: 'Saori aponta para um alvo e aumenta abruptamente a gravidade em um ponto específico, fazendo com que o oponente seja esmagado contra o chão com uma força avassaladora. Quanto maior a diferença de poder, mais devastador o impacto.',
             dano: '1dMag + Grimório',
             get danoJS() {
-                const nivel = data.saori.habilidades[0].nivel
-                const hab1 = data.saori.atributos[6].valor + data.saori.atributos[6].bonus || 0;
-                const hab2 = data.saori.pericias[0].pericia_valor[2].valor + data.saori.pericias[0].pericia_valor[2].bonus || 0;
-                return `1d${hab1}+${hab2}`;
-            },
+                const atributoSigla = "MAG";
+                const periciaSigla = "Grimório";
+            
+                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+            
+                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+            
+                let dano = `1d${atributoValor}+${periciaValor}`;
+            
+                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                    const dadosExtras = atributo.prestigio;
+                    dano += `+${dadosExtras}d7`;
+                }
+            
+                return dano;
+            }
             efeitos: []
         },
         {
@@ -252,11 +280,25 @@ saori: {
             descricao: 'Acumula gravidade em um único ponto, formando uma singularidade. Essa singularidade absorve tudo ao ser redor e pode ser lançada aos inimigos causando dano em área.',
             dano: ' 1dMag',
             get danoJS() {
-                const nivel = data.saori.habilidades[0].nivel
-                const hab1 = data.saori.atributos[6].valor + data.saori.atributos[6].bonus || 0;
-                const hab2 = data.saori.pericias[0].pericia_valor[2].valor + data.saori.pericias[0].pericia_valor[2].bonus || 0;
-                return `${nivel}d${hab1}`;
-            },
+                const atributoSigla = "MAG";
+                const periciaSigla = "Esgrima";
+            
+                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+            
+                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+            
+                let dano = `1d${atributoValor}`;
+            
+                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                    const dadosExtras = atributo.prestigio;
+                    dano += `+${dadosExtras}d7`;
+                }
+            
+                return dano;
+            }
             efeitos: ['[AREA]']
         },
         {
@@ -266,11 +308,25 @@ saori: {
             descricao: 'Concentra uma grande massa gravitacional em um único ponto no ar, criando uma esfera compacta que atrai tudo ao seu redor. Após um tempo, a esfera implode, liberando uma explosão que distorce o espaço ao redor. ',
             dano: ' 1dMag + Grimório',
             get danoJS() {
-                const nivel = data.saori.habilidades[0].nivel
-                const hab1 = data.saori.atributos[6].valor + data.saori.atributos[6].bonus || 0;
-                const hab2 = data.saori.pericias[0].pericia_valor[2].valor + data.saori.pericias[0].pericia_valor[2].bonus || 0;
-                return `1d${hab1}+${hab2}`;
-            },
+                const atributoSigla = "MAG";
+                const periciaSigla = "Grimório";
+            
+                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+            
+                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+            
+                let dano = `1d${atributoValor}+${periciaValor}`;
+            
+                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                    const dadosExtras = atributo.prestigio;
+                    dano += `+${dadosExtras}d7`;
+                }
+            
+                return dano;
+            }
             efeitos: ['[AREA]']
         },
         {
@@ -280,11 +336,25 @@ saori: {
             descricao: 'Saori concentra a gravidade em um único ponto e molda essa força invisível em forma de uma lança negra translúcida, feita inteiramente de energia gravitacional condensada. Ao ser lançada, a lança atravessa o ar distorcendo o espaço ao redor, criando um som abafado e arrastado, como se a própria realidade estivesse sendo perfurada.',
             dano: ' 1dMag + Grimório',
             get danoJS() {
-                const nivel = data.saori.habilidades[0].nivel
-                const hab1 = data.saori.atributos[6].valor + data.saori.atributos[6].bonus || 0;
-                const hab2 = data.saori.pericias[0].pericia_valor[2].valor + data.saori.pericias[0].pericia_valor[2].bonus || 0;
-                return `1d${hab1}+${hab2}`;
-            },
+                const atributoSigla = "MAG";
+                const periciaSigla = "Grimório";
+            
+                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+            
+                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+            
+                let dano = `1d${atributoValor}+${periciaValor}`;
+            
+                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                    const dadosExtras = atributo.prestigio;
+                    dano += `+${dadosExtras}d7`;
+                }
+            
+                return dano;
+            }
             efeitos: ['[SPEEDBLITZ]']
         },
 
@@ -347,16 +417,25 @@ yuka: {
                     efeitos: '[DEBUFF] [BUFF]',
                     dano: '3dMag',
                     get danoJS() {
-                        const nivel = data.yuka.habilidades[0].nivel;
-                        const atributo = data.yuka.atributos[6].valor || 0;
-                        const atributoBonus = data.yuka.atributos[6].bonus || 0;
-                        const pericia = data.yuka.pericias[0].pericia_valor[2].valor || 0;
-                        const periciaBonus = data.yuka.pericias[0].pericia_valor[2].bonus || 0;
-                        
-                        const hab1 = atributo + atributoBonus;
-                        const hab2 = pericia + periciaBonus;
-                        return `3d${hab1}`;
-                    },
+                        const atributoSigla = "MAG";
+                        const periciaSigla = "Controle";
+                    
+                        const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+                    
+                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+                    
+                        let dano = `3d${atributoValor}`;
+                    
+                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                            const dadosExtras = atributo.prestigio;
+                            dano += `+${dadosExtras}d7`;
+                        }
+                    
+                        return dano;
+                    }
                 },
                 {
                     nome: 'Flammen - Fogo', 
@@ -364,16 +443,25 @@ yuka: {
                     efeitos: '[BURNING]',
                     dano: '3dMag',
                     get danoJS() {
-                        const nivel = data.yuka.habilidades[0].nivel;
-                        const atributo = data.yuka.atributos[6].valor || 0;
-                        const atributoBonus = data.yuka.atributos[6].bonus || 0;
-                        const pericia = data.yuka.pericias[0].pericia_valor[2].valor || 0;
-                        const periciaBonus = data.yuka.pericias[0].pericia_valor[2].bonus || 0;
-                        
-                        const hab1 = atributo + atributoBonus;
-                        const hab2 = pericia + periciaBonus;
-                        return `3d${hab1}`;
-                    },
+                        const atributoSigla = "MAG";
+                        const periciaSigla = "Esgrima";
+                    
+                        const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+                    
+                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+                    
+                        let dano = `3d${atributoValor}`;
+                    
+                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                            const dadosExtras = atributo.prestigio;
+                            dano += `+${dadosExtras}d7`;
+                        }
+                    
+                        return dano;
+                    }
                 }
             ]
         },
@@ -384,16 +472,25 @@ yuka: {
             descricao: 'Imbui a sua lança com a força de uma grande tempestade. Ao fazer uma estocada ou balançar a sua lança Yuka consegue desferir ataques elétricos de longo/médio alcance.',
             dano: '1dMag + Controle',
             get danoJS() {
-                const nivel = data.yuka.habilidades[0].nivel;
-                const atributo = data.yuka.atributos[6].valor || 0;
-                const atributoBonus = data.yuka.atributos[6].bonus || 0;
-                const pericia = data.yuka.pericias[0].pericia_valor[2].valor || 0;
-                const periciaBonus = data.yuka.pericias[0].pericia_valor[2].bonus || 0;
-                
-                const hab1 = atributo + atributoBonus;
-                const hab2 = pericia + periciaBonus;
-                return `1d${hab1}+${hab2}`;
-            },
+                const atributoSigla = "MAG";
+                const periciaSigla = "Controle";
+            
+                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+            
+                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+            
+                let dano = `1d${atributoValor}+${periciaValor}`;
+            
+                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                    const dadosExtras = atributo.prestigio;
+                    dano += `+${dadosExtras}d7`;
+                }
+            
+                return dano;
+            }
             efeitos: ['[SPEEDBLITZ]']
         },
         {
@@ -403,16 +500,25 @@ yuka: {
             descricao: 'O usuário consegue fazer o próprio ar tremer frente o poder, ele consegue causar terremotos ou fazer o espaço em volta dele tremer. Se ele imbuir em sua lança esse feitiço ele conseguirá usar de forma mais controlada, se alguem for atingido pela lança com o poder do tremor a vítima ficará atordoada.',
             dano: ['1dMag + Mana'], 
             get danoJS() {
-                const nivel = data.yuka.habilidades[0].nivel;
-                const atributo = data.yuka.atributos[6].valor || 0;
-                const atributoBonus = data.yuka.atributos[6].bonus || 0;
-                const pericia = data.yuka.pericias[0].pericia_valor[0].valor || 0;
-                const periciaBonus = data.yuka.pericias[0].pericia_valor[0].bonus || 0;
-                
-                const hab1 = atributo + atributoBonus;
-                const hab2 = pericia + periciaBonus;
-                return `1d${hab1}+${hab2}`;
-            },
+                const atributoSigla = "MAG";
+                const periciaSigla = "Mana";
+            
+                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+            
+                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+            
+                let dano = `1d${atributoValor}+${periciaValor}`;
+            
+                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                    const dadosExtras = atributo.prestigio;
+                    dano += `+${dadosExtras}d7`;
+                }
+            
+                return dano;
+            }
             efeitos: ['[STUN]']
         },      
         {
@@ -500,18 +606,26 @@ yang: {
                     nome: 'Adagas (Pugiones Liminales)',
                     descricao: 'Adagas que causam dano físico e desintegram a matéria e armaduras mágicas.',
                     dano: '1dMag',
-                    get danoJS() 
-                    {
-                        const nivel = data.yang.habilidades[0].nivel;
-                        const atributo = data.yang.atributos[6].valor || 0;
-                        const atributoBonus = data.yang.atributos[6].bonus || 0;
-                        const pericia = data.yang.pericias[0].pericia_valor[2].valor || 0;
-                        const periciaBonus = data.yang.pericias[0].pericia_valor[2].bonus || 0;
-                        
-                        const hab1 = atributo + atributoBonus;
-                        const hab2 = pericia + periciaBonus;
-                        return `1d${hab1}`;
-                    },
+                    get danoJS() {
+                        const atributoSigla = "MAG";
+                        const periciaSigla = "Grimório";
+                    
+                        const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+                    
+                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+                    
+                        let dano = `1d${atributoValor}`;
+                    
+                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                            const dadosExtras = atributo.prestigio;
+                            dano += `+${dadosExtras}d7`;
+                        }
+                    
+                        return dano;
+                    }
                     efeitos: '[ESPECIAL]'
                 }, 
                 {nome: 'Correntes (Fasciae Vacuae)', descricao: 'Correntes que impedem movimento físico. Se prendem em múltiplos alvos se canalizadas.',efeitos: '[IMMOBILIZED]'}, 
@@ -572,16 +686,25 @@ lommie: {
             efeitos: ['[BLOCK-BREAK]'],
             dano: '1dFor + Luta',
             get danoJS() {
-                        const nivel = data.lommie.habilidades[0].nivel;
-                        const atributo = data.lommie.atributos[1].valor || 0;
-                        const atributoBonus = data.lommie.atributos[1].bonus || 0;
-                        const pericia = data.lommie.pericias[2].pericia_valor[0].valor || 0;
-                        const periciaBonus = data.lommie.pericias[2].pericia_valor[0].bonus || 0;
-                        
-                        const hab1 = atributo + atributoBonus;
-                        const hab2 = pericia + periciaBonus;
-                        return `1d${hab1} + ${hab2}`;
-                    },
+                const atributoSigla = "FOR";
+                const periciaSigla = "Luta";
+            
+                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+            
+                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+            
+                let dano = `1d${atributoValor}+${periciaValor}`;
+            
+                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                    const dadosExtras = atributo.prestigio;
+                    dano += `+${dadosExtras}d7`;
+                }
+            
+                return dano;
+            }
         },
         {
             nome: 'Acelerador',
@@ -647,10 +770,24 @@ alice: {
             efeitos: ['HEAL'],
             dano: '1dMag + Mana',
             get danoJS() {
-                const nivel = data.alice.habilidades[1].nivel
-                const hab1 = (data.alice.atributos[6].valor || 0) + (data.alice.atributos[6].bonus || 0);
-                const hab2 = (data.alice.pericias[0].pericia_valor[0].valor) || 0 + (data.alice.pericias[0].pericia_valor[0].bonus || 0);
-                return `1d${hab1}+${hab2}`;
+                const atributoSigla = "MAG";
+                const periciaSigla = "Mana";
+            
+                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+            
+                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+            
+                let dano = `1d${atributoValor}+${periciaValor}`;
+            
+                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                    const dadosExtras = atributo.prestigio;
+                    dano += `+${dadosExtras}d7`;
+                }
+            
+                return dano;
             }
         },
         {
@@ -661,10 +798,24 @@ alice: {
             efeitos: ['BLOCKBREAK'],
             dano: '1dMag + Luta',
             get danoJS() {
-                const nivel = data.alice.habilidades[1].nivel
-                const hab1 = (data.alice.atributos[6].valor || 0) + (data.alice.atributos[6].bonus || 0);
-                const hab2 = (data.alice.pericias[1].pericia_valor[0].valor) || 0 + (data.alice.pericias[1].pericia_valor[0].bonus || 0);
-                return `1d${hab1}+${hab2}`;
+                const atributoSigla = "MAG";
+                const periciaSigla = "Luta";
+            
+                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+            
+                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+            
+                let dano = `1d${atributoValor}+${periciaValor}`;
+            
+                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                    const dadosExtras = atributo.prestigio;
+                    dano += `+${dadosExtras}d7`;
+                }
+            
+                return dano;
             }
         },
         {
@@ -673,12 +824,26 @@ alice: {
             nivel: 1,
             descricao: 'Um movimento rápido com o leque que lança uma lâmina de vento quase invisível. Parece apenas um sopro, mas corta como aço.',
             efeitos: ['BLEEDING'],
-            dano: '1dFor + Mana',
+            dano: '1dFor',
             get danoJS() {
-                const nivel = data.alice.habilidades[1].nivel
-                const hab1 = (data.alice.atributos[1].valor || 0) + (data.alice.atributos[1].bonus || 0);
-                const hab2 = (data.alice.pericias[1].pericia_valor[0].valor || 0) + (data.alice.pericias[1].pericia_valor[0].bonus || 0);
-                return `1d${hab1}+${hab2}`;
+                const atributoSigla = "FOR";
+                const periciaSigla = "Mana";
+            
+                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+            
+                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+            
+                let dano = `1d${atributoValor}`;
+            
+                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                    const dadosExtras = atributo.prestigio;
+                    dano += `+${dadosExtras}d7`;
+                }
+            
+                return dano;
             }
         },
         {
@@ -689,10 +854,24 @@ alice: {
             dano: '1dFor + Mana',
             efeitos: ['STUN'],
             get danoJS() {
-                const nivel = data.alice.habilidades[1].nivel
-                const hab1 = (data.alice.atributos[1].valor || 0) + (data.alice.atributos[1].bonus || 0);
-                const hab2 = (data.alice.pericias[0].pericia_valor[0].valor || 0) + (data.alice.pericias[0].pericia_valor[0].bonus || 0);
-                return `1d${hab1}+${hab2}`;
+                const atributoSigla = "FOR";
+                const periciaSigla = "Mana";
+            
+                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+            
+                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+            
+                let dano = `1d${atributoValor}+${periciaValor}`;
+            
+                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                    const dadosExtras = atributo.prestigio;
+                    dano += `+${dadosExtras}d7`;
+                }
+            
+                return dano;
             }
         },
     ],
@@ -746,10 +925,11 @@ saint: {
             dano: '1dAgl + Esgrima',
             get danoJS() {
                 const atributoSigla = "AGL";
+                const periciaSigla = "Esgrima";
             
                 const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
                 const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
-                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === "Esgrima");
+                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
             
                 const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
                 const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
@@ -760,6 +940,9 @@ saint: {
                     const dadosExtras = atributo.prestigio;
                     dano += `+${dadosExtras}d7`;
                 }
+            
+                return dano;
+            }
             
                 return dano;
             }
