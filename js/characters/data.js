@@ -678,7 +678,7 @@ alice: {
                 const nivel = data.alice.habilidades[1].nivel
                 const hab1 = (data.alice.atributos[1].valor || 0) + (data.alice.atributos[1].bonus || 0);
                 const hab2 = (data.alice.pericias[1].pericia_valor[0].valor || 0) + (data.alice.pericias[1].pericia_valor[0].bonus || 0);
-                return `1d${hab1}`;
+                return `1d${hab1}+${hab2}`;
             }
         },
         {
