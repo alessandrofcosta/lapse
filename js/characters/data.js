@@ -717,10 +717,10 @@ saint: {
         {pv: 61, ps: 5},
         {sigla: "FOR", nome: "Força", valor: 7, bonus: 2},
         {sigla: "VIG", nome: "Vigor", valor: 6, bonus: 0},
-        {sigla: "AGL", nome: "Agilidade", valor: 5, bonus: 2, prestigio: 2},
+        {sigla: "AGL", nome: "Agilidade", valor: 8, bonus: 2, prestigio: 2},
         {sigla: "INT", nome: "Inteligência", valor: 1},
         {sigla: "ESP", nome: "Espírito", valor: 2, bonus: -2},
-        {sigla: "MAG", nome: "Magia", valor: 4, bonus: 2},
+        {sigla: "MAG", nome: "Magia", valor: 7, bonus: 2},
     ],
 
     pericias: [
