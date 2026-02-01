@@ -374,8 +374,8 @@ saori: {
                         const atributoSigla = "MAG";
                         const periciaSigla = "Grimório";
                     
-                        const atributo = data.yang.atributos.find(attr => attr.sigla === atributoSigla);
-                        const periciaBlock = data.yang.pericias.find(per => per.atributo === atributoSigla);
+                        const atributo = data.saori.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.saori.pericias.find(per => per.atributo === atributoSigla);
                         const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
                     
                         const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
@@ -404,8 +404,8 @@ saori: {
                         const atributoSigla = "MAG";
                         const periciaSigla = "Grimório";
                     
-                        const atributo = data.yang.atributos.find(attr => attr.sigla === atributoSigla);
-                        const periciaBlock = data.yang.pericias.find(per => per.atributo === atributoSigla);
+                        const atributo = data.saori.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.saori.pericias.find(per => per.atributo === atributoSigla);
                         const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
                     
                         const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
@@ -434,8 +434,8 @@ saori: {
                         const atributoSigla = "MAG";
                         const periciaSigla = "Grimório";
                     
-                        const atributo = data.yang.atributos.find(attr => attr.sigla === atributoSigla);
-                        const periciaBlock = data.yang.pericias.find(per => per.atributo === atributoSigla);
+                        const atributo = data.saori.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.saori.pericias.find(per => per.atributo === atributoSigla);
                         const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
                     
                         const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
@@ -466,8 +466,8 @@ saori: {
                         const periciaSigla = "Grimório";
                         const periciaSigla2 = "Mana";
                     
-                        const atributo = data.yang.atributos.find(attr => attr.sigla === atributoSigla);
-                        const periciaBlock = data.yang.pericias.find(per => per.atributo === atributoSigla);
+                        const atributo = data.saori.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.saori.pericias.find(per => per.atributo === atributoSigla);
                         const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
                         const pericia2 = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla2);
                     
