@@ -208,7 +208,7 @@ saori: {
         {sigla: "AGL", nome: "Agilidade", valor: 2},
         {sigla: "INT", nome: "Inteligência", valor: 1, bonus: 2},
         {sigla: "ESP", nome: "Espírito", valor: 3},
-        {sigla: "MAG", nome: "Magia", valor: 3, bonus: 5, prestigio: 2},
+        {sigla: "MAG", nome: "Magia", valor: 2, bonus: 5, prestigio: 2},
     ],
 
     pericias: [
