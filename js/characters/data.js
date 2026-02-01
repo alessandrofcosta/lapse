@@ -772,6 +772,20 @@ yang: {
                 efeitos: '[BARRIER]'}
             ]
         },
+        {
+            nome: 'Eternova',
+            grimorio: 'Zona de Mana',
+            nivel: 2,
+            descricao: `A dimensão do vazio, provedora de todo o poder e interações do grimório de Yang Kami Lapse. Dentro dela, o espaço é irrelevante e mutável, podendo ser alterado passivamente como o usuário bem entender. A única coisa de sua aparência que não pode ser alterada é a Estrela de Eternova, também sendo essa a entidade que comanda a dimensão do vazio.
+            A estrela, por sua vez, tem vontade própria e princípios rígidos que devem ser respeitados mesmo pelo próprio usuário. Caso qualquer um em Eternova desrespeite o regulamento imposto pela estrela, será executada a Penitência de Eternova, que aprisionará com correntes o condenado e selará o mesmo na dimensão pela eternidade.
+            Princípio da Hospitalidade
+            O usuário que invocou a dimensão tem a obrigação de explicar a todos ali dentro as regras da zona. A principal regra de Eternova é mutável, e será sempre definida pelo usuário assim que a zona de mana for invocada. Qualquer um que desrespeite a regra do usuário estará sujeito a penitência. O usuário também será sujeito a regra.
+            Princípio da Aplicabilidade
+            Todas as regras ditas pelo usuário dentro de Eternova devem ser aplicáveis para todos que estejam dentro da zona, inclusive o próprio usuário. A regra dita pelo usuário na invocação da zona de mana não pode ser alterada durante a zona, tampouco anulada. Não é possível ditar mais de uma regra, mas é possível adicionar quantas cláusulas forem necessárias.
+            Beneficiamento sob Dívida
+            O usuário, que invocou Eternova ao mundo físico, desfrutará de uma quantidade ilimitada de mana e possibilidade de ações em Eternova, desde que respeite suas leis; Todos em Eternova, com exceção do usuário, irão ter a mana reduzida ao mínimo possível dentro da zona. Adicionalmente, a Estrela é responsável por ter o usuário ciente de todas as leis e regulamentos da dimensão. Contudo, sempre que a zona de mana for utilizada e acabar, uma parte do usuário ficará em Eternova. Eternova quer que o usuário faça parte da dimensão, e vai conseguir.`,
+            efeitos: ['[ZONA DE MANA]']
+        },
     ],
 },
 
@@ -1082,6 +1096,27 @@ saint: {
             
                 return dano;
             }
+        },
+        {
+            nome: 'Passo fantasma',
+            grimorio: 'Sem Grimório',
+            nivel: 2,
+            descricao: 'Cria ilusões de si mesmo em diversos locais para enganar os inimigos quando for atacado.',
+            efeitos: ['DEBUFF'],
+            dano: ''
+        },
+        {
+            nome: 'Distorção de Combate',
+            grimorio: 'Grimório',
+            nivel: 2,
+            descricao: `Valac desfere um golpe que distorce, por um instante, os próprios conceitos do mundo.
+                    A lógica do combate se inverte: errar não significa falhar, e defender não significa estar seguro.
+
+                    Se o ataque de Valac for errado ou defendido, a ilusão se fecha sobre o oponente e o efeito ocorre de forma contrária ao esperado, pegando-o completamente desprevenido.
+
+                    No Combate Ilusório, o erro é apenas outra forma de acertar.`,
+            efeitos: ['ESPECIAL'],
+            dano: ''
         },
         {
             nome: 'Passo fantasma',
