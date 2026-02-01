@@ -1116,15 +1116,27 @@ saint: {
 
                     No Combate Ilusório, o erro é apenas outra forma de acertar.`,
             efeitos: ['ESPECIAL'],
-            dano: ''
-        },
-        {
-            nome: 'Passo fantasma',
-            grimorio: 'Sem Grimório',
-            nivel: 2,
-            descricao: 'Cria ilusões de si mesmo em diversos locais para enganar os inimigos quando for atacado.',
-            efeitos: ['DEBUFF'],
-            dano: ''
+            dano: '1dAgl + Esgrima',
+                get danoJS() {
+                const atributoSigla = "AGL";
+                const periciaSigla = "Esgrima";
+            
+                const atributo = data.saint.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.saint.pericias.find(per => per.atributo === atributoSigla);
+                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+            
+                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+            
+                let dano = `1d${atributoValor}+${periciaValor}`;
+            
+                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                    const dadosExtras = atributo.prestigio;
+                    dano += `+${dadosExtras}d7`;
+                }
+            
+                return dano;
+            }
         },
     ],
 }, 
