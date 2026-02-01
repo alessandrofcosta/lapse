@@ -191,7 +191,7 @@ saori: {
         nome_data: 'saori',
         nome: 'Saori Silva',
         nivel: 10,
-        inspiracao: 2,
+        inspiracao: 1,
         xp: 25,
         idade: 15,
         altura: 151,
@@ -596,7 +596,7 @@ yuka: {
             ]
         },
         {
-            nome: 'Raijin no Kaminari',
+            nome: 'Trovão que Persegue as Nuvens',
             grimorio: 'Grimório',
             nivel: 2,
             descricao: 'Imbui a sua lança com a força de uma grande tempestade. Ao fazer uma estocada ou balançar a sua lança Yuka consegue desferir ataques elétricos de longo/médio alcance.',
