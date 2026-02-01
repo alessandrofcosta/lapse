@@ -357,6 +357,136 @@ saori: {
             },
             efeitos: ['[SPEEDBLITZ]']
         },
+        {
+            nome: 'Avatar Gravitacional: Acier Silva (重力の化身 – Jūryoku no Keshin)',
+            grimorio: 'Grimório',
+            nivel: 'Suprema',
+            descricao: 'Essa é a habilidade suprema de Saori. Consiste em um avatar gigante no formato de sua mãe que vai se formando aos poucos. Os estágios do Avatar não podem ser pulados, todo estágio deve existir antes de seu sucessor.',
+            subataques: [
+                {
+                    nome: '1º Estágio — Manifestação Esquelética (O Esqueleto da Gravidade)',
+                    descricao: `Saori manifesta apenas a estrutura básica do avatar: 
+                    Braços gigantes e uma silhueta incompleta formada por pressão gravitacional. Esses braços podem ser usados para atacar. 
+                    Simbolismo: Orgulho sem controle emocional.`,
+                    dano: '1dMag + Grimório',
+                    efeitos: '[BLOCK-BREAK] [AREA]',
+                    get danoJS() {
+                        const atributoSigla = "MAG";
+                        const periciaSigla = "Grimório";
+                    
+                        const atributo = data.yang.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.yang.pericias.find(per => per.atributo === atributoSigla);
+                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+                    
+                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+                    
+                        let dano = `1d${atributoValor}+${periciaValor}`;
+                    
+                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                            const dadosExtras = atributo.prestigio;
+                            dano += `+${dadosExtras}d7`;
+                        }
+                    
+                        return dano;
+                    },
+                }, 
+                
+                {
+                    nome: '2º Estágio — Avatar Parcial (A Guardiã de Prata)',
+                    descricao: `O avatar ganha um tronco completo e um rosto nebuloso que lembra Acier Silva.
+                                A gravidade agora começa a ter efeitos a todos em sua volta, qualquer um que estiver ao seu redor terão que fazer testes de resistência. 
+
+                                Simbolismo: Aceitação gradual do legado.`,
+                    dano: '2dMag + Grimório',
+                    efeitos: '[DEBUFF]',
+                    get danoJS() {
+                        const atributoSigla = "MAG";
+                        const periciaSigla = "Grimório";
+                    
+                        const atributo = data.yang.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.yang.pericias.find(per => per.atributo === atributoSigla);
+                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+                    
+                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+                    
+                        let dano = `2d${atributoValor}+${periciaValor}`;
+                    
+                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                            const dadosExtras = atributo.prestigio;
+                            dano += `+${dadosExtras}d7`;
+                        }
+                    
+                        return dano;
+                    },
+                }, 
+
+                {
+                    nome: '3º Estágio — Avatar Completo (A Imperatriz Gravitacional)',
+                    descricao: `Um gigante completo revestido por uma armadura de gravidade sólida. 
+                                O usuário agora ganha uma espada gravitacional, além de uma defesa impenetrável. Seus movimentos agora são rápidos e precisos, fazendo o usuário se movimentar em alta velocidade usando sua mana como energia. Todo ataque desferido por Saori agora pode ser usado com magia.
+
+                                Simbolismo: Honra plena ao nome Silva.`,
+                    dano: '3dMag + Grimório',
+                    efeitos: '[DEBUFF]',
+                    get danoJS() {
+                        const atributoSigla = "MAG";
+                        const periciaSigla = "Grimório";
+                    
+                        const atributo = data.yang.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.yang.pericias.find(per => per.atributo === atributoSigla);
+                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+                    
+                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+                    
+                        let dano = `3d${atributoValor}+${periciaValor}`;
+                    
+                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                            const dadosExtras = atributo.prestigio;
+                            dano += `+${dadosExtras}d7`;
+                        }
+                    
+                        return dano;
+                    },
+                }, 
+
+                {
+                    nome: 'Último Estágio — Forma Proibida (Colapso Estelar — A Gravidade do Luto)',
+                    descricao: `Uma forma extremamente instável, ativada por dor emocional extrema ou ódio absoluto.
+                                Saori não consegue chegar naturalmente à esse estágio, esse estágio é ativado apenas por sentimentos fortes. Toda a dor de Saori é convertida em mana pura, e, utilizando sua mana e seu grimório ao mesmo tempo, Saori se torna um ser divino.
+                                Saori agora controla completamente a gravidade ao seu redor, podendo rodar qualquer dado com vantagem. A gravidade esmagará toda e qualquer pessoa ao seu redor, não conseguindo direcioná-la, portanto, todo e qualquer ataque desferido por Saori acertará o alvo. Essa forma terá uma duração de MAG/9 (Prestígio conta como 10).
+
+                                Simbolismo: O colapso emocional de Saori.`,
+                    dano: '4dMag + Grimório + Mana',
+                    efeitos: '[BUFF] [OUTRACING]',
+                    get danoJS() {
+                        const atributoSigla = "MAG";
+                        const periciaSigla = "Grimório";
+                        const periciaSigla2 = "Mana";
+                    
+                        const atributo = data.yang.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.yang.pericias.find(per => per.atributo === atributoSigla);
+                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+                        const pericia2 = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla2);
+                    
+                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+                        const pericia2Valor = (pericia2?.valor || 0) + (pericia2?.bonus || 0);
+                    
+                        let dano = `4d${atributoValor}+${periciaValor}+${pericia2Valor}`;
+                    
+                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                            const dadosExtras = atributo.prestigio;
+                            dano += `+${dadosExtras}d7`;
+                        }
+                    
+                        return dano;
+                    },
+                }, 
+            ]
+        },
 
     ],
 }, 
@@ -628,9 +758,18 @@ yang: {
                     },
                     efeitos: '[ESPECIAL]'
                 }, 
-                {nome: 'Correntes (Fasciae Vacuae)', descricao: 'Correntes que impedem movimento físico. Se prendem em múltiplos alvos se canalizadas.',efeitos: '[IMMOBILIZED]'}, 
-                {nome: 'Vinhas (Lora Inania)', descricao: 'Vinhas que absorvem mana passivamente do alvo, e dificultam a liberação dela em testes mágicos.',efeitos: '[DEBUFF]'},
-                {nome: 'Cruz (Negacrux Finalis)', descricao: 'Uma cruz que se posiciona como uma barreira unidirecional, tornando como "não reconhecível" qualquer ataque mágico que tente intervir nela.',efeitos: '[BARRIER]'}
+
+                {nome: 'Correntes (Fasciae Vacuae)', 
+                descricao: 'Correntes que impedem movimento físico. Se prendem em múltiplos alvos se canalizadas.',
+                efeitos: '[IMMOBILIZED]'},
+
+                {nome: 'Vinhas (Lora Inania)',
+                descricao: 'Vinhas que absorvem mana passivamente do alvo, e dificultam a liberação dela em testes mágicos.',
+                efeitos: '[DEBUFF]'},
+
+                {nome: 'Cruz (Negacrux Finalis)',
+                descricao: 'Uma cruz que se posiciona como uma barreira unidirecional, tornando como "não reconhecível" qualquer ataque mágico que tente intervir nela.',
+                efeitos: '[BARRIER]'}
             ]
         },
     ],
