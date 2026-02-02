@@ -4,7 +4,7 @@ indra: {
     info: { 
         nome_data: 'indra',
         nome: 'Indra Ashura',
-        inspiracao: 1,
+        inspiracao: 0,
         nivel: 10,
         xp: 25,
         idade: 15,
@@ -513,14 +513,14 @@ yuka: {
         {sigla: "AGL", nome: "Agilidade", valor: 2, bonus: 2},
         {sigla: "INT", nome: "Inteligência", valor: 2},
         {sigla: "ESP", nome: "Espírito", valor: 1},
-        {sigla: "MAG", nome: "Magia", valor: 6, bonus: 2, prestigio: 2},
+        {sigla: "MAG", nome: "Magia", valor: 8, bonus: 2, prestigio: 2},
     ],
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
             {nome: "Mana", valor: 8, bonus: 2},
-            {nome: "Grimório", valor: 2, bonus: 2},
-            {nome: "Controle", valor: 7},
+            {nome: "Grimório", valor: 7, bonus: 2},
+            {nome: "Controle", valor: 10},
         ]},
         {atributo: "VIG", pericia_valor: [
             {nome: "Resistência", valor: 1},
