@@ -16,7 +16,7 @@ indra: {
     },
     
     atributos: [
-        {pv: 63, ps: 6},
+        {pv: 79, ps: 6},
         {sigla: "FOR", nome: "Força", valor: 6},
         {sigla: "VIG", nome: "Vigor", valor: 3},
         {sigla: "AGL", nome: "Agilidade", valor: 4, bonus: 2},
@@ -202,7 +202,7 @@ saori: {
     },
     
     atributos: [
-        {pv: 52, ps: 6},
+        {pv: 56, ps: 6},
         {sigla: "FOR", nome: "Força", valor: 1},
         {sigla: "VIG", nome: "Vigor", valor: 4},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
