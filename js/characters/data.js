@@ -4,15 +4,9 @@ indra: {
     info: { 
         nome_data: 'indra',
         nome: 'Indra Ashura',
-<<<<<<< HEAD
         inspiracao: 1,
-        nivel: 11,
-        xp: 0,
-=======
-        inspiracao: 0,
         nivel: 10,
         xp: 25,
->>>>>>> 9780a3ce97f49f1b12ea7ffb0195300971fe54ab
         idade: 15,
         altura: 171,
         peso: 65,
@@ -22,7 +16,7 @@ indra: {
     },
     
     atributos: [
-        {pv: 68, ps: 6},
+        {pv: 63, ps: 6},
         {sigla: "FOR", nome: "Força", valor: 6},
         {sigla: "VIG", nome: "Vigor", valor: 3},
         {sigla: "AGL", nome: "Agilidade", valor: 4, bonus: 2},
@@ -196,9 +190,9 @@ saori: {
     info: { 
         nome_data: 'saori',
         nome: 'Saori Silva',
-        nivel: 11,
+        nivel: 10,
         inspiracao: 1,
-        xp: 0,
+        xp: 25,
         idade: 15,
         altura: 151,
         peso: 45,
@@ -208,7 +202,7 @@ saori: {
     },
     
     atributos: [
-        {pv: 56, ps: 6},
+        {pv: 52, ps: 6},
         {sigla: "FOR", nome: "Força", valor: 1},
         {sigla: "VIG", nome: "Vigor", valor: 4},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
@@ -501,9 +495,9 @@ yuka: {
     info: { 
         nome_data: 'yuka',
         nome: 'Yuka Kisha',
-        nivel: 11,
+        nivel: 10,
         inspiracao: 2,
-        xp: 10,
+        xp: 35,
         idade: 18,
         altura: 201,
         peso: 100,
@@ -513,20 +507,20 @@ yuka: {
     },
     
     atributos: [
-        {pv: 69, ps: 8},
+        {pv: 64, ps: 8},
         {sigla: "FOR", nome: "Força", valor: 3, bonus: 2},
         {sigla: "VIG", nome: "Vigor", valor: 4},
         {sigla: "AGL", nome: "Agilidade", valor: 2, bonus: 2},
         {sigla: "INT", nome: "Inteligência", valor: 2},
         {sigla: "ESP", nome: "Espírito", valor: 1},
-        {sigla: "MAG", nome: "Magia", valor: 8, bonus: 2, prestigio: 2},
+        {sigla: "MAG", nome: "Magia", valor: 6, bonus: 2, prestigio: 2},
     ],
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
             {nome: "Mana", valor: 8, bonus: 2},
-            {nome: "Grimório", valor: 7, bonus: 2},
-            {nome: "Controle", valor: 10},
+            {nome: "Grimório", valor: 2, bonus: 2},
+            {nome: "Controle", valor: 7},
         ]},
         {atributo: "VIG", pericia_valor: [
             {nome: "Resistência", valor: 1},
@@ -671,9 +665,9 @@ yang: {
     info: { 
         nome_data: 'yang',
         nome: 'Yang Kami Lapse',
-        nivel: 11,
+        nivel: 10,
         inspiracao: 0,
-        xp: 10,
+        xp: 35,
         idade: 15,
         altura: 173,
         peso: 61,
@@ -683,7 +677,7 @@ yang: {
     },
     
     atributos: [
-        {pv: 52, ps: 7},
+        {pv: 48, ps: 7},
         {sigla: "FOR", nome: "Força", valor: 0, bonus: -2},
         {sigla: "VIG", nome: "Vigor", valor: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
@@ -781,7 +775,7 @@ yang: {
         {
             nome: 'Eternova',
             grimorio: 'Zona de Mana',
-            nivel: 'Zona de Mana',
+            nivel: 2,
             descricao: `A dimensão do vazio, provedora de todo o poder e interações do grimório de Yang Kami Lapse. Dentro dela, o espaço é irrelevante e mutável, podendo ser alterado passivamente como o usuário bem entender. A única coisa de sua aparência que não pode ser alterada é a Estrela de Eternova, também sendo essa a entidade que comanda a dimensão do vazio.
             A estrela, por sua vez, tem vontade própria e princípios rígidos que devem ser respeitados mesmo pelo próprio usuário. Caso qualquer um em Eternova desrespeite o regulamento imposto pela estrela, será executada a Penitência de Eternova, que aprisionará com correntes o condenado e selará o mesmo na dimensão pela eternidade.
             Princípio da Hospitalidade
@@ -800,7 +794,7 @@ lommie: {
         nome_data: 'lommie',
         nome: 'Lommie Yuta',
         nivel: 8,
-        xp: 90,
+        xp: 50,
         idade: 19,
         altura: 176,
         peso: 61,
@@ -881,7 +875,7 @@ alice: {
         nome: 'Shiva Wyndell',
         nivel: 10,
         inspiracao: 1,
-        xp: 75,
+        xp: 25,
         idade: 14,
         altura: 167,
         peso: 55,
@@ -891,7 +885,7 @@ alice: {
     },
     
     atributos: [
-        {pv: 63, ps: 7},
+        {pv: 58, ps: 7},
         {sigla: "FOR", nome: "Força", valor: 0, bonus: 4, prestigio: 2},
         {sigla: "VIG", nome: "Vigor", valor: 5, bonus: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 6, bonus: 2},
@@ -1041,7 +1035,7 @@ saint: {
         nome_data: 'saint',
         nome: 'Saint Valac',
         nivel: 10,
-        inspiracao: 75,
+        inspiracao: 0,
         xp: 0,
         idade: 16,
         altura: 180,
@@ -1052,7 +1046,7 @@ saint: {
     },
     
     atributos: [
-        {pv: 66, ps: 5},
+        {pv: 61, ps: 5},
         {sigla: "FOR", nome: "Força", valor: 7, bonus: 2},
         {sigla: "VIG", nome: "Vigor", valor: 6, bonus: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 8, bonus: 2, prestigio: 2},
