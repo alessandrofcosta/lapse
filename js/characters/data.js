@@ -513,14 +513,14 @@ yuka: {
         {sigla: "AGL", nome: "Agilidade", valor: 2, bonus: 2},
         {sigla: "INT", nome: "Inteligência", valor: 2},
         {sigla: "ESP", nome: "Espírito", valor: 1},
-        {sigla: "MAG", nome: "Magia", valor: 6, bonus: 2, prestigio: 2},
+        {sigla: "MAG", nome: "Magia", valor: 8, bonus: 2, prestigio: 2},
     ],
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
             {nome: "Mana", valor: 8, bonus: 2},
-            {nome: "Grimório", valor: 2, bonus: 2},
-            {nome: "Controle", valor: 7},
+            {nome: "Grimório", valor: 7, bonus: 2},
+            {nome: "Controle", valor: 10},
         ]},
         {atributo: "VIG", pericia_valor: [
             {nome: "Resistência", valor: 1},
@@ -681,15 +681,15 @@ yang: {
         {sigla: "FOR", nome: "Força", valor: 0, bonus: -2},
         {sigla: "VIG", nome: "Vigor", valor: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
-        {sigla: "INT", nome: "Inteligência", valor: 2, bonus: 2},
+        {sigla: "INT", nome: "Inteligência", valor: 4, bonus: 2},
         {sigla: "ESP", nome: "Espírito", valor: 1},
-        {sigla: "MAG", nome: "Magia", valor: 4, bonus: 5, prestigio: 2},
+        {sigla: "MAG", nome: "Magia", valor: 10, bonus: 5, prestigio: 2},
     ],
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
             {nome: "Mana", valor: 15, bonus: 2},
-            {nome: "Grimório", valor: 8, bonus: 2},
+            {nome: "Grimório", valor: 10, bonus: 2},
             {nome: "Visão", valor: 2},
             {nome: "Resistência", valor: 1},
         ]},
@@ -1049,7 +1049,7 @@ saint: {
         {pv: 76, ps: 5},
         {sigla: "FOR", nome: "Força", valor: 7, bonus: 2},
         {sigla: "VIG", nome: "Vigor", valor: 6, bonus: 0},
-        {sigla: "AGL", nome: "Agilidade", valor: 8, bonus: 2, prestigio: 2},
+        {sigla: "AGL", nome: "Agilidade", valor: 1, bonus: 2, prestigio: 3},
         {sigla: "INT", nome: "Inteligência", valor: 1},
         {sigla: "ESP", nome: "Espírito", valor: 2, bonus: -2},
         {sigla: "MAG", nome: "Magia", valor: 7, bonus: 2},
