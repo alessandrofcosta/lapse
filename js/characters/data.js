@@ -507,7 +507,7 @@ yuka: {
     },
     
     atributos: [
-        {pv: 64, ps: 8},
+        {pv: 80, ps: 8},
         {sigla: "FOR", nome: "Força", valor: 3, bonus: 2},
         {sigla: "VIG", nome: "Vigor", valor: 4},
         {sigla: "AGL", nome: "Agilidade", valor: 2, bonus: 2},
@@ -677,7 +677,7 @@ yang: {
     },
     
     atributos: [
-        {pv: 48, ps: 7},
+        {pv: 52, ps: 7},
         {sigla: "FOR", nome: "Força", valor: 0, bonus: -2},
         {sigla: "VIG", nome: "Vigor", valor: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
@@ -885,7 +885,7 @@ alice: {
     },
     
     atributos: [
-        {pv: 58, ps: 7},
+        {pv: 88, ps: 7},
         {sigla: "FOR", nome: "Força", valor: 0, bonus: 4, prestigio: 2},
         {sigla: "VIG", nome: "Vigor", valor: 5, bonus: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 6, bonus: 2},
@@ -1046,7 +1046,7 @@ saint: {
     },
     
     atributos: [
-        {pv: 61, ps: 5},
+        {pv: 76, ps: 5},
         {sigla: "FOR", nome: "Força", valor: 7, bonus: 2},
         {sigla: "VIG", nome: "Vigor", valor: 6, bonus: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 8, bonus: 2, prestigio: 2},
