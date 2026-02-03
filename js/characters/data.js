@@ -775,7 +775,7 @@ yang: {
         {
             nome: 'Eternova',
             grimorio: 'Zona de Mana',
-            nivel: 2,
+            nivel: 'Zona de Mana',
             descricao: `A dimensão do vazio, provedora de todo o poder e interações do grimório de Yang Kami Lapse. Dentro dela, o espaço é irrelevante e mutável, podendo ser alterado passivamente como o usuário bem entender. A única coisa de sua aparência que não pode ser alterada é a Estrela de Eternova, também sendo essa a entidade que comanda a dimensão do vazio.
             A estrela, por sua vez, tem vontade própria e princípios rígidos que devem ser respeitados mesmo pelo próprio usuário. Caso qualquer um em Eternova desrespeite o regulamento imposto pela estrela, será executada a Penitência de Eternova, que aprisionará com correntes o condenado e selará o mesmo na dimensão pela eternidade.
             Princípio da Hospitalidade
