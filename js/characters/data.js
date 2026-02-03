@@ -4,9 +4,15 @@ indra: {
     info: { 
         nome_data: 'indra',
         nome: 'Indra Ashura',
+<<<<<<< HEAD
         inspiracao: 1,
         nivel: 11,
         xp: 0,
+=======
+        inspiracao: 0,
+        nivel: 10,
+        xp: 25,
+>>>>>>> 9780a3ce97f49f1b12ea7ffb0195300971fe54ab
         idade: 15,
         altura: 171,
         peso: 65,
@@ -16,7 +22,7 @@ indra: {
     },
     
     atributos: [
-        {pv: 63, ps: 6},
+        {pv: 68, ps: 6},
         {sigla: "FOR", nome: "Força", valor: 6},
         {sigla: "VIG", nome: "Vigor", valor: 3},
         {sigla: "AGL", nome: "Agilidade", valor: 4, bonus: 2},
@@ -202,7 +208,7 @@ saori: {
     },
     
     atributos: [
-        {pv: 52, ps: 6},
+        {pv: 56, ps: 6},
         {sigla: "FOR", nome: "Força", valor: 1},
         {sigla: "VIG", nome: "Vigor", valor: 4},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
@@ -507,20 +513,20 @@ yuka: {
     },
     
     atributos: [
-        {pv: 64, ps: 8},
+        {pv: 69, ps: 8},
         {sigla: "FOR", nome: "Força", valor: 3, bonus: 2},
         {sigla: "VIG", nome: "Vigor", valor: 4},
         {sigla: "AGL", nome: "Agilidade", valor: 2, bonus: 2},
         {sigla: "INT", nome: "Inteligência", valor: 2},
         {sigla: "ESP", nome: "Espírito", valor: 1},
-        {sigla: "MAG", nome: "Magia", valor: 6, bonus: 2, prestigio: 2},
+        {sigla: "MAG", nome: "Magia", valor: 8, bonus: 2, prestigio: 2},
     ],
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
             {nome: "Mana", valor: 8, bonus: 2},
-            {nome: "Grimório", valor: 2, bonus: 2},
-            {nome: "Controle", valor: 7},
+            {nome: "Grimório", valor: 7, bonus: 2},
+            {nome: "Controle", valor: 10},
         ]},
         {atributo: "VIG", pericia_valor: [
             {nome: "Resistência", valor: 1},
@@ -677,7 +683,7 @@ yang: {
     },
     
     atributos: [
-        {pv: 48, ps: 7},
+        {pv: 52, ps: 7},
         {sigla: "FOR", nome: "Força", valor: 0, bonus: -2},
         {sigla: "VIG", nome: "Vigor", valor: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 2},
@@ -885,7 +891,7 @@ alice: {
     },
     
     atributos: [
-        {pv: 58, ps: 7},
+        {pv: 63, ps: 7},
         {sigla: "FOR", nome: "Força", valor: 0, bonus: 4, prestigio: 2},
         {sigla: "VIG", nome: "Vigor", valor: 5, bonus: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 6, bonus: 2},
@@ -1046,7 +1052,7 @@ saint: {
     },
     
     atributos: [
-        {pv: 61, ps: 5},
+        {pv: 66, ps: 5},
         {sigla: "FOR", nome: "Força", valor: 7, bonus: 2},
         {sigla: "VIG", nome: "Vigor", valor: 6, bonus: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 8, bonus: 2, prestigio: 2},
