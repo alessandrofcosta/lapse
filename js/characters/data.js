@@ -69,7 +69,7 @@ indra: {
             
                 if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                     const dadosExtras = atributo.prestigio;
-                    dano += `+${dadosExtras}d7`;
+                    dano += `+${dadosExtras}d5`;
                 }
             
                 return dano;
@@ -266,7 +266,7 @@ saori: {
             
                 if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                     const dadosExtras = atributo.prestigio;
-                    dano += `+${dadosExtras}d7`;
+                    dano += `+${dadosExtras}d5`;
                 }
             
                 return dano;
@@ -294,7 +294,7 @@ saori: {
             
                 if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                     const dadosExtras = atributo.prestigio;
-                    dano += `+${dadosExtras}d7`;
+                    dano += `+${dadosExtras}d5`;
                 }
             
                 return dano;
@@ -322,7 +322,7 @@ saori: {
             
                 if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                     const dadosExtras = atributo.prestigio;
-                    dano += `+${dadosExtras}d7`;
+                    dano += `+${dadosExtras}d5`;
                 }
             
                 return dano;
@@ -350,7 +350,7 @@ saori: {
             
                 if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                     const dadosExtras = atributo.prestigio;
-                    dano += `+${dadosExtras}d7`;
+                    dano += `+${dadosExtras}d5`;
                 }
             
                 return dano;
@@ -385,7 +385,7 @@ saori: {
                     
                         if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                             const dadosExtras = atributo.prestigio;
-                            dano += `+${dadosExtras}d7`;
+                            dano += `+${dadosExtras}d5`;
                         }
                     
                         return dano;
@@ -415,7 +415,7 @@ saori: {
                     
                         if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                             const dadosExtras = atributo.prestigio;
-                            dano += `+${dadosExtras}d7`;
+                            dano += `+${dadosExtras}d5`;
                         }
                     
                         return dano;
@@ -445,7 +445,7 @@ saori: {
                     
                         if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                             const dadosExtras = atributo.prestigio;
-                            dano += `+${dadosExtras}d7`;
+                            dano += `+${dadosExtras}d5`;
                         }
                     
                         return dano;
@@ -479,7 +479,7 @@ saori: {
                     
                         if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                             const dadosExtras = atributo.prestigio;
-                            dano += `+${dadosExtras}d7`;
+                            dano += `+${dadosExtras}d5`;
                         }
                     
                         return dano;
@@ -561,7 +561,7 @@ yuka: {
                     
                         if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                             const dadosExtras = atributo.prestigio;
-                            dano += `+${dadosExtras}d7`;
+                            dano += `+${dadosExtras}d5`;
                         }
                     
                         return dano;
@@ -587,7 +587,7 @@ yuka: {
                     
                         if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                             const dadosExtras = atributo.prestigio;
-                            dano += `+${dadosExtras}d7`;
+                            dano += `+${dadosExtras}d5`;
                         }
                     
                         return dano;
@@ -626,7 +626,7 @@ yuka: {
                     
                         if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                             const dadosExtras = atributo.prestigio;
-                            dano += `+${dadosExtras}d7`;
+                            dano += `+${dadosExtras}d5`;
                         }
                     
                         return dano;
@@ -652,7 +652,7 @@ yuka: {
                     
                         if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                             const dadosExtras = atributo.prestigio;
-                            dano += `+${dadosExtras}d7`;
+                            dano += `+${dadosExtras}d5`;
                         }
                     
                         return dano;
@@ -682,7 +682,7 @@ yuka: {
             
                 if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                     const dadosExtras = atributo.prestigio;
-                    dano += `+${dadosExtras}d7`;
+                    dano += `+${dadosExtras}d5`;
                 }
             
                 return dano;
@@ -789,7 +789,7 @@ yang: {
                     
                         if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                             const dadosExtras = atributo.prestigio;
-                            dano += `+${dadosExtras}d7`;
+                            dano += `+${dadosExtras}d5`;
                         }
                     
                         return dano;
@@ -828,7 +828,7 @@ yang: {
                     
                         if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                             const dadosExtras = atributo.prestigio;
-                            dano += `+${dadosExtras}d7`;
+                            dano += `+${dadosExtras}d5`;
                         }
                     
                         return dano;
@@ -918,7 +918,7 @@ lommie: {
             
                 if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                     const dadosExtras = atributo.prestigio;
-                    dano += `+${dadosExtras}d7`;
+                    dano += `+${dadosExtras}d5`;
                 }
             
                 return dano;
@@ -1002,7 +1002,7 @@ alice: {
             
                 if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                     const dadosExtras = atributo.prestigio;
-                    dano += `+${dadosExtras}d7`;
+                    dano += `+${dadosExtras}d5`;
                 }
             
                 return dano;
@@ -1030,7 +1030,7 @@ alice: {
             
                 if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                     const dadosExtras = atributo.prestigio;
-                    dano += `+${dadosExtras}d7`;
+                    dano += `+${dadosExtras}d5`;
                 }
             
                 return dano;
@@ -1058,7 +1058,7 @@ alice: {
             
                 if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                     const dadosExtras = atributo.prestigio;
-                    dano += `+${dadosExtras}d7`;
+                    dano += `+${dadosExtras}d5`;
                 }
             
                 return dano;
@@ -1086,7 +1086,7 @@ alice: {
             
                 if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                     const dadosExtras = atributo.prestigio;
-                    dano += `+${dadosExtras}d7`;
+                    dano += `+${dadosExtras}d5`;
                 }
             
                 return dano;
@@ -1156,7 +1156,7 @@ saint: {
             
                 if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                     const dadosExtras = atributo.prestigio;
-                    dano += `+${dadosExtras}d7`;
+                    dano += `+${dadosExtras}d5`;
                 }
             
                 return dano;
@@ -1197,7 +1197,7 @@ saint: {
             
                 if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
                     const dadosExtras = atributo.prestigio;
-                    dano += `+${dadosExtras}d7`;
+                    dano += `+${dadosExtras}d5`;
                 }
             
                 return dano;
