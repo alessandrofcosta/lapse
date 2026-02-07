@@ -596,7 +596,7 @@ yuka: {
             ]
         },
         {
-            nome: 'Trovão que Persegue as Nuvens - Ataque Único',
+            nome: 'Trovão que Persegue as Nuvens',
             grimorio: 'Grimório',
             nivel: 3,
             descricao: 
@@ -604,75 +604,63 @@ yuka: {
 
             A ponta de uma lança começa a sair do grimorio, mas contrário ao usual vermelho, ela é branca. A nova lança de Yuka mais parece um relâmpago do que uma lança, sua forma tremendo com a força guardada dentro de si mesma. 
 
-            Yuka empunha sua nova lança e fecha o grimorio. O ambiente fica mais carregado, como se os cabelos de todos fossem subir só pela presença da lança. É possível até mesmo ver que os raios saindo do cabo da lança pegam um pouco no braço de Yuka.
-
-            Há duas formas de Yuka usar sua nova habilidade: a primeira é usando seu poder de uma só vez e a outra é liberando a energia em pequenas partes (Tome como referencia o Starrk de Bleach). A primeira forma é simples, Yuka aponta sua lança para o alvo e então uma grande rajada de relâmpagos é lançada em direção ao alvo, é até mesmo possível escutar um "rugido".
-
-            A segunda forma é Yuka usando de seu controle sobre sua própria magia, algo que é tal como um canhão que pode ser usado de forma rápida. 
-
-            Yuka finca sua lança no chão e diversas lanças iguais a principal são invocadas, e então lançadas em direção ao alvo.`,
-            dano: '1dMag + Controle',
-            get danoJS() {
-                const atributoSigla = "MAG";
-                const periciaSigla = "Controle";
-            
-                const atributo = data.yuka.atributos.find(attr => attr.sigla === atributoSigla);
-                const periciaBlock = data.yuka.pericias.find(per => per.atributo === atributoSigla);
-                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
-            
-                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
-                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
-            
-                let dano = `1d${atributoValor}+${periciaValor}`;
-            
-                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
-                    const dadosExtras = atributo.prestigio;
-                    dano += `+${dadosExtras}d7`;
-                }
-            
-                return dano;
-            },
-            efeitos: ['[OUTRACING]']
-        },
+            Yuka empunha sua nova lança e fecha o grimorio. O ambiente fica mais carregado, como se os cabelos de todos fossem subir só pela presença da lança. É possível até mesmo ver que os raios saindo do cabo da lança pegam um pouco no braço de Yuka.`,
+            subataques: [
                 {
-            nome: 'Trovão que Persegue as Nuvens - Ataque Múltiplo',
-            grimorio: 'Grimório',
-            nivel: 3,
-            descricao: 
-            `O grimorio de Yuka, que é de uma cor escura, começa a levitar e sobe até ficar na altura de seu ombro. Yuka então abre o seu grimorio com um movimento de seu punho, as páginas começam a virar e então ele toma uma cor branca azulada, coberto por eletricidade e pequenos raios.
-
-            A ponta de uma lança começa a sair do grimorio, mas contrário ao usual vermelho, ela é branca. A nova lança de Yuka mais parece um relâmpago do que uma lança, sua forma tremendo com a força guardada dentro de si mesma. 
-
-            Yuka empunha sua nova lança e fecha o grimorio. O ambiente fica mais carregado, como se os cabelos de todos fossem subir só pela presença da lança. É possível até mesmo ver que os raios saindo do cabo da lança pegam um pouco no braço de Yuka.
-
-            Há duas formas de Yuka usar sua nova habilidade: a primeira é usando seu poder de uma só vez e a outra é liberando a energia em pequenas partes (Tome como referencia o Starrk de Bleach). A primeira forma é simples, Yuka aponta sua lança para o alvo e então uma grande rajada de relâmpagos é lançada em direção ao alvo, é até mesmo possível escutar um "rugido".
-
-            A segunda forma é Yuka usando de seu controle sobre sua própria magia, algo que é tal como um canhão que pode ser usado de forma rápida. 
-
-            Yuka finca sua lança no chão e diversas lanças iguais a principal são invocadas, e então lançadas em direção ao alvo.`,
-            dano: '1dMag',
-            get danoJS() {
-                const atributoSigla = "MAG";
-                const periciaSigla = "Controle";
-            
-                const atributo = data.yuka.atributos.find(attr => attr.sigla === atributoSigla);
-                const periciaBlock = data.yuka.pericias.find(per => per.atributo === atributoSigla);
-                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
-            
-                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
-                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
-            
-                let dano = `1d${atributoValor}`;
-            
-                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
-                    const dadosExtras = atributo.prestigio;
-                    dano += `+${dadosExtras}d7`;
-                }
-            
-                return dano;
-            },
-            efeitos: ['[OUTRACING]']
+                    nome: 'Ataque Único', 
+                    descricao: 'Usa seu poder de uma só vez. A primeira forma é simples, Yuka aponta sua lança para o alvo e então uma grande rajada de relâmpagos é lançada em direção ao alvo, é até mesmo possível escutar um "rugido".',
+                    efeitos: '[OUTRACING]',
+                    dano: '1dMag + Controle',
+                    get danoJS() {
+                        const atributoSigla = "MAG";
+                        const periciaSigla = "Controle";
+                    
+                        const atributo = data.yuka.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.yuka.pericias.find(per => per.atributo === atributoSigla);
+                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+                    
+                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+                    
+                        let dano = `1d${atributoValor}+${periciaValor}`;
+                    
+                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                            const dadosExtras = atributo.prestigio;
+                            dano += `+${dadosExtras}d7`;
+                        }
+                    
+                        return dano;
+                    }
+                },
+                {
+                    nome: 'Ataque Múltiplo', 
+                    descricao: 'Yuka usando de seu controle sobre sua própria magia, algo que é tal como um canhão que pode ser usado de forma rápida. Yuka finca sua lança no chão e diversas lanças iguais a principal são invocadas, e então lançadas em direção ao alvo.',
+                    efeitos: '[OUTRACING]',
+                    dano: '1dMag',
+                    get danoJS() {
+                        const atributoSigla = "MAG";
+                        const periciaSigla = "Controle";
+                    
+                        const atributo = data.yuka.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.yuka.pericias.find(per => per.atributo === atributoSigla);
+                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+                    
+                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+                    
+                        let dano = `1d${atributoValor}`;
+                    
+                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                            const dadosExtras = atributo.prestigio;
+                            dano += `+${dadosExtras}d7`;
+                        }
+                    
+                        return dano;
+                    }
+                },
+            ]
         },
+
         {
             nome: 'Gekishin',
             grimorio: 'Sem Grimório',
