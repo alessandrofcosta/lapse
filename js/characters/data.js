@@ -84,8 +84,10 @@ indra: {
             efeitos: ['[Zwzl OꟻxᴙUvi]'],
             subataques: [
                 {nome: 'Lommie',
+                descricao: '',
                 efeitos: '[SUMMON]'},
                 {nome: 'Chamado das Três Sombras',
+                descricao: '',
                 efeitos: '[SUMMON]'},
             ]
             
