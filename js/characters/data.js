@@ -78,10 +78,18 @@ indra: {
         },
         {
             nome: 'Ressurreição dos Derrotados',
-            grimorio: 'Grimório',
-            nivel: 2,
+            grimorio: 'Zwzl OꟻxᴙUvi',
+            nivel: 'Zwzl OꟻxᴙUvi',
             descricao: 'Após derrotar um mago, Indra pode se comunicar com o resto de mana em seu corpo e caso o derrotado seja convencido, pode trazê-lo de volta a vida como seu servo leal. Todas as habilidades estarão disponíveis para o uso do monarca. Todo servo tem a capacidade diminuída pela metade. Servos não tem a capacidade de se comunicar, eles apenas obedecem ao monarca.',
-            efeitos: ['[ESPECIAL]'],
+            efeitos: ['[Zwzl OꟻxᴙUvi]'],
+            subataques: [
+                {nome: 'Lommie',
+                efeitos: '[SUMMON]'},
+                {nome: 'Chamado das Três Sombras',
+                efeitos: '[SUMMON]'},
+            ]
+            
+            
         },
         {
             nome: 'Correntes Espirituais Demoníacas ',
@@ -721,7 +729,7 @@ yuka: {
         },
 
         {
-            nome: 'Gekishin',
+            nome: 'Tremor que estremece a terra',
             grimorio: 'Sem Grimório',
             nivel: 2,
             descricao: 'O usuário consegue fazer o próprio ar tremer frente o poder, ele consegue causar terremotos ou fazer o espaço em volta dele tremer. Se ele imbuir em sua lança esse feitiço ele conseguirá usar de forma mais controlada, se alguem for atingido pela lança com o poder do tremor a vítima ficará atordoada.',
