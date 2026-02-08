@@ -104,6 +104,34 @@ indra: {
             descricao: 'Após acertar três ataques no mesmo alvo, Indra marca a alma do inimigo com a Cicatriz de Arcana — uma ruptura espiritual que compromete o fluxo natural de energia mágica. Se o inimigo for mais fraco ou até do mesmo nível que Indra, ao tentar usar magia, o alvo sente dor espiritual intensa. Feitiços custam mais energia e têm chance de falhar.',
             efeitos: ['[DEBUFF] [PASSIVE]']
         },
+        {
+            nome: 'Devorada de mana',
+            grimorio: 'Grimório',
+            nivel: 3,
+            descricao: 'Símbolos arcanos se acendem ao redor de Indra, formando um círculo suspenso. Cada marca desaba em uma explosão concentrada que atinge o inimigo com força física real, quebrando o corpo ao mesmo tempo em que suga sua mana no ponto de impacto. A magia drenada não desaparece: ela reforça os próximos ataques, criando uma sequência crescente de destruição.',
+            efeitos: ['[DEBUFF]'],
+            dano: ' 1dMag + Grimório',
+            get danoJS() {
+                const atributoSigla = "MAG";
+                const periciaSigla = "Grimório";
+            
+                const atributo = data.indra.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.indra.pericias.find(per => per.atributo === atributoSigla);
+                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+            
+                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+            
+                let dano = `1d${atributoValor}+${periciaValor}`;
+            
+                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                    const dadosExtras = atributo.prestigio;
+                    dano += `+${dadosExtras}d5`;
+                }
+            
+                return dano;
+            },
+        },
     ],
 }, 
 
@@ -484,8 +512,39 @@ saori: {
                     
                         return dano;
                     },
+
+                    
                 }, 
             ]
+        },
+
+        {
+            nome: 'Realidade Distorcida (歪んだ現実 – Yuganda Genjitsu)',
+            grimorio: 'Grimório',
+            nivel: 3,
+            descricao: 'Saori molda uma caneta tinteiro gravitacional, a gravidade toma forma de uma folha, onde o mundo vira uma página abstrata. Saori pode fazer o que quiser com página desde que esteja com a caneta, desenhar, afundar rasgar. Quando essa folha é amassada, Saori comprime a gravidade ambiente, quando ela é riscada a caneta, cria um vão que a gravidade também gera acompanhando a linha, de riscar forte demais, é normal que você afunde o papel, e por isso ele criaria um aprofundamento da gravidade, se rasgar, quebra.',
+            dano: ' 3dMag + Grimório',
+            get danoJS() {
+                const atributoSigla = "MAG";
+                const periciaSigla = "Grimório";
+            
+                const atributo = data.saori.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.saori.pericias.find(per => per.atributo === atributoSigla);
+                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+            
+                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+            
+                let dano = `3d${atributoValor}+${periciaValor}`;
+            
+                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                    const dadosExtras = atributo.prestigio;
+                    dano += `+${dadosExtras}d5`;
+                }
+            
+                return dano;
+            },
+            efeitos: ['[SPEEDBLITZ]']
         },
 
     ],
