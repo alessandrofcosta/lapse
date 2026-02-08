@@ -145,6 +145,72 @@ indra: {
     ],
 }, 
 
+sombras: {
+    info: { 
+        nome_data: 'sombras',
+        nome: 'Sombras',
+        nivel: 13,
+        xp: 0,
+        idade: '∞',
+        altura: '0',
+        inspiracao: '',
+        peso: '',
+        classe: '',
+        arquetipo: '',
+        discord_id: '1317246514535465010'
+    },
+    
+    atributos: [
+        {pv: 79, ps: 6},
+        {sigla: "FOR", nome: "Força", valor: 3},
+        {sigla: "VIG", nome: "Vigor", valor: 2},
+        {sigla: "AGL", nome: "Agilidade", valor: 8, bonus: 5, prestigio: 2},
+        {sigla: "INT", nome: "Inteligência", valor: 0},
+        {sigla: "ESP", nome: "Espírito", valor: 0},
+        {sigla: "MAG", nome: "Magia", valor: 9, prestigio: 2},
+    ],
+
+    pericias: [
+        {atributo: "MAG", pericia_valor: [
+            {nome: "Mana", valor: 13},
+            {nome: "Resistência", valor: 10, bonus: 5},
+            {nome: "Esgrima", valor: 6, bonus: 5},
+        ]},
+        {atributo: "AGL", pericia_valor: [
+            {nome: "Reflexos", valor: 5, bonus: 5},
+            {nome: "Esgrima", valor: 6, bonus: 5},
+        ]},
+    ],
+    
+    habilidades: [
+        {
+            nome: 'Chamado das Três Sombras',
+            grimorio: 'Zwzl OꟻxᴙUvi',
+            nivel: 'Zwzl OꟻxᴙUvi',
+            descricao: 'Indra abre seu grimório e traça um único símbolo no ar. Uma única sombra é invocada e controlada por Indra enquanto ele quiser, essa sombra pode se transformar em Lancelot, Boei ou Aemond sem cobrança de turnos.',
+            subataques: [
+                {nome: 'Boei',
+                descricao: `A presença de Boei distorce o conceito de ataque.
+                Sempre que Indra é alvo de qualquer investida, Boei reage antes mesmo da intenção se tornar ação.
+                O golpe é interceptado, absorvido ou simplesmente anulado.
+                Para Boei, proteger Indra não é um ato consciente… é uma lei primordial do mundo.`,
+                efeitos: '[BARRIER]'},
+                {nome: 'Aemond',
+                descricao: `A lâmina de Aemond corta primeiro, não o corpo, mas o vínculo entre carne e mana.
+                No instante do acerto, o cajado desperta e abre um canal etéreo invisível.
+                A mana do alvo, já instável, é sugada à força e drenada pelo cajado como um fluxo contínuo de sombras.
+
+                O inimigo sente o corpo enfraquecer enquanto sua magia é arrancada gota por gota, incapaz de reagir ou se recompor.
+                
+                Aemond também pode absorver e cortar a mana de qualquer ataque que vier em sua direção usando seu cajado`,
+                efeitos: '[DEBUFF]'},
+            ]
+            
+            
+        },
+    ],
+}, 
+
 shiva: {
     info: { 
         nome_data: 'shiva',

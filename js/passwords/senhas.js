@@ -15,7 +15,8 @@ const senhas = [
     "780a23528c754a504894e9747d7df4fde20e937d3e9e63a86c001eecb0908b46",
     "eea679d534adb97c1fa089e77f5450bd7d176987b6788853f8277d1c76f8b15e",
     "b2ef102cbb356deaf97350a1f1ac4b51ac6bb91f54cea82bd95e03eea7f20255",
-    "5d5bddb577102d0a960bcf6fea9050c10fe5e9feddcb5c2170ccab872db9ee87"
+    "5d5bddb577102d0a960bcf6fea9050c10fe5e9feddcb5c2170ccab872db9ee87",
+    "4a38989ac1848855bfe02dfeb9bd31b96fedeab9daf9c334fb9c5d443b195afc"
 ];
 
 function removerAcentos(str) {
