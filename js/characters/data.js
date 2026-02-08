@@ -161,7 +161,7 @@ sombras: {
     },
     
     atributos: [
-        {pv: 79, ps: 6},
+        {pv: 74, ps: '∞'},
         {sigla: "FOR", nome: "Força", valor: 3},
         {sigla: "VIG", nome: "Vigor", valor: 2},
         {sigla: "AGL", nome: "Agilidade", valor: 8, bonus: 5, prestigio: 2},
