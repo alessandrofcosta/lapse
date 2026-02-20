@@ -4,7 +4,7 @@ function capitalize(str) {
 }
 
 function sendNPCMessage(message) {
-    const webhookURLNPC = 'https://discord.com/api/webhooks/COLOQUE_AQUI/WEBHOOK_NPC';
+    const webhookURLNPC = 'https://discord.com/api/webhooks/1343770648316739714/Y479MCDCX4kTtbpjOroGCJ4aLaiL-l_1jY7C_Qe8YuhQAAWdFCbSpRpzofCKIfFdTSXH';
 
     const mensagem = {
         content: message

@@ -11,7 +11,7 @@ const npcData = {
             peso: 71,
             classe: 'Entidade',
             arquetipo: 'Controlador',
-            discord_id: '1317246514535465010'
+            discord_id: 'Okkotsu'
         },
 
         atributos: [
