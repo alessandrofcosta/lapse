@@ -58,3 +58,14 @@ Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICEN
 ---
 Caso precise de mais informações, sinta-se à vontade para abrir uma issue no repositório!
 
+
+## Área de NPCs
+- Login separado para NPCs em `pages/npcs/login.html`.
+- Fichas e páginas de história de NPC ficam em `pages/npcs/`.
+- Dados de NPCs ficam separados em `js/npcs/data.js` para evitar confusão com dados dos players.
+- Rolagens de NPC usam webhook próprio em `js/roll/roll-dice-npc.js`.
+
+### Configuração do webhook NPC
+1. Crie um webhook no canal privado de NPCs no Discord.
+2. Substitua o valor de `webhookURLNPC` em `js/roll/roll-dice-npc.js`.
+3. Não reutilize o webhook dos players.

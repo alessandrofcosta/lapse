@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head class="js-head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha NPC</title>
+    <link rel="stylesheet" href="../../css/characters/global-characters.css">
+    <link rel="shortcut icon" href="../../media/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="js-header"></header>
+    <main>
+        <div class="container js-info-container"></div>
+
+
+        <div class="container">
+            <h1>Atributos</h1>
+            <div class="status-container js-status-container"></div>
+            <div class="atributo-dado-container">
+                <button class="d20-button js-d20-button"><img src="../../media/dado-d20.png" alt=""></button>
+                <div class="atributo-dado-1 js-atributo-dado-1"></div>
+                <div class="atributo-dado-2 js-atributo-dado-2"></div>
+            </div>
+        </div>
+
+
+        <div id="pericia-container" class="container js-pericia-container">
+            <h1>Perícias</h1>
+            <div class="soma-pericia js-soma-pericia"></div>
+            <div class="dado-pericia-container js-dado-pericia-container"></div>
+        </div>
+
+        <div id="habilidade-container" class="container js-habilidade-container">
+            <h1>Habilidades</h1>
+        </div>
+
+        <div id="ataque-container" class="container js-ataque-container">
+            <h1>Ataques</h1>
+        </div>
+    </main>
+
+    <script src="../../js/passwords/confirmsenhas-npc.js"></script>
+    <script src="../../js/npcs/data.js"></script>
+    <script src="../../js/npcs/global.js"></script>
+    <script src="../../js/npcs/ficha.js"></script>
+    <script src="../../js/roll/roll-dice-npc.js"></script>
+    <script src="../../js/characters/pv-ps.js"></script>
+</body>
+</html>
