@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+:root {
+    --cor-1: #32284f;
+    --cor-2: #4c3e77;
+    --cor-3: #9f8be4;
+    --cor-4: #27213f;
+    --cor-5: #130f21;
+}
+
+header {
+    color: white;
+}
+
+header a {
+    color: white;
+}
