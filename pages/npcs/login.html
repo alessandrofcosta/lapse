@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fichas NPC</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="shortcut icon" href="../../media/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="login-container-ajust">
+        <img src="../../media/lapse.png" alt="imagem-rpg">
+        <div class="login-container">
+            <h1>Acesse a Ficha NPC</h1>
+            <form id="loginFormNPC">
+                <input type="password" id="senhaNPC" placeholder="Digite a palavra do NPC" required>
+
+                <div class="show-password">
+                    <input type="checkbox" id="showPasswordNPC">
+                    <label for="showPasswordNPC">Mostrar palavra</label>
+                </div>
+
+                <button type="submit">Acessar NPC</button>
+                <p class="error-message" id="errorMessageNPC" style="display:none;">Palavra incorreta!</p>
+            </form>
+        </div>
+    </div>
+
+    <script src="../../js/passwords/senhas-npc.js"></script>
+</body>
+</html>
