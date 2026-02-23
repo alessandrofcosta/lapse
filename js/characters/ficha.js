@@ -195,11 +195,11 @@ function renderAtaques() {
                 <span class="subhabilidade">${sub.nome}</span>`;
 
                 if (sub.dano) {
-                    subhabilidadeHTML += `<span class="subataque-efeito">${sub.dano}</span>`;
+                    subhabilidadeHTML += ` <span class="subataque-efeito">${sub.dano}</span>`;
                 }
 
                 if (sub.efeitos) {
-                    subhabilidadeHTML += `<span class="subataque-efeito">${sub.efeitos}</span>`;
+                    subhabilidadeHTML += ` <span class="subataque-efeito">${sub.efeitos}</span>`;
                 }
 
                 subhabilidadeHTML += `</span>`;
