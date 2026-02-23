@@ -280,12 +280,7 @@ main h1 { text-align: center; }
     .atributo-dado-1, .atributo-dado-2 { margin: 0 !important; }
 
     .pericias {
-        grid-template-columns: auto minmax(0, 1fr) auto;
-        row-gap: 4px;
-    }
-
-    .pericias strong {
-        grid-column: 2 / -1;
+        gap: 4px;
     }
 }
 
@@ -311,24 +306,29 @@ main h1 { text-align: center; }
 .pericia p { text-align: left; margin: 10px 0; }
 
 .pericias {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    display: flex;
     align-items: center;
-    column-gap: 6px;
+    gap: 6px;
+    flex-wrap: nowrap;
 }
 
 .pericia-info {
     min-width: 0;
-    overflow-wrap: anywhere;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .pericia-info-number {
+    margin-left: auto;
     white-space: nowrap;
 }
 
 .pericias strong {
     white-space: nowrap;
-    justify-self: end;
+    min-width: 2ch;
+    text-align: right;
 }
 
 .titulo-pericia,
