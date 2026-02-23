@@ -198,8 +198,15 @@ main h1 { text-align: center; }
     padding-bottom: 10px;
 }
 
-#icontainers,
-.dado-pericia-container { text-align: center; }
+#icontainers { text-align: center; }
+
+.dado-pericia-container {
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    align-items: start;
+}
 
 .dado-info-container,
 .pv-container,
@@ -228,8 +235,7 @@ main h1 { text-align: center; }
     transform: translateY(-2px);
 }
 
-.atributos,
-.pericias {
+.atributos {
     display: flex;
     align-items: center;
 }
@@ -272,6 +278,15 @@ main h1 { text-align: center; }
 @media screen and (max-width: 500px) {
     .atributo-dado-container { flex-direction: column; }
     .atributo-dado-1, .atributo-dado-2 { margin: 0 !important; }
+
+    .pericias {
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        row-gap: 4px;
+    }
+
+    .pericias strong {
+        grid-column: 2 / -1;
+    }
 }
 
 .atributo-dado-1, .atributo-dado-2 { margin: auto; }
@@ -286,15 +301,35 @@ main h1 { text-align: center; }
 .sanidade-atual { background-color: rgba(37, 80, 166, 0.5); }
 
 .pericia {
-    display: inline-block;
-    vertical-align: middle;
-    padding: 10px;
-    margin: 10px;
-    height: 200px;
+    width: min(100%, 320px);
+    min-height: 200px;
+    padding: 12px;
+    margin: 0 auto;
     transition: transform 0.2s ease-in-out;
 }
 
 .pericia p { text-align: left; margin: 10px 0; }
+
+.pericias {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    align-items: center;
+    column-gap: 6px;
+}
+
+.pericia-info {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.pericia-info-number {
+    white-space: nowrap;
+}
+
+.pericias strong {
+    white-space: nowrap;
+    justify-self: end;
+}
 
 .titulo-pericia,
 .pericia-info,
