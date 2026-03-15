@@ -55,25 +55,7 @@ keshi: {
                 nivel: 2,
                 descricao: 'Marca o alvo e enfraquece suas resistências mágicas por 2 turnos.',
                 dano: '1dMag + Mana',
-                get danoJS() {
-                    const atributoSigla = 'MAG';
-                    const periciaSigla = 'Mana';
-
-                    const atributo = npcData.oraculo.atributos.find(attr => attr.sigla === atributoSigla);
-                    const periciaBlock = npcData.oraculo.pericias.find(per => per.atributo === atributoSigla);
-                    const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
-
-                    const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
-                    const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
-
-                    let dano = `1d${atributoValor}+${periciaValor}`;
-
-                    if (atributo && typeof atributo.prestigio === 'number' && atributo.prestigio > 0) {
-                        dano += `+${atributo.prestigio}d5`;
-                    }
-
-                    return dano;
-                },
+                calculoDano: { atributo: 'MAG', pericia: 'Mana' },
                 efeitos: ['[DEBUFF]']
             },
             {
@@ -82,25 +64,7 @@ keshi: {
                 nivel: 4,
                 descricao: 'Concentra energia astral e abre um corte no espaço na direção do alvo.',
                 dano: '1dMag + Controle',
-                get danoJS() {
-                    const atributoSigla = 'MAG';
-                    const periciaSigla = 'Controle';
-
-                    const atributo = npcData.oraculo.atributos.find(attr => attr.sigla === atributoSigla);
-                    const periciaBlock = npcData.oraculo.pericias.find(per => per.atributo === atributoSigla);
-                    const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
-
-                    const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
-                    const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
-
-                    let dano = `1d${atributoValor}+${periciaValor}`;
-
-                    if (atributo && typeof atributo.prestigio === 'number' && atributo.prestigio > 0) {
-                        dano += `+${atributo.prestigio}d5`;
-                    }
-
-                    return dano;
-                },
+                calculoDano: { atributo: 'MAG', pericia: 'Controle' },
                 efeitos: ['[MAGIC] [BURST]']
             }
         ]

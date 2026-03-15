@@ -176,6 +176,45 @@ function renderHabilidade() {
     elements.habilidade.innerHTML = habilidadesHTML;
 }
 
+
+function formatModifier(valor) {
+    if (valor > 0) {
+        return `+${valor}`;
+    }
+
+    return `${valor}`;
+}
+
+function calcularDanoHabilidade(personagem, habilidade) {
+    if (!habilidade?.calculoDano?.atributo) {
+        return undefined;
+    }
+
+    const atributoSigla = habilidade.calculoDano.atributo;
+    const periciaNome = habilidade.calculoDano.pericia;
+    const textoDano = String(habilidade?.dano || '');
+    const quantidadeDados = Number(textoDano.match(/(\d+)d/i)?.[1]) || 1;
+
+    const atributo = personagem.atributos.find((attr) => attr.sigla === atributoSigla);
+    const periciaBlock = personagem.pericias.find((per) => per.atributo === atributoSigla);
+    const pericia = periciaBlock?.pericia_valor.find((val) => val.nome === periciaNome);
+
+    const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+    const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+
+    let dano = `${quantidadeDados}d${atributoValor}`;
+
+    if (periciaNome) {
+        dano += formatModifier(periciaValor);
+    }
+
+    if (atributo && typeof atributo.prestigio === 'number' && atributo.prestigio > 0) {
+        dano += `+${atributo.prestigio}d5`;
+    }
+
+    return dano;
+}
+
 function renderAtaques() {
     let ataquesHTML = '';
     let totalHTML = '<h1>Ataques</h1>';
@@ -187,7 +226,9 @@ function renderAtaques() {
                 subhabilidadeHTML += `
                 <span class="divide-subhabilidade">
                 <button class="roll-button-ataque js-roll-button-attack"
-                data-dano="${sub.danoJS}"
+                data-atributo="${sub.calculoDano?.atributo || ""}"
+                data-pericia="${sub.calculoDano?.pericia || ""}"
+                data-dano="${calcularDanoHabilidade(npcData[nomeAcessoNPC], sub)}"
                 data-nome="${sub.nome}"
                 data-efeito="${sub.efeitos}">
                 <img src="../../media/dado-d20.png">
@@ -210,7 +251,9 @@ function renderAtaques() {
             let efeitosHTML = '';
             ataquesHTML = `<p>
             <button class="roll-button-ataque js-roll-button-attack"
-            data-dano="${valor.danoJS}"
+            data-atributo="${valor.calculoDano?.atributo || ""}"
+            data-pericia="${valor.calculoDano?.pericia || ""}"
+            data-dano="${calcularDanoHabilidade(npcData[nomeAcessoNPC], valor)}"
             data-nome="${valor.nome}"
             data-efeito="${valor.efeitos}">
             <img src="../../media/dado-d20.png">
