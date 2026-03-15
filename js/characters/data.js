@@ -6,7 +6,7 @@ indra: {
         nome: 'Indra Ashura',
         inspiracao: 1,
         nivel: 11,
-        xp: 0,
+        xp: 5,
         idade: 15,
         altura: 171,
         peso: 65,
@@ -211,92 +211,13 @@ sombras: {
     ],
 }, 
 
-shiva: {
-    info: { 
-        nome_data: 'shiva',
-        nome: 'Shiva Wyndell',
-        nivel: 7,
-        idade: 14,
-        altura: 163,
-        peso: 47,
-        classe: 'Plebeu',
-        arquetipo: 'Lutador',
-        discord_id: '1213237748505251861'
-    },
-    
-    atributos: [
-        {pv: 47, ps: 8},
-        {sigla: "FOR", nome: "Força", valor: 9, bonus: 3},
-        {sigla: "VIG", nome: "Vigor", valor: 0},
-        {sigla: "AGL", nome: "Agilidade", valor: 0, bonus: 2},
-        {sigla: "INT", nome: "Inteligência", valor: 1},
-        {sigla: "ESP", nome: "Espírito", valor: 0},
-        {sigla: "MAG", nome: "Magia", valor: 3, prestigio: 2},
-    ],
-
-    pericias: [
-        {atributo: "MAG", pericia_valor: [
-            {nome: "Mana", valor: 3, bonus: 2},
-            {nome: "Visão", valor: 0, bonus: -2},
-            {nome: "Grimório", valor: 1, bonus: 2},
-            {nome: "Controle", valor: 1},
-        ]},
-        {atributo: "FOR", pericia_valor: [
-            {nome: "Luta", valor: 3},
-        ]},
-        {atributo: "AGL", pericia_valor: [
-            {nome: "Atletismo", valor: 2},
-            {nome: "Furtividade", valor: 0, bonus: -2},
-        ]},
-        {atributo: "ESP", pericia_valor: [
-            {nome: "Intuição", valor: 0, bonus: -2},
-        ]},
-        {atributo: "INT", pericia_valor: [
-            {nome: "Percepção", valor: 0, bonus: -2}
-        ]},
-    ],
-    
-    habilidades: [
-        {
-            nome: 'Vácuo',
-            grimorio: 'Sem Grimório',
-            nivel: 1,
-            descricao: 'Cria um efeito em volta da cabeça do inimigo, impedindo-o de respirar, se mantido por muito tempo o inimigo pode até desmaiar por falta de ar.',
-            efeitos: ['[DEBUFF]']
-        },
-        {
-            nome: 'Esquiva do Vendaval',
-            grimorio: 'Sem Grimório',
-            nivel: 1,
-            descricao: 'Usa correntes de ar para desviar de um ataque.',
-            efeitos: ['[BUFF]']
-        },
-        {
-            nome: 'Vendaval',
-            grimorio: 'Grimório',
-            nivel: 1,
-            descricao: 'Dispara uma sequência de socos e chutes potencializados por vento, fazendo inimigos atingidos serem arremessados para longe.',
-            dano: ' 1dFor + Grimório',
-            efeitos: []
-        },
-        {
-            nome: 'Dança das Lâminas',
-            grimorio: 'Grimório',
-            nivel: 2,
-            descricao: 'O usuário controla o ar dentro do pulmão do adversário e cria várias lâminas minúsculas, cortando e ferindo o interior dos pulmões dele. O usuário pode utilizar essa habilidade uma vez por batalha, ao utilizar essa habilidade o usuário entra em exaustão e não conseguirá agir no seu próximo turno, além de ficar vulnerável a ataques.',
-            dano: ' 2dMag + Grimório',
-            efeitos: ['[OUTRACING]']
-        },
-    ],
-}, 
-
 saori: {
     info: { 
         nome_data: 'saori',
         nome: 'Saori Silva',
         nivel: 11,
         inspiracao: 1,
-        xp: 0,
+        xp: 5,
         idade: 15,
         altura: 151,
         peso: 45,
@@ -632,7 +553,7 @@ yuka: {
         nome: 'Yuka Kisha',
         nivel: 11,
         inspiracao: 2,
-        xp: 10,
+        xp: 30,
         idade: 18,
         altura: 201,
         peso: 100,
@@ -840,7 +761,7 @@ yang: {
         nome: 'Yang Kami Lapse',
         nivel: 11,
         inspiracao: 0,
-        xp: 10,
+        xp: 15,
         idade: 15,
         altura: 173,
         peso: 61,
@@ -1073,9 +994,9 @@ alice: {
     info: { 
         nome_data: 'alice',
         nome: 'Shiva Wyndell',
-        nivel: 10,
+        nivel: 11,
         inspiracao: 1,
-        xp: 75,
+        xp: 0,
         idade: 14,
         altura: 167,
         peso: 55,
@@ -1236,7 +1157,7 @@ saint: {
         nome: 'Saint Valac',
         nivel: 10,
         inspiracao: 0,
-        xp: 75,
+        xp: 80,
         idade: 16,
         altura: 180,
         peso:70,
