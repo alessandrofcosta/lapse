@@ -397,7 +397,7 @@ yuka: {
                     descricao: 'É o lado ofensivo de sua habilidade, conseguindo executar estocadas rápidas e que queimam só de chegar perto no  oponente. Com a sua lança de fogo ele pode fazer uma estocada/golpe estendido de até 3 metros a partir da sua lança, ganhando  uma área de ataque bem maior do que antes.',
                     efeitos: '[BURNING]',
                     dano: '3dMag',
-                    calculoDano: { atributo: 'MAG' },
+                    calculoDano: { atributo: 'MAG', pericia: '-' },
                 }
             ]
         },
@@ -424,7 +424,7 @@ yuka: {
                     descricao: 'Yuka usando de seu controle sobre sua própria magia, algo que é tal como um canhão que pode ser usado de forma rápida. Yuka finca sua lança no chão e diversas lanças iguais a principal são invocadas, e então lançadas em direção ao alvo.',
                     efeitos: '[OUTRACING]',
                     dano: '1dMag',
-                    alculoDano: { atributo: 'MAG' },
+                    alculoDano: { atributo: 'MAG', pericia: '-' },
                 },
             ]
         },
@@ -523,7 +523,7 @@ yang: {
                     nome: 'Adagas (Pugiones Liminales)',
                     descricao: 'Adagas que causam dano físico e desintegram a matéria e armaduras mágicas.',
                     dano: '1dMag',
-                    alculoDano: { atributo: 'MAG' },
+                    alculoDano: { atributo: 'MAG', pericia: '-' },
                     efeitos: '[ESPECIAL]'
                 }, 
 
@@ -543,7 +543,7 @@ yang: {
                     nome: 'Lança (Hasta Nihilum)',
                     descricao: 'Uma lança que causa dano físico e se move em altíssima velocidade. O usuário seleciona o alvo desejado, e a lança será guiada constantemente para ele como um imã até acertar.',
                     dano: '1dMag',
-                    calculoDano: { atributo: 'MAG' },
+                    calculoDano: { atributo: 'MAG', pericia: '-' },
                     efeitos: '[ESPECIAL]'
                 }, 
             ]
