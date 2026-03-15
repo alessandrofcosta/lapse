@@ -391,6 +391,254 @@ yuka: {
                     efeitos: '[DEBUFF] [BUFF]',
                     dano: '3dMag',
                     calculoDano: { atributo: 'MAG', pericia: 'Controle' },
+                    get danoJS() {
+                        const atributoSigla = "MAG";
+                        const periciaSigla = "Controle";
+                    
+                        const atributo = data.yuka.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.yuka.pericias.find(per => per.atributo === atributoSigla);
+                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+                    
+                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+                    
+                        let dano = `3d${atributoValor}`;
+                    
+                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                            const dadosExtras = atributo.prestigio;
+                            dano += `+${dadosExtras}d5`;
+                        }
+                    
+                        return dano;
+                    }
+                },
+                {
+                    nome: 'Flammen - Fogo', 
+                    descricao: 'É o lado ofensivo de sua habilidade, conseguindo executar estocadas rápidas e que queimam só de chegar perto no  oponente. Com a sua lança de fogo ele pode fazer uma estocada/golpe estendido de até 3 metros a partir da sua lança, ganhando  uma área de ataque bem maior do que antes.',
+                    efeitos: '[BURNING]',
+                    dano: '3dMag',
+                    get danoJS() {
+                        const atributoSigla = "MAG";
+                        const periciaSigla = "Esgrima";
+                    
+                        const atributo = data.yuka.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.yuka.pericias.find(per => per.atributo === atributoSigla);
+                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+                    
+                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+                    
+                        let dano = `3d${atributoValor}`;
+                    
+                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                            const dadosExtras = atributo.prestigio;
+                            dano += `+${dadosExtras}d5`;
+                        }
+                    
+                        return dano;
+                    }
+                }
+            ]
+        },
+        {
+            nome: 'Trovão que Persegue as Nuvens',
+            grimorio: 'Grimório',
+            nivel: 3,
+            descricao: 
+            `O grimorio de Yuka, que é de uma cor escura, começa a levitar e sobe até ficar na altura de seu ombro. Yuka então abre o seu grimorio com um movimento de seu punho, as páginas começam a virar e então ele toma uma cor branca azulada, coberto por eletricidade e pequenos raios.
+
+            A ponta de uma lança começa a sair do grimorio, mas contrário ao usual vermelho, ela é branca. A nova lança de Yuka mais parece um relâmpago do que uma lança, sua forma tremendo com a força guardada dentro de si mesma. 
+
+            Yuka empunha sua nova lança e fecha o grimorio. O ambiente fica mais carregado, como se os cabelos de todos fossem subir só pela presença da lança. É possível até mesmo ver que os raios saindo do cabo da lança pegam um pouco no braço de Yuka.`,
+            subataques: [
+                {
+                    nome: 'Ataque Único', 
+                    descricao: 'Usa seu poder de uma só vez. A primeira forma é simples, Yuka aponta sua lança para o alvo e então uma grande rajada de relâmpagos é lançada em direção ao alvo, é até mesmo possível escutar um "rugido".',
+                    efeitos: '[OUTRACING]',
+                    dano: '1dMag + Controle',
+                    get danoJS() {
+                        const atributoSigla = "MAG";
+                        const periciaSigla = "Controle";
+                    
+                        const atributo = data.yuka.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.yuka.pericias.find(per => per.atributo === atributoSigla);
+                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+                    
+                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+                    
+                        let dano = `1d${atributoValor}+${periciaValor}`;
+                    
+                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                            const dadosExtras = atributo.prestigio;
+                            dano += `+${dadosExtras}d5`;
+                        }
+                    
+                        return dano;
+                    }
+                },
+                {
+                    nome: 'Ataque Múltiplo', 
+                    descricao: 'Yuka usando de seu controle sobre sua própria magia, algo que é tal como um canhão que pode ser usado de forma rápida. Yuka finca sua lança no chão e diversas lanças iguais a principal são invocadas, e então lançadas em direção ao alvo.',
+                    efeitos: '[OUTRACING]',
+                    dano: '1dMag',
+                    get danoJS() {
+                        const atributoSigla = "MAG";
+                        const periciaSigla = "Controle";
+                    
+                        const atributo = data.yuka.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.yuka.pericias.find(per => per.atributo === atributoSigla);
+                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+                    
+                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+                    
+                        let dano = `1d${atributoValor}`;
+                    
+                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                            const dadosExtras = atributo.prestigio;
+                            dano += `+${dadosExtras}d5`;
+                        }
+                    
+                        return dano;
+                    }
+                },
+            ]
+        },
+
+        {
+            nome: 'Tremor que estremece a terra',
+            grimorio: 'Sem Grimório',
+            nivel: 3,
+            descricao: 'O usuário consegue fazer o próprio ar tremer frente o poder, ele consegue causar terremotos ou fazer o espaço em volta dele tremer. Se ele imbuir em sua lança esse feitiço ele conseguirá usar de forma mais controlada, se alguem for atingido pela lança com o poder do tremor a vítima ficará atordoada.',
+            dano: ['1dMag + Mana'], 
+            get danoJS() {
+                const atributoSigla = "MAG";
+                const periciaSigla = "Mana";
+            
+                const atributo = data.yuka.atributos.find(attr => attr.sigla === atributoSigla);
+                const periciaBlock = data.yuka.pericias.find(per => per.atributo === atributoSigla);
+                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+            
+                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+            
+                let dano = `1d${atributoValor}+${periciaValor}`;
+            
+                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                    const dadosExtras = atributo.prestigio;
+                    dano += `+${dadosExtras}d5`;
+                }
+            
+                return dano;
+            },
+            efeitos: ['[STUN]']
+        },      
+        {
+            nome: 'Caminho do Vento',
+            grimorio: 'Sem Grimório',
+            nivel: 1,
+            descricao: 'Após ver Shiva usar a sua magia de vento Yuka aprendeu a fazer algo parecido, ele consegue aprimorar a velocidade do seu corpo com o Vento. Mas essa habilidade não é só um simples vento é algo mais agressivo que isso só que Yuka ainda não consegue tirar o máximo potencial dessa parte de sua Magia. Enquanto essa habilidade estiver ativa o jogador poderá girar com um dado de vantagem em qualquer teste que envolva movimentação. Em caso de combate será girado 1d3 para determinar quantos turnos a habilidade ficará ativa. Após usá-la em combate, ela ficará em exaustão por outros 2 turnos.',
+            efeitos: ['[BUFF]']
+        },   
+    ],
+},
+
+yang: {
+    info: { 
+        nome_data: 'yang',
+        nome: 'Yang Kami Lapse',
+        nivel: 11,
+        inspiracao: 0,
+        xp: 15,
+        idade: 15,
+        altura: 173,
+        peso: 61,
+        classe: 'Realeza',
+        arquetipo: 'Feiticeiro',
+        discord_id: '423067939495739392'
+    },
+    
+    atributos: [
+        {pv: 52, ps: 7},
+        {sigla: "FOR", nome: "Força", valor: 0, bonus: -2},
+        {sigla: "VIG", nome: "Vigor", valor: 0},
+        {sigla: "AGL", nome: "Agilidade", valor: 2},
+        {sigla: "INT", nome: "Inteligência", valor: 4, bonus: 2},
+        {sigla: "ESP", nome: "Espírito", valor: 1},
+        {sigla: "MAG", nome: "Magia", valor: 10, bonus: 5, prestigio: 2},
+    ],
+
+    pericias: [
+        {atributo: "MAG", pericia_valor: [
+            {nome: "Mana", valor: 15, bonus: 2},
+            {nome: "Grimório", valor: 10, bonus: 2},
+            {nome: "Visão", valor: 2},
+            {nome: "Resistência", valor: 1},
+        ]},
+        {atributo: "INT", pericia_valor: [
+            {nome: "Percepção", valor: 1},
+            {nome: "Persuasão", valor: 2, bonus: -2}
+        ]},
+        {atributo: "ESP", pericia_valor: [
+            {nome: "Persuasão", valor: 2, bonus: -2}
+        ]},
+        {atributo: "AGL", pericia_valor: [
+            {nome: "Furtividade", valor: 1},
+            {nome: "Reflexos", valor: 1}
+        ]},
+    ],
+    
+    habilidades: [
+        {
+            nome: 'Intagibilidade',
+            grimorio: 'Sem Grimório',
+            nivel: 1,
+            descricao: 'O usuário nulifica a presença do seu corpo e da sua mana, tornando-se vazio no espaço.',
+            efeitos: ['[BUFF]']
+        },
+        {
+            nome: 'Olhos do Interlúnio',
+            grimorio: 'Sem Grimório',
+            nivel: 3,
+            descricao: 'O olho que contempla o intervalo entre existência e inexistência — o interlúnio, o não-dito, o instante que se perdeu entre o antes e o depois. Os olhos ameaçam a visão real do usuário, e são ativados e desativados manualmente.',
+            subataques: [
+                {nome: 'Fenda de Maigetsu', 
+                 descricao: 'O usuário projeta um vácuo no espaço que se expande e abre um portal para um outro ponto pré-estabelecido e conhecido por ele. O portal é indiferente a magia transporta objetos, pessoas e mana que com ele interagirem. O portal é desfeito e refeito sob a vontade do usuário.', 
+                 efeitos: '[ESPECIAL]'}, 
+            ]
+        },
+        {
+            nome: 'Inrelicário Vazio',
+            grimorio: 'Grimório',
+            nivel: 3,
+            descricao: 'O usuário invoca relíquias de armas convertidas no vazio por portais específicos. Apenas um inrelicário pode ser invocado por vez.',
+            efeitos: ['[BUFF]'],
+            subataques: [
+                {
+                    nome: 'Adagas (Pugiones Liminales)',
+                    descricao: 'Adagas que causam dano físico e desintegram a matéria e armaduras mágicas.',
+                    dano: '1dMag',
+                    get danoJS() {
+                        const atributoSigla = "MAG";
+                        const periciaSigla = "Grimório";
+                    
+                        const atributo = data.yang.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.yang.pericias.find(per => per.atributo === atributoSigla);
+                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+                    
+                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+                    
+                        let dano = `1d${atributoValor}`;
+                    
+                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                            const dadosExtras = atributo.prestigio;
+                            dano += `+${dadosExtras}d5`;
+                        }
+                    
+                        return dano;
+                    },
                     efeitos: '[ESPECIAL]'
                 }, 
 
@@ -410,7 +658,26 @@ yuka: {
                     nome: 'Lança (Hasta Nihilum)',
                     descricao: 'Uma lança que causa dano físico e se move em altíssima velocidade. O usuário seleciona o alvo desejado, e a lança será guiada constantemente para ele como um imã até acertar.',
                     dano: '1dMag',
-                    calculoDano: { atributo: 'MAG', pericia: 'Grimório' },
+                    get danoJS() {
+                        const atributoSigla = "MAG";
+                        const periciaSigla = "Grimório";
+                    
+                        const atributo = data.yang.atributos.find(attr => attr.sigla === atributoSigla);
+                        const periciaBlock = data.yang.pericias.find(per => per.atributo === atributoSigla);
+                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
+                    
+                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
+                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
+                    
+                        let dano = `1d${atributoValor}`;
+                    
+                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
+                            const dadosExtras = atributo.prestigio;
+                            dano += `+${dadosExtras}d5`;
+                        }
+                    
+                        return dano;
+                    },
                     efeitos: '[ESPECIAL]'
                 }, 
             ]
@@ -431,6 +698,7 @@ yuka: {
         },
     ],
 },
+
 
 lommie: {
     info: { 
