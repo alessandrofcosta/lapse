@@ -391,52 +391,13 @@ yuka: {
                     efeitos: '[DEBUFF] [BUFF]',
                     dano: '3dMag',
                     calculoDano: { atributo: 'MAG', pericia: 'Controle' },
-                    get danoJS() {
-                        const atributoSigla = "MAG";
-                        const periciaSigla = "Controle";
-                    
-                        const atributo = data.yuka.atributos.find(attr => attr.sigla === atributoSigla);
-                        const periciaBlock = data.yuka.pericias.find(per => per.atributo === atributoSigla);
-                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
-                    
-                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
-                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
-                    
-                        let dano = `3d${atributoValor}`;
-                    
-                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
-                            const dadosExtras = atributo.prestigio;
-                            dano += `+${dadosExtras}d5`;
-                        }
-                    
-                        return dano;
-                    }
                 },
                 {
                     nome: 'Flammen - Fogo', 
                     descricao: 'É o lado ofensivo de sua habilidade, conseguindo executar estocadas rápidas e que queimam só de chegar perto no  oponente. Com a sua lança de fogo ele pode fazer uma estocada/golpe estendido de até 3 metros a partir da sua lança, ganhando  uma área de ataque bem maior do que antes.',
                     efeitos: '[BURNING]',
                     dano: '3dMag',
-                    get danoJS() {
-                        const atributoSigla = "MAG";
-                        const periciaSigla = "Esgrima";
-                    
-                        const atributo = data.yuka.atributos.find(attr => attr.sigla === atributoSigla);
-                        const periciaBlock = data.yuka.pericias.find(per => per.atributo === atributoSigla);
-                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
-                    
-                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
-                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
-                    
-                        let dano = `3d${atributoValor}`;
-                    
-                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
-                            const dadosExtras = atributo.prestigio;
-                            dano += `+${dadosExtras}d5`;
-                        }
-                    
-                        return dano;
-                    }
+                    calculoDano: { atributo: 'MAG' },
                 }
             ]
         },
@@ -456,52 +417,14 @@ yuka: {
                     descricao: 'Usa seu poder de uma só vez. A primeira forma é simples, Yuka aponta sua lança para o alvo e então uma grande rajada de relâmpagos é lançada em direção ao alvo, é até mesmo possível escutar um "rugido".',
                     efeitos: '[OUTRACING]',
                     dano: '1dMag + Controle',
-                    get danoJS() {
-                        const atributoSigla = "MAG";
-                        const periciaSigla = "Controle";
-                    
-                        const atributo = data.yuka.atributos.find(attr => attr.sigla === atributoSigla);
-                        const periciaBlock = data.yuka.pericias.find(per => per.atributo === atributoSigla);
-                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
-                    
-                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
-                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
-                    
-                        let dano = `1d${atributoValor}+${periciaValor}`;
-                    
-                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
-                            const dadosExtras = atributo.prestigio;
-                            dano += `+${dadosExtras}d5`;
-                        }
-                    
-                        return dano;
-                    }
+                    alculoDano: { atributo: 'MAG', pericia: 'Controle' },
                 },
                 {
                     nome: 'Ataque Múltiplo', 
                     descricao: 'Yuka usando de seu controle sobre sua própria magia, algo que é tal como um canhão que pode ser usado de forma rápida. Yuka finca sua lança no chão e diversas lanças iguais a principal são invocadas, e então lançadas em direção ao alvo.',
                     efeitos: '[OUTRACING]',
                     dano: '1dMag',
-                    get danoJS() {
-                        const atributoSigla = "MAG";
-                        const periciaSigla = "Controle";
-                    
-                        const atributo = data.yuka.atributos.find(attr => attr.sigla === atributoSigla);
-                        const periciaBlock = data.yuka.pericias.find(per => per.atributo === atributoSigla);
-                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
-                    
-                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
-                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
-                    
-                        let dano = `1d${atributoValor}`;
-                    
-                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
-                            const dadosExtras = atributo.prestigio;
-                            dano += `+${dadosExtras}d5`;
-                        }
-                    
-                        return dano;
-                    }
+                    alculoDano: { atributo: 'MAG' },
                 },
             ]
         },
@@ -512,26 +435,7 @@ yuka: {
             nivel: 3,
             descricao: 'O usuário consegue fazer o próprio ar tremer frente o poder, ele consegue causar terremotos ou fazer o espaço em volta dele tremer. Se ele imbuir em sua lança esse feitiço ele conseguirá usar de forma mais controlada, se alguem for atingido pela lança com o poder do tremor a vítima ficará atordoada.',
             dano: ['1dMag + Mana'], 
-            get danoJS() {
-                const atributoSigla = "MAG";
-                const periciaSigla = "Mana";
-            
-                const atributo = data.yuka.atributos.find(attr => attr.sigla === atributoSigla);
-                const periciaBlock = data.yuka.pericias.find(per => per.atributo === atributoSigla);
-                const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
-            
-                const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
-                const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
-            
-                let dano = `1d${atributoValor}+${periciaValor}`;
-            
-                if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
-                    const dadosExtras = atributo.prestigio;
-                    dano += `+${dadosExtras}d5`;
-                }
-            
-                return dano;
-            },
+            alculoDano: { atributo: 'MAG', pericia: 'Mana' },
             efeitos: ['[STUN]']
         },      
         {
@@ -619,26 +523,7 @@ yang: {
                     nome: 'Adagas (Pugiones Liminales)',
                     descricao: 'Adagas que causam dano físico e desintegram a matéria e armaduras mágicas.',
                     dano: '1dMag',
-                    get danoJS() {
-                        const atributoSigla = "MAG";
-                        const periciaSigla = "Grimório";
-                    
-                        const atributo = data.yang.atributos.find(attr => attr.sigla === atributoSigla);
-                        const periciaBlock = data.yang.pericias.find(per => per.atributo === atributoSigla);
-                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
-                    
-                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
-                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
-                    
-                        let dano = `1d${atributoValor}`;
-                    
-                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
-                            const dadosExtras = atributo.prestigio;
-                            dano += `+${dadosExtras}d5`;
-                        }
-                    
-                        return dano;
-                    },
+                    alculoDano: { atributo: 'MAG' },
                     efeitos: '[ESPECIAL]'
                 }, 
 
@@ -658,26 +543,7 @@ yang: {
                     nome: 'Lança (Hasta Nihilum)',
                     descricao: 'Uma lança que causa dano físico e se move em altíssima velocidade. O usuário seleciona o alvo desejado, e a lança será guiada constantemente para ele como um imã até acertar.',
                     dano: '1dMag',
-                    get danoJS() {
-                        const atributoSigla = "MAG";
-                        const periciaSigla = "Grimório";
-                    
-                        const atributo = data.yang.atributos.find(attr => attr.sigla === atributoSigla);
-                        const periciaBlock = data.yang.pericias.find(per => per.atributo === atributoSigla);
-                        const pericia = periciaBlock?.pericia_valor.find(val => val.nome === periciaSigla);
-                    
-                        const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
-                        const periciaValor = (pericia?.valor || 0) + (pericia?.bonus || 0);
-                    
-                        let dano = `1d${atributoValor}`;
-                    
-                        if (atributo && typeof atributo.prestigio === "number" && atributo.prestigio > 0) {
-                            const dadosExtras = atributo.prestigio;
-                            dano += `+${dadosExtras}d5`;
-                        }
-                    
-                        return dano;
-                    },
+                    calculoDano: { atributo: 'MAG' },
                     efeitos: '[ESPECIAL]'
                 }, 
             ]
@@ -698,7 +564,6 @@ yang: {
         },
     ],
 },
-
 
 lommie: {
     info: { 
