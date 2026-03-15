@@ -1010,18 +1010,19 @@ alice: {
         {sigla: "FOR", nome: "Força", valor: 0, bonus: 4, prestigio: 2},
         {sigla: "VIG", nome: "Vigor", valor: 5, bonus: 0},
         {sigla: "AGL", nome: "Agilidade", valor: 6, bonus: 2},
-        {sigla: "INT", nome: "Inteligência", valor: 0},
-        {sigla: "ESP", nome: "Espírito", valor: 2},
-        {sigla: "MAG", nome: "Magia", valor: 8},
+        {sigla: "INT", nome: "Inteligência", valor: 3},
+        {sigla: "ESP", nome: "Espírito", valor: 4},
+        {sigla: "MAG", nome: "Magia", valor: 10, bonus: 7},
     ],
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
-            {nome: "Mana", valor: 6},
-            {nome: "Grimório", valor: 1}
+            {nome: "Mana", valor: 7},
+            {nome: "Grimório", valor: 1},
+            {nome: "Esgrima", valor: 3},
         ]},
         {atributo: "FOR", pericia_valor: [
-            {nome: "Luta", valor: 9},
+            {nome: "Luta", valor: 10},
         ]},
         {atributo: "VIG", pericia_valor: [
             {nome: "Resistência", valor: 3},
@@ -1029,6 +1030,7 @@ alice: {
             {atributo: "AGL", pericia_valor: [
             {nome: "Reflexos", valor: 2, bonus: 2},
             {nome: "Atletismo", valor: 0, bonus: 2},
+            {nome: "Esgrima", valor: 3},
         ]},
             {atributo: "INT", pericia_valor: [
             {nome: "Intuição", valor: 0, bonus: -2},
@@ -1039,10 +1041,10 @@ alice: {
         {
             nome: 'Alento',
             grimorio: 'Grimório',
-            nivel: 2,
+            nivel: 3,
             descricao: 'Um sopro sobre a ferida do aliado; o vento pressurizado fecha cortes superficiais e reorganiza músculos e pele o suficiente para estancar o sangramento e acelerar a dor. É mais primeiro-socorro do que milagre.',
             efeitos: ['HEAL'],
-            dano: '1dMag + Mana',
+            dano: '3dMag + Mana',
             get danoJS() {
                 const atributoSigla = "MAG";
                 const periciaSigla = "Mana";
@@ -1067,10 +1069,10 @@ alice: {
         {
             nome: 'Impacto',
             grimorio: 'Grimório',
-            nivel: 2,
+            nivel: 3,
             descricao: 'Reúne todo o “elemento” presente ao redor de seu punho ou perna e desfere um golpe único capaz de destruir defesas, romper mana ou causar dano.',
             efeitos: ['BLOCKBREAK'],
-            dano: '1dMag + Luta',
+            dano: '2dMag + Luta',
             get danoJS() {
                 const atributoSigla = "MAG";
                 const periciaSigla = "Luta";
