@@ -315,7 +315,7 @@ saori: {
                                 Simbolismo: O colapso emocional de Saori.`,
                     dano: '4dMag + Grimório + Mana',
                     efeitos: '[BUFF] [OUTRACING]',
-                    calculoDano: { atributo: 'MAG', pericia: 'Grimório' },
+                    calculoDano: { atributo: 'MAG', pericias: ['Grimório', 'Mana'] },
 
                     
                 }, 
