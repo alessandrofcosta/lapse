@@ -720,7 +720,7 @@ yuka: {
         {
             nome: 'Tremor que estremece a terra',
             grimorio: 'Sem Grimório',
-            nivel: 2,
+            nivel: 3,
             descricao: 'O usuário consegue fazer o próprio ar tremer frente o poder, ele consegue causar terremotos ou fazer o espaço em volta dele tremer. Se ele imbuir em sua lança esse feitiço ele conseguirá usar de forma mais controlada, se alguem for atingido pela lança com o poder do tremor a vítima ficará atordoada.',
             dano: ['1dMag + Mana'], 
             get danoJS() {
