@@ -209,7 +209,7 @@ sombras: {
             
         },
     ],
-}, 
+},
 
 saori: {
     info: { 
@@ -915,7 +915,7 @@ lommie: {
         nome_data: 'lommie',
         nome: 'Lommie Yuta',
         nivel: 9,
-        xp: 0,
+        xp: 20,
         idade: 19,
         altura: 176,
         peso: 61,

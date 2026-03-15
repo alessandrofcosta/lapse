@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const senhasValidasNPC = [
-        "e35b77cba779b34b2afc841264681d5cece30519ccc3fa6735229bbd94132a24"
+        "d368c2ac7ffd516dbffabad074c106c35074d22950b198d678dfff1f9af5676d"
     ];
 
     const acessoNPC = localStorage.getItem('acesso_npc');

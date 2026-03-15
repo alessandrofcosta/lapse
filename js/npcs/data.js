@@ -1,50 +1,49 @@
 const npcData = {
-    oraculo: {
+
+keshi: {
         info: {
-            nome_data: 'oraculo',
-            nome: 'Oráculo do Eclipse',
+            nome_data: 'keshi',
+            nome: 'Keshi Kami Lapse',
             inspiracao: 0,
-            nivel: 12,
+            nivel: 15,
             xp: 0,
-            idade: 'Desconhecida',
-            altura: 182,
-            peso: 71,
-            classe: 'Entidade',
-            arquetipo: 'Controlador',
-            discord_id: 'Okkotsu'
+            idade: '25',
+            altura: 193,
+            peso: 67,
+            classe: 'Realeza',
+            arquetipo: 'Feiticeiro',
+            discord_id: '444832211401965568'
         },
 
         atributos: [
             { pv: 88, ps: 12 },
-            { sigla: 'FOR', nome: 'Força', valor: 2 },
-            { sigla: 'VIG', nome: 'Vigor', valor: 4 },
-            { sigla: 'AGL', nome: 'Agilidade', valor: 3 },
-            { sigla: 'INT', nome: 'Inteligência', valor: 7, bonus: 2 },
-            { sigla: 'ESP', nome: 'Espírito', valor: 8, bonus: 2 },
-            { sigla: 'MAG', nome: 'Magia', valor: 9, bonus: 3, prestigio: 2 }
+            { sigla: 'FOR', nome: 'Força', valor: 1 },
+            { sigla: 'VIG', nome: 'Vigor', valor: 3 },
+            { sigla: 'AGL', nome: 'Agilidade', valor: 5 },
+            { sigla: 'INT', nome: 'Inteligência', valor: 10, bonus: 2, prestigio: 2 },
+            { sigla: 'ESP', nome: 'Espírito', valor: 2 },
+            { sigla: 'MAG', nome: 'Magia', valor: 10, bonus: 5, prestigio: 2 }
         ],
 
         pericias: [
             {
                 atributo: 'MAG',
                 pericia_valor: [
-                    { nome: 'Mana', valor: 9, bonus: 2 },
-                    { nome: 'Controle', valor: 8, bonus: 2 },
-                    { nome: 'Ritual', valor: 6 }
-                ]
-            },
-            {
-                atributo: 'ESP',
-                pericia_valor: [
-                    { nome: 'Intuição', valor: 8, bonus: 2 },
-                    { nome: 'Presença', valor: 5 }
+                    { nome: 'Grimório', valor: 15 },
+                    { nome: 'Mana', valor: 15 },
+                    { nome: 'Controle', valor: 1 },
+                    { nome: 'Visão', valor: 5 },
+                    { nome: 'Resistência', valor: 5 },
+                    { nome: 'Intimidação', valor: 3 }
                 ]
             },
             {
                 atributo: 'INT',
                 pericia_valor: [
-                    { nome: 'Percepção', valor: 7, bonus: 1 },
-                    { nome: 'Estratégia', valor: 6 }
+                    { nome: 'História', valor: 2},
+                    { nome: 'Intimidação', valor: 3 },
+                    { nome: 'Persuasão', valor: 1 },
+                    { nome: 'Percepção', valor: 2 }
                 ]
             }
         ],
@@ -105,5 +104,6 @@ const npcData = {
                 efeitos: ['[MAGIC] [BURST]']
             }
         ]
-    }
+}
+
 };
