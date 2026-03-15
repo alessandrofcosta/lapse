@@ -107,3 +107,37 @@ keshi: {
 }
 
 };
+
+function normalizarArquetipo(arquetipo = '') {
+    return arquetipo
+        .toString()
+        .normalize('NFD')
+        .replace(/[̀-ͯ]/g, '')
+        .trim()
+        .toLowerCase();
+}
+
+function calcularPvAutomatico(personagem) {
+    const formulasPV = {
+        tanque: { pvInicial: 15, pvPorNivel: 8 },
+        lutador: { pvInicial: 13, pvPorNivel: 7 },
+        cacador: { pvInicial: 10, pvPorNivel: 6 },
+        feiticeiro: { pvInicial: 8, pvPorNivel: 4 },
+        genio: { pvInicial: 7, pvPorNivel: 3 },
+    };
+
+    const arquetipoNormalizado = normalizarArquetipo(personagem?.info?.arquetipo);
+    const formula = formulasPV[arquetipoNormalizado];
+
+    if (!formula || !Array.isArray(personagem?.atributos) || !personagem.atributos[0]) {
+        return;
+    }
+
+    const nivel = Number(personagem.info?.nivel) || 0;
+    const vigor = personagem.atributos.find((atributo) => atributo.sigla === 'VIG')?.valor || 0;
+
+    personagem.atributos[0].pv = formula.pvInicial + (formula.pvPorNivel * nivel) + vigor;
+}
+
+Object.values(npcData).forEach(calcularPvAutomatico);
+
