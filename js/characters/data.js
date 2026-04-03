@@ -178,7 +178,7 @@ saori: {
         nome_data: 'saori',
         nome: 'Saori Silva',
         nivel: 11,
-        inspiracao: 1,
+        inspiracao: 0,
         xp: 75,
         idade: 15,
         altura: 151,
