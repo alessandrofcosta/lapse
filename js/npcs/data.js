@@ -81,8 +81,111 @@ zerath: {
             altura: 190,
             peso: 80,
             classe: '-',
-            arquetipo: 'Feiticeiro',
+            arquetipo: 'Caçador',
             discord_id: '405381448879702039'
+        },
+
+        atributos: [
+            { pv: 88, ps: 15 },
+            { sigla: 'FOR', nome: 'Força', valor: 2 },
+            { sigla: 'VIG', nome: 'Vigor', valor: 10, prestigio: 2 },
+            { sigla: 'AGL', nome: 'Agilidade', valor: 7 },
+            { sigla: 'INT', nome: 'Inteligência', valor: 10 },
+            { sigla: 'ESP', nome: 'Espírito', valor: 0 },
+            { sigla: 'MAG', nome: 'Magia', valor: 5, prestigio: 4 }
+        ],
+
+        pericias: [
+            {
+                atributo: 'MAG',
+                pericia_valor: [
+                    { nome: 'Visão', valor: 10 },
+                    { nome: 'Mana', valor: 15 },
+                    { nome: 'Resistência', valor: 10 },
+                ]
+            },
+        ],
+
+        habilidades: [
+            {
+                nome: 'Armas de Sangue',
+                grimorio: 'Mana',
+                nivel: 1,
+                descricao: 'O usuário cria formas de sangue, sejam armas ou projéteis que podem ser usados contra o alvo.',
+                dano: '1dMag + Mana',
+                calculoDano: { atributo: 'MAG', pericia: 'Mana' },
+                efeitos: []
+            },
+            {
+                nome: 'Poça de Sangue',
+                grimorio: 'Mana',
+                nivel: 2,
+                descricao: 'O usuário cria uma poça de sangue no chão, que sobe lentamente e quando atinge um certo ponto da perna do(s) alvos o sangue enrijece e todos ficam presos.',
+                dano: '',
+                calculoDano: { atributo: '' },
+                efeitos: ['[STUN]']
+            },
+            {
+                nome: 'Envenenamento',
+                grimorio: 'Mana',
+                nivel: 2,
+                descricao: 'O usuário cria uma tempestade brutal de sangue, podendo afetar quem ele quiser e deixar de afetar quem quiser também. A cada turno que se passa os alvos tomarão dano do sangue.',
+                dano: '1dMag',
+                calculoDano: { atributo: 'MAG'},
+                efeitos: ['[POISON]']
+            },
+            {
+                nome: 'Chuva de Sangue',
+                grimorio: 'Mana',
+                nivel: 3,
+                descricao: ' O usuário cria uma tempestade brutal de sangue, podendo afetar quem ele quiser e deixar de afetar quem quiser também. A cada turno que se passa os alvos tomarão dano do sangue.',
+                dano: '1dMag',
+                calculoDano: { atributo: 'MAG'},
+                efeitos: ['[SPEEDBLITZ] [AREA]']
+            },
+            {
+                nome: 'Misericórdia',
+                grimorio: 'Mana',
+                nivel: 'Suprema',
+                descricao: 'O usuário consegue reviver qualquer um desde que esteja ao ponto de morrer, ou morto há apenas alguns minutos. Qualquer um que seja revivido por ele estará marcado com seu sangue e irá inevitavelmente se tornar meio demônio.',
+                dano: '',
+                calculoDano: { atributo: ''},
+                efeitos: ['[ESPECIAL] [REVIVE]']
+            },
+            {
+                nome: 'Olho do Devorador',
+                grimorio: 'Mana',
+                nivel: 'Suprema',
+                descricao: 'O usuário sacrifica sua própria vida para acabar com outra. O usuário tira todo o seu sangue de seu corpo e transfere para o alvo, o envenenando e matando-o instantaneamente.',
+                dano: '',
+                calculoDano: { atributo: ''},
+                efeitos: ['[OUTRACING] [HITKILL]']
+            },
+            {
+                nome: 'O Mundo Carmesin',
+                grimorio: 'Zona de Mana',
+                nivel: 'Zona de Mana',
+                descricao: 'O usuário um território gigantesco de 1km quadrado onde tudo fica vermelho, árvores, vegetação, animais. Qualquer um dentro dessa área pode ser controlada pelo usuário, menos seres inteligentes, com excessão de sua sanidade estar muito baixa. Uma chuva de sangue toma por completo a região, inundando o chão de sangue também.',
+                dano: '',
+                calculoDano: { atributo: ''},
+                efeitos: ['ZONA DE MANA']
+            },
+        ]
+},
+
+ami: {
+        info: {
+            nome_data: 'ami',
+            nome: 'Ami Akiami',
+            inspiracao: 0,
+            nivel: 13,
+            xp: 0,
+            idade: '14',
+            altura: 158,
+            peso: 61,
+            classe: '-',
+            arquetipo: 'Feiticeiro',
+            discord_id: '373606886114721802'
         },
 
         atributos: [
