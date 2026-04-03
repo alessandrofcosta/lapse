@@ -759,7 +759,7 @@ saint: {
             descricao: 'Ao atacar um inimigo cria ilusões de vários de si mesmo, para ludibriar o inimigo.',
             efeitos: ['[DEBUFF]'],
             dano: '1dAgl + Controle',
-            calculoDano: { atributo: 'AGL', pericia: 'Control' }
+            calculoDano: { atributo: 'AGL', pericia: 'Controle' }
         },
         {
             nome: 'Passo fantasma',
