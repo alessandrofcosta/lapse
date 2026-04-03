@@ -1,6 +1,7 @@
 const acessoNPC = localStorage.getItem('acesso_npc');
 const senhasNPC = {
-    "d368c2ac7ffd516dbffabad074c106c35074d22950b198d678dfff1f9af5676d": 'keshi'
+    "d368c2ac7ffd516dbffabad074c106c35074d22950b198d678dfff1f9af5676d": 'keshi',
+    "aec62b69f7685e38391295bfcc056adc896da54e0c7ad9a51c232360f04e6cdf": 'zerath'
 };
 
 const nomeAcessoNPC = senhasNPC[acessoNPC];
