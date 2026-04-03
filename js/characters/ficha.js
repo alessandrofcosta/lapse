@@ -178,7 +178,7 @@ function renderHabilidade() {
 
 
 function formatModifier(valor) {
-    if (valor > 0) {
+    if (valor >= 0) {
         return `+${valor}`;
     }
 
@@ -208,11 +208,11 @@ function calcularDanoHabilidade(personagem, habilidade) {
     const quantidadeDados = Number(textoDano.match(/(\d+)d/i)?.[1]) || 1;
 
     const atributo = personagem.atributos.find((attr) => attr.sigla === atributoSigla);
-    const periciaBlock = personagem.pericias.find((per) => per.atributo === atributoSigla);
-
     const atributoValor = (atributo?.valor || 0) + (atributo?.bonus || 0);
     const somaPericias = pericias.reduce((total, periciaNome) => {
-        const pericia = periciaBlock?.pericia_valor.find((val) => val.nome === periciaNome);
+        const pericia = personagem.pericias
+            .flatMap((periciaGrupo) => periciaGrupo.pericia_valor || [])
+            .find((val) => val.nome === periciaNome);
         const valorPericia = (pericia?.valor || 0) + (pericia?.bonus || 0);
 
         return total + valorPericia;
