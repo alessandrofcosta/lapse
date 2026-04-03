@@ -339,7 +339,7 @@ yuka: {
     info: { 
         nome_data: 'yuka',
         nome: 'Yuka Kisha',
-        nivel: 11,
+        nivel: 12,
         inspiracao: 2,
         xp: 30,
         idade: 18,
@@ -353,18 +353,18 @@ yuka: {
     atributos: [
         {pv: 80, ps: 8},
         {sigla: "FOR", nome: "Força", valor: 3, bonus: 2},
-        {sigla: "VIG", nome: "Vigor", valor: 4},
+        {sigla: "VIG", nome: "Vigor", valor: 5},
         {sigla: "AGL", nome: "Agilidade", valor: 2, bonus: 2},
         {sigla: "INT", nome: "Inteligência", valor: 2},
         {sigla: "ESP", nome: "Espírito", valor: 1},
-        {sigla: "MAG", nome: "Magia", valor: 8, bonus: 2, prestigio: 2},
+        {sigla: "MAG", nome: "Magia", valor: 9, bonus: 2, prestigio: 2},
     ],
 
     pericias: [
         {atributo: "MAG", pericia_valor: [
             {nome: "Mana", valor: 8, bonus: 2},
-            {nome: "Grimório", valor: 7, bonus: 2},
-            {nome: "Controle", valor: 10},
+            {nome: "Grimório", valor: 10, bonus: 2},
+            {nome: "Controle", valor: 15},
         ]},
         {atributo: "VIG", pericia_valor: [
             {nome: "Resistência", valor: 1},
