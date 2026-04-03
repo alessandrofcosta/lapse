@@ -814,9 +814,15 @@ function calcularPvAutomatico(personagem) {
     }
 
     const nivel = Number(personagem.info?.nivel) || 0;
-    const vigor = personagem.atributos.find((atributo) => atributo.sigla === 'VIG')?.valor || 0;
+    const atributoVigor = personagem.atributos.find((atributo) => atributo.sigla === 'VIG') || {};
+    const vigor = Number(atributoVigor.valor) || 0;
+    const prestigioVigor = Math.max(1, Number(atributoVigor.prestigio) || 1);
+    const vidaPorPontoDeVigor = prestigioVigor;
 
-    personagem.atributos[0].pv = formula.pvInicial + (formula.pvPorNivel * nivel) + vigor;
+    personagem.atributos[0].pv =
+        formula.pvInicial +
+        (formula.pvPorNivel * nivel) +
+        (vigor * vidaPorPontoDeVigor);
 }
 
 Object.values(data).forEach(calcularPvAutomatico);
