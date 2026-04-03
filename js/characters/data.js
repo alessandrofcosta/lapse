@@ -732,7 +732,7 @@ saint: {
         {pv: 76, ps: 5},
         {sigla: "FOR", nome: "Força", valor: 7, bonus: 2},
         {sigla: "VIG", nome: "Vigor", valor: 6, bonus: 0},
-        {sigla: "AGL", nome: "Agilidade", valor: 1, bonus: 2, prestigio: 3},
+        {sigla: "AGL", nome: "Agilidade", valor: 1, bonus: 2, prestigio: 4},
         {sigla: "INT", nome: "Inteligência", valor: 1},
         {sigla: "ESP", nome: "Espírito", valor: 2, bonus: -2},
         {sigla: "MAG", nome: "Magia", valor: 7, bonus: 2},
@@ -758,8 +758,8 @@ saint: {
             nivel: 2,
             descricao: 'Ao atacar um inimigo cria ilusões de vários de si mesmo, para ludibriar o inimigo.',
             efeitos: ['[DEBUFF]'],
-            dano: '1dAgl + Esgrima',
-            calculoDano: { atributo: 'AGL', pericia: 'Esgrima' }
+            dano: '1dAgl + Controle',
+            calculoDano: { atributo: 'AGL', pericia: 'Control' }
         },
         {
             nome: 'Passo fantasma',
@@ -774,14 +774,15 @@ saint: {
             grimorio: 'Grimório',
             nivel: 2,
             descricao: `Valac desfere um golpe que distorce, por um instante, os próprios conceitos do mundo.
-                    A lógica do combate se inverte: errar não significa falhar, e defender não significa estar seguro.
 
-                    Se o ataque de Valac for errado ou defendido, a ilusão se fecha sobre o oponente e o efeito ocorre de forma contrária ao esperado, pegando-o completamente desprevenido.
+            A lógica do combate se inverte: errar não significa falhar, e defender não significa estar seguro.
 
-                    No Combate Ilusório, o erro é apenas outra forma de acertar.`,
+            Se o ataque de Valac for errado ou defendido, a ilusão se fecha sobre o oponente e o efeito ocorre de forma contrária ao esperado, pegando-o completamente desprevenido.
+
+            No Combate Ilusório, o erro é apenas outra forma de acertar.`,
             efeitos: ['ESPECIAL'],
-            dano: '1dAgl + Esgrima',
-            calculoDano: { atributo: 'AGL', pericia: 'Esgrima' }
+            dano: '1dAgl + Controle',
+            calculoDano: { atributo: 'AGL', pericia: 'Controle' }
         },
     ],
 }, 
