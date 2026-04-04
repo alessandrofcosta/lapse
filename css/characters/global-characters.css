@@ -389,7 +389,13 @@ main h1 { text-align: center; }
 }
 
 .ataque-efeito { padding: 2px; margin-left: 10px; }
-.lot-habilidade { display: block; padding: 5px; margin: -10px 5px 5px 0; border-radius: 10px; }
+.lot-habilidade {
+    display: block;
+    padding: 5px;
+    margin: -10px 5px 5px 0;
+    border-radius: 10px;
+    white-space: pre-line;
+}
 .subhabilidade,
 .subataque-efeito { font-size: clamp(0.72rem, 2.2vw, 1rem); }
 .divide-subhabilidade { display: block; margin-top: 5px; }
@@ -423,7 +429,10 @@ main h1 { text-align: center; }
     color: #d4c79f;
 }
 
-.descricao-habilidade { margin-bottom: 20px; }
+.descricao-habilidade {
+    margin-bottom: 20px;
+    white-space: pre-line;
+}
 
 .d20-button {
     position: absolute;
