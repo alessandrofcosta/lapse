@@ -375,6 +375,58 @@ mordrek: {
                 efeitos: ['[ESPECIAL]']
             }
         ]
+},
+
+caim: {
+        info: {
+            nome_data: 'caim',
+            nome: 'Caim Vorthal',
+            inspiracao: 0,
+            nivel: 14,
+            xp: 0,
+            idade: '37',
+            altura: 180,
+            peso: 76,
+            classe: '-',
+            arquetipo: 'Lutador',
+            discord_id: '726667619729539132'
+        },
+
+        atributos: [
+            { pv: 88, ps: 10 },
+            { sigla: 'FOR', nome: 'Força', valor: 5, prestigio: 3 },
+            { sigla: 'VIG', nome: 'Vigor', valor: 8},
+            { sigla: 'AGL', nome: 'Agilidade', valor: 0 },
+            { sigla: 'INT', nome: 'Inteligência', valor: 5 },
+            { sigla: 'ESP', nome: 'Espírito', valor: 0 },
+            { sigla: 'MAG', nome: 'Magia', valor: 10 }
+        ],
+
+        pericias: [
+            {
+                atributo: 'FOR',
+                pericia_valor: [
+                    { nome: 'Luta', valor: 15 },
+                    { nome: 'Resistência', valor: 15 },
+                ]
+            },
+            {
+                atributo: 'FOR',
+                pericia_valor: [
+                    { nome: 'Mana', valor: 15 },
+                ]
+            },
+        ],
+
+        habilidades: [
+            {
+                nome: 'Passo Estrondo',
+                grimorio: 'Mana',
+                nivel: 2,
+                descricao: 'O usuário libera toda a energia cinética armazenada nas pernas, o que elevaria absurdamente a sua velocidade e quanto mais passos desse, mais energia seria acumulada. Ao chegar perto do alvo, seria desferido uma voadora descarregando toda a energia acumulada.',
+                efeitos: ['[BUFF]']
+            },
+        ]
 }
 
 };
