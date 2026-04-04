@@ -217,14 +217,94 @@ ami: {
 
         habilidades: [
             {
-                nome: 'Armas de Sangue',
-                grimorio: 'Mana',
-                nivel: 1,
-                descricao: 'O usuário cria formas de sangue, sejam armas ou projéteis que podem ser usados contra o alvo.',
-                dano: '1dMag + Mana',
-                calculoDano: { atributo: 'MAG', pericia: 'Mana' },
-                efeitos: []
+                nome: 'Lobo (Caim Vorthal)',
+                grimorio: 'Runas',
+                nivel: 3,
+                descricao: 'O lobo converte a mana ao redor em uma única garra poderosa. Imediatamente rouba mana de todos em um campo. Para cada indivíduo que tenha sua mana roubada desta forma, garras de lobo aparecem para golpear a área, causando dano proporcional a mana roubada. Se mais de 3 pessoas forem roubadas desta forma, o ataque do Lobo se torna uma mordida poderosa. A quantidade de mana roubada varia conforme quantos indivíduos são afetados; reduzindo seu roubo para cada indivíduo presente.',
+                subataques: [
+                {
+                    nome: 'Garras',
+                    descricao: 'Garras de lobo aparecem para golpear a área, causando dano proporcional a mana roubada.',
+                    dano: '1dMag',
+                    calculoDano: { atributo: 'MAG'},
+                    efeitos: '[AREA]'
+                },
+                {
+                    nome: 'Mordida',
+                    descricao: 'A mordida do lobo é uma técnica poderosa que causa dano significativo.',
+                    dano: '2dMag',
+                    calculoDano: { atributo: 'MAG'},
+                    efeitos: '[AREA]'
+                }, 
+            ]
             },
+            {
+                nome: 'Pégasus (Ami Akiami)',
+                grimorio: 'Runas',
+                nivel: 1,
+                descricao: 'O pégasus voa ao céu, recebendo visão ampla e ganhando vantagens específicas por estar voando.'
+            },
+            {
+                nome: 'Pavão (Nyra Solthar)',
+                grimorio: 'Runas',
+                nivel: 1,
+                descricao: 'O pavão obtém informação parcial da Ânima alheia ao observar os olhos de um indivíduo. Isso permite vantagens contra tal Ânima, onde o pavão nunca será surpreendido por seus efeitos.'
+            },
+            {
+                nome: 'Mariposa (Selkha Ihn)',
+                grimorio: 'Runas',
+                nivel: 3,
+                descricao: 'A mariposa implanta a zona "Asas da Morte" em campo por Mag/3 turnos. Dentro dela, qualquer portador que utilize mana, receba mana ou tenha sua mana roubada, imediatamente recebe 1dMag de dano. Este dano é armazenado em até 3 dados. Quando a zona se encerra, ou quando a mariposa decidir que a zona se encerra, o dano armazenado é transformado em uma explosão rósea de mana, que causa dano. O dano da explosão é proporcional ao dano armazenado, e é causado a todos dentro da zona, incluindo o portador da mariposa.',
+                subataques: [
+                {
+                    nome: 'Baixo',
+                    descricao: '1dMag de dano armazenado.',
+                    dano: '1dMag',
+                    calculoDano: { atributo: 'MAG'}
+                },
+                {
+                    nome: 'Médio',
+                    descricao: '2dMag de dano armazenado.',
+                    dano: '2dMag',
+                    calculoDano: { atributo: 'MAG'}
+                },
+                {
+                    nome: 'Alto',
+                    descricao: '3dMag de dano armazenado.',
+                    dano: '3dMag',
+                    calculoDano: { atributo: 'MAG'}
+                }
+            ]
+            },
+            {
+                nome: 'Dragão (Zerath Vornak)',
+                grimorio: 'Runas',
+                nivel: 'Suprema',
+                descricao: `
+                
+                - (AÇÃO) Abre uma fenda no ar. Da fenda, o "Dragão Sanguinário" aparece. O "Dragão Sanguinário" imediatamente cospe "Sangue Fervente" em uma área, e então, obtém 3 reutilizações de "Sangue Fervente". 
+                
+                - (DRAGÃO SANGUINÁRIO): "Dragão Sanguinário" é uma forma de dragão imbuída em sangue. Suas asas são despedaçadas, e partes do seu corpo são deformadas, pelo esforço que o usuário da runa está impondo. "Dragão Sanguinário" dura Mag/3 turnos. 
+                
+                - (SANGUE FERVENTE: 3 REUTILIZAÇÕES): Causa 2dMag + Controle de dano e consegue derreter matérias frágeis. O usuário pode usar uma ação para fazer o "Dragão Sanguinário" cuspir "Sangue Fervente". Isto gasta 1 reutilização de "Sangue Fervente". O usuário pode realizar esta ação após o turno de qualquer indivíduo além de seu próprio. 
+                
+                - (HABILIDADE: "Até a Próxima, Primeira Lâmina"): Quando o "Dragão Sanguinário" sair de campo de qualquer maneira, ele explode em sangue, causando 3dMag + Controle de dano em área.`,
+                subataques: [
+                {
+                    nome: 'Sangue Fervente',
+                    descricao: 'O Dragão dispara uma rajada de sangue fervente em um alvo, causando dano significativo.',
+                    dano: '2dMag + Controle',
+                    calculoDano: { atributo: 'MAG', pericia: 'Controle' },
+                },
+                {
+                    nome: 'Até a Próxima, Primeira Lâmina',
+                    descricao: 'Quando o Dragão Sanguinário desaparece, ele explode em sangue, causando 3dMag + Controle de dano em área.',
+                    dano: '3dMag + Controle',
+                    calculoDano: { atributo: 'MAG', pericia: 'Controle' },
+                    efeitos: '[AREA]'
+                }
+            ]
+            }
         ]
 }
 
