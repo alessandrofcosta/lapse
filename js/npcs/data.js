@@ -304,6 +304,77 @@ ami: {
             ]
             }
         ]
+},
+
+mordrek: {
+        info: {
+            nome_data: 'mordrek',
+            nome: 'Mordrek Ashveil - Veilash Kredmor',
+            inspiracao: 0,
+            nivel: 15,
+            xp: 0,
+            idade: '30',
+            altura: 175,
+            peso: 90,
+            classe: '-',
+            arquetipo: 'Feiticeiro',
+            discord_id: '698345882428506242'
+        },
+
+        atributos: [
+            { pv: 88, ps: 12 },
+            { sigla: 'FOR', nome: 'Força', valor: 0 },
+            { sigla: 'VIG', nome: 'Vigor', valor: 10},
+            { sigla: 'AGL', nome: 'Agilidade', valor: 3 },
+            { sigla: 'INT', nome: 'Inteligência', valor: 10 },
+            { sigla: 'ESP', nome: 'Espírito', valor: 0 },
+            { sigla: 'MAG', nome: 'Magia', valor: 10, prestigio: 3 }
+        ],
+
+        pericias: [
+            {
+                atributo: 'MAG',
+                pericia_valor: [
+                    { nome: 'Visão', valor: 15 },
+                    { nome: 'Mana', valor: 15 },
+                    { nome: 'Intimidação', valor: 15 },
+                ]
+            },
+        ],
+
+        habilidades: [
+            {
+                nome: 'Guerra',
+                grimorio: 'Mana',
+                nivel: 'Suprema',
+                descricao: 'Guerra. O destruidor de mundos, ganha uma espada feita de mana capaz de corromper a mente de seus alvos com um único toque. Ao corrompê-los o alvo fica descontrolado e começa a atacar tudo pela sua frente.',
+                dano: '1dMag + Mana',
+                calculoDano: { atributo: 'MAG', pericia: 'Mana' },
+                efeitos: ['[ESPECIAL]']
+            },
+            {
+                nome: 'Peste',
+                grimorio: 'Mana',
+                nivel: 'Suprema',
+                descricao: 'Peste. A Peste é capaz de intimidar qualquer um. Qualquer um que sinta sua presente enquanto a peste está ativa tem a sensação de que algo terrível irá acontecer, e que a morte está próxima. A Peste é tão poderosa que pode até mesmo causar a morte de indivíduos mais fracos, ou com a sanidade baixa, apenas por estar ativa.',
+                efeitos: ['[DEBUFF]']
+            },
+            {
+                nome: 'Fome',
+                grimorio: 'Mana',
+                nivel: 'Suprema',
+                descricao: 'Fome. Quando a fome está ativa, o usuário enfraquece seus alvos. Sua mana fica enfraquecida, seus movimentos ficam lentos, e suas ações ficam mais difíceis de serem realizadas.',
+                efeitos: ['[DEBUFF]']
+            },
+            {
+                nome: 'Morte',
+                grimorio: 'Mana',
+                nivel: 'Suprema',
+                descricao: 'Morte. Ataques com a morte determinam a morte do alvo. Não de uma vez, mas lentamente ele vai sumindo da realidade, não sobrando se quer uma gota. A cada turno com a morte ativa o alvo perde mais sua vida aos poucos.',
+                dano: '2dMag + Mana',
+                efeitos: ['[ESPECIAL]']
+            }
+        ]
 }
 
 };
