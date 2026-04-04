@@ -280,9 +280,7 @@ ami: {
                 nome: 'Dragão (Zerath Vornak)',
                 grimorio: 'Runas',
                 nivel: 'Suprema',
-                descricao: `
-                
-                - (AÇÃO) Abre uma fenda no ar. Da fenda, o "Dragão Sanguinário" aparece. O "Dragão Sanguinário" imediatamente cospe "Sangue Fervente" em uma área, e então, obtém 3 reutilizações de "Sangue Fervente". 
+                descricao: `- (AÇÃO) Abre uma fenda no ar. Da fenda, o "Dragão Sanguinário" aparece. O "Dragão Sanguinário" imediatamente cospe "Sangue Fervente" em uma área, e então, obtém 3 reutilizações de "Sangue Fervente". 
                 
                 - (DRAGÃO SANGUINÁRIO): "Dragão Sanguinário" é uma forma de dragão imbuída em sangue. Suas asas são despedaçadas, e partes do seu corpo são deformadas, pelo esforço que o usuário da runa está impondo. "Dragão Sanguinário" dura Mag/3 turnos. 
                 
