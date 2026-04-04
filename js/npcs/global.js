@@ -5,6 +5,7 @@ const senhasNPC = {
     "27944092732df96af0311e3e374b751a584e331c2fcf36c24e5b96dd79741c30": 'ami', //olamundo
     "b146ee27a559d368f8379f2c17649f29db804e0d3e2e6a5879e179aaedeb09c4": 'mordrek', //davisus
     "ec96d18a74fb69422ea3e83a64880868d79fbd524c12c175b71af5a805cc7da7": 'caim', // kajolindo12
+    "2e81e88f103bc4346870c197caaea4994d57557a380805afafd8a2b3e6f9ee88": 'mercy' //ody
 };
 
 const nomeAcessoNPC = senhasNPC[acessoNPC];

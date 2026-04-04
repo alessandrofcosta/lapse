@@ -427,6 +427,58 @@ caim: {
                 efeitos: ['[BUFF]']
             },
         ]
+},
+
+caim: {
+        info: {
+            nome_data: 'mercy',
+            nome: 'Mercy Vornak',
+            inspiracao: 0,
+            nivel: 13,
+            xp: 0,
+            idade: '19',
+            altura: 171,
+            peso: 65,
+            classe: '-',
+            arquetipo: 'Feiticeiro',
+            discord_id: '898633326854823938'
+        },
+
+        atributos: [
+            { pv: 88, ps: 10 },
+            { sigla: 'FOR', nome: 'Força', valor: 3 },
+            { sigla: 'VIG', nome: 'Vigor', valor: 6},
+            { sigla: 'AGL', nome: 'Agilidade', valor: 8, prestigio: 2 },
+            { sigla: 'INT', nome: 'Inteligência', valor: 6 },
+            { sigla: 'ESP', nome: 'Espírito', valor: 0 },
+            { sigla: 'MAG', nome: 'Magia', valor: 8 }
+        ],
+
+        pericias: [
+            {
+                atributo: 'AGL',
+                pericia_valor: [
+                    { nome: 'Reflexos', valor: 15 },
+                    { nome: 'Esgrima', valor: 10 },
+                ]
+            },
+            {
+                atributo: 'MAG',
+                pericia_valor: [
+                   { nome: 'Mana', valor: 15 },
+                ]
+            },
+        ],
+
+        habilidades: [
+            {
+                nome: 'Metamorfose',
+                grimorio: 'Mana',
+                nivel: 3,
+                descricao: 'O usuário pode se moldar em qualquer forma que desejar, seja para se disfarçar ou para ganhar vantagens específicas. Ele pode se transformar em um animal, em uma pessoa, ou até mesmo em um objeto. Ele pode manter a forma por um tempo limitado, e pode mudar de forma quantas vezes quiser dentro desse tempo.',
+                efeitos: ['[BUFF]']
+            },
+        ]
 }
 
 };
