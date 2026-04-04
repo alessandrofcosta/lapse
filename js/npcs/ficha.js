@@ -225,7 +225,7 @@ function calcularDanoHabilidade(personagem, habilidade) {
     }
 
     if (atributo && typeof atributo.prestigio === 'number' && atributo.prestigio > 0) {
-        dano += `+${atributo.prestigio - 1}d3`;
+        dano += `+${atributo.prestigio - 1}d4`;
     }
 
     return dano;
