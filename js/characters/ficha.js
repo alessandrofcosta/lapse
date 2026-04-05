@@ -199,7 +199,7 @@ function obterPericiasCalculo(habilidade) {
 
 function calcularDanoHabilidade(personagem, habilidade) {
     if (!habilidade?.calculoDano?.atributo) {
-        return undefined;
+        return "";
     }
 
     const atributoSigla = habilidade.calculoDano.atributo;

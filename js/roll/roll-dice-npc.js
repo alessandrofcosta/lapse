@@ -89,7 +89,7 @@ function rollAttackDiceNPC() {
     const nome = selected.getAttribute('data-nome');
     const efeito = selected.getAttribute('data-efeito');
 
-    if (dano === 'undefined') {
+    if (!dano || dano === 'undefined') {
         sendNPCMessage(`-# <@${capitalize(npcData[nomeAcessoNPC].info.discord_id)}> ${nome}\n\`${efeito}\`\nHabilidade sem dano.`);
     } else {
         sendNPCMessage(`-# <@${capitalize(npcData[nomeAcessoNPC].info.discord_id)}> ${nome}\n\`${efeito}\`\n!rolar ${dano}`);
