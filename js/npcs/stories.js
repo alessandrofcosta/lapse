@@ -16,6 +16,11 @@ window.NPC_STORIES = {
     caim: `
 <h1>Caim Vorthal</h1>
 
+<div class="images-container">
+        <img src="../../media/characters/caim/caim-1.png" alt="">
+        <img src="../../media/characters/caim/caim-3.png" alt="">
+    </div>
+
 <h2>A Divergência de Uma Arma</h2>
 <p>
     Após ser colocado no mundo pelo Devorador, Caim não sabia seu propósito e nem a razão de existir.
