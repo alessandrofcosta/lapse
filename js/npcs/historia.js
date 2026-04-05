@@ -10,7 +10,6 @@ function renderNPCHistoria() {
         main.innerHTML = `
             <h1>História em construção</h1>
             <p>A história de <strong>${npcData[nomeAcessoNPC].info.nome}</strong> ainda não foi cadastrada.</p>
-            <p>Adicione o conteúdo em <code>js/npcs/stories.js</code> para publicar sem criar um novo HTML.</p>
         `;
         return;
     }
