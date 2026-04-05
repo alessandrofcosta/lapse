@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+:root {
+    --cor-1: #F2EDE6;
+    --cor-2: #E6D3B3;
+    --cor-3: #C9A07A;
+    --cor-4: #A66A4B;
+    --cor-5: #1F1A1A;
+}
+
+header {
+    color: var(--cor-1);
+}
+
+header a {
+    color: var(--cor-1);
+}
