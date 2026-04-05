@@ -34,7 +34,7 @@ function renderHeader() {
 
 
     <div class="hlinks-container">
-        <a href="${nomeAcesso}.html" class="hlinks">
+        <a href="historia.html" class="hlinks">
             <p>História</p>
         </a>
         <a href="ficha.html" class="hlinks">

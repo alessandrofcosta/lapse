@@ -35,7 +35,7 @@ function renderNPCHeader() {
     </div>
 
     <div class="hlinks-container">
-        <a href="${nomeAcessoNPC}.html" class="hlinks"><p>História</p></a>
+        <a href="historia.html" class="hlinks"><p>História</p></a>
         <a href="ficha.html" class="hlinks"><p>Ficha</p></a>
     </div>
 

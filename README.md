@@ -69,3 +69,10 @@ Caso precise de mais informações, sinta-se à vontade para abrir uma issue no 
 1. Crie um webhook no canal privado de NPCs no Discord.
 2. Substitua o valor de `webhookURLNPC` em `js/roll/roll-dice-npc.js`.
 3. Não reutilize o webhook dos players.
+### Histórias centralizadas (Players e NPCs)
+- Agora existe uma única página de história para players: `pages/characters/historia.html`.
+- Agora existe uma única página de história para NPCs: `pages/npcs/historia.html`.
+- Para adicionar/editar história, use apenas:
+  - `js/characters/stories.js` (players)
+  - `js/npcs/stories.js` (NPCs)
+- Não é mais necessário criar um novo arquivo HTML por personagem.
