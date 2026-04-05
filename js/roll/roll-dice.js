@@ -88,7 +88,7 @@ function rollAttackDice() {
     const nome = selected.getAttribute('data-nome');
     const efeito = selected.getAttribute('data-efeito');
 
-    if (dano === "undefined") {
+    if (!dano || dano === "undefined") {
         sendMessage(`-# <@${capitalize(data[nomeAcesso].info.discord_id)}> ${nome}\n\`${efeito}\`
         \nHabilidade sem dano.`)
     } else {
