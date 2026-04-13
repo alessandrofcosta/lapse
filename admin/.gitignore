@@ -1,0 +1,17 @@
+# Environment files
+.env
+.env.local
+.env.production
+.env.production.local
+.env.*.local
+
+# Next.js
+.next/
+out/
+
+# Node
+node_modules/
+
+# Misc
+.DS_Store
+*.pem
