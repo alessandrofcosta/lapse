@@ -92,16 +92,16 @@ zerath: {
             { sigla: 'AGL', nome: 'Agilidade', valor: 7 },
             { sigla: 'INT', nome: 'Inteligência', valor: 10 },
             { sigla: 'ESP', nome: 'Espírito', valor: 0 },
-            { sigla: 'MAG', nome: 'Magia', valor: 5, prestigio: 4 }
+            { sigla: 'MAG', nome: 'Magia', valor: 6, prestigio: 3 }
         ],
 
         pericias: [
             {
                 atributo: 'MAG',
                 pericia_valor: [
-                    { nome: 'Visão', valor: 10 },
+                    { nome: 'Visão', valor: 15 },
                     { nome: 'Mana', valor: 15 },
-                    { nome: 'Resistência', valor: 10 },
+                    { nome: 'Resistência', valor: 15 },
                 ]
             },
         ],
