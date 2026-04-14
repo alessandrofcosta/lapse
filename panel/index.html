@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lapse - Admin Panel</title>
+    <link rel="icon" href="../media/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <img src="../media/lapse.png" alt="Lapse" class="sidebar-logo">
+                <h2>Admin Panel</h2>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-section-header">
+                    <h3>Players</h3>
+                    <button class="btn-icon" id="btn-create-player" title="Create Player">+</button>
+                </div>
+                <ul id="player-list" class="entity-list"></ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-section-header">
+                    <h3>NPCs</h3>
+                    <button class="btn-icon" id="btn-create-npc" title="Create NPC">+</button>
+                </div>
+                <ul id="npc-list" class="entity-list"></ul>
+            </div>
+
+            <div class="sidebar-footer">
+                <p id="last-update"></p>
+                <button class="btn-save" id="btn-save-all">Save All Files</button>
+            </div>
+        </aside>
+
+        <main id="main">
+            <div id="empty-state" class="empty-state">
+                <img src="../media/d20.png" alt="" class="empty-icon">
+                <h2>Select a character or NPC</h2>
+                <p>Choose from the sidebar or create a new entry.</p>
+            </div>
+
+            <div id="detail-view" class="detail-view" style="display:none;">
+                <div class="detail-header">
+                    <h1 id="detail-title"></h1>
+                    <div class="detail-header-actions">
+                        <span id="detail-type-badge" class="badge"></span>
+                        <button class="btn-danger" id="btn-delete" title="Delete">Delete</button>
+                    </div>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab active" data-tab="info">Info</button>
+                    <button class="tab" data-tab="attributes">Attributes</button>
+                    <button class="tab" data-tab="skills">Skills</button>
+                    <button class="tab" data-tab="abilities">Abilities</button>
+                    <button class="tab" data-tab="story">Story</button>
+                </div>
+
+                <div id="tab-content" class="tab-content"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Confirm Dialog -->
+    <div id="confirm-dialog" class="dialog-overlay" style="display:none;">
+        <div class="dialog">
+            <h3 id="confirm-title"></h3>
+            <p id="confirm-message"></p>
+            <div class="dialog-actions">
+                <button class="btn-secondary" id="confirm-cancel">Cancel</button>
+                <button class="btn-danger" id="confirm-ok">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Dialog -->
+    <div id="create-dialog" class="dialog-overlay" style="display:none;">
+        <div class="dialog dialog-wide">
+            <h3 id="create-title">Create New Character</h3>
+            <div class="form-group">
+                <label>Identifier (nome_data)</label>
+                <input type="text" id="create-id" placeholder="e.g. ryuji (lowercase, no spaces)">
+                <small>Unique key used for file references. Lowercase, no spaces.</small>
+            </div>
+            <div class="form-group">
+                <label>Display Name</label>
+                <input type="text" id="create-name" placeholder="e.g. Ryuji Takamura">
+            </div>
+            <div class="form-group">
+                <label>Archetype</label>
+                <select id="create-archetype">
+                    <option value="Feiticeiro">Feiticeiro</option>
+                    <option value="Lutador">Lutador</option>
+                    <option value="Ca&ccedil;ador">Ca&ccedil;ador</option>
+                    <option value="Tanque">Tanque</option>
+                    <option value="G&ecirc;nio">G&ecirc;nio</option>
+                </select>
+            </div>
+            <div class="dialog-actions">
+                <button class="btn-secondary" id="create-cancel">Cancel</button>
+                <button class="btn-primary" id="create-ok">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
