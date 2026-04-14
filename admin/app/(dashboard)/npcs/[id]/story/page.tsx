@@ -9,7 +9,7 @@ import { StoryEditor } from '@/components/editors/StoryEditor'
 
 export const dynamic = 'force-dynamic'
 
-export default async function PlayerStoryPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function NpcStoryPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const supabase = await createServerActionClient()
 
@@ -17,7 +17,7 @@ export default async function PlayerStoryPage({ params }: { params: Promise<{ id
     .from('characters')
     .select('id, nome, rpg_id')
     .eq('id', id)
-    .eq('entity_type', 'player')
+    .eq('entity_type', 'npc')
     .is('deleted_at', null)
     .single()
   const character = characterData as Pick<Tables<'characters'>, 'id' | 'nome' | 'rpg_id'> | null
@@ -30,7 +30,7 @@ export default async function PlayerStoryPage({ params }: { params: Promise<{ id
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3">
-        <Link href={`/players/${id}`}>
+        <Link href={`/npcs/${id}`}>
           <Button variant="ghost" size="sm"><ChevronLeft className="h-4 w-4" /></Button>
         </Link>
         <h1 className="text-2xl font-bold">Story — {character.nome}</h1>
@@ -44,7 +44,7 @@ export default async function PlayerStoryPage({ params }: { params: Promise<{ id
           <StoryEditor
             characterId={character.id}
             rpgId={character.rpg_id}
-            entityType="player"
+            entityType="npc"
             initialContent={story?.content_html ?? ''}
           />
         </CardContent>
