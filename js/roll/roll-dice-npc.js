@@ -3,21 +3,13 @@ function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
+const DISCORD_PROXY_URL = 'https://admin-swart-gamma.vercel.app/api/discord/roll';
+
 function sendNPCMessage(message) {
-    const webhookURLNPC = window.WEBHOOK_CONFIG?.npcUrl;
-    if (!webhookURLNPC || webhookURLNPC.startsWith('PASTE_')) {
-        console.error('webhook-config.js not configured — copy webhook-config.example.js and fill in the NPC URL.');
-        return;
-    }
-
-    const mensagem = {
-        content: message
-    };
-
-    fetch(webhookURLNPC, {
+    fetch(DISCORD_PROXY_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(mensagem)
+        body: JSON.stringify({ message, character: 'npc' }),
     })
     .then(() => console.log('Enviado (NPC)!'))
     .catch(error => console.error('Erro NPC:', error));

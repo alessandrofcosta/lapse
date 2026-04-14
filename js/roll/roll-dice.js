@@ -3,24 +3,16 @@ function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
 
+const DISCORD_PROXY_URL = 'https://admin-swart-gamma.vercel.app/api/discord/roll';
+
 function sendMessage(message) {
-    const webhookURL = window.WEBHOOK_CONFIG?.playerUrl;
-    if (!webhookURL || webhookURL.startsWith('PASTE_')) {
-        console.error('webhook-config.js not configured — copy webhook-config.example.js and fill in the player URL.');
-        return;
-    }
-
-    const mensagem = {
-        content: message
-    };
-
-    fetch(webhookURL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(mensagem)
+    fetch(DISCORD_PROXY_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message, character: 'player' }),
     })
-    .then(() => console.log("Enviado!"))
-    .catch(error => console.error("Erro:", error));
+    .then(() => console.log('Enviado!'))
+    .catch(error => console.error('Erro:', error));
 }
 
 const rollButtonElement = document.querySelectorAll('.js-roll-button')
