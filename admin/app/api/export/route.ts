@@ -1,7 +1,14 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createServiceClient } from '@/lib/supabase/server'
+import type { Tables } from '@/types/supabase'
 
 export const dynamic = 'force-dynamic'
+
+type CharacterWithRelations = Tables<'characters'> & {
+  attributes: Tables<'attributes'>[]
+  skills: Tables<'skills'>[]
+  abilities: Tables<'abilities'>[]
+}
 
 export async function GET(request: NextRequest) {
   const authHeader = request.headers.get('authorization')
@@ -11,14 +18,6 @@ export async function GET(request: NextRequest) {
   }
 
   const supabase = createServiceClient()
-
-  import type { Tables } from '@/types/supabase'
-
-  type CharacterWithRelations = Tables<'characters'> & {
-    attributes: Tables<'attributes'>[]
-    skills: Tables<'skills'>[]
-    abilities: Tables<'abilities'>[]
-  }
 
   const [charactersResult] = await Promise.all([
     supabase
@@ -32,7 +31,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: charactersResult.error.message }, { status: 500 })
   }
 
-  const characters = (charactersResult.data ?? []) as CharacterWithRelations[]
+  const characters = (charactersResult.data ?? []) as unknown as CharacterWithRelations[]
 
   const players = characters.filter((c) => c.entity_type === 'player')
   const npcs = characters.filter((c) => c.entity_type === 'npc')

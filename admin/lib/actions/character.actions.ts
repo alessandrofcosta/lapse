@@ -3,6 +3,7 @@ import { z } from 'zod'
 import { revalidatePath } from 'next/cache'
 import { createServerActionClient, createServiceClient } from '@/lib/supabase/server'
 import { characterSchema } from '@/lib/validations/character.schema'
+import type { Json } from '@/types/supabase'
 
 export async function createCharacter(formData: z.infer<typeof characterSchema>) {
   const parsed = characterSchema.safeParse(formData)
@@ -27,7 +28,7 @@ export async function createCharacter(formData: z.infer<typeof characterSchema>)
     action: 'create',
     entity_type: 'character',
     entity_id: data.id,
-    new_data: data as unknown as Record<string, unknown>,
+    new_data: data as unknown as Json,
   })
 
   revalidatePath('/players')
@@ -68,8 +69,8 @@ export async function updateCharacter(
     action: 'update',
     entity_type: 'character',
     entity_id: id,
-    old_data: old as unknown as Record<string, unknown>,
-    new_data: data as unknown as Record<string, unknown>,
+    old_data: old as unknown as Json,
+    new_data: data as unknown as Json,
   })
 
   revalidatePath('/players')

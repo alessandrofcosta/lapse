@@ -4,7 +4,11 @@ function capitalize(str) {
 }
 
 function sendNPCMessage(message) {
-    const webhookURLNPC = 'https://discord.com/api/webhooks/1343770648316739714/Y479MCDCX4kTtbpjOroGCJ4aLaiL-l_1jY7C_Qe8YuhQAAWdFCbSpRpzofCKIfFdTSXH';
+    const webhookURLNPC = window.WEBHOOK_CONFIG?.npcUrl;
+    if (!webhookURLNPC || webhookURLNPC.startsWith('PASTE_')) {
+        console.error('webhook-config.js not configured — copy webhook-config.example.js and fill in the NPC URL.');
+        return;
+    }
 
     const mensagem = {
         content: message
@@ -15,7 +19,7 @@ function sendNPCMessage(message) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(mensagem)
     })
-    .then(response => console.log('Enviado (NPC)!', response))
+    .then(() => console.log('Enviado (NPC)!'))
     .catch(error => console.error('Erro NPC:', error));
 }
 

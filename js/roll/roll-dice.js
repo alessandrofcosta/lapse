@@ -4,7 +4,11 @@ function capitalize(str) {
   }
 
 function sendMessage(message) {
-    webhookURL = 'https://discord.com/api/webhooks/1392258344009334914/8xnp9vECWaoQ0apxHAqaCCPYSi23jWVVtjMuRWjMzDWSEg34DQSxKM6oKPhmc8FOmr9b';
+    const webhookURL = window.WEBHOOK_CONFIG?.playerUrl;
+    if (!webhookURL || webhookURL.startsWith('PASTE_')) {
+        console.error('webhook-config.js not configured — copy webhook-config.example.js and fill in the player URL.');
+        return;
+    }
 
     const mensagem = {
         content: message
@@ -15,7 +19,7 @@ function sendMessage(message) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(mensagem)
     })
-    .then(response => console.log("Enviado!", response))
+    .then(() => console.log("Enviado!"))
     .catch(error => console.error("Erro:", error));
 }
 

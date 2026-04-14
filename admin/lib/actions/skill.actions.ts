@@ -3,6 +3,7 @@ import { z } from 'zod'
 import { revalidatePath } from 'next/cache'
 import { createServerActionClient, createServiceClient } from '@/lib/supabase/server'
 import { skillSchema } from '@/lib/validations/skill.schema'
+import type { Json } from '@/types/supabase'
 
 export async function createSkill(formData: z.infer<typeof skillSchema>) {
   const parsed = skillSchema.safeParse(formData)
@@ -27,7 +28,7 @@ export async function createSkill(formData: z.infer<typeof skillSchema>) {
     action: 'create',
     entity_type: 'skill',
     entity_id: data.id,
-    new_data: data as unknown as Record<string, unknown>,
+    new_data: data as unknown as Json,
   })
 
   revalidatePath(`/players/${parsed.data.character_id}/skills`)
@@ -60,8 +61,8 @@ export async function updateSkill(id: string, formData: z.infer<typeof skillSche
     action: 'update',
     entity_type: 'skill',
     entity_id: id,
-    old_data: old as unknown as Record<string, unknown>,
-    new_data: data as unknown as Record<string, unknown>,
+    old_data: old as unknown as Json,
+    new_data: data as unknown as Json,
   })
 
   revalidatePath(`/players/${parsed.data.character_id}/skills`)

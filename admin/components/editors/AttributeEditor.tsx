@@ -41,7 +41,11 @@ export function AttributeEditor({ characterId, rpgId }: AttributeEditorProps) {
   async function handleUpdate(id: string, field: 'valor' | 'bonus' | 'prestigio', value: number) {
     setSaving(id)
     const supabase = createClient()
-    await supabase.from('attributes').update({ [field]: value }).eq('id', id)
+    const patch =
+      field === 'valor' ? { valor: value } :
+      field === 'bonus' ? { bonus: value } :
+      { prestigio: value }
+    await supabase.from('attributes').update(patch).eq('id', id)
     setAttributes((prev) =>
       prev.map((a) => (a.id === id ? { ...a, [field]: value } : a))
     )

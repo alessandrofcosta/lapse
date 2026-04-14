@@ -8,7 +8,7 @@ export const abilitySchema = z.object({
   nivel: z.string().default('1'),
   descricao: z.string().optional(),
   dano: z.string().max(50).optional(),
-  calculo_dano: z.record(z.unknown()).default({}),
+  calculo_dano: z.any().default({}),
   efeitos: z.array(z.string()).default([]),
   sort_order: z.number().int().default(0),
 })

@@ -130,7 +130,7 @@ export type Database = {
           classe_social: string | null
           inspiracao: number
           discord_id: string | null
-          pv_max: number | null
+          pv_max: number
           ps_max: number
           extra_info: Json
           is_active: boolean
@@ -155,6 +155,7 @@ export type Database = {
           classe_social?: string | null
           inspiracao?: number
           discord_id?: string | null
+          pv_max?: number
           ps_max?: number
           extra_info?: Json
           is_active?: boolean
@@ -179,6 +180,7 @@ export type Database = {
           classe_social?: string | null
           inspiracao?: number
           discord_id?: string | null
+          pv_max?: number
           ps_max?: number
           extra_info?: Json
           is_active?: boolean

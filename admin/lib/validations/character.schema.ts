@@ -15,7 +15,7 @@ export const characterSchema = z.object({
   inspiracao: z.number().int().min(0).default(0),
   discord_id: z.string().max(30).optional(),
   ps_max: z.number().int().min(0).default(10),
-  extra_info: z.record(z.unknown()).default({}),
+  extra_info: z.any().default({}),
   is_active: z.boolean().default(true),
 })
 
