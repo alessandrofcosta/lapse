@@ -24,9 +24,10 @@ export default async function NpcDetailPage({ params }: { params: Promise<{ id: 
   if (!character) notFound()
 
   const subPages = [
-    { href: `/players/${id}/attributes`, label: 'Attributes' },
-    { href: `/players/${id}/skills`, label: 'Skills' },
-    { href: `/players/${id}/abilities`, label: 'Abilities' },
+    { href: `/npcs/${id}/attributes`, label: 'Attributes' },
+    { href: `/npcs/${id}/skills`, label: 'Skills' },
+    { href: `/npcs/${id}/abilities`, label: 'Abilities' },
+    { href: `/npcs/${id}/story`, label: 'Story' },
   ]
 
   return (
@@ -51,7 +52,7 @@ export default async function NpcDetailPage({ params }: { params: Promise<{ id: 
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         {subPages.map((page) => (
           <Link key={page.href} href={page.href}>
             <Button variant="outline" className="w-full">

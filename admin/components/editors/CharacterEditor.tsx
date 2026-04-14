@@ -58,6 +58,38 @@ export function CharacterEditor({ character, rpgId, entityType, onClose, onSaved
     setForm((prev) => ({ ...prev, [field]: value }))
   }
 
+  function getPasswordHash(value: unknown): string {
+    if (!value || typeof value !== 'object') return ''
+    const extra = value as Record<string, unknown>
+    const auth = extra.auth
+    if (auth && typeof auth === 'object' && typeof (auth as Record<string, unknown>).password_hash === 'string') {
+      return (auth as Record<string, unknown>).password_hash as string
+    }
+    return typeof extra.password_hash === 'string' ? (extra.password_hash as string) : ''
+  }
+
+  function updatePasswordHash(hash: string) {
+    const trimmed = hash.trim()
+    const current = (form.extra_info as Record<string, unknown>) ?? {}
+    const next: Record<string, unknown> = { ...current }
+    const auth = current.auth && typeof current.auth === 'object'
+      ? { ...(current.auth as Record<string, unknown>) }
+      : {}
+
+    if (trimmed) {
+      auth.password_hash = trimmed
+      next.auth = auth
+      next.password_hash = trimmed
+    } else {
+      delete auth.password_hash
+      if (Object.keys(auth).length > 0) next.auth = auth
+      else delete next.auth
+      delete next.password_hash
+    }
+
+    update('extra_info', next)
+  }
+
   async function handleSubmit() {
     setLoading(true)
     setError(null)
@@ -199,6 +231,16 @@ export function CharacterEditor({ character, rpgId, entityType, onClose, onSaved
               onChange={(e) => update('ps_max', parseInt(e.target.value))}
             />
           </div>
+        </div>
+
+
+        <div className="space-y-1.5">
+          <Label>Password hash (SHA-256)</Label>
+          <Input
+            value={getPasswordHash(form.extra_info)}
+            onChange={(e) => updatePasswordHash(e.target.value)}
+            placeholder="Cole o hash SHA-256 usado no login estático"
+          />
         </div>
 
         <div className="space-y-1.5">
