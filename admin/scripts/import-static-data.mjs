@@ -1,3 +1,6 @@
+import dotenv from 'dotenv'
+dotenv.config({ path: '.env.local' })
+
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import vm from 'node:vm'
