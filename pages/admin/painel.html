@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Admin — Lapse</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;700&display=swap');
+    :root {
+      --bg-overlay: rgba(8, 10, 19, 0.78);
+      --panel: rgba(17, 22, 38, 0.86);
+      --panel-border: rgba(225, 188, 99, 0.45);
+      --text-main: #f5f2e8;
+      --text-soft: #c4bba2;
+      --accent: #e1bc63;
+      --accent-2: #7a5b23;
+      --danger: #ff8a8a;
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:'Inter',sans-serif; color:var(--text-main); background:linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('../../media/background/lapse-background-4.png') center/cover fixed; padding: 16px; }
+    button,input,select,textarea { font: inherit; }
+    button { border:0; border-radius:8px; padding:9px 12px; cursor:pointer; background: linear-gradient(180deg,#efce7f 0%,#c89940 100%); color:#1a1208; font-family:'Cinzel',serif; font-weight:700; }
+    input,select,textarea { width:100%; border:1px solid rgba(255,255,255,.2); border-radius:8px; padding:8px; background: rgba(4,8,18,.7); color:var(--text-main); }
+    textarea { min-height: 72px; }
+    .error { color:var(--danger); font-size:.9rem; min-height:18px; }
+    .container { max-width: 1440px; margin:0 auto; }
+    header { display:flex; justify-content:space-between; align-items:center; gap:14px; margin-bottom:14px; background:var(--panel); border:1px solid var(--panel-border); border-radius:12px; padding:12px; }
+    h1 { margin:0; color:var(--accent); font-family:'Cinzel',serif; font-size:1.4rem; }
+    .header-actions { display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end; }
+    .tabs { display:flex; gap:8px; margin-bottom:12px; }
+    .tab { opacity:.75; }
+    .tab.active { opacity:1; outline:2px solid var(--accent-2); }
+    .tab-panel { display:none; }
+    .tab-panel.active { display:block; }
+    .panel-layout { display:grid; grid-template-columns: 280px 1fr; gap:12px; }
+    .entity-list, .editor-panel, .passwords-section { background:var(--panel); border:1px solid var(--panel-border); border-radius:12px; padding:12px; }
+    ul { list-style:none; margin:10px 0; padding:0; max-height:70vh; overflow:auto; }
+    li { padding:8px; border-radius:6px; cursor:pointer; border:1px solid transparent; }
+    li.active { border-color:var(--accent); background: rgba(225,188,99,.12); }
+    li.dirty::after { content:' *'; color: var(--accent); font-weight:700; }
+    .section { border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:10px; margin-bottom:10px; }
+    .section h3 { margin:0 0 8px; color:var(--accent); font-family:'Cinzel',serif; }
+    .grid { display:grid; gap:8px; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); }
+    .field small { color: var(--text-soft); display:block; margin-bottom:2px; }
+    .line { display:flex; gap:8px; align-items:center; }
+    .line > * { flex:1; }
+    .line button { flex: 0 0 auto; }
+    .pericia-group,.subataque-item,.habilidade-body { border:1px solid rgba(255,255,255,.1); border-radius:8px; padding:8px; margin-top:8px; }
+    details summary { cursor:pointer; color: var(--accent); font-weight:700; display:flex; justify-content:space-between; align-items:center; gap:8px; }
+    .habilidade-controls button { padding:2px 8px; font-size:.8rem; }
+    table { width:100%; border-collapse: collapse; margin-bottom:18px; }
+    th,td { border:1px solid rgba(255,255,255,.18); padding:8px; text-align:left; }
+    .saved-tag { color: #96f3a0; font-weight:700; margin-left:8px; opacity:0; transition:opacity .2s; }
+    .saved-tag.show { opacity:1; }
+    .modal { position:fixed; inset:0; background:rgba(0,0,0,.55); display:grid; place-items:center; padding:16px; }
+    .modal.hidden { display:none; }
+    .modal-inner { width:min(1000px, 100%); background:var(--panel); border:1px solid var(--panel-border); border-radius:12px; padding:12px; }
+    #modal-content { min-height: 60vh; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .modal-actions { display:flex; justify-content:flex-end; gap:8px; margin-top:8px; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Painel Admin — Lapse</h1>
+    <div class="header-actions">
+      <button id="btn-export-chars">Exportar Characters JS</button>
+      <button id="btn-export-npcs">Exportar NPCs JS</button>
+      <button id="btn-export-passwords">Exportar Senhas JS</button>
+      <button id="btn-logout">Sair</button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button data-tab="characters" class="tab active">Personagens</button>
+    <button data-tab="npcs" class="tab">NPCs</button>
+    <button data-tab="passwords" class="tab">Senhas</button>
+  </nav>
+
+  <main>
+    <div id="tab-characters" class="tab-panel active"></div>
+    <div id="tab-npcs" class="tab-panel"></div>
+    <div id="tab-passwords" class="tab-panel"></div>
+  </main>
+</div>
+
+<div id="modal-export" class="modal hidden">
+  <div class="modal-inner">
+    <h2 id="modal-title"></h2>
+    <textarea id="modal-content" readonly spellcheck="false" wrap="off"></textarea>
+    <div class="modal-actions">
+      <button id="btn-copy">Copiar</button>
+      <button id="btn-close-modal">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+if (sessionStorage.getItem('adminLogado') !== 'true') {
+  window.location.href = 'login.html';
+}
+
+const data = { 
+    
+indra: {
+    info: { 
+        nome_data: 'indra',
+        nome: 'Indra Ashura',
+        inspiracao: 1,
+        nivel: 11,
+        xp: 75,
+        idade: 15,
+        altura: 171,
+        peso: 65,
+        classe: 'Nobreza',
+        arquetipo: 'Caçador',
+        discord_id: '1317246514535465010'
+    },
+    
+    atributos: [
+        {pv: 79, ps: 6},
+        {sigla: "FOR", nome: "Força", valor: 6},
+        {sigla: "VIG", nome: "Vigor", valor: 3},
+        {sigla: "AGL", nome: "Agilidade", valor: 4, bonus: 2},
+        {sigla: "INT", nome: "Inteligência", valor: 1},
+        {sigla: "ESP", nome: "Espírito", valor: 3},
+        {sigla: "MAG", nome: "Magia", valor: 8, bonus: 4, prestigio: 2},
+    ],
+
+    pericias: [
+        {atributo: "MAG", pericia_valor: [
+            {nome: "Mana", valor: 5, bonus: 2},
+            {nome: "Visão", valor: 2},
+            {nome: "Grimório", valor: 15, bonus: 2},
+            {nome: "Controle", valor: 1},
+        ]},
+        {atributo: "AGL", pericia_valor: [
+            {nome: "Reflexos", valor: 1},
+            {nome: "Atletismo", valor: 0},
+            {nome: "Esgrima", valor: 1},
+            {nome: "Furtividade", valor: 0, bonus: -2},
+        ]},
+        {atributo: "ESP", pericia_valor: [
+            {nome: "Persuasão", valor: 0, bonus: -2},
+        ]},
+        {atributo: "INT", pericia_valor: [
+            {nome: "Persuasão", valor: 0, bonus: -2},
+            {nome: "Percepção", valor: 1}
+        ]},
+    ],
+    
+    habilidades: [
+        {
+            nome: 'Punho do Vazio',
+            grimorio: 'Sem grimório',
+            nivel: 2,
+            descricao: 'Reveste seus punhos com energia sombria do abismo, os socos ignoram barreiras mágicas e armaduras, acertando diretamente o corpo do alvo, cada golpe bem-sucedido rouba uma pequena quantidade de mana do adversário, fortalecendo. Se um golpe conectar, ele pode roubar um pouco da mana do inimigo, recuperando sua própria mana.',
+            dano: ' 1dMag + Mana',
+            calculoDano: { atributo: 'MAG', pericia: 'Mana' },
+            efeitos: ['[BLOCK-BREAK]']
+        },
+        {
+            nome: 'Ressurreição dos Derrotados',
+            grimorio: 'Zwzl OꟻxᴙUvi',
+            nivel: 'Zwzl OꟻxᴙUvi',
+            descricao: 'Após derrotar um mago, Indra pode se comunicar com o resto de mana em seu corpo e caso o derrotado seja convencido, pode trazê-lo de volta a vida como seu servo leal. Todas as habilidades estarão disponíveis para o uso do monarca. Todo servo tem a capacidade diminuída pela metade. Servos não tem a capacidade de se comunicar, eles apenas obedecem ao monarca.',
+            efeitos: ['[Zwzl OꟻxᴙUvi]'],
+            subataques: [
+                {nome: 'Lommie',
+                descricao: '',
+                efeitos: '[SUMMON]'},
+                {nome: 'Chamado das Três Sombras',
+                descricao: '',
+                efeitos: '[SUMMON]'},
+            ]
+            
+            
+        },
+        {
+            nome: 'Correntes Espirituais Demoníacas ',
+            grimorio: 'Grimório',
+            nivel: 1,
+            descricao: 'Invoca correntes espectrais que se conectam ao alvo e drenam sua mana lentamente, tornando-o mais fraco a cada segundo.',
+            efeitos: ['[DEBUFF]'] 
+        },
+        {
+            nome: 'Absorção Total',
+            grimorio: 'Grimório',
+            nivel: 2,
+            descricao: 'Qualquer feitiço lançado contra ele é anulado e lançado com força total.',
+            efeitos: ['[MIRROR]']
+        },
+        {
+            nome: 'Cicatriz Arcana',
+            grimorio: 'Grimório',
+            nivel: 1,
+            descricao: 'Após acertar três ataques no mesmo alvo, Indra marca a alma do inimigo com a Cicatriz de Arcana — uma ruptura espiritual que compromete o fluxo natural de energia mágica. Se o inimigo for mais fraco ou até do mesmo nível que Indra, ao tentar usar magia, o alvo sente dor espiritual intensa. Feitiços custam mais energia e têm chance de falhar.',
+            efeitos: ['[DEBUFF] [PASSIVE]']
+        },
+        {
+            nome: 'Devorada de mana',
+            grimorio: 'Grimório',
+            nivel: 3,
+            descricao: 'Símbolos arcanos se acendem ao redor de Indra, formando um círculo suspenso. Cada marca desaba em uma explosão concentrada que atinge o inimigo com força física real, quebrando o corpo ao mesmo tempo em que suga sua mana no ponto de impacto. A magia drenada não desaparece: ela reforça os próximos ataques, criando uma sequência crescente de destruição.',
+            efeitos: ['[DEBUFF]'],
+            dano: ' 1dMag + Grimório',
+            calculoDano: { atributo: 'MAG', pericia: 'Grimório' },
+        },
+    ],
+}, 
+
+sombras: {
+    info: { 
+        nome_data: 'sombras',
+        nome: 'Sombras',
+        nivel: 13,
+        xp: 0,
+        idade: '∞',
+        altura: '0',
+        inspiracao: '',
+        peso: '',
+        classe: '',
+        arquetipo: '',
+        discord_id: '1317246514535465010'
+    },
+    
+    atributos: [
+        {pv: 74, ps: '∞'},
+        {sigla: "FOR", nome: "Força", valor: 3},
+        {sigla: "VIG", nome: "Vigor", valor: 2},
+        {sigla: "AGL", nome: "Agilidade", valor: 8, bonus: 5, prestigio: 2},
+        {sigla: "INT", nome: "Inteligência", valor: 0},
+        {sigla: "ESP", nome: "Espírito", valor: 0},
+        {sigla: "MAG", nome: "Magia", valor: 9, prestigio: 2},
+    ],
+
+    pericias: [
+        {atributo: "MAG", pericia_valor: [
+            {nome: "Mana", valor: 13},
+            {nome: "Resistência", valor: 10, bonus: 5},
+            {nome: "Esgrima", valor: 6, bonus: 5},
+        ]},
+        {atributo: "AGL", pericia_valor: [
+            {nome: "Reflexos", valor: 5, bonus: 5},
+            {nome: "Esgrima", valor: 6, bonus: 5},
+        ]},
+    ],
+    
+    habilidades: [
+        {
+            nome: 'Chamado das Três Sombras',
+            grimorio: 'Zwzl OꟻxᴙUvi',
+            nivel: 'Zwzl OꟻxᴙUvi',
+            descricao: 'Indra abre seu grimório e traça um único símbolo no ar. Uma única sombra é invocada e controlada por Indra enquanto ele quiser, essa sombra pode se transformar em Lancelot, Boei ou Aemond sem cobrança de turnos.',
+            subataques: [
+                {nome: 'Boei',
+                descricao: `A presença de Boei distorce o conceito de ataque.
+                Sempre que Indra é alvo de qualquer investida, Boei reage antes mesmo da intenção se tornar ação.
+                O golpe é interceptado, absorvido ou simplesmente anulado.
+                Para Boei, proteger Indra não é um ato consciente… é uma lei primordial do mundo.`,
+                efeitos: '[BARRIER]'},
+                {nome: 'Aemond',
+                descricao: `A lâmina de Aemond corta primeiro, não o corpo, mas o vínculo entre carne e mana.
+                No instante do acerto, o cajado desperta e abre um canal etéreo invisível.
+                A mana do alvo, já instável, é sugada à força e drenada pelo cajado como um fluxo contínuo de sombras.
+
+                O inimigo sente o corpo enfraquecer enquanto sua magia é arrancada gota por gota, incapaz de reagir ou se recompor.
+                
+                Aemond também pode absorver e cortar a mana de qualquer ataque que vier em sua direção usando seu cajado`,
+                efeitos: '[DEBUFF]'},
+            ]
+            
+            
+        },
+    ],
+},
+
+saori: {
+    info: { 
+        nome_data: 'saori',
+        nome: 'Saori Silva',
+        nivel: 11,
+        inspiracao: 0,
+        xp: 75,
+        idade: 15,
+        altura: 151,
+        peso: 45,
+        classe: 'Realeza',
+        arquetipo: 'Feiticeiro',
+        discord_id: '522775874999943171'
+    },
+    
+    atributos: [
+        {pv: 56, ps: 6},
+        {sigla: "FOR", nome: "Força", valor: 1},
+        {sigla: "VIG", nome: "Vigor", valor: 4},
+        {sigla: "AGL", nome: "Agilidade", valor: 2},
+        {sigla: "INT", nome: "Inteligência", valor: 1, bonus: 2},
+        {sigla: "ESP", nome: "Espírito", valor: 3},
+        {sigla: "MAG", nome: "Magia", valor: 2, bonus: 5, prestigio: 2},
+    ],
+
+    pericias: [
+        {atributo: "MAG", pericia_valor: [
+            {nome: "Mana", valor: 2, bonus: 2},
+            {nome: "Visão", valor: 1},
+            {nome: "Grimório", valor: 15, bonus: 2},
+            {nome: "Controle", valor: 1},
+        ]},
+        {atributo: "AGL", pericia_valor: [
+            {nome: "Reflexos", valor: 1},
+        ]},
+        {atributo: "ESP", pericia_valor: [
+            {nome: "Persuasão", valor: 0, bonus: -2},
+        ]},
+        {atributo: "INT", pericia_valor: [
+            {nome: "História", valor: 1, bonus: -2},
+            {nome: "Persuasão", valor: 0, bonus: -2}
+        ]},
+    ],
+    
+    habilidades: [
+        {
+            nome: 'Pressão Real (王者の圧 – Ōja no Atsu)',
+            grimorio: 'Sem Grimório',
+            nivel: 1,
+            descricao: 'Sua mera presença impõe uma força gravitacional intensa ao seu redor, tornando difícil para inimigos de menor resistência se moverem ou atacarem corretamente. Qualquer um abaixo de certo nível de poder sente seus corpos ficarem pesados na presença de Saori.',
+            efeitos: ['[DEBUFF]']
+        },
+        {
+            nome: 'Manto Gravitacional (重装の衣 – Jūsō no Koromo)',
+            grimorio: 'Sem Grimório',
+            nivel: 1,
+            descricao: 'Envolve seu corpo com uma aura gravitacional que reduz a força dos ataques inimigos e repele golpes físicos de forma automática.',
+            efeitos: ['[BARRIER]']
+        },
+        {
+            nome: 'Impacto Celestial (天衝 – Tenshō)',
+            grimorio: 'Grimório',
+            nivel: 1,
+            descricao: 'Saori aponta para um alvo e aumenta abruptamente a gravidade em um ponto específico, fazendo com que o oponente seja esmagado contra o chão com uma força avassaladora. Quanto maior a diferença de poder, mais devastador o impacto.',
+            dano: '1dMag + Grimório',
+            calculoDano: { atributo: 'MAG', pericia: 'Grimório' },
+            efeitos: []
+        },
+        {
+            nome: 'Estrela da Devastação (荒廃の星 - Kōhai no hoshi)',
+            grimorio: 'Grimório ',
+            nivel: 1,
+            descricao: 'Acumula gravidade em um único ponto, formando uma singularidade. Essa singularidade absorve tudo ao ser redor e pode ser lançada aos inimigos causando dano em área.',
+            dano: ' 1dMag',
+            calculoDano: { atributo: 'MAG', pericia: 'Esgrima' },
+            efeitos: ['[AREA]']
+        },
+        {
+            nome: 'Colapso Estelar (星墜 – Hōchitsu)',
+            grimorio: 'Grimório',
+            nivel: 2,
+            descricao: 'Concentra uma grande massa gravitacional em um único ponto no ar, criando uma esfera compacta que atrai tudo ao seu redor. Após um tempo, a esfera implode, liberando uma explosão que distorce o espaço ao redor. ',
+            dano: ' 1dMag + Grimório',
+            calculoDano: { atributo: 'MAG', pericia: 'Grimório' },
+            efeitos: ['[AREA]']
+        },
+        {
+            nome: 'Lança de Densidade Gravitacional (重槍 – Jūsō)',
+            grimorio: 'Grimório',
+            nivel: 2,
+            descricao: 'Saori concentra a gravidade em um único ponto e molda essa força invisível em forma de uma lança negra translúcida, feita inteiramente de energia gravitacional condensada. Ao ser lançada, a lança atravessa o ar distorcendo o espaço ao redor, criando um som abafado e arrastado, como se a própria realidade estivesse sendo perfurada.',
+            dano: ' 1dMag + Grimório',
+            calculoDano: { atributo: 'MAG', pericia: 'Grimório' },
+            efeitos: ['[SPEEDBLITZ]']
+        },
+        {
+            nome: 'Avatar Gravitacional: Acier Silva (重力の化身 – Jūryoku no Keshin)',
+            grimorio: 'Grimório',
+            nivel: 'Suprema',
+            descricao: 'Essa é a habilidade suprema de Saori. Consiste em um avatar gigante no formato de sua mãe que vai se formando aos poucos. Os estágios do Avatar não podem ser pulados, todo estágio deve existir antes de seu sucessor.',
+            subataques: [
+                {
+                    nome: '1º Estágio — Manifestação Esquelética (O Esqueleto da Gravidade)',
+                    descricao: `Saori manifesta apenas a estrutura básica do avatar: 
+                    Braços gigantes e uma silhueta incompleta formada por pressão gravitacional. Esses braços podem ser usados para atacar. 
+                    Simbolismo: Orgulho sem controle emocional.`,
+                    dano: '1dMag + Grimório',
+                    efeitos: '[BLOCK-BREAK] [AREA]',
+                    calculoDano: { atributo: 'MAG', pericia: 'Grimório' },
+                }, 
+                
+                {
+                    nome: '2º Estágio — Avatar Parcial (A Guardiã de Prata)',
+                    descricao: `O avatar ganha um tronco completo e um rosto nebuloso que lembra Acier Silva.
+                                A gravidade agora começa a ter efeitos a todos em sua volta, qualquer um que estiver ao seu redor terão que fazer testes de resistência. 
+
+                                Simbolismo: Aceitação gradual do legado.`,
+                    dano: '2dMag + Grimório',
+                    efeitos: '[DEBUFF]',
+                    calculoDano: { atributo: 'MAG', pericia: 'Grimório' },
+                }, 
+
+                {
+                    nome: '3º Estágio — Avatar Completo (A Imperatriz Gravitacional)',
+                    descricao: `Um gigante completo revestido por uma armadura de gravidade sólida. 
+                                O usuário agora ganha uma espada gravitacional, além de uma defesa impenetrável. Seus movimentos agora são rápidos e precisos, fazendo o usuário se movimentar em alta velocidade usando sua mana como energia. Todo ataque desferido por Saori agora pode ser usado com magia.
+
+                                Simbolismo: Honra plena ao nome Silva.`,
+                    dano: '3dMag + Grimório',
+                    efeitos: '[DEBUFF]',
+                    calculoDano: { atributo: 'MAG', pericia: 'Grimório' },
+                }, 
+
+                {
+                    nome: 'Último Estágio — Forma Proibida (Colapso Estelar — A Gravidade do Luto)',
+                    descricao: `Uma forma extremamente instável, ativada por dor emocional extrema ou ódio absoluto.
+                                Saori não consegue chegar naturalmente à esse estágio, esse estágio é ativado apenas por sentimentos fortes. Toda a dor de Saori é convertida em mana pura, e, utilizando sua mana e seu grimório ao mesmo tempo, Saori se torna um ser divino.
+                                Saori agora controla completamente a gravidade ao seu redor, podendo rodar qualquer dado com vantagem. A gravidade esmagará toda e qualquer pessoa ao seu redor, não conseguindo direcioná-la, portanto, todo e qualquer ataque desferido por Saori acertará o alvo. Essa forma terá uma duração de MAG/9 (Prestígio conta como 10).
+
+                                Simbolismo: O colapso emocional de Saori.`,
+                    dano: '4dMag + Grimório + Mana',
+                    efeitos: '[BUFF] [OUTRACING]',
+                    calculoDano: { atributo: 'MAG', pericias: ['Grimório', 'Mana'] },
+
+                    
+                }, 
+            ]
+        },
+
+        {
+            nome: 'Realidade Distorcida (歪んだ現実 – Yuganda Genjitsu)',
+            grimorio: 'Grimório',
+            nivel: 3,
+            descricao: 'Saori molda uma caneta tinteiro gravitacional, a gravidade toma forma de uma folha, onde o mundo vira uma página abstrata. Saori pode fazer o que quiser com página desde que esteja com a caneta, desenhar, afundar rasgar. Quando essa folha é amassada, Saori comprime a gravidade ambiente, quando ela é riscada a caneta, cria um vão que a gravidade também gera acompanhando a linha, de riscar forte demais, é normal que você afunde o papel, e por isso ele criaria um aprofundamento da gravidade, se rasgar, quebra.',
+            dano: ' 3dMag + Grimório',
+            calculoDano: { atributo: 'MAG', pericia: 'Grimório' },
+            efeitos: ['[SPEEDBLITZ]']
+        },
+
+    ],
+}, 
+
+yuka: {
+    info: { 
+        nome_data: 'yuka',
+        nome: 'Yuka Kisha',
+        nivel: 12,
+        inspiracao: 2,
+        xp: 75,
+        idade: 18,
+        altura: 201,
+        peso: 100,
+        classe: 'Plebeu',
+        arquetipo: 'Caçador',
+        discord_id: '848993151128436796'
+    },
+    
+    atributos: [
+        {pv: 80, ps: 8},
+        {sigla: "FOR", nome: "Força", valor: 3, bonus: 2},
+        {sigla: "VIG", nome: "Vigor", valor: 5},
+        {sigla: "AGL", nome: "Agilidade", valor: 2, bonus: 2},
+        {sigla: "INT", nome: "Inteligência", valor: 2},
+        {sigla: "ESP", nome: "Espírito", valor: 1},
+        {sigla: "MAG", nome: "Magia", valor: 9, bonus: 2, prestigio: 2},
+    ],
+
+    pericias: [
+        {atributo: "MAG", pericia_valor: [
+            {nome: "Mana", valor: 8, bonus: 2},
+            {nome: "Grimório", valor: 10, bonus: 2},
+            {nome: "Controle", valor: 15},
+        ]},
+        {atributo: "VIG", pericia_valor: [
+            {nome: "Resistência", valor: 1},
+        ]},
+        {atributo: "FOR", pericia_valor: [
+            {nome: "Esgrima", valor: 2, bonus: 2},
+            {nome: "Luta", valor: 2}
+        ]},
+        {atributo: "AGL", pericia_valor: [
+            {nome: "Furtividade", valor: 2, bonus: -2},
+        ]},
+    ],
+    
+    habilidades: [
+        {
+            nome: 'Temperatus Imperium',
+            grimorio: 'Sem Grimório',
+            nivel: 3,
+            descricao: 'Ao Yuka falar o nome da habilidade "Temperatus Imperium" ele quebra a sua lança principal ao meio e divide ela em dois, após isso a parte esquerda começa a queimar em chamas laranjas e vermelhas subindo um pouco em seu braço,  e o lado direito começa a congelar e esse efeito pega um pouco em seu braço também. Agora Yuka tem duas lanças com seus respectivos Desastres (Climas absurdamente quentes e gelados).',
+            subataques: [
+                {
+                    nome: 'Gefroren - Gelo', 
+                    descricao: 'Essa parte é o lado defensivo de sua habilidade, com ela Yuka pode estancar sangramentos internos e até mesmo criar um escudo/barreira com esse poder. Mas mesmo sendo uma defesa ele ainda pode atacar com ela tendo o benefício de poder congelar um pouco o seu oponente.',
+                    efeitos: '[DEBUFF] [BUFF]',
+                    dano: '3dMag',
+                    calculoDano: { atributo: 'MAG', pericia: 'Controle' },
+                },
+                {
+                    nome: 'Flammen - Fogo', 
+                    descricao: 'É o lado ofensivo de sua habilidade, conseguindo executar estocadas rápidas e que queimam só de chegar perto no  oponente. Com a sua lança de fogo ele pode fazer uma estocada/golpe estendido de até 3 metros a partir da sua lança, ganhando  uma área de ataque bem maior do que antes.',
+                    efeitos: '[BURNING]',
+                    dano: '3dMag',
+                    calculoDano: { atributo: 'MAG'},
+                }
+            ]
+        },
+        {
+            nome: 'Trovão que Persegue as Nuvens',
+            grimorio: 'Grimório',
+            nivel: 3,
+            descricao: 
+            `O grimorio de Yuka, que é de uma cor escura, começa a levitar e sobe até ficar na altura de seu ombro. Yuka então abre o seu grimorio com um movimento de seu punho, as páginas começam a virar e então ele toma uma cor branca azulada, coberto por eletricidade e pequenos raios.
+
+            A ponta de uma lança começa a sair do grimorio, mas contrário ao usual vermelho, ela é branca. A nova lança de Yuka mais parece um relâmpago do que uma lança, sua forma tremendo com a força guardada dentro de si mesma. 
+
+            Yuka empunha sua nova lança e fecha o grimorio. O ambiente fica mais carregado, como se os cabelos de todos fossem subir só pela presença da lança. É possível até mesmo ver que os raios saindo do cabo da lança pegam um pouco no braço de Yuka.`,
+            subataques: [
+                {
+                    nome: 'Ataque Único', 
+                    descricao: 'Usa seu poder de uma só vez. A primeira forma é simples, Yuka aponta sua lança para o alvo e então uma grande rajada de relâmpagos é lançada em direção ao alvo, é até mesmo possível escutar um "rugido".',
+                    efeitos: '[OUTRACING]',
+                    dano: '1dMag + Controle',
+                    calculoDano: { atributo: 'MAG', pericia: 'Controle' },
+                },
+                {
+                    nome: 'Ataque Múltiplo', 
+                    descricao: 'Yuka usando de seu controle sobre sua própria magia, algo que é tal como um canhão que pode ser usado de forma rápida. Yuka finca sua lança no chão e diversas lanças iguais a principal são invocadas, e então lançadas em direção ao alvo.',
+                    efeitos: '[OUTRACING]',
+                    dano: '1dMag',
+                    calculoDano: { atributo: 'MAG'},
+                },
+            ]
+        },
+
+        {
+            nome: 'Tremor que estremece a terra',
+            grimorio: 'Sem Grimório',
+            nivel: 3,
+            descricao: 'O usuário consegue fazer o próprio ar tremer frente o poder, ele consegue causar terremotos ou fazer o espaço em volta dele tremer. Se ele imbuir em sua lança esse feitiço ele conseguirá usar de forma mais controlada, se alguem for atingido pela lança com o poder do tremor a vítima ficará atordoada.',
+            dano: ['1dMag + Mana'], 
+            calculoDano: { atributo: 'MAG', pericia: 'Mana' },
+            efeitos: ['[STUN]']
+        },      
+        {
+            nome: 'Caminho do Vento',
+            grimorio: 'Sem Grimório',
+            nivel: 1,
+            descricao: 'Após ver Shiva usar a sua magia de vento Yuka aprendeu a fazer algo parecido, ele consegue aprimorar a velocidade do seu corpo com o Vento. Mas essa habilidade não é só um simples vento é algo mais agressivo que isso só que Yuka ainda não consegue tirar o máximo potencial dessa parte de sua Magia. Enquanto essa habilidade estiver ativa o jogador poderá girar com um dado de vantagem em qualquer teste que envolva movimentação. Em caso de combate será girado 1d3 para determinar quantos turnos a habilidade ficará ativa. Após usá-la em combate, ela ficará em exaustão por outros 2 turnos.',
+            efeitos: ['[BUFF]']
+        },   
+    ],
+},
+
+yang: {
+    info: { 
+        nome_data: 'yang',
+        nome: 'Yang Kami Lapse',
+        nivel: 11,
+        inspiracao: 0,
+        xp: 85,
+        idade: 15,
+        altura: 173,
+        peso: 61,
+        classe: 'Realeza',
+        arquetipo: 'Feiticeiro',
+        discord_id: '423067939495739392'
+    },
+    
+    atributos: [
+        {pv: 52, ps: 7},
+        {sigla: "FOR", nome: "Força", valor: 0, bonus: -2},
+        {sigla: "VIG", nome: "Vigor", valor: 0},
+        {sigla: "AGL", nome: "Agilidade", valor: 2},
+        {sigla: "INT", nome: "Inteligência", valor: 4, bonus: 2},
+        {sigla: "ESP", nome: "Espírito", valor: 1},
+        {sigla: "MAG", nome: "Magia", valor: 10, bonus: 5, prestigio: 2},
+    ],
+
+    pericias: [
+        {atributo: "MAG", pericia_valor: [
+            {nome: "Mana", valor: 15, bonus: 2},
+            {nome: "Grimório", valor: 10, bonus: 2},
+            {nome: "Visão", valor: 2},
+            {nome: "Resistência", valor: 1},
+        ]},
+        {atributo: "INT", pericia_valor: [
+            {nome: "Percepção", valor: 1},
+            {nome: "Persuasão", valor: 2, bonus: -2}
+        ]},
+        {atributo: "ESP", pericia_valor: [
+            {nome: "Persuasão", valor: 2, bonus: -2}
+        ]},
+        {atributo: "AGL", pericia_valor: [
+            {nome: "Furtividade", valor: 1},
+            {nome: "Reflexos", valor: 1}
+        ]},
+    ],
+    
+    habilidades: [
+        {
+            nome: 'Intagibilidade',
+            grimorio: 'Sem Grimório',
+            nivel: 1,
+            descricao: 'O usuário nulifica a presença do seu corpo e da sua mana, tornando-se vazio no espaço.',
+            efeitos: ['[BUFF]']
+        },
+        {
+            nome: 'Olhos do Interlúnio',
+            grimorio: 'Sem Grimório',
+            nivel: 3,
+            descricao: 'O olho que contempla o intervalo entre existência e inexistência — o interlúnio, o não-dito, o instante que se perdeu entre o antes e o depois. Os olhos ameaçam a visão real do usuário, e são ativados e desativados manualmente.',
+            subataques: [
+                {nome: 'Fenda de Maigetsu', 
+                 descricao: 'O usuário projeta um vácuo no espaço que se expande e abre um portal para um outro ponto pré-estabelecido e conhecido por ele. O portal é indiferente a magia transporta objetos, pessoas e mana que com ele interagirem. O portal é desfeito e refeito sob a vontade do usuário.', 
+                 efeitos: '[ESPECIAL]'}, 
+            ]
+        },
+        {
+            nome: 'Inrelicário Vazio',
+            grimorio: 'Grimório',
+            nivel: 3,
+            descricao: 'O usuário invoca relíquias de armas convertidas no vazio por portais específicos. Apenas um inrelicário pode ser invocado por vez.',
+            efeitos: ['[BUFF]'],
+            subataques: [
+                {
+                    nome: 'Adagas (Pugiones Liminales)',
+                    descricao: 'Adagas que causam dano físico e desintegram a matéria e armaduras mágicas.',
+                    dano: '1dMag',
+                    calculoDano: { atributo: 'MAG'},
+                    efeitos: '[ESPECIAL]'
+                }, 
+
+                {nome: 'Correntes (Fasciae Vacuae)', 
+                descricao: 'Correntes que impedem movimento físico. Se prendem em múltiplos alvos se canalizadas.',
+                efeitos: '[IMMOBILIZED]'},
+
+                {nome: 'Vinhas (Lora Inania)',
+                descricao: 'Vinhas que absorvem mana passivamente do alvo, e dificultam a liberação dela em testes mágicos.',
+                efeitos: '[DEBUFF]'},
+
+                {nome: 'Cruz (Negacrux Finalis)',
+                descricao: 'Uma cruz que se posiciona como uma barreira unidirecional, tornando como "não reconhecível" qualquer ataque mágico que tente intervir nela.',
+                efeitos: '[BARRIER]'},
+
+                {
+                    nome: 'Lança (Hasta Nihilum)',
+                    descricao: 'Uma lança que causa dano físico e se move em altíssima velocidade. O usuário seleciona o alvo desejado, e a lança será guiada constantemente para ele como um imã até acertar.',
+                    dano: '1dMag',
+                    calculoDano: { atributo: 'MAG' },
+                    efeitos: '[ESPECIAL]'
+                }, 
+            ]
+        },
+        {
+            nome: 'Eternova',
+            grimorio: 'Zona de Mana',
+            nivel: 'Zona de Mana',
+            descricao: `A dimensão do vazio, provedora de todo o poder e interações do grimório de Yang Kami Lapse. Dentro dela, o espaço é irrelevante e mutável, podendo ser alterado passivamente como o usuário bem entender. A única coisa de sua aparência que não pode ser alterada é a Estrela de Eternova, também sendo essa a entidade que comanda a dimensão do vazio.
+            A estrela, por sua vez, tem vontade própria e princípios rígidos que devem ser respeitados mesmo pelo próprio usuário. Caso qualquer um em Eternova desrespeite o regulamento imposto pela estrela, será executada a Penitência de Eternova, que aprisionará com correntes o condenado e selará o mesmo na dimensão pela eternidade.
+            Princípio da Hospitalidade
+            O usuário que invocou a dimensão tem a obrigação de explicar a todos ali dentro as regras da zona. A principal regra de Eternova é mutável, e será sempre definida pelo usuário assim que a zona de mana for invocada. Qualquer um que desrespeite a regra do usuário estará sujeito a penitência. O usuário também será sujeito a regra.
+            Princípio da Aplicabilidade
+            Todas as regras ditas pelo usuário dentro de Eternova devem ser aplicáveis para todos que estejam dentro da zona, inclusive o próprio usuário. A regra dita pelo usuário na invocação da zona de mana não pode ser alterada durante a zona, tampouco anulada. Não é possível ditar mais de uma regra, mas é possível adicionar quantas cláusulas forem necessárias.
+            Beneficiamento sob Dívida
+            O usuário, que invocou Eternova ao mundo físico, desfrutará de uma quantidade ilimitada de mana e possibilidade de ações em Eternova, desde que respeite suas leis; Todos em Eternova, com exceção do usuário, irão ter a mana reduzida ao mínimo possível dentro da zona. Adicionalmente, a Estrela é responsável por ter o usuário ciente de todas as leis e regulamentos da dimensão. Contudo, sempre que a zona de mana for utilizada e acabar, uma parte do usuário ficará em Eternova. Eternova quer que o usuário faça parte da dimensão, e vai conseguir.`,
+            efeitos: ['[ZONA DE MANA]']
+        },
+    ],
+},
+
+lommie: {
+    info: { 
+        nome_data: 'lommie',
+        nome: 'Lommie Yuta',
+        nivel: 10,
+        xp: 0,
+        idade: 19,
+        altura: 176,
+        peso: 61,
+        classe: '-',
+        arquetipo: 'Lutador',
+        discord_id: '1317246514535465010'
+    },
+    
+    atributos: [
+        {pv: 55, ps: 9},
+        {sigla: "FOR", nome: "Força", valor: 5, bonus: 4, prestigio: 2},
+        {sigla: "VIG", nome: "Vigor", valor: 1, bonus: 2},
+        {sigla: "AGL", nome: "Agilidade", valor: 2},
+        {sigla: "INT", nome: "Inteligência", valor: 1},
+        {sigla: "ESP", nome: "Espírito", valor: 0},
+        {sigla: "MAG", nome: "Magia", valor: 5},
+    ],
+
+    pericias: [
+        {atributo: "MAG", pericia_valor: [
+            {nome: "Mana", valor: 5}
+        ]},
+        {atributo: "INT", pericia_valor: [
+            {nome: "Percepção", valor: 1},
+        ]},
+        {atributo: "FOR", pericia_valor: [
+            {nome: "Luta", valor: 12},
+            {nome: "Atletismo", valor: 5},
+        ]},
+        {atributo: "VIG", pericia_valor: [
+            {nome: "Resistência", valor: 1},
+            {nome: "Intimidação", valor: 3},
+        ]},
+    ],
+    
+    habilidades: [
+        {
+            nome: 'Soco retardado',
+            grimorio: 'Sem Grimório',
+            nivel: 3,
+            descricao: 'Os golpes não causam dano imediatamente. Em vez disso, o impacto é "acumulado" e liberado depois — tudo de uma vez.',
+            efeitos: ['[BLOCK-BREAK]'],
+            dano: '2dFor + Luta',
+            calculoDano: { atributo: 'FOR', pericia: 'Luta' },
+        },
+        {
+            nome: 'Acelerador',
+            grimorio: 'Sem Grimório',
+            nivel: 3,
+            descricao: 'Acelera tudo dentro de si, fazendo seus sentidos e habilidades fisicas ficarem mais precisas e rápidas, enquanto estiver nesse modo, ganha vantagem em todos os dados que usam sua velocidade.',
+            efeitos: ['[BUFF]']
+        },
+    ],
+}, 
+
+alice: {
+    info: { 
+        nome_data: 'alice',
+        nome: 'Shiva Wyndell',
+        nivel: 11,
+        inspiracao: 1,
+        xp: 70,
+        idade: 14,
+        altura: 167,
+        peso: 55,
+        classe: '-',
+        arquetipo: 'Lutador',
+        discord_id: '1213237748505251861'
+    },
+    
+    atributos: [
+        {pv: 88, ps: 7},
+        {sigla: "FOR", nome: "Força", valor: 0, bonus: 4, prestigio: 2},
+        {sigla: "VIG", nome: "Vigor", valor: 5, bonus: 0},
+        {sigla: "AGL", nome: "Agilidade", valor: 6, bonus: 2},
+        {sigla: "INT", nome: "Inteligência", valor: 3},
+        {sigla: "ESP", nome: "Espírito", valor: 4},
+        {sigla: "MAG", nome: "Magia", valor: 10, bonus: 7},
+    ],
+
+    pericias: [
+        {atributo: "MAG", pericia_valor: [
+            {nome: "Mana", valor: 7},
+            {nome: "Grimório", valor: 1},
+            {nome: "Esgrima", valor: 3},
+        ]},
+        {atributo: "FOR", pericia_valor: [
+            {nome: "Luta", valor: 10},
+        ]},
+        {atributo: "VIG", pericia_valor: [
+            {nome: "Resistência", valor: 3},
+        ]},
+            {atributo: "AGL", pericia_valor: [
+            {nome: "Reflexos", valor: 2, bonus: 2},
+            {nome: "Atletismo", valor: 0, bonus: 2},
+            {nome: "Esgrima", valor: 3},
+        ]},
+            {atributo: "INT", pericia_valor: [
+            {nome: "Intuição", valor: 0, bonus: -2},
+        ]},
+    ],
+    
+    habilidades: [
+        {
+            nome: 'Alento',
+            grimorio: 'Grimório',
+            nivel: 3,
+            descricao: 'Um sopro sobre a ferida do aliado; o vento pressurizado fecha cortes superficiais e reorganiza músculos e pele o suficiente para estancar o sangramento e acelerar a dor. É mais primeiro-socorro do que milagre.',
+            efeitos: ['HEAL'],
+            dano: '3dMag + Mana',
+            calculoDano: { atributo: 'MAG', pericia: 'Mana' },
+        },
+        {
+            nome: 'Impacto',
+            grimorio: 'Grimório',
+            nivel: 3,
+            descricao: 'Reúne todo o “elemento” presente ao redor de seu punho ou perna e desfere um golpe único capaz de destruir defesas, romper mana ou causar dano.',
+            efeitos: ['BLOCKBREAK'],
+            dano: '2dMag + Luta',
+            calculoDano: { atributo: 'MAG', pericia: 'Luta' },
+        },
+        {
+            nome: 'Murmúrio Cortante',
+            grimorio: 'Sem Grimório',
+            nivel: 1,
+            descricao: 'Um movimento rápido com o leque que lança uma lâmina de vento quase invisível. Parece apenas um sopro, mas corta como aço.',
+            efeitos: ['BLEEDING'],
+            dano: '1dFor',
+            calculoDano: { atributo: 'FOR', pericia: 'Mana' },
+        },
+        {
+            nome: 'Dança dos Mil Ventos',
+            grimorio: 'Sem Grimório',
+            nivel: 2,
+            descricao: 'Uma rajada em espiral que avança como um furacão em miniatura, cortando e desequilibrando quem for atingido.',
+            dano: '1dFor + Mana',
+            efeitos: ['STUN'],
+            calculoDano: { atributo: 'FOR', pericia: 'Mana' },
+        },
+    ],
+}, 
+
+saint: {
+    info: { 
+        nome_data: 'saint',
+        nome: 'Saint Valac',
+        nivel: 11,
+        inspiracao: 0,
+        xp: 50,
+        idade: 16,
+        altura: 180,
+        peso:70,
+        classe: '-',
+        arquetipo: 'Caçador',
+        discord_id: '1317263900512751746'
+    },
+    
+    atributos: [
+        {pv: 76, ps: 5},
+        {sigla: "FOR", nome: "Força", valor: 7, bonus: 2},
+        {sigla: "VIG", nome: "Vigor", valor: 6, bonus: 0},
+        {sigla: "AGL", nome: "Agilidade", valor: 1, bonus: 2, prestigio: 4},
+        {sigla: "INT", nome: "Inteligência", valor: 1},
+        {sigla: "ESP", nome: "Espírito", valor: 2, bonus: -2},
+        {sigla: "MAG", nome: "Magia", valor: 7, bonus: 2},
+    ],
+
+    pericias: [
+        {atributo: "MAG", pericia_valor: [
+            {nome: "Controle", valor: 1},
+            {nome: "Grimório", valor: 1}
+        ]},
+            {atributo: "AGL", pericia_valor: [
+            {nome: "Reflexos", valor: 0, bonus: 2},
+            {nome: "Atletismo", valor: 0, bonus: 2},
+            {nome: "Furtividade", valor: 0, bonus: -2},
+            {nome: "Esgrima", valor: 5, bonus: 0},
+        ]},
+    ],
+    
+    habilidades: [
+        {
+            nome: 'Ataque Múltiplo Ilusionista',
+            grimorio: 'Sem Grimório',
+            nivel: 2,
+            descricao: 'Ao atacar um inimigo cria ilusões de vários de si mesmo, para ludibriar o inimigo.',
+            efeitos: ['[DEBUFF]'],
+            dano: '1dAgl + Controle',
+            calculoDano: { atributo: 'AGL', pericia: 'Controle' }
+        },
+        {
+            nome: 'Passo fantasma',
+            grimorio: 'Sem Grimório',
+            nivel: 2,
+            descricao: 'Cria ilusões de si mesmo em diversos locais para enganar os inimigos quando for atacado.',
+            efeitos: ['DEBUFF'],
+            dano: ''
+        },
+        {
+            nome: 'Distorção de Combate',
+            grimorio: 'Grimório',
+            nivel: 2,
+            descricao: `Valac desfere um golpe que distorce, por um instante, os próprios conceitos do mundo.
+
+            A lógica do combate se inverte: errar não significa falhar, e defender não significa estar seguro.
+
+            Se o ataque de Valac for errado ou defendido, a ilusão se fecha sobre o oponente e o efeito ocorre de forma contrária ao esperado, pegando-o completamente desprevenido.
+
+            No Combate Ilusório, o erro é apenas outra forma de acertar.`,
+            efeitos: ['ESPECIAL'],
+            dano: '1dAgl + Controle',
+            calculoDano: { atributo: 'AGL', pericia: 'Controle' }
+        },
+    ],
+}, 
+}
+
+const npcData = {
+
+keshi: {
+        info: {
+            nome_data: 'keshi',
+            nome: 'Keshi Kami Lapse',
+            inspiracao: 0,
+            nivel: 15,
+            xp: 0,
+            idade: '25',
+            altura: 193,
+            peso: 67,
+            classe: 'Realeza',
+            arquetipo: 'Feiticeiro',
+            discord_id: '444832211401965568'
+        },
+
+        atributos: [
+            { pv: 88, ps: 12 },
+            { sigla: 'FOR', nome: 'Força', valor: 1 },
+            { sigla: 'VIG', nome: 'Vigor', valor: 3 },
+            { sigla: 'AGL', nome: 'Agilidade', valor: 5 },
+            { sigla: 'INT', nome: 'Inteligência', valor: 10, bonus: 2, prestigio: 2 },
+            { sigla: 'ESP', nome: 'Espírito', valor: 2 },
+            { sigla: 'MAG', nome: 'Magia', valor: 10, bonus: 5, prestigio: 2 }
+        ],
+
+        pericias: [
+            {
+                atributo: 'MAG',
+                pericia_valor: [
+                    { nome: 'Grimório', valor: 15 },
+                    { nome: 'Mana', valor: 15 },
+                    { nome: 'Controle', valor: 1 },
+                    { nome: 'Visão', valor: 5 },
+                    { nome: 'Resistência', valor: 5 },
+                    { nome: 'Intimidação', valor: 3 }
+                ]
+            },
+            {
+                atributo: 'INT',
+                pericia_valor: [
+                    { nome: 'História', valor: 2},
+                    { nome: 'Intimidação', valor: 3 },
+                    { nome: 'Persuasão', valor: 1 },
+                    { nome: 'Percepção', valor: 2 }
+                ]
+            }
+        ],
+
+        habilidades: [
+            {
+                nome: 'Marca das Sombras',
+                grimorio: 'Codex Lunar',
+                nivel: 2,
+                descricao: 'Marca o alvo e enfraquece suas resistências mágicas por 2 turnos.',
+                dano: '1dMag + Mana',
+                calculoDano: { atributo: 'MAG', pericia: 'Mana' },
+                efeitos: ['[DEBUFF]']
+            },
+            {
+                nome: 'Rasgo Astral',
+                grimorio: 'Codex Lunar',
+                nivel: 4,
+                descricao: 'Concentra energia astral e abre um corte no espaço na direção do alvo.',
+                dano: '1dMag + Controle',
+                calculoDano: { atributo: 'MAG', pericia: 'Controle' },
+                efeitos: ['[MAGIC] [BURST]']
+            }
+        ]
+},
+
+zerath: {
+        info: {
+            nome_data: 'zerath',
+            nome: 'Zerath Vornak',
+            inspiracao: 0,
+            nivel: 16,
+            xp: 0,
+            idade: '45',
+            altura: 190,
+            peso: 80,
+            classe: '-',
+            arquetipo: 'Caçador',
+            discord_id: '405381448879702039'
+        },
+
+        atributos: [
+            { pv: 88, ps: 15 },
+            { sigla: 'FOR', nome: 'Força', valor: 2 },
+            { sigla: 'VIG', nome: 'Vigor', valor: 10, prestigio: 2 },
+            { sigla: 'AGL', nome: 'Agilidade', valor: 7 },
+            { sigla: 'INT', nome: 'Inteligência', valor: 10 },
+            { sigla: 'ESP', nome: 'Espírito', valor: 0 },
+            { sigla: 'MAG', nome: 'Magia', valor: 6, prestigio: 3 }
+        ],
+
+        pericias: [
+            {
+                atributo: 'MAG',
+                pericia_valor: [
+                    { nome: 'Visão', valor: 15 },
+                    { nome: 'Mana', valor: 15 },
+                    { nome: 'Resistência', valor: 15 },
+                ]
+            },
+        ],
+
+        habilidades: [
+            {
+                nome: 'Armas de Sangue',
+                grimorio: 'Mana',
+                nivel: 1,
+                descricao: 'O usuário cria formas de sangue, sejam armas ou projéteis que podem ser usados contra o alvo.',
+                dano: '1dMag + Mana',
+                calculoDano: { atributo: 'MAG', pericia: 'Mana' },
+                efeitos: []
+            },
+            {
+                nome: 'Poça de Sangue',
+                grimorio: 'Mana',
+                nivel: 2,
+                descricao: 'O usuário cria uma poça de sangue no chão, que sobe lentamente e quando atinge um certo ponto da perna do(s) alvos o sangue enrijece e todos ficam presos.',
+                dano: '',
+                calculoDano: { atributo: '' },
+                efeitos: ['[STUN]']
+            },
+            {
+                nome: 'Envenenamento',
+                grimorio: 'Mana',
+                nivel: 2,
+                descricao: 'O usuário cria uma tempestade brutal de sangue, podendo afetar quem ele quiser e deixar de afetar quem quiser também. A cada turno que se passa os alvos tomarão dano do sangue.',
+                dano: '1dMag',
+                calculoDano: { atributo: 'MAG'},
+                efeitos: ['[POISON]']
+            },
+            {
+                nome: 'Chuva de Sangue',
+                grimorio: 'Mana',
+                nivel: 3,
+                descricao: ' O usuário cria uma tempestade brutal de sangue, podendo afetar quem ele quiser e deixar de afetar quem quiser também. A cada turno que se passa os alvos tomarão dano do sangue.',
+                dano: '1dMag',
+                calculoDano: { atributo: 'MAG'},
+                efeitos: ['[SPEEDBLITZ] [AREA]']
+            },
+            {
+                nome: 'Misericórdia',
+                grimorio: 'Mana',
+                nivel: 'Suprema',
+                descricao: 'O usuário consegue reviver qualquer um desde que esteja ao ponto de morrer, ou morto há apenas alguns minutos. Qualquer um que seja revivido por ele estará marcado com seu sangue e irá inevitavelmente se tornar meio demônio.',
+                dano: '',
+                calculoDano: { atributo: ''},
+                efeitos: ['[ESPECIAL] [REVIVE]']
+            },
+            {
+                nome: 'Olho do Devorador',
+                grimorio: 'Mana',
+                nivel: 'Suprema',
+                descricao: 'O usuário sacrifica sua própria vida para acabar com outra. O usuário tira todo o seu sangue de seu corpo e transfere para o alvo, o envenenando e matando-o instantaneamente.',
+                dano: '',
+                calculoDano: { atributo: ''},
+                efeitos: ['[OUTRACING] [HITKILL]']
+            },
+            {
+                nome: 'O Mundo Carmesin',
+                grimorio: 'Zona de Mana',
+                nivel: 'Zona de Mana',
+                descricao: 'O usuário um território gigantesco de 1km quadrado onde tudo fica vermelho, árvores, vegetação, animais. Qualquer um dentro dessa área pode ser controlada pelo usuário, menos seres inteligentes, com excessão de sua sanidade estar muito baixa. Uma chuva de sangue toma por completo a região, inundando o chão de sangue também.',
+                dano: '',
+                calculoDano: { atributo: ''},
+                efeitos: ['ZONA DE MANA']
+            },
+        ]
+},
+
+ami: {
+        info: {
+            nome_data: 'ami',
+            nome: 'Ami Akiami',
+            inspiracao: 0,
+            nivel: 13,
+            xp: 0,
+            idade: '14',
+            altura: 158,
+            peso: 61,
+            classe: '-',
+            arquetipo: 'Feiticeiro',
+            discord_id: '373606886114721802'
+        },
+
+        atributos: [
+            { pv: 88, ps: 10 },
+            { sigla: 'FOR', nome: 'Força', valor: 2 },
+            { sigla: 'VIG', nome: 'Vigor', valor: 2},
+            { sigla: 'AGL', nome: 'Agilidade', valor: 2 },
+            { sigla: 'INT', nome: 'Inteligência', valor: 7 },
+            { sigla: 'ESP', nome: 'Espírito', valor: 3 },
+            { sigla: 'MAG', nome: 'Magia', valor: 8, prestigio: 3 }
+        ],
+
+        pericias: [
+            {
+                atributo: 'MAG',
+                pericia_valor: [
+                    { nome: 'Visão', valor: 10 },
+                    { nome: 'Mana', valor: 8 },
+                    { nome: 'Controle', valor: 15 },
+                ]
+            },
+            {
+                atributo: 'INT',
+                pericia_valor: [
+                    { nome: 'Percepção', valor: 5 },
+                ]
+            },
+        ],
+
+        habilidades: [
+            {
+                nome: 'Lobo (Caim Vorthal)',
+                grimorio: 'Runas',
+                nivel: 3,
+                descricao: 'O lobo converte a mana ao redor em uma única garra poderosa. Imediatamente rouba mana de todos em um campo. Para cada indivíduo que tenha sua mana roubada desta forma, garras de lobo aparecem para golpear a área, causando dano proporcional a mana roubada. Se mais de 3 pessoas forem roubadas desta forma, o ataque do Lobo se torna uma mordida poderosa. A quantidade de mana roubada varia conforme quantos indivíduos são afetados; reduzindo seu roubo para cada indivíduo presente.',
+                subataques: [
+                {
+                    nome: 'Garras',
+                    descricao: 'Garras de lobo aparecem para golpear a área, causando dano proporcional a mana roubada.',
+                    dano: '1dMag',
+                    calculoDano: { atributo: 'MAG'},
+                    efeitos: '[AREA]'
+                },
+                {
+                    nome: 'Mordida',
+                    descricao: 'A mordida do lobo é uma técnica poderosa que causa dano significativo.',
+                    dano: '2dMag',
+                    calculoDano: { atributo: 'MAG'},
+                    efeitos: '[AREA]'
+                }, 
+            ]
+            },
+            {
+                nome: 'Pégasus (Ami Akiami)',
+                grimorio: 'Runas',
+                nivel: 1,
+                descricao: 'O pégasus voa ao céu, recebendo visão ampla e ganhando vantagens específicas por estar voando.'
+            },
+            {
+                nome: 'Pavão (Nyra Solthar)',
+                grimorio: 'Runas',
+                nivel: 1,
+                descricao: 'O pavão obtém informação parcial da Ânima alheia ao observar os olhos de um indivíduo. Isso permite vantagens contra tal Ânima, onde o pavão nunca será surpreendido por seus efeitos.'
+            },
+            {
+                nome: 'Mariposa (Selkha Ihn)',
+                grimorio: 'Runas',
+                nivel: 3,
+                descricao: 'A mariposa implanta a zona "Asas da Morte" em campo por Mag/3 turnos. Dentro dela, qualquer portador que utilize mana, receba mana ou tenha sua mana roubada, imediatamente recebe 1dMag de dano. Este dano é armazenado em até 3 dados. Quando a zona se encerra, ou quando a mariposa decidir que a zona se encerra, o dano armazenado é transformado em uma explosão rósea de mana, que causa dano. O dano da explosão é proporcional ao dano armazenado, e é causado a todos dentro da zona, incluindo o portador da mariposa.',
+                subataques: [
+                {
+                    nome: 'Baixo',
+                    descricao: '1dMag de dano armazenado.',
+                    dano: '1dMag',
+                    calculoDano: { atributo: 'MAG'}
+                },
+                {
+                    nome: 'Médio',
+                    descricao: '2dMag de dano armazenado.',
+                    dano: '2dMag',
+                    calculoDano: { atributo: 'MAG'}
+                },
+                {
+                    nome: 'Alto',
+                    descricao: '3dMag de dano armazenado.',
+                    dano: '3dMag',
+                    calculoDano: { atributo: 'MAG'}
+                }
+            ]
+            },
+            {
+                nome: 'Dragão (Zerath Vornak)',
+                grimorio: 'Runas',
+                nivel: 'Suprema',
+                descricao: `- (AÇÃO) Abre uma fenda no ar. Da fenda, o "Dragão Sanguinário" aparece. O "Dragão Sanguinário" imediatamente cospe "Sangue Fervente" em uma área, e então, obtém 3 reutilizações de "Sangue Fervente". 
+                
+                - (DRAGÃO SANGUINÁRIO): "Dragão Sanguinário" é uma forma de dragão imbuída em sangue. Suas asas são despedaçadas, e partes do seu corpo são deformadas, pelo esforço que o usuário da runa está impondo. "Dragão Sanguinário" dura Mag/3 turnos. 
+                
+                - (SANGUE FERVENTE: 3 REUTILIZAÇÕES): Causa 2dMag + Controle de dano e consegue derreter matérias frágeis. O usuário pode usar uma ação para fazer o "Dragão Sanguinário" cuspir "Sangue Fervente". Isto gasta 1 reutilização de "Sangue Fervente". O usuário pode realizar esta ação após o turno de qualquer indivíduo além de seu próprio. 
+                
+                - (HABILIDADE: "Até a Próxima, Primeira Lâmina"): Quando o "Dragão Sanguinário" sair de campo de qualquer maneira, ele explode em sangue, causando 3dMag + Controle de dano em área.`,
+                subataques: [
+                {
+                    nome: 'Sangue Fervente',
+                    descricao: 'O Dragão dispara uma rajada de sangue fervente em um alvo, causando dano significativo.',
+                    dano: '2dMag + Controle',
+                    calculoDano: { atributo: 'MAG', pericia: 'Controle' },
+                },
+                {
+                    nome: 'Até a Próxima, Primeira Lâmina',
+                    descricao: 'Quando o Dragão Sanguinário desaparece, ele explode em sangue, causando 3dMag + Controle de dano em área.',
+                    dano: '3dMag + Controle',
+                    calculoDano: { atributo: 'MAG', pericia: 'Controle' },
+                    efeitos: '[AREA]'
+                }
+            ]
+            }
+        ]
+},
+
+mordrek: {
+        info: {
+            nome_data: 'mordrek',
+            nome: 'Mordrek Ashveil - Veilash Kredmor',
+            inspiracao: 0,
+            nivel: 15,
+            xp: 0,
+            idade: '30',
+            altura: 175,
+            peso: 90,
+            classe: '-',
+            arquetipo: 'Feiticeiro',
+            discord_id: '698345882428506242'
+        },
+
+        atributos: [
+            { pv: 88, ps: 12 },
+            { sigla: 'FOR', nome: 'Força', valor: 0 },
+            { sigla: 'VIG', nome: 'Vigor', valor: 10},
+            { sigla: 'AGL', nome: 'Agilidade', valor: 3 },
+            { sigla: 'INT', nome: 'Inteligência', valor: 10 },
+            { sigla: 'ESP', nome: 'Espírito', valor: 0 },
+            { sigla: 'MAG', nome: 'Magia', valor: 10, prestigio: 3 }
+        ],
+
+        pericias: [
+            {
+                atributo: 'MAG',
+                pericia_valor: [
+                    { nome: 'Visão', valor: 15 },
+                    { nome: 'Mana', valor: 15 },
+                    { nome: 'Intimidação', valor: 15 },
+                ]
+            },
+        ],
+
+        habilidades: [
+            {
+                nome: 'Guerra',
+                grimorio: 'Mana',
+                nivel: 'Suprema',
+                descricao: 'Guerra. O destruidor de mundos, ganha uma espada feita de mana capaz de corromper a mente de seus alvos com um único toque. Ao corrompê-los o alvo fica descontrolado e começa a atacar tudo pela sua frente.',
+                dano: '1dMag + Mana',
+                calculoDano: { atributo: 'MAG', pericia: 'Mana' },
+                efeitos: ['[ESPECIAL]']
+            },
+            {
+                nome: 'Peste',
+                grimorio: 'Mana',
+                nivel: 'Suprema',
+                descricao: 'Peste. A Peste é capaz de intimidar qualquer um. Qualquer um que sinta sua presente enquanto a peste está ativa tem a sensação de que algo terrível irá acontecer, e que a morte está próxima. A Peste é tão poderosa que pode até mesmo causar a morte de indivíduos mais fracos, ou com a sanidade baixa, apenas por estar ativa.',
+                efeitos: ['[DEBUFF]']
+            },
+            {
+                nome: 'Fome',
+                grimorio: 'Mana',
+                nivel: 'Suprema',
+                descricao: 'Fome. Quando a fome está ativa, o usuário enfraquece seus alvos. Sua mana fica enfraquecida, seus movimentos ficam lentos, e suas ações ficam mais difíceis de serem realizadas.',
+                efeitos: ['[DEBUFF]']
+            },
+            {
+                nome: 'Morte',
+                grimorio: 'Mana',
+                nivel: 'Suprema',
+                descricao: 'Morte. Ataques com a morte determinam a morte do alvo. Não de uma vez, mas lentamente ele vai sumindo da realidade, não sobrando se quer uma gota. A cada turno com a morte ativa o alvo perde mais sua vida aos poucos.',
+                dano: '2dMag + Mana',
+                efeitos: ['[ESPECIAL]']
+            }
+        ]
+},
+
+caim: {
+        info: {
+            nome_data: 'caim',
+            nome: 'Caim Vorthal',
+            inspiracao: 0,
+            nivel: 14,
+            xp: 0,
+            idade: '37',
+            altura: 180,
+            peso: 76,
+            classe: '-',
+            arquetipo: 'Lutador',
+            discord_id: '726667619729539132'
+        },
+
+        atributos: [
+            { pv: 88, ps: 10 },
+            { sigla: 'FOR', nome: 'Força', valor: 5, prestigio: 3 },
+            { sigla: 'VIG', nome: 'Vigor', valor: 8},
+            { sigla: 'AGL', nome: 'Agilidade', valor: 0 },
+            { sigla: 'INT', nome: 'Inteligência', valor: 5 },
+            { sigla: 'ESP', nome: 'Espírito', valor: 0 },
+            { sigla: 'MAG', nome: 'Magia', valor: 10 }
+        ],
+
+        pericias: [
+            {
+                atributo: 'FOR',
+                pericia_valor: [
+                    { nome: 'Luta', valor: 15 },
+                    { nome: 'Resistência', valor: 15 },
+                ]
+            },
+            {
+                atributo: 'FOR',
+                pericia_valor: [
+                    { nome: 'Mana', valor: 15 },
+                ]
+            },
+        ],
+
+        habilidades: [
+            {
+                nome: 'Passo Estrondo',
+                grimorio: 'Mana',
+                nivel: 2,
+                descricao: 'O usuário libera toda a energia cinética armazenada nas pernas, o que elevaria absurdamente a sua velocidade e quanto mais passos desse, mais energia seria acumulada. Ao chegar perto do alvo, seria desferido uma voadora descarregando toda a energia acumulada.',
+                efeitos: ['[BUFF]']
+            },
+        ]
+},
+
+mercy: {
+        info: {
+            nome_data: 'mercy',
+            nome: 'Mercy Vornak',
+            inspiracao: 0,
+            nivel: 13,
+            xp: 0,
+            idade: '19',
+            altura: 171,
+            peso: 65,
+            classe: '-',
+            arquetipo: 'Feiticeiro',
+            discord_id: '898633326854823938'
+        },
+
+        atributos: [
+            { pv: 88, ps: 10 },
+            { sigla: 'FOR', nome: 'Força', valor: 3 },
+            { sigla: 'VIG', nome: 'Vigor', valor: 6},
+            { sigla: 'AGL', nome: 'Agilidade', valor: 8, prestigio: 2 },
+            { sigla: 'INT', nome: 'Inteligência', valor: 6 },
+            { sigla: 'ESP', nome: 'Espírito', valor: 0 },
+            { sigla: 'MAG', nome: 'Magia', valor: 8 }
+        ],
+
+        pericias: [
+            {
+                atributo: 'AGL',
+                pericia_valor: [
+                    { nome: 'Reflexos', valor: 15 },
+                    { nome: 'Esgrima', valor: 10 },
+                ]
+            },
+            {
+                atributo: 'MAG',
+                pericia_valor: [
+                   { nome: 'Mana', valor: 15 },
+                ]
+            },
+        ],
+
+        habilidades: [
+            {
+                nome: 'Metamorfose',
+                grimorio: 'Mana',
+                nivel: 3,
+                descricao: 'O usuário pode se moldar em qualquer forma que desejar, seja para se disfarçar ou para ganhar vantagens específicas. Ele pode se transformar em um animal, em uma pessoa, ou até mesmo em um objeto. Ele pode manter a forma por um tempo limitado, e pode mudar de forma quantas vezes quiser dentro desse tempo.',
+                efeitos: ['[BUFF]']
+            },
+        ]
+}
+
+};
+
+const state = {
+  characters: structuredClone(data),
+  npcs: structuredClone(npcData),
+  passwords: {
+    players: {
+      "2dac65ec22d72135d3e64811942fad988d221b0f36030e932476d3f2aa380855": "saori",
+      "b686c9f1dc998f8088d655974c79c2d9d1974a18e646f32a409aaee88801b0e7": "yuka",
+      "575bb429408c1233da72a28e95e92ec5083cbd2cd985e2c6da1b892737437b29": "yang",
+      "e14df2f7940ee091b49f6e383c161c774acf131ce8ae48cb6dde5deb3701ee84": "shiva",
+      "780a23528c754a504894e9747d7df4fde20e937d3e9e63a86c001eecb0908b46": "indra",
+      "eea679d534adb97c1fa089e77f5450bd7d176987b6788853f8277d1c76f8b15e": "lommie",
+      "b2ef102cbb356deaf97350a1f1ac4b51ac6bb91f54cea82bd95e03eea7f20255": "alice",
+      "5d5bddb577102d0a960bcf6fea9050c10fe5e9feddcb5c2170ccab872db9ee87": "saint",
+      "4a38989ac1848855bfe02dfeb9bd31b96fedeab9daf9c334fb9c5d443b195afc": "sombras"
+    },
+    npcs: {
+      "d368c2ac7ffd516dbffabad074c106c35074d22950b198d678dfff1f9af5676d": "keshi",
+      "aec62b69f7685e38391295bfcc056adc896da54e0c7ad9a51c232360f04e6cdf": "zerath",
+      "27944092732df96af0311e3e374b751a584e331c2fcf36c24e5b96dd79741c30": "ami",
+      "b146ee27a559d368f8379f2c17649f29db804e0d3e2e6a5879e179aaedeb09c4": "mordrek",
+      "ec96d18a74fb69422ea3e83a64880868d79fbd524c12c175b71af5a805cc7da7": "caim",
+      "2e81e88f103bc4346870c197caaea4994d57557a380805afafd8a2b3e6f9ee88": "mercy"
+    }
+  },
+  selectedChar: null,
+  selectedNpc: null,
+  activeTab: 'characters'
+};
+
+const dirtyChars = new Set();
+const dirtyNpcs = new Set();
+
+const normalize = (s='') => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
+const hash = async (s) => {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(normalize(s)));
+  return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2,'0')).join('');
+};
+
+function calcPv(entity, isNpc) {
+  const formulasPV = { tanque: { pvInicial: 15, pvPorNivel: 8 }, lutador: { pvInicial: 13, pvPorNivel: 7 }, cacador: { pvInicial: 10, pvPorNivel: 6 }, feiticeiro: { pvInicial: 8, pvPorNivel: 4 }, genio: { pvInicial: 7, pvPorNivel: 3 } };
+  const arq = normalize(entity?.info?.arquetipo);
+  const f = formulasPV[arq];
+  if (!f) return Number(entity?.atributos?.[0]?.pv) || 0;
+  const nivel = Number(entity?.info?.nivel) || 0;
+  const vig = entity?.atributos?.find((a) => a.sigla === 'VIG') || {};
+  const vigor = Number(vig.valor) || 0;
+  const prestigioVigor = Math.max(1, Number(vig.prestigio) || 1);
+  return isNpc
+    ? f.pvInicial + (f.pvPorNivel * nivel) + vigor + (prestigioVigor * 10)
+    : f.pvInicial + (f.pvPorNivel * nivel) + (vigor * prestigioVigor);
+}
+
+function serializeJS(value, indent = 0) {
+  const sp = ' '.repeat(indent);
+  const next = ' '.repeat(indent + 4);
+  if (value === null || value === undefined) return 'undefined';
+  if (typeof value === 'string') {
+    if (value.includes('\n')) return `\`${value.replace(/`/g, '\\`')}\``;
+    return `'${value.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
+  }
+  if (typeof value === 'number' || typeof value === 'boolean') return String(value);
+  if (Array.isArray(value)) {
+    const filtered = value.filter((v) => v !== undefined && v !== null && !(Array.isArray(v) && v.length === 0) && v !== '');
+    if (filtered.length === 0) return '[]';
+    const prim = filtered.every((v) => ['string','number','boolean'].includes(typeof v));
+    if (prim) return `[${filtered.map((v) => serializeJS(v, 0)).join(', ')}]`;
+    return `[\n${filtered.map((v) => `${next}${serializeJS(v, indent + 4)}`).join(',\n')}\n${sp}]`;
+  }
+  if (typeof value === 'object') {
+    const entries = Object.entries(value).filter(([k,v]) => {
+      if (v === undefined || v === null || v === '') return false;
+      if (Array.isArray(v) && v.length === 0) return false;
+      if (k === 'dano' && !v) return false;
+      if (k === 'calculoDano' && !v?.atributo) return false;
+      return true;
+    });
+    if (!entries.length) return '{}';
+    return `{\n${entries.map(([k,v]) => `${next}${k}: ${serializeJS(v, indent + 4)}`).join(',\n')}\n${sp}}`;
+  }
+  return 'undefined';
+}
+
+function render() {
+  renderTabs();
+  renderEntityTab('characters');
+  renderEntityTab('npcs');
+  renderPasswords();
+}
+
+function renderTabs() {
+  document.querySelectorAll('.tab').forEach((btn) => {
+    btn.classList.toggle('active', btn.dataset.tab === state.activeTab);
+  });
+  document.querySelectorAll('.tab-panel').forEach((panel) => panel.classList.remove('active'));
+  document.getElementById(`tab-${state.activeTab}`).classList.add('active');
+}
+
+function entityTemplate(nomeData) {
+  return {
+    info: { nome_data: nomeData, nome: '', inspiracao: 0, nivel: 1, xp: 0, idade: 0, altura: 0, peso: 0, classe: '', arquetipo: 'Feiticeiro', discord_id: '' },
+    atributos: [
+      { pv: 0, ps: 0 },
+      { sigla: 'FOR', nome: 'Força', valor: 0 },
+      { sigla: 'VIG', nome: 'Vigor', valor: 0 },
+      { sigla: 'AGL', nome: 'Agilidade', valor: 0 },
+      { sigla: 'INT', nome: 'Inteligência', valor: 0 },
+      { sigla: 'ESP', nome: 'Espírito', valor: 0 },
+      { sigla: 'MAG', nome: 'Magia', valor: 0 }
+    ],
+    pericias: [],
+    habilidades: []
+  };
+}
+
+function renderEntityTab(type) {
+  const isNpc = type === 'npcs';
+  const dataSet = state[type];
+  const selectedKey = isNpc ? state.selectedNpc : state.selectedChar;
+  const dirtySet = isNpc ? dirtyNpcs : dirtyChars;
+  const panel = document.getElementById(`tab-${type}`);
+  const listId = isNpc ? 'npc-list' : 'char-list';
+  const newBtnId = isNpc ? 'btn-new-npc' : 'btn-new-char';
+  const delBtnId = isNpc ? 'btn-delete-npc' : 'btn-delete-char';
+  const editorId = isNpc ? 'npc-editor' : 'char-editor';
+  panel.innerHTML = `<div class="panel-layout"><aside class="entity-list"><button id="${newBtnId}">+ Novo ${isNpc ? 'NPC' : 'Personagem'}</button><p class="error" id="${type}-inline-error"></p><ul id="${listId}"></ul><button id="${delBtnId}">🗑 Deletar Selecionado</button></aside><section id="${editorId}" class="editor-panel"></section></div>`;
+
+  const ul = panel.querySelector(`#${listId}`);
+  Object.keys(dataSet).forEach((key) => {
+    const li = document.createElement('li');
+    li.textContent = key;
+    li.classList.toggle('active', key === selectedKey);
+    li.classList.toggle('dirty', dirtySet.has(key));
+    li.addEventListener('click', () => {
+      if (isNpc) state.selectedNpc = key; else state.selectedChar = key;
+      renderEntityTab(type);
+    });
+    ul.appendChild(li);
+  });
+
+  panel.querySelector(`#${newBtnId}`).addEventListener('click', () => {
+    const nm = window.prompt('nome_data do novo personagem:');
+    if (!nm) return;
+    const err = panel.querySelector(`#${type}-inline-error`);
+    if (!/^[a-z0-9_-]+$/.test(nm)) { err.textContent = 'nome_data inválido. Use apenas letras minúsculas, números, _ e -.'; return; }
+    if (dataSet[nm]) { err.textContent = 'nome_data já existe.'; return; }
+    err.textContent = '';
+    dataSet[nm] = entityTemplate(nm);
+    if (isNpc) state.selectedNpc = nm; else state.selectedChar = nm;
+    renderEntityTab(type);
+  });
+
+  panel.querySelector(`#${delBtnId}`).addEventListener('click', () => {
+    const sel = isNpc ? state.selectedNpc : state.selectedChar;
+    if (!sel) return;
+    if (!confirm('Deletar ' + sel + '? Esta ação não pode ser desfeita.')) return;
+    delete dataSet[sel];
+    if (isNpc) state.selectedNpc = null; else state.selectedChar = null;
+    dirtySet.delete(sel);
+    renderEntityTab(type);
+  });
+
+  const ed = panel.querySelector(`#${editorId}`);
+  if (!selectedKey || !dataSet[selectedKey]) { ed.innerHTML = '<p>Selecione um item para editar.</p>'; return; }
+  const entity = dataSet[selectedKey];
+  ed.innerHTML = buildEditorHtml(entity, isNpc);
+  bindEditorEvents(ed, entity, type, selectedKey);
+}
+
+function buildEditorHtml(entity, isNpc) {
+  const vig = entity.atributos.find((a) => a.sigla === 'VIG') || { valor: 0, prestigio: 1 };
+  const pvCalc = calcPv(entity, isNpc);
+  const arqOptions = ['Tanque', 'Lutador', 'Caçador', 'Feiticeiro', 'Gênio'];
+  const isOther = !arqOptions.includes(entity.info.arquetipo);
+  const periciasHtml = entity.pericias.map((grp, gi) => `<div class="pericia-group" data-gi="${gi}"><div class="line"><select class="pericia-atributo">${['FOR','VIG','AGL','INT','ESP','MAG'].map((s)=>`<option value="${s}" ${grp.atributo===s?'selected':''}>${s}</option>`).join('')}</select><button class="btn-remove-group" data-gi="${gi}">🗑 Remover Grupo</button></div>${grp.pericia_valor.map((p,pi)=>`<div class="pericia-row line" data-pi="${pi}"><input data-field="nome" value="${(p.nome||'').replace(/"/g,'&quot;')}" placeholder="Nome"><input type="number" data-field="valor" value="${p.valor ?? 0}" placeholder="Valor"><input type="number" data-field="bonus" value="${p.bonus ?? ''}" placeholder="Bônus"><button class="btn-remove-pericia" data-pi="${pi}">✕</button></div>`).join('')}<button class="btn-add-pericia" data-gi="${gi}">+ Perícia</button></div>`).join('');
+
+  const habilidadesHtml = (entity.habilidades || []).map((h, hi) => `<details class="habilidade-item" data-hi="${hi}"><summary>${h.nome || 'Habilidade sem nome'} <span class="habilidade-controls"><button data-act="up">↑</button><button data-act="down">↓</button><button data-act="del">🗑</button></span></summary><div class="habilidade-body"><div class="grid"><div class="field"><small>Nome</small><input data-hf="nome" value="${(h.nome||'').replace(/"/g,'&quot;')}"></div><div class="field"><small>Grimório</small><input data-hf="grimorio" value="${(h.grimorio||'').replace(/"/g,'&quot;')}"></div><div class="field"><small>Nível</small><input data-hf="nivel" value="${(h.nivel ?? '').toString().replace(/"/g,'&quot;')}"></div></div><div class="field"><small>Descrição</small><textarea data-hf="descricao">${h.descricao || ''}</textarea></div><div class="grid"><div class="field"><small>Dano</small><input data-hf="dano" value="${(h.dano||'').replace(/"/g,'&quot;')}" placeholder="ex: 1dMag + Mana"></div><div class="field"><small>Calculo Atributo</small><select data-hf="calcAtributo"><option value="">— nenhum —</option>${['FOR','VIG','AGL','INT','ESP','MAG'].map((s)=>`<option value="${s}" ${h?.calculoDano?.atributo===s?'selected':''}>${s}</option>`).join('')}</select></div><div class="field calc-pericia-wrap" style="display:${h?.calculoDano?.atributo?'block':'none'}"><small>Calculo Perícia</small><input data-hf="calcPericia" value="${(h?.calculoDano?.pericia||'').replace(/"/g,'&quot;')}"></div></div><div class="field"><small>Efeitos (separados por vírgula)</small><input data-hf="efeitos" value="${Array.isArray(h.efeitos)?h.efeitos.join(', '):''}"></div><div class="subataques-section"><button class="btn-add-subataque">+ Subataque</button>${(h.subataques||[]).map((s,si)=>`<div class="subataque-item" data-si="${si}"><div class="grid"><div class="field"><small>Nome</small><input data-sf="nome" value="${(s.nome||'').replace(/"/g,'&quot;')}"></div><div class="field"><small>Dano</small><input data-sf="dano" value="${(s.dano||'').replace(/"/g,'&quot;')}"></div><div class="field"><small>Calc. Atributo</small><select data-sf="calcAtributo"><option value="">— nenhum —</option>${['FOR','VIG','AGL','INT','ESP','MAG'].map((sig)=>`<option value="${sig}" ${s?.calculoDano?.atributo===sig?'selected':''}>${sig}</option>`).join('')}</select></div><div class="field"><small>Calc. Perícia</small><input data-sf="calcPericia" value="${(s?.calculoDano?.pericia||'').replace(/"/g,'&quot;')}"></div></div><div class="field"><small>Descrição</small><textarea data-sf="descricao" rows="3">${s.descricao||''}</textarea></div><div class="field"><small>Efeitos</small><input data-sf="efeitos" value="${Array.isArray(s.efeitos)?s.efeitos.join(', '):(s.efeitos||'')}"></div><button class="btn-remove-subataque">✕ Remover</button></div>`).join('')}</div></div></details>`).join('');
+
+  const atrLines = entity.atributos.slice(1).map((a, idx) => `<div class="grid" data-ai="${idx+1}"><div class="field"><small>[${a.sigla}] ${a.nome} valor</small><input type="number" data-af="valor" value="${a.valor ?? 0}" min="0"></div><div class="field"><small>Bônus</small><input type="number" data-af="bonus" value="${a.bonus ?? ''}"></div><div class="field"><small>Prestígio</small><input type="number" data-af="prestigio" min="1" value="${a.prestigio ?? ''}"></div></div>`).join('');
+
+  return `<div class="section"><h3>Informações Básicas</h3><div class="grid"><div class="field"><small>nome_data</small><input value="${entity.info.nome_data}" readonly></div><div class="field"><small>nome</small><input data-info="nome" value="${entity.info.nome ?? ''}"></div><div class="field"><small>nível</small><input type="number" min="1" data-info="nivel" value="${entity.info.nivel ?? 1}"></div><div class="field"><small>xp</small><input type="number" min="0" data-info="xp" value="${entity.info.xp ?? 0}"></div><div class="field"><small>inspiração</small><input type="number" min="0" data-info="inspiracao" value="${entity.info.inspiracao ?? 0}"></div><div class="field"><small>idade</small><input data-info="idade" value="${entity.info.idade ?? ''}"></div><div class="field"><small>altura (cm)</small><input type="number" data-info="altura" value="${entity.info.altura ?? 0}"></div><div class="field"><small>peso</small><input type="number" data-info="peso" value="${entity.info.peso ?? 0}"></div><div class="field"><small>classe</small><input data-info="classe" value="${entity.info.classe ?? ''}"></div><div class="field"><small>arquetipo</small><select id="arquetipo-select">${arqOptions.map((o)=>`<option value="${o}" ${entity.info.arquetipo===o?'selected':''}>${o}</option>`).join('')}<option value="__outro__" ${isOther?'selected':''}>Outro</option></select></div><div class="field" id="arquetipo-outro-wrap" style="display:${isOther?'block':'none'}"><small>Arquetipo customizado</small><input id="arquetipo-outro" value="${isOther ? entity.info.arquetipo : ''}"></div><div class="field"><small>discord_id</small><input data-info="discord_id" value="${entity.info.discord_id ?? ''}"></div></div></div>
+  <div class="section"><h3>Atributos & PV</h3><div class="line"><span>PV (calculado): <strong id="pv-calc">${pvCalc}</strong></span><label><input type="checkbox" id="pv-override"> Sobrescrever PV manualmente</label><input type="number" id="pv-manual" disabled value="${entity.atributos[0].pv ?? 0}"></div><div class="grid"><div class="field"><small>PS</small><input id="ps-input" value="${entity.atributos[0].ps ?? 0}"></div></div>${atrLines}</div>
+  <div class="section"><h3>Perícias</h3><button id="btn-add-pericia-group">+ Adicionar Grupo de Perícia</button><div id="pericias-wrap">${periciasHtml}</div></div>
+  <div class="section"><h3>Habilidades</h3><button id="btn-add-habilidade">+ Nova Habilidade</button><div id="habilidades-wrap">${habilidadesHtml}</div></div>`;
+}
+
+function markDirty(type, key) {
+  (type === 'npcs' ? dirtyNpcs : dirtyChars).add(key);
+}
+
+function bindEditorEvents(editor, entity, type, key) {
+  const isNpc = type === 'npcs';
+  const rerender = () => renderEntityTab(type);
+  editor.querySelectorAll('[data-info]').forEach((el) => el.addEventListener('input', () => {
+    const field = el.dataset.info;
+    entity.info[field] = ['nivel','xp','inspiracao','altura','peso'].includes(field) ? (el.value === '' ? 0 : Number(el.value)) : el.value;
+    if (field === 'nivel') updatePvDisplay();
+    markDirty(type, key); renderEntityTab(type);
+  }));
+  const arqSel = editor.querySelector('#arquetipo-select');
+  const arqOutro = editor.querySelector('#arquetipo-outro');
+  arqSel?.addEventListener('change', () => {
+    entity.info.arquetipo = arqSel.value === '__outro__' ? (arqOutro?.value || '') : arqSel.value;
+    markDirty(type, key); rerender();
+  });
+  arqOutro?.addEventListener('input', () => { entity.info.arquetipo = arqOutro.value; updatePvDisplay(); markDirty(type, key); });
+  const pvOverride = editor.querySelector('#pv-override');
+  const pvManual = editor.querySelector('#pv-manual');
+  const psInput = editor.querySelector('#ps-input');
+  pvOverride?.addEventListener('change', () => { pvManual.disabled = !pvOverride.checked; if (!pvOverride.checked) entity.atributos[0].pv = calcPv(entity, isNpc); markDirty(type,key); });
+  pvManual?.addEventListener('input', () => { entity.atributos[0].pv = Number(pvManual.value) || 0; markDirty(type,key); });
+  psInput?.addEventListener('input', () => { entity.atributos[0].ps = psInput.value; markDirty(type,key); });
+
+  editor.querySelectorAll('[data-ai]').forEach((row) => {
+    const ai = Number(row.dataset.ai);
+    row.querySelectorAll('[data-af]').forEach((inp) => inp.addEventListener('input', () => {
+      const field = inp.dataset.af;
+      if (inp.value === '') delete entity.atributos[ai][field]; else entity.atributos[ai][field] = Number(inp.value);
+      updatePvDisplay(); markDirty(type,key);
+    }));
+  });
+
+  function updatePvDisplay() {
+    const v = calcPv(entity, isNpc);
+    editor.querySelector('#pv-calc').textContent = String(v);
+    if (!pvOverride.checked) entity.atributos[0].pv = v;
+  }
+
+  editor.querySelector('#btn-add-pericia-group')?.addEventListener('click', () => { entity.pericias.push({ atributo:'FOR', pericia_valor:[] }); markDirty(type,key); rerender(); });
+  editor.querySelectorAll('.pericia-group').forEach((grpEl) => {
+    const gi = Number(grpEl.dataset.gi);
+    grpEl.querySelector('.pericia-atributo')?.addEventListener('change', (e) => { entity.pericias[gi].atributo = e.target.value; markDirty(type,key); });
+    grpEl.querySelector('.btn-remove-group')?.addEventListener('click', () => { entity.pericias.splice(gi,1); markDirty(type,key); rerender(); });
+    grpEl.querySelector('.btn-add-pericia')?.addEventListener('click', () => { entity.pericias[gi].pericia_valor.push({ nome:'', valor:0 }); markDirty(type,key); rerender(); });
+    grpEl.querySelectorAll('.pericia-row').forEach((row) => {
+      const pi = Number(row.dataset.pi);
+      row.querySelector('.btn-remove-pericia')?.addEventListener('click', () => { entity.pericias[gi].pericia_valor.splice(pi,1); markDirty(type,key); rerender(); });
+      row.querySelectorAll('input').forEach((input) => input.addEventListener('input', () => {
+        const field = input.dataset.field;
+        if (field === 'nome') entity.pericias[gi].pericia_valor[pi].nome = input.value;
+        else if (input.value === '') delete entity.pericias[gi].pericia_valor[pi][field];
+        else entity.pericias[gi].pericia_valor[pi][field] = Number(input.value);
+        markDirty(type,key);
+      }));
+    });
+  });
+
+  editor.querySelector('#btn-add-habilidade')?.addEventListener('click', () => { entity.habilidades.push({ nome:'', grimorio:'', nivel:'', descricao:'' }); markDirty(type,key); rerender(); });
+  editor.querySelectorAll('.habilidade-item').forEach((hEl) => {
+    const hi = Number(hEl.dataset.hi);
+    const h = entity.habilidades[hi];
+    hEl.querySelectorAll('summary button').forEach((b) => b.addEventListener('click', (ev) => {
+      ev.preventDefault();
+      const act = b.dataset.act;
+      if (act === 'del') entity.habilidades.splice(hi,1);
+      if (act === 'up' && hi > 0) [entity.habilidades[hi-1], entity.habilidades[hi]] = [entity.habilidades[hi], entity.habilidades[hi-1]];
+      if (act === 'down' && hi < entity.habilidades.length -1) [entity.habilidades[hi+1], entity.habilidades[hi]] = [entity.habilidades[hi], entity.habilidades[hi+1]];
+      markDirty(type,key); rerender();
+    }));
+    hEl.querySelectorAll('[data-hf]').forEach((i) => i.addEventListener('input', () => {
+      const f = i.dataset.hf;
+      if (f === 'efeitos') { h.efeitos = i.value.split(',').map((x)=>x.trim()).filter(Boolean); }
+      else if (f === 'calcAtributo') { h.calculoDano = h.calculoDano || {}; h.calculoDano.atributo = i.value; if (!i.value) delete h.calculoDano; rerender(); }
+      else if (f === 'calcPericia') { h.calculoDano = h.calculoDano || {}; h.calculoDano.pericia = i.value; }
+      else h[f] = i.value;
+      markDirty(type,key);
+    }));
+    hEl.querySelector('.btn-add-subataque')?.addEventListener('click', () => { h.subataques = h.subataques || []; h.subataques.push({ nome:'', descricao:'' }); markDirty(type,key); rerender(); });
+    hEl.querySelectorAll('.subataque-item').forEach((sEl) => {
+      const si = Number(sEl.dataset.si);
+      const s = h.subataques[si];
+      sEl.querySelector('.btn-remove-subataque')?.addEventListener('click', () => { h.subataques.splice(si,1); markDirty(type,key); rerender(); });
+      sEl.querySelectorAll('[data-sf]').forEach((inp) => inp.addEventListener('input', () => {
+        const f = inp.dataset.sf;
+        if (f === 'efeitos') s.efeitos = inp.value.includes(',') ? inp.value.split(',').map((x)=>x.trim()).filter(Boolean) : inp.value;
+        else if (f === 'calcAtributo') { s.calculoDano = s.calculoDano || {}; s.calculoDano.atributo = inp.value; if (!inp.value) delete s.calculoDano; }
+        else if (f === 'calcPericia') { s.calculoDano = s.calculoDano || {}; s.calculoDano.pericia = inp.value; }
+        else s[f] = inp.value;
+        markDirty(type,key);
+      }));
+    });
+  });
+
+  updatePvDisplay();
+}
+
+function renderPasswords() {
+  const panel = document.getElementById('tab-passwords');
+  const table = (kind, title) => {
+    const entries = Object.entries(state.passwords[kind]);
+    return `<h2>${title}</h2><table><thead><tr><th>Personagem</th><th>Nova Senha</th><th></th></tr></thead><tbody>${entries.map(([hashValue,name]) => `<tr data-kind="${kind}" data-name="${name}" data-hash="${hashValue}"><td>${name}</td><td><input type="text" class="new-password-input"></td><td><button class="btn-save-password">Salvar</button><span class="saved-tag">✓ Salvo</span></td></tr>`).join('')}</tbody></table>`;
+  };
+  panel.innerHTML = `<section class="passwords-section">${table('players','Senhas dos Personagens')}${table('npcs','Senhas dos NPCs')}</section>`;
+  panel.querySelectorAll('.btn-save-password').forEach((btn) => btn.addEventListener('click', async () => {
+    const tr = btn.closest('tr');
+    const kind = tr.dataset.kind;
+    const name = tr.dataset.name;
+    const input = tr.querySelector('.new-password-input');
+    const plain = input.value.trim();
+    if (!plain) return;
+    const newHash = await hash(plain);
+    const map = state.passwords[kind];
+    Object.keys(map).forEach((h) => { if (map[h] === name) delete map[h]; });
+    map[newHash] = name;
+    input.value = '';
+    const tag = tr.querySelector('.saved-tag');
+    tag.classList.add('show');
+    setTimeout(() => tag.classList.remove('show'), 2000);
+    renderPasswords();
+  }));
+}
+
+function exportDataConst(varName, map, isNpc) {
+  const keys = Object.keys(map);
+  const body = keys.map((k) => `${k}: ${serializeJS(map[k], 4)}`).join(',\n\n');
+  const calcTail = isNpc ?
+`function normalizarArquetipo(arquetipo = '') {
+    return arquetipo
+        .toString()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .trim()
+        .toLowerCase();
+}
+
+function calcularPvAutomatico(personagem) {
+    const formulasPV = {
+        tanque: { pvInicial: 15, pvPorNivel: 8 },
+        lutador: { pvInicial: 13, pvPorNivel: 7 },
+        cacador: { pvInicial: 10, pvPorNivel: 6 },
+        feiticeiro: { pvInicial: 8, pvPorNivel: 4 },
+        genio: { pvInicial: 7, pvPorNivel: 3 },
+    };
+
+    const arquetipoNormalizado = normalizarArquetipo(personagem?.info?.arquetipo);
+    const formula = formulasPV[arquetipoNormalizado];
+
+    if (!formula || !Array.isArray(personagem?.atributos) || !personagem.atributos[0]) {
+        return;
+    }
+
+    const nivel = Number(personagem.info?.nivel) || 0;
+    const atributoVigor = personagem.atributos.find((atributo) => atributo.sigla === 'VIG') || {};
+    const vigor = Number(atributoVigor.valor) || 0;
+    const prestigioVigor = Math.max(1, Number(atributoVigor.prestigio) || 1);
+    const bonusVidaPorPrestigio = (prestigioVigor) * 10;
+
+    personagem.atributos[0].pv =
+        formula.pvInicial +
+        (formula.pvPorNivel * nivel) +
+        vigor +
+        bonusVidaPorPrestigio;
+}
+
+Object.values(${varName}).forEach(calcularPvAutomatico);`
+:
+`function normalizarArquetipo(arquetipo = '') {
+    return arquetipo
+        .toString()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .trim()
+        .toLowerCase();
+}
+
+function calcularPvAutomatico(personagem) {
+    const formulasPV = {
+        tanque: { pvInicial: 15, pvPorNivel: 8 },
+        lutador: { pvInicial: 13, pvPorNivel: 7 },
+        cacador: { pvInicial: 10, pvPorNivel: 6 },
+        feiticeiro: { pvInicial: 8, pvPorNivel: 4 },
+        genio: { pvInicial: 7, pvPorNivel: 3 },
+    };
+
+    const arquetipoNormalizado = normalizarArquetipo(personagem?.info?.arquetipo);
+    const formula = formulasPV[arquetipoNormalizado];
+
+    if (!formula || !Array.isArray(personagem?.atributos) || !personagem.atributos[0]) {
+        return;
+    }
+
+    const nivel = Number(personagem.info?.nivel) || 0;
+    const atributoVigor = personagem.atributos.find((atributo) => atributo.sigla === 'VIG') || {};
+    const vigor = Number(atributoVigor.valor) || 0;
+    const prestigioVigor = Math.max(1, Number(atributoVigor.prestigio) || 1);
+    const vidaPorPontoDeVigor = prestigioVigor;
+
+    personagem.atributos[0].pv =
+        formula.pvInicial +
+        (formula.pvPorNivel * nivel) +
+        (vigor * vidaPorPontoDeVigor);
+}
+
+Object.values(${varName}).forEach(calcularPvAutomatico);`;
+
+  return `const ${varName} = {
+
+${body}
+
+}
+
+${calcTail}`;
+}
+
+function exportPasswordsJs() {
+  const p = Object.entries(state.passwords.players).map(([h,n])=>`        "${h}": "${n}"`).join(',\n');
+  const n = Object.entries(state.passwords.npcs).map(([h,name])=>`        "${h}": "${name}"`).join(',\n');
+  return `(function () {
+    const PLAYER_PASSWORD_MAP = {
+${p}
+    };
+
+    const NPC_PASSWORD_MAP = {
+${n}
+    };
+
+    const toHashList = (passwordMap) => Object.keys(passwordMap);
+
+    const normalizePassword = (text = '') =>
+        text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+    const hashPassword = async (text) => {
+        const bytes = new TextEncoder().encode(text);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', bytes);
+        return Array.from(new Uint8Array(hashBuffer))
+            .map((b) => b.toString(16).padStart(2, '0'))
+            .join('');
+    };
+
+    window.PASSWORDS = {
+        players: {
+            map: PLAYER_PASSWORD_MAP,
+            hashes: toHashList(PLAYER_PASSWORD_MAP),
+        },
+        npcs: {
+            map: NPC_PASSWORD_MAP,
+            hashes: toHashList(NPC_PASSWORD_MAP),
+        },
+        normalizePassword,
+        hashPassword,
+    };
+})();`;
+}
+
+const modal = document.getElementById('modal-export');
+const modalTitle = document.getElementById('modal-title');
+const modalContent = document.getElementById('modal-content');
+const btnCopy = document.getElementById('btn-copy');
+
+function openModal(title, content) {
+  modalTitle.textContent = title;
+  modalContent.value = content;
+  modal.classList.remove('hidden');
+}
+
+document.getElementById('btn-close-modal').addEventListener('click', () => modal.classList.add('hidden'));
+btnCopy.addEventListener('click', () => {
+  navigator.clipboard.writeText(document.getElementById('modal-content').value)
+    .then(() => { btnCopy.textContent = '✓ Copiado!'; setTimeout(() => btnCopy.textContent = 'Copiar', 2000); });
+});
+
+document.getElementById('btn-export-chars').addEventListener('click', () => {
+  openModal('Exportar Characters JS', exportDataConst('data', state.characters, false));
+  dirtyChars.clear(); dirtyNpcs.clear(); render();
+});
+document.getElementById('btn-export-npcs').addEventListener('click', () => {
+  openModal('Exportar NPCs JS', exportDataConst('npcData', state.npcs, true));
+  dirtyChars.clear(); dirtyNpcs.clear(); render();
+});
+document.getElementById('btn-export-passwords').addEventListener('click', () => {
+  openModal('Exportar Senhas JS', exportPasswordsJs());
+  dirtyChars.clear(); dirtyNpcs.clear(); render();
+});
+document.getElementById('btn-logout').addEventListener('click', () => {
+  sessionStorage.removeItem('adminLogado');
+  window.location.href = '../../index.html';
+});
+
+document.querySelectorAll('.tab').forEach((tab) => tab.addEventListener('click', () => { state.activeTab = tab.dataset.tab; renderTabs(); }));
+
+render();
+</script>
+</body>
+</html>
