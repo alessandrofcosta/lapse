@@ -1,0 +1,11 @@
+id,slug,entity_type,name,inspiration,level,xp,age,height_cm,weight_kg,class_name,archetype,discord_id
+1,indra,player,Indra Ashura,1,11,0,15,171,65,Nobreza,Caçador,1317246514535465010
+2,sombras,player,Sombras,,13,0,∞,0,,,,1317246514535465010
+3,shiva,player,Shiva Wyndell,,7,,14,163,47,Plebeu,Lutador,1213237748505251861
+4,saori,player,Saori Silva,1,11,0,15,151,45,Realeza,Feiticeiro,522775874999943171
+5,yuka,player,Yuka Kisha,2,11,10,18,201,100,Plebeu,Caçador,848993151128436796
+6,yang,player,Yang Kami Lapse,0,11,10,15,173,61,Realeza,Feiticeiro,423067939495739392
+7,lommie,player,Lommie Yuta,,9,0,19,176,61,-,Lutador,1317246514535465010
+8,alice,player,Shiva Wyndell,1,10,75,14,167,55,-,Lutador,1213237748505251861
+9,saint,player,Saint Valac,0,10,75,16,180,70,-,Caçador,1317263900512751746
+10,oraculo,npc,Oráculo do Eclipse,0,12,0,Desconhecida,182,71,Entidade,Controlador,Okkotsu
